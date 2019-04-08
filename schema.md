@@ -18,3 +18,12 @@
 | user_id     | integer   | not null, foreign key |
 | title       | string    | not null              |
 | post_body   | string    |
+
+## comments
+
+| column name | data type | details               |
+| ----------- | --------- | --------------------- |
+| id          | integer   | not null, primary key |
+| user_id     | integer   | not null, foreign key |
+| post_id     | integer   | not null, foreign key |
+| comment_body| string    | not null, foreign key |
