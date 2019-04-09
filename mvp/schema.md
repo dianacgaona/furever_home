@@ -9,6 +9,8 @@
 | password_digest | string    | not null                  |
 | username        | string    | not null, indexed, unique |
 | name            | string    | not null                  |
+| profile_picture | string    |                           |
+| about           | string    |                           |
 
 ## posts
 

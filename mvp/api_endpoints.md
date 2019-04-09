@@ -20,12 +20,12 @@
 
 ### Pets
 
-*`GET api/pets`
-*Fetches all pets
-*`GET api/pets/:petId`
-*Fetches single pet
-*`PATCH api/pets/:petId`
-*Edits pet
+- `GET /api/pets`
+  - Fetches all pets
+- `GET /api/pets/:petId`
+  - Fetches single pet
+- `PATCH /api/pets/:petId`
+  - Edits pet
 
 ### Shelters
 
