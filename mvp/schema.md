@@ -21,12 +21,12 @@
 
 ## comments
 
-| column name | data type | details               |
-| ----------- | --------- | --------------------- |
-| id          | integer   | not null, primary key |
-| user_id     | integer   | not null, foreign key |
-| post_id     | integer   | not null, foreign key |
-| comment_body| string    | not null, foreign key |
+| column name  | data type | details               |
+| ------------ | --------- | --------------------- |
+| id           | integer   | not null, primary key |
+| user_id      | integer   | not null, foreign key |
+| post_id      | integer   | not null, foreign key |
+| comment_body | string    | not null, foreign key |
 
 ## favorited pets
 
@@ -43,7 +43,7 @@
 | coat        | string    | not null, foreign key |
 | name        | string    | not null, foreign key |
 | description | string    | not null, primary key |
-| imgs        | string    | not null, foreign key |
+| img_url     | string    | not null, foreign key |
 | attributes  | string    | not null, foreign key |
 | status      | string    | not null, foreign key |
 
@@ -64,5 +64,3 @@
 | description | string    | not null, primary key |
 | imgs        | string    | not null, foreign key |
 | attributes  | string    | not null, foreign key |
-
-
