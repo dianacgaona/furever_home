@@ -27,3 +27,42 @@
 | user_id     | integer   | not null, foreign key |
 | post_id     | integer   | not null, foreign key |
 | comment_body| string    | not null, foreign key |
+
+## favorited pets
+
+| column name | data type | details               |
+| ----------- | --------- | --------------------- |
+| id          | integer   | not null, primary key |
+| user_id     | integer   | not null, foreign key |
+| type        | string    | not null, foreign key |
+| breed       | string    | not null, foreign key |
+| color       | string    | not null, primary key |
+| age         | integer   | not null, foreign key |
+| gender      | string    | not null, foreign key |
+| size        | string    | not null, foreign key |
+| coat        | string    | not null, foreign key |
+| name        | string    | not null, foreign key |
+| description | string    | not null, primary key |
+| imgs        | string    | not null, foreign key |
+| attributes  | string    | not null, foreign key |
+| status      | string    | not null, foreign key |
+
+## adopted pets
+
+| column name | data type | details               |
+| ----------- | --------- | --------------------- |
+| id          | integer   | not null, primary key |
+| user_id     | integer   | not null, foreign key |
+| type        | string    | not null, foreign key |
+| breed       | string    | not null, foreign key |
+| color       | string    | not null, primary key |
+| age         | integer   | not null, foreign key |
+| gender      | string    | not null, foreign key |
+| size        | string    | not null, foreign key |
+| coat        | string    | not null, foreign key |
+| name        | string    | not null, foreign key |
+| description | string    | not null, primary key |
+| imgs        | string    | not null, foreign key |
+| attributes  | string    | not null, foreign key |
+
+
