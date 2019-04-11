@@ -1,3 +1,3 @@
-const { db } = require('../index.js');
+const { db } = require("../index.js");
 
-module.exports = { getAllUsers, getSingleUser, isLoggedIn, createUser, loginUser, logoutUser,  deleteUser };
+// module.exports = { getAllUsers, getSingleUser, isLoggedIn, createUser, loginUser, logoutUser,  deleteUser };
