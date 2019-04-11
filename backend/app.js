@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var shelterRouter = require('./routes/shelters');
 var postsRouter = require('./routes/posts');
 var petsRouter = require('./routes/pets');
-var likesRouter = require('./routes/likes');
+var favoritedRouter = require('./routes/favorited');
 var commentsRouter = require('./routes/comments');
 
 var app = express();
@@ -29,7 +29,7 @@ app.use('/users', usersRouter);
 app.use('/shelters', sheltersRouter);
 app.use('/posts', postsRouter);
 app.use('/pets', petsRouter);
-app.use('/likes', likesRouter);
+app.use('/favorited', favoritedRouter);
 app.use('/comments', commentsRouter);
 
 // catch 404 and forward to error handler
