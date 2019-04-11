@@ -1,3 +1,3 @@
-const { db } = require('../index.js');
-
-module.exports = { getAllShelters, getSingleShelter, getSheltersByRadius };
+// const { db } = require('../index.js');
+//
+// module.exports = { getAllShelters, getSingleShelter, getSheltersByRadius };

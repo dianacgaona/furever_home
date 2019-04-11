@@ -1,10 +1,18 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-const { createComment, editComment, deleteComment } = require('../db/queries/comments_queries.js');
+const {
+  getAllComments,
+  getAllCommentsForOnePost,
+  createComment,
+  editComment,
+  deleteComment
+} = require("../db/queries/comments_queries.js");
 
-router.post('/', createComment);
-router.patch('/:id', editComment);
-router.delete('/:id', deleteComment);
+router.get("/", getAllComments);
+router.post("/", createComment);
+router.get("/post/:id", getAllCommentsForOnePost);
+router.patch("/:id", editComment);
+router.delete("/:id", deleteComment);
 
 module.exports = router;
