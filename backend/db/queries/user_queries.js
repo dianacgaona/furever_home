@@ -21,7 +21,7 @@ const getAllUsers = (req, res, next) => {
 const getSingleUser = (req, res, next) => {
   let userId = parseInt(req.params.id);
   db.one(
-    'SELECT users.id, email, password_digest AS password, username, name, about, profile_picture, city, state, zip_code FROM users JOIN location ON users.id = location.user_id WHERE users.id=$3 GROUP BY users.id, email, password, username, name, about, profile_picture, city, state, zip_code',
+    'SELECT users.id, email, password_digest AS password, username, name, about, profile_picture, city, state, zip_code FROM users JOIN location ON users.id = location.user_id WHERE users.id=$1 GROUP BY users.id, email, password, username, name, about, profile_picture, city, state, zip_code',
     [userId]
   )
     .then(user => {
@@ -104,4 +104,12 @@ const logoutUser = (req, res, next) => {
   res.status(200).send('logout successful');
 };
 
-// module.exports = { getAllUsers, getSingleUser, createUser, deleteUser, isLoggedIn, loginUser, logoutUser};
+module.exports = {
+  getAllUsers,
+  getSingleUser,
+  createUser,
+  deleteUser,
+  isLoggedIn,
+  loginUser,
+  logoutUser,
+};
