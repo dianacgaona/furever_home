@@ -58,3 +58,6 @@ INSERT INTO comments(user_id, post_id, comment_body) VALUES (1, 3, 'I found this
 
 INSERT INTO favorited(user_id, pet_id)
 VALUES (1, 4439537), (2, 44439791), (3, 44439926), (4, 44439939), (1, 44440935), (2, 44440950), (3, 44440936), (4, 44440926), (1, 44441053), (2, 44440829), (3, 44441011), (4, 44440934), (1, 44441053);
+
+INSERT INTO adopted(user_id, pet_id)
+VALUES(1, 44441235), (1, 44441017), (2, 44440157), (3, 44440129), (3, 44439718), (4, 44440157);
