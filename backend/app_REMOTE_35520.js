@@ -4,26 +4,14 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-<<<<<<< HEAD
-const passport = require("passport");
-const session = require("express-session");
-
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-// var sheltersRouter = require("./routes/shelters");
-=======
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var shelterRouter = require("./routes/shelters");
->>>>>>> 1bb256f30c0ef14d2a4e0e6df84be67b3b4ae107
 var postsRouter = require("./routes/posts");
 var adoptedRouter = require("./routes/adopted");
 var favoritedRouter = require("./routes/favorited");
 var commentsRouter = require("./routes/comments");
-<<<<<<< HEAD
-=======
 var petfinderRouter = require("./routes/petFinderAPIRoute.js");
->>>>>>> 1bb256f30c0ef14d2a4e0e6df84be67b3b4ae107
 
 var app = express();
 
@@ -35,24 +23,10 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.use(
-  session({
-    secret: "never gonna give u up",
-    resave: false,
-    saveUninitialized: true
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-<<<<<<< HEAD
-=======
 app.use("/petfinder", petfinderRouter);
->>>>>>> 1bb256f30c0ef14d2a4e0e6df84be67b3b4ae107
 app.use("/users", usersRouter);
 // app.use('/shelters', sheltersRouter);
 app.use("/posts", postsRouter);
