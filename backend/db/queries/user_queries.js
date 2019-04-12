@@ -88,7 +88,7 @@ const isLoggedIn = (req, res) => {
   }
 };
 
-const loginUser = (req, res, next) => {
+const loginUser = (req, res) => {
   res.json({
     id: req.user.id,
     email: req.user.email,
