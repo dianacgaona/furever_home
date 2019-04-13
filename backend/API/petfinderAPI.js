@@ -6,28 +6,32 @@ getToken = () => {
   axios({
     url: "https://api.petfinder.com/v2/oauth2/token",
     method: "post",
-    header: {},
+    headers: {},
     data: {
       grant_type: "client_credentials",
       client_id: "aPyHda3zCinlGy1lJ0fWFDAQQvpgUomPSbOR7igJVYp8e7WVmE",
       client_secret: "GxTgtoQT1OMTJjuBMEoJIE6dNEK9DiEZ9vkRGCZe"
     }
-  }).then(data => {
-    let apiToken = data.data.access_token;
-  });
+  })
+    .then(data => {
+      apiToken = data.data.access_token;
+    })
+    .catch(err => {
+      console.log("Error in getToken()", err);
+    });
 };
 
 apiAllAnimals = async (req, res, next) => {
   let animals;
   try {
+    console.log(apiToken);
+
     let data = await axios({
       url: "https://api.petfinder.com/v2/animals",
       method: "get",
-      header: {
-        Authorization: "Bearer " + apiToken,
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      data: {}
+      headers: {
+        Authorization: "Bearer " + apiToken
+      }
     });
     animals = data.data;
     res.status(200).json({
@@ -37,7 +41,7 @@ apiAllAnimals = async (req, res, next) => {
     });
   } catch (err) {
     if (err) {
-      console.log(err);
+      console.log("error ===", err);
       apiToken = await getToken();
     }
   }
