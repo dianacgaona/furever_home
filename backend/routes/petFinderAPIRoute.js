@@ -1,8 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-const { apiAllAnimals } = require("../API/petfinderAPI.js");
+const {
+  apiAllAnimals,
+  apiAllOrganizations
+} = require("../API/petfinderAPI.js");
 
-router.get("/", apiAllAnimals);
+router.get("/animals", apiAllAnimals);
+router.get("/organizations", apiAllOrganizations);
 
 module.exports = router;

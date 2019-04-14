@@ -47,5 +47,31 @@ apiAllAnimals = async (req, res, next) => {
   }
 };
 
+apiAllOrganizations = async (req, res, next) => {
+  let organizations;
+  try {
+    console.log(apiToken);
+
+    let data = await axios({
+      url: "https://api.petfinder.com/v2/organizations",
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + apiToken
+      }
+    });
+    organizations = data.data;
+    res.status(200).json({
+      status: "Success",
+      data: organizations,
+      message: "ORGANIZATIONS"
+    });
+  } catch (err) {
+    if (err) {
+      console.log("error ===", err);
+      apiToken = await getToken();
+    }
+  }
+};
+
 getToken();
-module.exports = { apiAllAnimals };
+module.exports = { apiAllAnimals, apiAllOrganizations };
