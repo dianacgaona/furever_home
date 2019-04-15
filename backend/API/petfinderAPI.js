@@ -47,15 +47,16 @@ apiAllAnimals = async (req, res, next) => {
 
 apiAllAnimalsQuery = async (req, res, next) => {
   let animals;
-  let type = req.body.type;
-  let color = req.body.color;
-  let breed = req.body.breed;
-  let size = req.body.size;
-  let age = req.body.age;
-  let gender = req.body.gender;
+  let queryArray = [];
+  let bodyKeys = Object.keys(req.body);
+  bodyKeys.forEach(key => {
+    queryArray.push(key + "=" + req.body[key]);
+  });
+  let queryString = queryArray.join("&");
+  console.log(queryString);
   try {
     let data = await axios({
-      url: `https://api.petfinder.com/v2/animals?type=${type}&color=${color}&breed=${breed}&size=${size}&age=${age}&gender=${gender}`,
+      url: "https://api.petfinder.com/v2/animals?" + queryString,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -69,7 +70,7 @@ apiAllAnimalsQuery = async (req, res, next) => {
     });
   } catch (err) {
     if (err) {
-      console.log("error ===", err);
+      // console.log("error ===", err);
       apiToken = await getToken();
     }
   }
