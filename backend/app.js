@@ -7,15 +7,14 @@ const logger = require("morgan");
 const passport = require("passport");
 const session = require("express-session");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var sheltersRouter = require("./routes/shelters");
-var postsRouter = require("./routes/posts");
-var adoptedRouter = require("./routes/adopted");
-var favoritedRouter = require("./routes/favorited");
-var commentsRouter = require("./routes/comments");
-var petfinderRouter = require("./routes/petfinderAPIRoute");
-
+let indexRouter = require("./routes/index");
+let usersRouter = require("./routes/users");
+let sheltersRouter = require("./routes/shelters");
+let postsRouter = require("./routes/posts");
+let adoptedRouter = require("./routes/adopted");
+let favoritedRouter = require("./routes/favorited");
+let commentsRouter = require("./routes/comments");
+let petfinderRouter = require("./routes/petfinderAPIRoute");
 
 let app = express();
 
