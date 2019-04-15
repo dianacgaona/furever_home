@@ -48,7 +48,7 @@ CREATE TABLE adopted(
   pet_id INT
 );
 
-INSERT INTO users(email, password_digest, username, name, about, profile_picture) VALUES ('user1@fh.com', '123', 'user1', 'user one', 'I am user number one', 'https://images.pexels.com/photos/1389994/pexels-photo-1389994.jpeg'), ('user2@fh.com', '123', 'user2', 'user two', 'I am user number two', 'https://images.pexels.com/photos/206396/pexels-photo-206396.jpeg'), ('user3@fh.com', '123', 'user3', 'user three', 'I am user number three', 'https://images.pexels.com/photos/1757011/pexels-photo-1757011.jpeg'), ('user4@fh.com', '123', 'user4', 'user four', 'I am user number four', 'https://images.pexels.com/photos/36027/girl-cat-love-young.jpg');
+INSERT INTO users(email, password_digest, username, name, about, profile_picture) VALUES ('user1@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'user1', 'user one', 'I am user number one', 'https://images.pexels.com/photos/1389994/pexels-photo-1389994.jpeg'), ('user2@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'user2', 'user two', 'I am user number two', 'https://images.pexels.com/photos/206396/pexels-photo-206396.jpeg'), ('user3@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'user3', 'user three', 'I am user number three', 'https://images.pexels.com/photos/1757011/pexels-photo-1757011.jpeg'), ('user4@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'user4', 'user four', 'I am user number four', 'https://images.pexels.com/photos/36027/girl-cat-love-young.jpg');
 
 INSERT INTO location(user_id, city, state, zip_code) VALUES (1, 'Brooklyn', 'NY', 11237), (2, 'Queens', 'NY', 11416), (3, 'New York City', 'NY', 10001), (4, 'Bronx', 'NY', 10467);
 
@@ -58,3 +58,6 @@ INSERT INTO comments(user_id, post_id, comment_body) VALUES (1, 3, 'I found this
 
 INSERT INTO favorited(user_id, pet_id)
 VALUES (1, 4439537), (2, 44439791), (3, 44439926), (4, 44439939), (1, 44440935), (2, 44440950), (3, 44440936), (4, 44440926), (1, 44441053), (2, 44440829), (3, 44441011), (4, 44440934), (1, 44441053);
+
+INSERT INTO adopted(user_id, pet_id)
+VALUES(1, 44441235), (1, 44441017), (2, 44440157), (3, 44440129), (3, 44439718), (4, 44440157);

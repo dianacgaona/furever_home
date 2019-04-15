@@ -2,8 +2,8 @@ const { db } = require('../index.js');
 
 const createfavorite = (req, res, next) => {
   db.none('INSERT INTO favorited (user_id, pet_id) VALUES (${user_id}, ${pet_id})', {
-    user_id: parseInt(req.body.liker_id),
-    pet_id: req.body.post_id,
+    user_id: parseInt(req.body.user_id),
+    pet_id: req.body.pet_id,
   })
   .then(() => {
     res.status(200).json({
@@ -26,18 +26,4 @@ const deleteFavorite = (req, res, next) => {
    .catch(err => next(err));
 };
 
-const getAllFavoritesFromPost = (req, res, next) => {
-  let postId = parseInt(req.params.id);
-  db.any('SELECT * FROM likes WHERE favorite_id=$1', [postId])
-    .then(likes => {
-      res.status(200)
-      .json({
-        status: ' success',
-        likes: likes,
-        message: 'Received All Favorites From One Post!',
-      });
-    })
-    .catch(err => next(err));
-};
-
-module.exports = { createfavorite, deleteFavorite, getAllFavoritesFromPost };
+module.exports = { createfavorite, deleteFavorite };
