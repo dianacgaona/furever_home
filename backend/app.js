@@ -1,17 +1,21 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var shelterRouter = require("./routes/shelters");
-var postsRouter = require("./routes/posts");
-var petsRouter = require("./routes/pets");
-var commentsRouter = require("./routes/comments");
+const passport = require("passport");
+const session = require("express-session");
 
-var app = express();
+let indexRouter = require("./routes/index");
+let usersRouter = require("./routes/users");
+let postsRouter = require("./routes/posts");
+let commentsRouter = require("./routes/comments");
+let sheltersRouter = require("./routes/shelters");
+// let adoptedRouter = require("./routes/adopted");
+// let favoritesRouter = require("./routes/favorites");
+
+let app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,13 +25,25 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// other middleware stuff
+app.use(
+  session({
+    secret: "never gonna give u up",
+    resave: false,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 // app.use('/shelters', sheltersRouter);
 app.use("/posts", postsRouter);
-// app.use('/pets', petsRouter);
+app.use("/pets", petsRouter);
 app.use("/comments", commentsRouter);
 
 // catch 404 and forward to error handler
