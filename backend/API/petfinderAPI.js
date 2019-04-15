@@ -100,5 +100,41 @@ apiAllOrganizations = async (req, res, next) => {
   }
 };
 
+apiAllOrganizationsQuery = async (req, res, next) => {
+  let organizations;
+  let queryArray = [];
+  let bodyKeys = Object.keys(req.body);
+  bodyKeys.forEach(key => {
+    queryArray.push(key + "=" + req.body[key]);
+  });
+  let queryString = queryArray.join("&");
+  console.log(queryString);
+  try {
+    let data = await axios({
+      url: "https://api.petfinder.com/v2/organizations?" + queryString,
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + apiToken
+      }
+    });
+    organizations = data.data;
+    res.status(200).json({
+      status: "Success",
+      data: organizations,
+      message: "ORGANIZATIONS"
+    });
+  } catch (err) {
+    if (err) {
+      // console.log("error ===", err);
+      apiToken = await getToken();
+    }
+  }
+};
+
 getToken();
-module.exports = { apiAllAnimals, apiAllOrganizations, apiAllAnimalsQuery };
+module.exports = {
+  apiAllAnimals,
+  apiAllOrganizations,
+  apiAllAnimalsQuery,
+  apiAllOrganizationsQuery
+};

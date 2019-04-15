@@ -4,11 +4,13 @@ var router = express.Router();
 const {
   apiAllAnimals,
   apiAllOrganizations,
-  apiAllAnimalsQuery
+  apiAllAnimalsQuery,
+  apiAllOrganizationsQuery
 } = require("../API/petfinderAPI.js");
 
 router.get("/animals", apiAllAnimals);
 router.get("/organizations", apiAllOrganizations);
-router.post("/query", apiAllAnimalsQuery);
+router.post("/animalquery", apiAllAnimalsQuery);
+router.post("/organizationquery", apiAllOrganizationsQuery);
 
 module.exports = router;
