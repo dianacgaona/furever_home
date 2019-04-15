@@ -9,6 +9,6 @@ const {
 
 router.get("/animals", apiAllAnimals);
 router.get("/organizations", apiAllOrganizations);
-router.get("/animals?type=:type", apiAllAnimalsQuery);
+router.post("/query", apiAllAnimalsQuery);
 
 module.exports = router;
