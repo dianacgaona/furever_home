@@ -24,8 +24,6 @@ getToken = () => {
 apiAllAnimals = async (req, res, next) => {
   let animals;
   try {
-    console.log(apiToken);
-
     let data = await axios({
       url: "https://api.petfinder.com/v2/animals",
       method: "get",
@@ -56,10 +54,8 @@ apiAllAnimalsQuery = async (req, res, next) => {
   let age = req.body.age;
   let gender = req.body.gender;
   try {
-    console.log(apiToken);
-
     let data = await axios({
-      url: `https://api.petfinder.com/v2/animals?type=${type}&color=${color}&breed=${breed}&size=${size}&age${age}&gender=${gender}`,
+      url: `https://api.petfinder.com/v2/animals?type=${type}&color=${color}&breed=${breed}&size=${size}&age=${age}&gender=${gender}`,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -82,8 +78,6 @@ apiAllAnimalsQuery = async (req, res, next) => {
 apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
-    console.log(apiToken);
-
     let data = await axios({
       url: "https://api.petfinder.com/v2/organizations",
       method: "get",
