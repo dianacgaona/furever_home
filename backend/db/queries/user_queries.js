@@ -37,27 +37,26 @@ const getSingleUser = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  // const hash = authHelpers.createHash(req.body.password_digest);
-  // db.none(
-  //   "INSERT INTO users( email, password_digest, username) VALUES (${email}, ${password_digest}, ${username})",
-  //   {
-  //     email: req.body.email,
-  //     password_digest: hash,
-  //     username: req.body.username
-  //   }
-  // )
-  //   .then(() => {
-  //     res.status(200).json({
-  //       message: "Registration successful"
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log("Query_error: ", err);
-  //     res.status(500).json({
-  //       message: error
-  //     });
-  //   });
-  res.json({ name: "Test 1" });
+  const hash = authHelpers.createHash(req.body.password_digest);
+  db.none(
+    "INSERT INTO users( email, password_digest, username) VALUES (${email}, ${password_digest}, ${username})",
+    {
+      email: req.body.email,
+      password_digest: hash,
+      username: req.body.username
+    }
+  )
+    .then(() => {
+      res.status(200).json({
+        message: "Registration successful"
+      });
+    })
+    .catch(err => {
+      console.log("Query_error: ", err);
+      res.status(500).json({
+        message: error
+      });
+    });
 };
 
 const deleteUser = (req, res, next) => {
