@@ -45,6 +45,7 @@ apiAllAnimals = async (req, res, next) => {
   }
 };
 
+//this query can be used to find animals in one shelter using the shelter ID
 apiAllAnimalsQuery = async (req, res, next) => {
   let animals;
   let queryArray = [];
