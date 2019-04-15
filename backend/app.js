@@ -14,6 +14,7 @@ var postsRouter = require("./routes/posts");
 var adoptedRouter = require("./routes/adopted");
 var favoritedRouter = require("./routes/favorited");
 var commentsRouter = require("./routes/comments");
+var petfinderRouter = require("./routes/petfinderAPIRoute");
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use("/posts", postsRouter);
 app.use("/adopted", adoptedRouter);
 app.use("/favorited", favoritedRouter);
 app.use("/comments", commentsRouter);
+app.use("/petfinder", petfinderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
