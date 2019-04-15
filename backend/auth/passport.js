@@ -3,6 +3,7 @@ const { db } = require("../db/index.js");
 
 module.exports = () => {
   passport.serializeUser((user, done) => {
+    console.log("DONE??", done);
     done(null, user);
   });
 
