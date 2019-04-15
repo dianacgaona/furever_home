@@ -54,7 +54,7 @@ apiAllAnimalsQuery = async (req, res, next) => {
     console.log(apiToken);
 
     let data = await axios({
-      url: ("https://api.petfinder.com/v2/animals?type=$type", [type]),
+      url: `https://api.petfinder.com/v2/animals?type=${type}`,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
