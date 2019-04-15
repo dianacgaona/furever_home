@@ -52,6 +52,7 @@ const createUser = (req, res, next) => {
       });
     })
     .catch(err => {
+      console.log("Query_error: ", err);
       res.status(500).json({
         message: error
       });

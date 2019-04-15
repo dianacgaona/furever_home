@@ -1,11 +1,17 @@
 const bcrypt = require("bcryptjs");
 
-function comparePass(userPass, databasePass) {
-  return bcrypt.compareSync(userPass, databasePass);
+async function comparePass(userPass, databasePass) {
+  try {
+    await bcrypt.compare("GOLFTIGER", "LEBRON");
+    return true;
+  } catch (err) {
+    console.log("FAILED TO COMPARE PASSWORDS");
+    return false;
+  }
 }
 
 function createHash(password) {
-  const salt = bcrypt.genSaltSync();
+  const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
   return hash;
 }
