@@ -9,11 +9,12 @@ const session = require("express-session");
 
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
-let postsRouter = require("./routes/posts");
-let commentsRouter = require("./routes/comments");
 let sheltersRouter = require("./routes/shelters");
-// let adoptedRouter = require("./routes/adopted");
-// let favoritesRouter = require("./routes/favorites");
+let postsRouter = require("./routes/posts");
+let adoptedRouter = require("./routes/adopted");
+let favoritedRouter = require("./routes/favorited");
+let commentsRouter = require("./routes/comments");
+let petfinderRouter = require("./routes/petfinderAPIRoute");
 
 let app = express();
 
@@ -26,7 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// other middleware stuff
 app.use(
   session({
     secret: "never gonna give u up",
@@ -43,8 +43,10 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 // app.use('/shelters', sheltersRouter);
 app.use("/posts", postsRouter);
-app.use("/pets", petsRouter);
+app.use("/adopted", adoptedRouter);
+app.use("/favorited", favoritedRouter);
 app.use("/comments", commentsRouter);
+app.use("/petfinder", petfinderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
