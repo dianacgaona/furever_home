@@ -5,6 +5,7 @@ import { MyContext } from "../provider/MyProvider";
 class Login extends Component {
   constructor() {
     super();
+    debugger;
 
     this.state = {
       emailInput: "",
