@@ -1,47 +1,64 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
-import { AppBar, Paper, Tabs, SwipeableViews } from '@material-ui/core';
-import Tab from '@material-ui/core/Tab'
-
-import '../css/bar.css'
-let logo = require('../assets/logo.png');
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 
 function TabContainer(props) {
-  const { children, dir } = props;
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
 
-  TabContainer.propTypes = {
+TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
 };
 
-class Bar extends Component {
-  render(){
-    return(
-      <>
-        <AppBar className='navbar'>
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+});
 
-        <Tabs className='tabs'>
+class Bar extends React.Component {
+  state = {
+    value: 0,
+  };
 
-          <div className='logoContainer'>
-            <NavLink to={'/'} className="logoLink">
-              <img src={logo} alt="" className="logo"/>
-            </NavLink>
-          </div>
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
-          <div className='fureverHome'>
-           furever home
-          </div>
+  render() {
+    const { classes } = this.props;
+    const { value } = this.state;
 
-          <Tab label="BREEDS" />
-          <Tab label="COMMUNITY" />
-        </Tabs>
-        <SwipeableViews>
-        </SwipeableViews>
-
-         </AppBar>
-       </>
-    )
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Tabs value={value} onChange={this.handleChange}>
+            <Tab label="BREEDS" />
+            <Tab label="COMMUNITY" />
+          </Tabs>
+        </AppBar>
+        <div>
+        {value === 0 && <TabContainer>DOGS</TabContainer>}
+        {value === 0 && <TabContainer>CATS</TabContainer>}
+        </div>
+        <div>
+        {value === 1 && <TabContainer>DOG CARE</TabContainer>}
+        {value === 1 && <TabContainer>CAT CARE</TabContainer>}
+        {value === 1 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
+        </div>
+      </div>
+    );
   }
 }
 
-export default Bar
+Bar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Bar);
