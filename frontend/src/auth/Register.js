@@ -3,35 +3,35 @@ import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 import { Link } from "react-router-dom";
 
-class Login extends Component {
+class Register extends Component {
   constructor() {
     super();
 
     this.state = {
+      passwordInput: "",
       emailInput: "",
-      passwordInput: ""
+      usernameInput: ""
     };
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    [e.target.name] = e.target.value;
   };
 
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post("/users/login", {
+      .post("/users/new", {
         email: this.state.emailInput,
-        password: this.state.passwordInput
+        password: this.state.passwordInput,
+        username: this.state.usernameInput
       })
       .then(res => {
-        console.log(res);
-        contextConfirm(res.data);
+        contextConfirm(res.data.users);
         this.setState({
           emailInput: "",
-          passwordInput: ""
+          passwordInput: "",
+          usernameInput: ""
         });
       })
       .catch(err => {
@@ -43,35 +43,39 @@ class Login extends Component {
     return (
       <MyContext.Consumer>
         {context => {
-          console.log(context, "CONTEXT");
           return (
             <div>
-              <h3>Login</h3>
+              <h3>Register</h3>
               <form
                 onSubmit={e => {
                   this.handleSubmit(e, context.functions.loginUser);
                 }}
               >
                 <input
+                  onChange={this.handleChange}
                   type="text"
                   name="emailInput"
                   value={this.state.emailInput}
-                  onChange={this.handleChange}
-                  placeholder="Email"
+                  placeholder="email"
                 />
                 <input
+                  onChange={this.handleChange}
                   type="password"
                   name="passwordInput"
                   value={this.state.passwordInput}
-                  onChange={this.handleChange}
-                  placeholder="Password"
+                  placeholder="password"
                 />
-                <button>Log in</button>
+                <input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="usernameInput"
+                  value={this.state.usernameInput}
+                  placeholder="username"
+                />
+                <button>Register</button>
               </form>
               <div>
-                <Link to={"/register"}>
-                  Need to create an account? Register
-                </Link>
+                <Link to={"/Login"}>Already a member? Log in</Link>
               </div>
             </div>
           );
@@ -81,4 +85,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
