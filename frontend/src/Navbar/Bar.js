@@ -6,6 +6,14 @@ import Tab from '@material-ui/core/Tab'
 import '../css/bar.css'
 let logo = require('../assets/logo.png');
 
+function TabContainer(props) {
+  const { children, dir } = props;
+
+  TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired,
+};
+
 class Bar extends Component {
   render(){
     return(
@@ -27,7 +35,9 @@ class Bar extends Component {
           <Tab label="BREEDS" />
           <Tab label="COMMUNITY" />
         </Tabs>
-    
+        <SwipeableViews>
+        </SwipeableViews>
+
          </AppBar>
        </>
     )
