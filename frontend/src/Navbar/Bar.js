@@ -1,7 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
+
+import '../css/bar.css';
+let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
   return (
@@ -39,18 +43,25 @@ class Bar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="BREEDS" />
-            <Tab label="COMMUNITY" />
+
+          <div className='logoContainer'>
+            <NavLink to={'/'} className="logoLink">
+              <img src={logo} alt="" className="logo"/>
+            </NavLink>
+          </div>
+
+            <Tab label="BREEDS"/>
+            <Tab label="COMMUNITY"/>
           </Tabs>
         </AppBar>
         <div>
-        {value === 0 && <TabContainer>DOGS</TabContainer>}
-        {value === 0 && <TabContainer>CATS</TabContainer>}
+        {value === 1 && <TabContainer>DOGS</TabContainer>}
+        {value === 1 && <TabContainer>CATS</TabContainer>}
         </div>
         <div>
-        {value === 1 && <TabContainer>DOG CARE</TabContainer>}
-        {value === 1 && <TabContainer>CAT CARE</TabContainer>}
-        {value === 1 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
+        {value === 2 && <TabContainer>DOG CARE</TabContainer>}
+        {value === 2 && <TabContainer>CAT CARE</TabContainer>}
+        {value === 2 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
         </div>
       </div>
     );
