@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 class Register extends Component {
   constructor() {
     super();
+
     this.state = {
       passwordInput: "",
       emailInput: "",
@@ -26,7 +27,7 @@ class Register extends Component {
         username: this.state.usernameInput
       })
       .then(res => {
-        contextConfirm(this.state.emailInput);
+        contextConfirm(res.data.users);
         this.setState({
           emailInput: "",
           passwordInput: "",
@@ -46,8 +47,8 @@ class Register extends Component {
             <div>
               <h3>Register</h3>
               <form
-                onSubmit={() => {
-                  this.handleSubmit(context.functions.loginUser);
+                onSubmit={e => {
+                  this.handleSubmit(e, context.functions.loginUser);
                 }}
               >
                 <input
