@@ -1,13 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography } from "@material-ui/core";
-import { MyContext } from "../provider/MyProvider";
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 
-import "../css/bar.css";
-import "../css/navbar.css";
-let logo = require("../assets/logo.png");
+import '../css/bar.css';
+let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
   return (
