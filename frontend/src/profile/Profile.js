@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
 
 class Profile extends Component {
   constructor() {
@@ -11,12 +11,25 @@ class Profile extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
-              {context.state.currentUser.username ? (
-                <div>{context.state.currentUser.username}</div>
+              {context.state.currentUser ? (
+                <div>
+                  <div>{context.state.currentUser.username}</div>
+                  <div>
+                    <img
+                      src={context.state.currentUser.profile_picture}
+                      width="250px"
+                      alt=""
+                    />
+                  </div>
+                  <div>{context.state.currentUser.about}</div>
+                </div>
               ) : (
                 <div>no user</div>
               )}
