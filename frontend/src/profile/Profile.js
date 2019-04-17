@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import FavoritedPets from './FavoritedPets';
 import { MyContext } from '../provider/MyProvider';
 
 class Profile extends Component {
@@ -18,6 +18,7 @@ class Profile extends Component {
         {context => {
           return (
             <div>
+              <FavoritedPets />
               {context.state.currentUser ? (
                 <div>
                   <div>{context.state.currentUser.username}</div>
