@@ -1,11 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 
 import '../css/bar.css';
-import '../css/navbar.css';
 let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
@@ -64,7 +63,7 @@ class Bar extends React.Component {
         {value === 2 && <TabContainer>CATS</TabContainer>}
         </div>
         <div className='navlinks'>
-        {value === 3 && <TabContainer>DOG CARE</TabContainer>}
+        {value === 3 && <Link to='/dogCare'><TabContainer>DOG CARE</TabContainer></Link>}
         {value === 3 && <TabContainer>CAT CARE</TabContainer>}
         {value === 3 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
         </div>
