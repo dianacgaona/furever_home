@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 
 import '../css/bar.css';
+import '../css/navbar.css';
 let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
@@ -28,7 +29,7 @@ const styles = theme => ({
 
 class Bar extends React.Component {
   state = {
-    value: 0,
+    value: 2,
   };
 
   handleChange = (event, value) => {
@@ -42,7 +43,7 @@ class Bar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange}>
+          <Tabs value={value} onChange={this.handleChange}  className='navbar'>
 
           <div className='logoContainer'>
             <NavLink to={'/'} className="logoLink">
@@ -50,18 +51,22 @@ class Bar extends React.Component {
             </NavLink>
           </div>
 
-            <Tab label="BREEDS"/>
-            <Tab label="COMMUNITY"/>
+          <div className='fureverHome'>
+           furever home
+          </div>
+
+            <Tab label="BREEDS" style={{ color: '#001049' }} className='iLinks'/>
+            <Tab label="COMMUNITY" style={{ color: '#001049' }} className='iLinks'/>
           </Tabs>
         </AppBar>
-        <div>
-        {value === 1 && <TabContainer>DOGS</TabContainer>}
-        {value === 1 && <TabContainer>CATS</TabContainer>}
+        <div className='navlinks'>
+        {value === 2 && <TabContainer>DOGS</TabContainer>}
+        {value === 2 && <TabContainer>CATS</TabContainer>}
         </div>
-        <div>
-        {value === 2 && <TabContainer>DOG CARE</TabContainer>}
-        {value === 2 && <TabContainer>CAT CARE</TabContainer>}
-        {value === 2 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
+        <div className='navlinks'>
+        {value === 3 && <TabContainer>DOG CARE</TabContainer>}
+        {value === 3 && <TabContainer>CAT CARE</TabContainer>}
+        {value === 3 && <TabContainer>SHELETERS & RESCUES</TabContainer>}
         </div>
       </div>
     );
