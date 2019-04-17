@@ -46,8 +46,8 @@ class Login extends Component {
             <div>
               <h3>Login</h3>
               <form
-                onSubmit={() => {
-                  this.handleSubmit(context.functions.loginUser);
+                onSubmit={e => {
+                  this.handleSubmit(e, context.functions.loginUser);
                 }}
               >
                 <input
