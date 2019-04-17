@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 class Login extends Component {
   constructor() {
     super();
-    debugger;
 
     this.state = {
       emailInput: "",
@@ -28,7 +27,8 @@ class Login extends Component {
         password: this.state.passwordInput
       })
       .then(res => {
-        contextConfirm(this.state.emailInput);
+        console.log(res);
+        contextConfirm(res.data);
         this.setState({
           emailInput: "",
           passwordInput: ""
@@ -43,6 +43,7 @@ class Login extends Component {
     return (
       <MyContext.Consumer>
         {context => {
+          console.log(context, "CONTEXT");
           return (
             <div>
               <h3>Login</h3>
