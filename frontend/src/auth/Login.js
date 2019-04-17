@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor() {
@@ -66,6 +67,11 @@ class Login extends Component {
                 />
                 <button>Log in</button>
               </form>
+              <div>
+                <Link to={"/register"}>
+                  Need to create an account? Register
+                </Link>
+              </div>
             </div>
           );
         }}
