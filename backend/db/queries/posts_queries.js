@@ -40,7 +40,7 @@ const getAllCatPosts = (req, res, next) => {
 
 const getSinglePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
-  db.one('SELECT * FROM posts WHERE id=$1', [postId])
+  db.one('SELECT username,posts.id,user_id,title,post_body FROM posts JOIN users ON users.id = posts.user_id WHERE posts.id=$1', [postId])
     .then(post => {
       res.status(200).json({
         status: 'Success',

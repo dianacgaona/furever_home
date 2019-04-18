@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class SinglePost extends Component {
   constructor() {
@@ -43,15 +43,31 @@ class SinglePost extends Component {
       });
   };
 
+  displaySinglePost = () => {
+    // console.log("did something happen");
+    let { singlePost, singlePostComments } = this.state;
+
+    return (
+      <div>
+        <Link to="/profile">{singlePost.username}</Link>
+        <h1>{singlePost.title}</h1>
+        <h1>Pet Type: {singlePost.pet_type}</h1>
+        <h1>{singlePostComments.comment_body}</h1>
+        <div>Comments:{this.displayComments()}</div>
+      </div>
+    );
+  };
   displayComments = () => {
     console.log("hooray it posted");
     let comments = this.state.singlePostComments.map((comment, i) => {
-      return <li key={i + 1}>
-      <Link to="/profile">{comment.user_id}</Link>
+      return (
+        <li key={i + 1}>
+          <Link to="/profile">{comment.username}</Link>
 
-      <br />
-      {comment.comment_body}
-      </li>;
+          <br />
+          {comment.comment_body}
+        </li>
+      );
     });
     return (
       <>
@@ -59,24 +75,6 @@ class SinglePost extends Component {
       </>
     );
   };
-
-  displaySinglePost = () => {
-    // console.log("did something happen");
-    let { singlePost, singlePostComments } = this.state;
-
-    return (
-      <div>
-        <Link to="/profile">{singlePost.user_id}</Link>
-        <h1>{singlePost.title}</h1>
-        <h1>Pet Type: {singlePost.pet_type}</h1>
-        <h1>{singlePostComments.comment_body}</h1>
-        <div>Comments:{this.displayComments()}</div>
-
-      </div>
-    );
-  };
-
-
 
   render() {
     console.log(this.state);
@@ -91,4 +89,4 @@ class SinglePost extends Component {
 }
 export default SinglePost;
 
-   // <li><Link to="/react">React</Link></li>
+// <li><Link to="/react">React</Link></li>
