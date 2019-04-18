@@ -39,12 +39,10 @@ class UsersPosts extends Component {
     console.log(this.state);
     return (
       <div>
-        <p>HELLO</p>
+        
         {this.displaySinglePost()}
       </div>
     );
   }
 }
 export default UsersPosts;
-// this all post by currentUser
-// axios call for all post by user
