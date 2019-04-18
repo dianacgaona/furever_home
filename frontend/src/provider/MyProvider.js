@@ -9,6 +9,7 @@ class MyProvider extends Component {
     this.state = {
       currentUser: {},
       organizations: [],
+      selectedZip: ""
     };
   }
 
@@ -35,6 +36,16 @@ class MyProvider extends Component {
       });
   };
 
+  handleSelect = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <MyContext.Provider
@@ -42,7 +53,9 @@ class MyProvider extends Component {
           state: this.state,
           functions: {
             loginUser: this.loginUser,
-          },
+            handleSelect: this.handleSelect,
+            handleSubmit: this.handleSubmit
+          }
         }}
       >
         {this.props.children}
