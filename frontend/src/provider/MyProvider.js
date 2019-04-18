@@ -29,7 +29,7 @@ class MyProvider extends Component {
         this.setState({
           organizations: res.data.organizations
         });
-        debugger;
+        // debugger;
       })
       .catch(err => {
         console.log(err);

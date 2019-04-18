@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FavoritedPets from './FavoritedPets';
+import AdoptedPets from './AdoptedPets';
+import UsersPosts from './UsersPosts';
 import { MyContext } from '../provider/MyProvider';
 
 class Profile extends Component {
@@ -11,14 +13,14 @@ class Profile extends Component {
 
   render() {
     return (
-      
+
 
 
 <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <FavoritedPets />
+
               {context.state.currentUser ? (
                 <div>
                   <div>{context.state.currentUser.username}</div>
@@ -34,6 +36,9 @@ class Profile extends Component {
               ) : (
                 <div>no user</div>
               )}
+              <FavoritedPets />
+              <UsersPosts />
+              <AdoptedPets />
             </div>
           );
         }}
