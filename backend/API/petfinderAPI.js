@@ -105,14 +105,8 @@ apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
     let data = await axios({
-<<<<<<< HEAD
-      url: "https://api.petfinder.com/v2/organizations?state=NY",
-      method: "get",
-=======
-      url:
-        'https://api.petfinder.com/v2/organizations?location=10028&distance=10',
+      url: 'https://api.petfinder.com/v2/organizations?state=NY',
       method: 'get',
->>>>>>> a4cc89167551d34393c2fa7cc1a684980c795a70
       headers: {
         Authorization: 'Bearer ' + apiToken,
       },
@@ -143,13 +137,13 @@ apiSingleOrganization = async (req, res, next) => {
     });
     organization = data.organization;
     res.status(200).json({
-      status: "Success",
+      status: 'Success',
       organization: organization,
-      message: "Organization received"
+      message: 'Organization received',
     });
   } catch (err) {
     if (err) {
-      console.log("error ===", err);
+      console.log('error ===', err);
       apiToken = await getToken();
     }
   }
@@ -160,23 +154,23 @@ apiAllOrganizationsQuery = async (req, res, next) => {
   let queryArray = [];
   let bodyKeys = Object.keys(req.body);
   bodyKeys.forEach(key => {
-    queryArray.push(key + "=" + req.body[key]);
+    queryArray.push(key + '=' + req.body[key]);
   });
-  let queryString = queryArray.join("&");
+  let queryString = queryArray.join('&');
   console.log(queryString);
   try {
     let data = await axios({
-      url: "https://api.petfinder.com/v2/organizations?" + queryString,
-      method: "get",
+      url: 'https://api.petfinder.com/v2/organizations?' + queryString,
+      method: 'get',
       headers: {
-        Authorization: "Bearer " + apiToken
-      }
+        Authorization: 'Bearer ' + apiToken,
+      },
     });
     organizations = data.data;
     res.status(200).json({
-      status: "Success",
+      status: 'Success',
       data: organizations,
-      message: "ORGANIZATIONS"
+      message: 'ORGANIZATIONS',
     });
   } catch (err) {
     if (err) {
@@ -193,5 +187,5 @@ module.exports = {
   apiAllOrganizations,
   apiSingleOrganization,
   apiAllAnimalsQuery,
-  apiAllOrganizationsQuery
+  apiAllOrganizationsQuery,
 };
