@@ -108,13 +108,13 @@ apiAllOrganizations = async (req, res, next) => {
   try {
     let data = await axios({
       url:
-        "https://api.petfinder.com/v2/organizations?state=NY&limit=100&location=10001&distance=20",
+        "https://api.petfinder.com/v2/organizations?state=NY&limit=100&location=11378&distance=20",
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
       }
     });
-    organizations = data.data;
+    organizations = data.data.organizations;
     res.status(200).json({
       status: "Success",
       organizations: organizations,

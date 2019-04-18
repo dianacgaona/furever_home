@@ -7,10 +7,35 @@ class OrganizationProfile extends Component {
     return (
       <MyContext.Consumer>
         {context => {
-          console.log(context);
+          let shelters = context.state.organizations.map(shelter => {
+            return (
+              <>
+                <option>{shelter.address.postcode}</option>
+              </>
+            );
+          });
+
+          let display = context.state.organizations.map(shelter => {
+            return (
+              <>
+                <p>{shelter.id}</p>
+                <h3>{shelter.name}</h3>
+              </>
+            );
+          });
           return (
             <div>
-              <h1>Organizations go here</h1>
+              <form type="submit" onSubmit={context.functions.handleSubmit}>
+                <select
+                  name="context.state.selectedZip"
+                  onChange={context.functions.handleSelect}
+                >
+                  <option value=""> </option>
+                  {shelters}
+                </select>
+                <button type="submit">Submit</button>
+              </form>
+              <div>{display}</div>
             </div>
           );
         }}
