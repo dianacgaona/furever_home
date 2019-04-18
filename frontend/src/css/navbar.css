@@ -6,6 +6,11 @@
   display: flex;
 }
 
+.subBar {
+  display: flex;
+  margin-left: 37%;
+}
+
 .iLinks {
   color: #001049;
 }
@@ -28,15 +33,30 @@
   background-color: white
 }
 
-/* .ddlinks {
+.ddlinks {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
   font-weight: 900;
   color: #001049;
   padding: 2%;
-} */
+}
 
-/* a {
+a {
   color: 001049;
   text-decoration: none;
-} */
+}
+
+a: visited {
+  color: #001049;
+}
+
+.loginCont {
+  margin-top: 2%;
+  margin-left: 25%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+}
+
+.dogs {
+  margin-left: 45%;
+}

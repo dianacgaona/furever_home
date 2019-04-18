@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
+import { AppBar, Tabs, Tab, Typography, Paper } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
 
 import '../css/navbar.css';
-import '../css/bar.css';
 let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
@@ -42,6 +42,9 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
+
+
+
 <MyContext.Consumer>
         {context => {
           return (
@@ -64,34 +67,46 @@ class Bar extends React.Component {
                     style={{ color: '#001049' }}
                     className="iLinks"
                   />
+
                   <Tab
                     label="COMMUNITY"
                     style={{ color: '#001049' }}
                     className="iLinks"
                   />
+
                   {context.state.currentUser.username ? (
                     <div>
                       <NavLink to={'/profile'}>
                         {context.state.currentUser.username}
                       </NavLink>
                     </div>
+
                   ) : (
-                    <div>
-                      <NavLink to={'/login'}>Log in or Register</NavLink>
+
+                    <div className='loginCont'>
+                      <NavLink to={'/login'}>LOG IN / REGISTER</NavLink>
                     </div>
                   )}
                 </Tabs>
               </AppBar>
+
               <div className="navlinks">
-                {value === 2 && <TabContainer>DOGS</TabContainer>}
-                {value === 2 && <TabContainer>CATS</TabContainer>}
+                <div className='dogs'>
+                  {value === 2 && <TabContainer>DOGS</TabContainer>}
+                </div>
+                <div className='cats'>
+                  {value === 2 && <TabContainer>CATS</TabContainer>}
+                </div>
               </div>
               <div className="navlinks">
-                {value === 3 && <TabContainer>DOG CARE</TabContainer>}
-                {value === 3 && <TabContainer>CAT CARE</TabContainer>}
-                {value === 3 && <TabContainer>SHELTERS & RESCUES</TabContainer>}
+                <div className='subBar'>
+                  {value === 3 && <TabContainer>DOG CARE</TabContainer>}
+                  {value === 3 && <TabContainer>CAT CARE</TabContainer>}
+                  {value === 3 && <TabContainer>SHELTERS & RESCUES</TabContainer>}
+                </div>
               </div>
             </div>
+
           );
         }}
       </MyContext.Consumer>
