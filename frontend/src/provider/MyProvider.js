@@ -8,7 +8,8 @@ class MyProvider extends Component {
     super();
     this.state = {
       currentUser: {},
-      organizations: []
+      organizations: [],
+      selectedZip: ""
     };
   }
 
@@ -29,11 +30,20 @@ class MyProvider extends Component {
         this.setState({
           organizations: res.data.organizations
         });
-        debugger;
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  handleSelect = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
   };
 
   render() {
@@ -42,7 +52,9 @@ class MyProvider extends Component {
         value={{
           state: this.state,
           functions: {
-            loginUser: this.loginUser
+            loginUser: this.loginUser,
+            handleSelect: this.handleSelect,
+            handleSubmit: this.handleSubmit
           }
         }}
       >
