@@ -25,7 +25,8 @@ apiAllAnimals = async (req, res, next) => {
   let animals;
   try {
     let data = await axios({
-      url: "https://api.petfinder.com/v2/animals",
+      url:
+        "https://api.petfinder.com/v2/animals?state=NY&limit=100&location=10001&distance=20",
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -47,8 +48,9 @@ apiAllAnimals = async (req, res, next) => {
 
 apiSingleAnimal = async (req, res, next) => {
   let animal;
+  let id = parseInt(req.params.id);
   try {
-    let data = await axios({
+    let { data } = await axios({
       url: `https://api.petfinder.com/v2/animals/${id}`,
       method: "get",
       headers: {
@@ -128,6 +130,7 @@ apiAllOrganizations = async (req, res, next) => {
 
 apiSingleOrganization = async (req, res, next) => {
   let organization;
+  let id = parseInt(req.params.id);
   try {
     let data = await axios({
       url: `https://api.petfinder.com/v2/organizations/${id}`,

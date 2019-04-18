@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class CatCare extends Component {
   constructor() {
     super();
 
     this.state = {
-      catPost: []
+      catPost: [],
     };
   }
 
@@ -16,11 +16,11 @@ class CatCare extends Component {
 
   getCatPosts = () => {
     axios
-      .get("/posts")
+      .get('/posts/cats')
       .then(res => {
         console.log(res);
         this.setState({
-          catPost: res.data.posts
+          catPost: res.data.post,
         });
       })
       .catch(err => {
@@ -33,6 +33,7 @@ class CatCare extends Component {
     return catPost.map(post => {
       return (
         <div>
+          <img src={post.post_url} alt=""/>
           <h1>{post.title}</h1>
           <p>Tip for: {post.pet_type}s</p>
           <p>{post.post_body}</p>
@@ -42,7 +43,7 @@ class CatCare extends Component {
   };
 
   render() {
-    console.log(this.state, "state");
+    console.log(this.state, 'state');
     return (
       <div>
         <h1>Cat Care Advice </h1>

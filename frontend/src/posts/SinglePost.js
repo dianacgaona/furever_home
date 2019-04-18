@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class SinglePost extends Component {
   constructor() {
@@ -42,28 +43,13 @@ class SinglePost extends Component {
       });
   };
 
-  displayComments = () => {
-    console.log("hooray it posted");
-    let comments = this.state.singlePostComments.map((comment, i) => {
-      return <li key={i + 1}>
-      User_id{comment.user_id}
-      <br />
-      {comment.comment_body}
-      </li>;
-    });
-    return (
-      <>
-        <ul>{comments}</ul>
-      </>
-    );
-  };
-
   displaySinglePost = () => {
     // console.log("did something happen");
     let { singlePost, singlePostComments } = this.state;
 
     return (
       <div>
+        <Link to="/profile">{singlePost.username}</Link>
         <h1>{singlePost.title}</h1>
         <h1>Pet Type: {singlePost.pet_type}</h1>
         <h1>{singlePostComments.comment_body}</h1>
@@ -71,14 +57,24 @@ class SinglePost extends Component {
       </div>
     );
   };
+  displayComments = () => {
+    console.log("hooray it posted");
+    let comments = this.state.singlePostComments.map((comment, i) => {
+      return (
+        <li key={i + 1}>
+          <Link to="/profile">{comment.username}</Link>
 
-  // displaySinglePostComments =()=>{
-  //   let { singlePostComments } = this.state
-  //   return (
-  //     <div>
-  //     </div>
-  //   )
-  // }
+          <br />
+          {comment.comment_body}
+        </li>
+      );
+    });
+    return (
+      <>
+        <ul>{comments}</ul>
+      </>
+    );
+  };
 
   render() {
     console.log(this.state);
@@ -92,3 +88,5 @@ class SinglePost extends Component {
   }
 }
 export default SinglePost;
+
+// <li><Link to="/react">React</Link></li>

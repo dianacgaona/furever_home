@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-const axios = require("axios");
+import React, { Component } from 'react';
+const axios = require('axios');
 
 export const MyContext = React.createContext();
 
@@ -10,6 +10,7 @@ class MyProvider extends Component {
       currentUser: {},
       organizations: [],
       selectedZip: ""
+
     };
   }
 
@@ -19,16 +20,16 @@ class MyProvider extends Component {
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser
+      currentUser: currentUser,
     });
   };
 
   getOrganization = () => {
     axios
-      .get("/petfinder/organizations")
+      .get('/petfinder/organizations')
       .then(res => {
         this.setState({
-          organizations: res.data.organizations
+          organizations: res.data.organizations,
         });
       })
       .catch(err => {
