@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import MyProvider from './provider/MyProvider';
-import Navbar from './Navbar/Navbar';
-import Home from './Home';
-import Login from './auth/Login';
-import Register from './auth/Register';
-import Profile from './profile/Profile';
-import AdoptedPets from './profile/AdoptedPets';
-import OrganizationsList from './organizations/OrganizationsList';
-import OrganizationProfile from './organizations/OrganizationProfile';
-import CatCare from './community/CatCare';
-import DogCare from './community/DogCare';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import MyProvider from "./provider/MyProvider";
+import Navbar from "./Navbar/Navbar";
+import Home from "./Home";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import Profile from "./profile/Profile";
+import AdoptedPets from "./profile/AdoptedPets";
+import OrganizationsList from "./organizations/OrganizationsList";
+import OrganizationProfile from "./organizations/OrganizationProfile";
+import CatCare from "./community/CatCare";
+import DogCare from "./community/DogCare";
 
 class App extends Component {
   render() {
