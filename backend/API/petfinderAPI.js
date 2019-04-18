@@ -1,23 +1,23 @@
-const axios = require('axios');
+const axios = require("axios");
 
-let apiToken = '';
+let apiToken = "";
 
 getToken = () => {
   axios({
-    url: 'https://api.petfinder.com/v2/oauth2/token',
-    method: 'post',
+    url: "https://api.petfinder.com/v2/oauth2/token",
+    method: "post",
     headers: {},
     data: {
-      grant_type: 'client_credentials',
-      client_id: 'aPyHda3zCinlGy1lJ0fWFDAQQvpgUomPSbOR7igJVYp8e7WVmE',
-      client_secret: 'GxTgtoQT1OMTJjuBMEoJIE6dNEK9DiEZ9vkRGCZe',
-    },
+      grant_type: "client_credentials",
+      client_id: "aPyHda3zCinlGy1lJ0fWFDAQQvpgUomPSbOR7igJVYp8e7WVmE",
+      client_secret: "GxTgtoQT1OMTJjuBMEoJIE6dNEK9DiEZ9vkRGCZe"
+    }
   })
     .then(data => {
       apiToken = data.data.access_token;
     })
     .catch(err => {
-      console.log('Error in getToken()', err);
+      console.log("Error in getToken()", err);
     });
 };
 
@@ -25,21 +25,21 @@ apiAllAnimals = async (req, res, next) => {
   let animals;
   try {
     let data = await axios({
-      url: 'https://api.petfinder.com/v2/animals',
-      method: 'get',
+      url: "https://api.petfinder.com/v2/animals",
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     animals = data.data;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       data: animals,
-      message: 'ANIMALS',
+      message: "ANIMALS"
     });
   } catch (err) {
     if (err) {
-      console.log('error ===', err);
+      console.log("error ===", err);
       apiToken = await getToken();
     }
   }
@@ -47,23 +47,24 @@ apiAllAnimals = async (req, res, next) => {
 
 apiSingleAnimal = async (req, res, next) => {
   let animal;
+  let id = parseInt(req.params.id);
   try {
-    let data = await axios({
+    let { data } = await axios({
       url: `https://api.petfinder.com/v2/animals/${id}`,
-      method: 'get',
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     animal = data.animal;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       animal: animal,
-      message: 'Single animal received',
+      message: "Single animal received"
     });
   } catch (err) {
     if (err) {
-      console.log('error ===', err);
+      console.log("error ===", err);
       apiToken = await getToken();
     }
   }
@@ -75,23 +76,23 @@ apiAllAnimalsQuery = async (req, res, next) => {
   let queryArray = [];
   let bodyKeys = Object.keys(req.body);
   bodyKeys.forEach(key => {
-    queryArray.push(key + '=' + req.body[key]);
+    queryArray.push(key + "=" + req.body[key]);
   });
-  let queryString = queryArray.join('&');
+  let queryString = queryArray.join("&");
   console.log(queryString);
   try {
     let data = await axios({
-      url: 'https://api.petfinder.com/v2/animals?' + queryString,
-      method: 'get',
+      url: "https://api.petfinder.com/v2/animals?" + queryString,
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     animals = data.data;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       data: animals,
-      message: 'ANIMALS',
+      message: "ANIMALS"
     });
   } catch (err) {
     if (err) {
@@ -105,21 +106,21 @@ apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
     let data = await axios({
-      url: 'https://api.petfinder.com/v2/organizations?state=NY',
-      method: 'get',
+      url: "https://api.petfinder.com/v2/organizations?state=NY",
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     organizations = data.data;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       data: organizations,
-      message: 'ORGANIZATIONS',
+      message: "ORGANIZATIONS"
     });
   } catch (err) {
     if (err) {
-      console.log('error ===', err);
+      console.log("error ===", err);
       apiToken = await getToken();
     }
   }
@@ -127,23 +128,24 @@ apiAllOrganizations = async (req, res, next) => {
 
 apiSingleOrganization = async (req, res, next) => {
   let organization;
+  let id = parseInt(req.params.id);
   try {
     let data = await axios({
       url: `https://api.petfinder.com/v2/organizations/${id}`,
-      method: 'get',
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     organization = data.organization;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       organization: organization,
-      message: 'Organization received',
+      message: "Organization received"
     });
   } catch (err) {
     if (err) {
-      console.log('error ===', err);
+      console.log("error ===", err);
       apiToken = await getToken();
     }
   }
@@ -154,23 +156,23 @@ apiAllOrganizationsQuery = async (req, res, next) => {
   let queryArray = [];
   let bodyKeys = Object.keys(req.body);
   bodyKeys.forEach(key => {
-    queryArray.push(key + '=' + req.body[key]);
+    queryArray.push(key + "=" + req.body[key]);
   });
-  let queryString = queryArray.join('&');
+  let queryString = queryArray.join("&");
   console.log(queryString);
   try {
     let data = await axios({
-      url: 'https://api.petfinder.com/v2/organizations?' + queryString,
-      method: 'get',
+      url: "https://api.petfinder.com/v2/organizations?" + queryString,
+      method: "get",
       headers: {
-        Authorization: 'Bearer ' + apiToken,
-      },
+        Authorization: "Bearer " + apiToken
+      }
     });
     organizations = data.data;
     res.status(200).json({
-      status: 'Success',
+      status: "Success",
       data: organizations,
-      message: 'ORGANIZATIONS',
+      message: "ORGANIZATIONS"
     });
   } catch (err) {
     if (err) {
@@ -187,5 +189,5 @@ module.exports = {
   apiAllOrganizations,
   apiSingleOrganization,
   apiAllAnimalsQuery,
-  apiAllOrganizationsQuery,
+  apiAllOrganizationsQuery
 };

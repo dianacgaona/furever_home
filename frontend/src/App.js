@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import MyProvider from './provider/MyProvider';
-import Navbar from './Navbar/Navbar';
-import Home from './Home';
-import Login from './auth/Login';
-import Register from './auth/Register';
-import Profile from './profile/Profile';
-import AdoptedPets from './profile/AdoptedPets';
-import OrganizationsList from './organizations/OrganizationsList';
-import OrganizationProfile from './organizations/OrganizationProfile';
-import CatCare from './community/CatCare';
-import DogCare from './community/DogCare';
-import SinglePost from './posts/SinglePost';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import MyProvider from "./provider/MyProvider";
+import Navbar from "./Navbar/Navbar";
+import Home from "./Home";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import Profile from "./profile/Profile";
+import AdoptedPets from "./profile/AdoptedPets";
+import OrganizationsList from "./organizations/OrganizationsList";
+import OrganizationProfile from "./organizations/OrganizationProfile";
+import CatCare from "./community/CatCare";
+import DogCare from "./community/DogCare";
+import SinglePost from "./posts/SinglePost";
+import PetsList from "./pets/PetsList";
+import PetProfile from "./pets/PetProfile";
 
 class App extends Component {
   render() {
@@ -29,10 +31,9 @@ class App extends Component {
             <Route path="/dog-care" component={DogCare} />
             <Route path="/shelters-rescues" component={OrganizationsList} />
             <Route path="/singlepost" component={SinglePost} />
-            <Route
-              path="/organizationprofile"
-              component={OrganizationProfile}
-            />
+            <Route path="/organizations/:id" component={OrganizationProfile} />
+            <Route path="/animals" component={PetsList} />
+            <Route path="/animals/:id" component={PetProfile} />
           </Switch>
         </MyProvider>
       </div>
