@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+const axios = require("axios");
 
 export const MyContext = React.createContext();
 
@@ -7,13 +8,32 @@ class MyProvider extends Component {
     super();
     this.state = {
       currentUser: {},
+      organizations: []
     };
+  }
+
+  componentDidMount() {
+    this.getOrganization();
   }
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser,
+      currentUser: currentUser
     });
+  };
+
+  getOrganization = () => {
+    axios
+      .get("/petfinder/organizations")
+      .then(res => {
+        this.setState({
+          organizations: res.data.organizations
+        });
+        debugger;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -21,7 +41,9 @@ class MyProvider extends Component {
       <MyContext.Provider
         value={{
           state: this.state,
-          functions: { loginUser: this.loginUser },
+          functions: {
+            loginUser: this.loginUser
+          }
         }}
       >
         {this.props.children}

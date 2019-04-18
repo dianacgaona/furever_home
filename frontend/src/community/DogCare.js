@@ -16,11 +16,12 @@ class DogCare extends Component {
 
   getDogPosts = () => {
     axios
-      .get('/posts')
+      .get('/posts/dogs')
       .then(res => {
+        debugger;
         console.log(res);
         this.setState({
-          dogPost: res.data.posts,
+          dogPost: res.data.post,
         });
       })
       .catch(err => {
