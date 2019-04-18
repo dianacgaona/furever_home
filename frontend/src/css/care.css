@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Clicker+Script');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+
+.careAdvice {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  color: #001049;
+}
+
+.wholePost {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-evenly;
+}
+
+img {
+  width: 500px;
+}
