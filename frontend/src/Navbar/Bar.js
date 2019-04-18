@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
 
+import '../css/navbar.css';
 import '../css/bar.css';
 let logo = require('../assets/logo.png');
 
@@ -41,9 +42,6 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      
-
-
 <MyContext.Consumer>
         {context => {
           return (
