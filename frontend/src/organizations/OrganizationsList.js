@@ -10,7 +10,7 @@ class OrganizationProfile extends Component {
           let shelters = context.state.organizations.map(shelter => {
             return (
               <>
-                <option>{shelter.address.postcode}</option>
+                <option>{shelter.address.city}</option>
               </>
             );
           });
@@ -20,6 +20,9 @@ class OrganizationProfile extends Component {
               <>
                 <p>{shelter.id}</p>
                 <h3>{shelter.name}</h3>
+                <h2>
+                  {shelter.address.city},{shelter.address.state}
+                </h2>
               </>
             );
           });
