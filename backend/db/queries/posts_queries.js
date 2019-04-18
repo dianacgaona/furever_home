@@ -10,6 +10,34 @@ const getAllPosts = (req, res, next) => {
   });
 };
 
+const getAllDogPosts = (req, res, next) => {
+  db.any('SELECT * FROM posts WHERE pet_type=$1', ['Dog'])
+    .then(post => {
+      res.status(200).json({
+        status: 'Success',
+        post: post,
+        message: 'GOT ALL DOG POSTS',
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
+};
+
+const getAllCatPosts = (req, res, next) => {
+  db.any('SELECT * FROM posts WHERE pet_type=$1', ['Cat'])
+    .then(post => {
+      res.status(200).json({
+        status: 'Success',
+        post: post,
+        message: 'GOT ALL CAT POSTS',
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
+};
+
 const getSinglePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
   db.one('SELECT * FROM posts WHERE id=$1', [postId])
@@ -57,6 +85,8 @@ const deletePost = (req, res, next) => {
 
 module.exports = {
   getAllPosts,
+  getAllDogPosts,
+  getAllCatPosts,
   getSinglePost,
   createPost,
   deletePost,
