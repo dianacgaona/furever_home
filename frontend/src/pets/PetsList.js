@@ -9,13 +9,23 @@ class PetsList extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.getAnimals();
+  }
+
+  getAnimals = () => {
+    axios.get("/petfinder/animals").then(res => {
+      debugger;
+    });
+  };
+
   render() {
     return (
       <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <h1>here</h1>
+              <h1>In PetsList </h1>
             </div>
           );
         }}
