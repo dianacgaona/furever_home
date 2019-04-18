@@ -105,9 +105,14 @@ apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
     let data = await axios({
+<<<<<<< HEAD
+      url: "https://api.petfinder.com/v2/organizations?state=NY",
+      method: "get",
+=======
       url:
         'https://api.petfinder.com/v2/organizations?location=10028&distance=10',
       method: 'get',
+>>>>>>> a4cc89167551d34393c2fa7cc1a684980c795a70
       headers: {
         Authorization: 'Bearer ' + apiToken,
       },
