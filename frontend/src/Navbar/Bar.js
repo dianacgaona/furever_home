@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -91,18 +91,22 @@ class Bar extends React.Component {
               </AppBar>
 
               <div className="navlinks">
+
                 <div className='dogs'>
-                  {value === 2 && <TabContainer>DOGS</TabContainer>}
+                  {value === 2 && <TabContainer>
+                  <Link component={RouterLink} to="/dogs">DOGS</Link></TabContainer>}
+
                 </div>
+
                 <div className='cats'>
-                  {value === 2 && <TabContainer>CATS</TabContainer>}
+                  {value === 2 && <TabContainer><Link component={RouterLink} to="/cats">CATS</Link></TabContainer>}
                 </div>
               </div>
               <div className="navlinks">
                 <div className='subBar'>
-                  {value === 3 && <TabContainer>DOG CARE</TabContainer>}
-                  {value === 3 && <TabContainer>CAT CARE</TabContainer>}
-                  {value === 3 && <TabContainer>SHELTERS & RESCUES</TabContainer>}
+                  {value === 3 && <TabContainer><Link component={RouterLink} to="/dog-care">DOG CARE</Link></TabContainer>}
+                  {value === 3 && <TabContainer><Link component={RouterLink} to="/cat-care">CAT CARE</Link></TabContainer>}
+                  {value === 3 && <TabContainer><Link component={RouterLink} to="/shelters-rescues">SHELTERS & RESCUES</Link></TabContainer>}
                 </div>
               </div>
             </div>
