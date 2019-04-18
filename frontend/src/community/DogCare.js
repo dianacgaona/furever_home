@@ -34,6 +34,7 @@ class DogCare extends Component {
     return dogPost.map(post => {
       return (
         <div>
+          <img src={post.post_url} alt=""/>
           <h1>{post.title}</h1>
           <p>Tip for: {post.pet_type}s</p>
           <p>{post.post_body}</p>
