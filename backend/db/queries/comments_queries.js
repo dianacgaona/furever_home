@@ -17,7 +17,7 @@ const getAllComments = (req, res, next) => {
 const getAllCommentsForOnePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
   db.any(
-    'SELECT user_id, post_id, comment_body FROM comments WHERE post_id=$1',
+    'SELECT username,user_id, post_id, comment_body FROM comments JOIN users ON users.id = comments.user_id WHERE post_id=$1',
     [postId]
   )
     .then(comment => {
