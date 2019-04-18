@@ -1,10 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
+import { MyContext } from '../provider/MyProvider';
 
 import '../css/navbar.css';
 import '../css/bar.css';
@@ -43,9 +42,6 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-
-
-
 <MyContext.Consumer>
         {context => {
           return (

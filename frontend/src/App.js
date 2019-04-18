@@ -4,6 +4,10 @@ import MyProvider from "./provider/MyProvider";
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home";
 import Login from "./auth/Login";
+import Register from "./auth/Register";
+import Profile from "./profile/Profile";
+import AdoptedPets from "./profile/AdoptedPets";
+import OrganizationProfile from "./organizations/OrganizationProfile";
 
 class App extends Component {
   render() {
@@ -13,9 +17,15 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/breeds" component={Navbar} />
-            <Route path="/community" component={Navbar} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/adopted" component={AdoptedPets} />
+            <Route
+              exact
+              path="/organizations"
+              component={OrganizationProfile}
+            />
           </Switch>
         </MyProvider>
       </div>
