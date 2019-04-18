@@ -10,6 +10,7 @@ import AdoptedPets from "./profile/AdoptedPets";
 import OrganizationsList from "./organizations/OrganizationsList";
 import OrganizationProfile from "./organizations/OrganizationProfile";
 import CatCare from "./community/CatCare";
+import DogCare from "./community/DogCare";
 
 class App extends Component {
   render() {
@@ -23,8 +24,9 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/profile" component={Profile} />
             <Route path="/adopted" component={AdoptedPets} />
-            <Route path="/catcare" component={CatCare} />
-            <Route path="/organizations" component={OrganizationsList} />
+            <Route path="/cat-care" component={CatCare} />
+            <Route path="/dog-care" component={DogCare} />
+            <Route path="/shelters-rescues" component={OrganizationsList} />
             <Route
               path="/organizationprofile"
               component={OrganizationProfile}
