@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Tabs, Tab, Typography, Paper } from '@material-ui/core';
+import { AppBar, Tabs, Tab, Typography, Paper, Grid } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
 
 import '../css/navbar.css';
@@ -91,17 +91,16 @@ class Bar extends React.Component {
               </AppBar>
 
               <div className="navlinks">
-
                 <div className='dogs'>
                   {value === 2 && <TabContainer>
                   <Link component={RouterLink} to="/dogs">DOGS</Link></TabContainer>}
-
                 </div>
 
                 <div className='cats'>
                   {value === 2 && <TabContainer><Link component={RouterLink} to="/cats">CATS</Link></TabContainer>}
                 </div>
               </div>
+
               <div className="navlinks">
                 <div className='subBar'>
                   {value === 3 && <TabContainer><Link component={RouterLink} to="/dog-care">DOG CARE</Link></TabContainer>}
