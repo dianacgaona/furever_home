@@ -5,9 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-
-      <p className='greeting'>Where Pets Find Their People</p>
-
+        <p className="greeting">Where Pets Find Their People</p>
       </div>
     );
   }

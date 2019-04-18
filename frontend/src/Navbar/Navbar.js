@@ -6,22 +6,11 @@ import '../css/navbar.css';
 class Navbar extends Component {
   render() {
     return (
-      <nav className='Navbar'>
-
-        <Bar/>
-
+      <nav className="Navbar">
+        <Bar />
       </nav>
     );
   }
 }
 
 export default Navbar;
-
-
-//
-//     BREEDS
-// </NavLink>
-//
-// <NavLink to={'/resources'} className='ddlinks'>
-//     RESOURCES
-// </NavLink>

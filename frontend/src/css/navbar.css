@@ -3,7 +3,16 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
 .navlinks {
-  display: flex
+  display: flex;
+}
+
+.subBar {
+  display: flex;
+  margin-left: 37%;
+}
+
+.iLinks {
+  color: #001049;
 }
 
 .logo {
@@ -20,6 +29,10 @@
   margin-right: 18%;
 }
 
+.navbar {
+  background-color: white
+}
+
 .ddlinks {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
@@ -31,4 +44,19 @@
 a {
   color: 001049;
   text-decoration: none;
+}
+
+a: visited {
+  color: #001049;
+}
+
+.loginCont {
+  margin-top: 2%;
+  margin-left: 25%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+}
+
+.dogs {
+  margin-left: 45%;
 }

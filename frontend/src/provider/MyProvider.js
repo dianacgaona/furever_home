@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export const MyContext = React.createContext();
 
@@ -6,13 +6,13 @@ class MyProvider extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: ""
+      currentUser: {},
     };
   }
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser
+      currentUser: currentUser,
     });
   };
 
@@ -21,7 +21,7 @@ class MyProvider extends Component {
       <MyContext.Provider
         value={{
           state: this.state,
-          functions: { loginUser: this.loginUser }
+          functions: { loginUser: this.loginUser },
         }}
       >
         {this.props.children}
