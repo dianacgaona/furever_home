@@ -26,7 +26,7 @@ apiAllAnimals = async (req, res, next) => {
   try {
     let data = await axios({
       url:
-        "https://api.petfinder.com/v2/animals?state=NY&limit=100&location=10001&distance=20",
+        "https://api.petfinder.com/v2/animals??state=NY&limit=100&location=11378&distance=20",
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -83,7 +83,7 @@ apiAllAnimalsQuery = async (req, res, next) => {
   console.log(queryString);
   try {
     let data = await axios({
-      url: "https://api.petfinder.com/v2/animals?" + queryString,
+      url: "https://api.petfinder.com/v2/animals?limit=100&" + queryString,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
