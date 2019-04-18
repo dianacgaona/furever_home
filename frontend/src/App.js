@@ -7,7 +7,9 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Profile from "./profile/Profile";
 import AdoptedPets from "./profile/AdoptedPets";
+import OrganizationsList from "./organizations/OrganizationsList";
 import OrganizationProfile from "./organizations/OrganizationProfile";
+import CatCare from "./community/CatCare";
 
 class App extends Component {
   render() {
@@ -17,13 +19,14 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/adopted" component={AdoptedPets} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/adopted" component={AdoptedPets} />
+            <Route path="/catcare" component={CatCare} />
+            <Route path="/organizations" component={OrganizationsList} />
             <Route
-              exact
-              path="/organizations"
+              path="/organizationprofile"
               component={OrganizationProfile}
             />
           </Switch>
