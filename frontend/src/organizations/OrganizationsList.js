@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
+import React, { Component } from "react";
+import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
 
 class OrganizationProfile extends Component {
   constructor() {
     super();
 
     this.state = {
-      adoptedPets: {},
+      adoptedPets: {}
     };
   }
 
@@ -17,7 +17,7 @@ class OrganizationProfile extends Component {
 
   getOrganization = () => {
     axios
-      .get('/petfinder/organizations')
+      .get("/petfinder/organizations")
       .then(res => {
         console.log(res);
       })
@@ -28,10 +28,7 @@ class OrganizationProfile extends Component {
 
   render() {
     return (
-      
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
