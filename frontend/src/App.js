@@ -32,7 +32,7 @@ class App extends Component {
             <Route path="/shelters-rescues" component={OrganizationsList} />
             <Route path="/singlepost" component={SinglePost} />
             <Route path="/organizations/:id" component={OrganizationProfile} />
-            <Route path="/animals" component={PetsList} />
+            <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
           </Switch>
         </MyProvider>
