@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 
-class AdoptedPets extends Component {
+class OrganizationProfile extends Component {
   constructor() {
     super();
 
@@ -12,12 +12,12 @@ class AdoptedPets extends Component {
   }
 
   componentDidMount() {
-    this.getAdopted();
+    this.getOrganization();
   }
 
-  getAdopted = () => {
+  getOrganization = () => {
     axios
-      .get("/petfinder/animals")
+      .get("/petfinder/organizations")
       .then(res => {
         console.log(res);
       })
@@ -32,7 +32,7 @@ class AdoptedPets extends Component {
         {context => {
           return (
             <div>
-              <h1>Adopted Pets go here</h1>
+              <h1>Organizations go here</h1>
             </div>
           );
         }}
@@ -41,4 +41,4 @@ class AdoptedPets extends Component {
   }
 }
 
-export default AdoptedPets;
+export default OrganizationProfile;

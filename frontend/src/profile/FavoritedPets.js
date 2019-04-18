@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import axios from 'axios';
-import { MyContext } from "../provider/MyProvider";
+import { MyContext } from '../provider/MyProvider';
 
 class FavoritedPets extends Component {
   constructor() {
@@ -15,7 +15,10 @@ class FavoritedPets extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>

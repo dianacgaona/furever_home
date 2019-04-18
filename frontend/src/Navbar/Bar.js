@@ -1,8 +1,9 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
+import { MyContext } from '../provider/MyProvider';
 
 import '../css/bar.css';
 let logo = require('../assets/logo.png');
@@ -16,19 +17,19 @@ function TabContainer(props) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
-  }
+    backgroundColor: theme.palette.background.paper,
+  },
 });
 
 class Bar extends React.Component {
   state = {
-    value: 2
+    value: 2,
   };
 
   handleChange = (event, value) => {
@@ -40,7 +41,10 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div className={classes.root}>
@@ -51,7 +55,7 @@ class Bar extends React.Component {
                   className="navbar"
                 >
                   <div className="logoContainer">
-                    <NavLink to={"/"} className="logoLink">
+                    <NavLink to={'/'} className="logoLink">
                       <img src={logo} alt="" className="logo" />
                     </NavLink>
                   </div>
@@ -59,23 +63,23 @@ class Bar extends React.Component {
                   <div className="fureverHome">furever home</div>
                   <Tab
                     label="BREEDS"
-                    style={{ color: "#001049" }}
+                    style={{ color: '#001049' }}
                     className="iLinks"
                   />
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: "#001049" }}
+                    style={{ color: '#001049' }}
                     className="iLinks"
                   />
                   {context.state.currentUser.username ? (
                     <div>
-                      <NavLink to={"/profile"}>
+                      <NavLink to={'/profile'}>
                         {context.state.currentUser.username}
                       </NavLink>
                     </div>
                   ) : (
                     <div>
-                      <NavLink to={"/login"}>Log in or Register</NavLink>
+                      <NavLink to={'/login'}>Log in or Register</NavLink>
                     </div>
                   )}
                 </Tabs>
@@ -98,7 +102,7 @@ class Bar extends React.Component {
 }
 
 Bar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Bar);

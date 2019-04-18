@@ -81,7 +81,8 @@ apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
     let data = await axios({
-      url: "https://api.petfinder.com/v2/organizations",
+      url:
+        "https://api.petfinder.com/v2/organizations?location=10028&distance=10",
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -92,6 +93,30 @@ apiAllOrganizations = async (req, res, next) => {
       status: "Success",
       data: organizations,
       message: "ORGANIZATIONS"
+    });
+  } catch (err) {
+    if (err) {
+      console.log("error ===", err);
+      apiToken = await getToken();
+    }
+  }
+};
+
+apiSingleOrganization = async (req, res, next) => {
+  let organization;
+  try {
+    let data = await axios({
+      url: `https://api.petfinder.com/v2/organizations/${id}`,
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + apiToken
+      }
+    });
+    organization = data.organization;
+    res.status(200).json({
+      status: "Success",
+      organization: organization,
+      message: "Organization received"
     });
   } catch (err) {
     if (err) {
@@ -136,6 +161,7 @@ getToken();
 module.exports = {
   apiAllAnimals,
   apiAllOrganizations,
+  apiSingleOrganization,
   apiAllAnimalsQuery,
   apiAllOrganizationsQuery
 };
