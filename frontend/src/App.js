@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import MyProvider from "./provider/MyProvider";
 import Navbar from "./Navbar/Navbar";
 import Home from "./Home";
+import Organizations from "./Organizations";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/breeds" component={Navbar} />
             <Route path="/community" component={Navbar} />
+            <Route path="/organizations" component={Organizations} />
           </Switch>
         </MyProvider>
       </div>
