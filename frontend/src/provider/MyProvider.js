@@ -10,7 +10,6 @@ class MyProvider extends Component {
       currentUser: {},
       organizations: [],
       selectedZip: ""
-
     };
   }
 

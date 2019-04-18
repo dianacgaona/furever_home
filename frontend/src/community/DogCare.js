@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link }from 'react-router-dom';
 import axios from 'axios';
+import { Paper, Grid } from '@material-ui/core';
 
 class DogCare extends Component {
   constructor() {
@@ -35,9 +37,9 @@ class DogCare extends Component {
       return (
         <div>
           <img src={post.post_url} alt=""/>
-          <h1>{post.title}</h1>
+          <p>{post.title}</p>
           <p>Tip for: {post.pet_type}s</p>
-          <p>{post.post_body}</p>
+          <p>{post.post_body.slice(0, 50) + '...'}<Link to={`/posts/${post.id}`}>more</Link></p>
         </div>
       );
     });
@@ -46,10 +48,12 @@ class DogCare extends Component {
   render() {
     console.log(this.state, 'state');
     return (
+      <Paper>
       <div>
-        <h1>Dog Care Advice </h1>
-        <div>{this.displayDogPosts()}</div>
+        <p className='careAdvice'>Dog Care Advice </p>
+        <div className='wholePost'>{this.displayDogPosts()}</div>
       </div>
+      </Paper>
     );
   }
 }

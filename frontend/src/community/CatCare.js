@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Link }from 'react-router-dom';
 import axios from 'axios';
+import '../css/care.css';
+import { Paper, Grid } from '@material-ui/core';
 
 class CatCare extends Component {
   constructor() {
@@ -32,11 +35,12 @@ class CatCare extends Component {
     let { catPost } = this.state;
     return catPost.map(post => {
       return (
-        <div>
+        <div >
           <img src={post.post_url} alt=""/>
-          <h1>{post.title}</h1>
-          <p>Tip for: {post.pet_type}s</p>
-          <p>{post.post_body}</p>
+          <p>{post.title}</p>
+          <p>(Tip for: {post.pet_type}s)</p>
+          <p>{post.post_body.slice(0, 50) + '...'}
+          <Link to={`/posts/${post.id}`}>more</Link></p>
         </div>
       );
     });
@@ -45,10 +49,12 @@ class CatCare extends Component {
   render() {
     console.log(this.state, 'state');
     return (
+      <Paper>
       <div>
-        <h1>Cat Care Advice </h1>
-        <div>{this.displayCatPosts()}</div>
+        <p className='careAdvice'>Cat Care Advice </p>
+        <div className='wholePost'>{this.displayCatPosts()}</div>
       </div>
+      </Paper>
     );
   }
 }
