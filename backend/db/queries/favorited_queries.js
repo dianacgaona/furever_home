@@ -26,4 +26,18 @@ const deleteFavorite = (req, res, next) => {
    .catch(err => next(err));
 };
 
-module.exports = { createfavorite, deleteFavorite };
+const getAllFavoritesFromUser = (req, res, next) => {
+  let userId = parseInt(req.params.id);
+  db.any('SELECT * FROM favorited WHERE user_id=$1', [userId])
+    .then(favorited => {
+      res.status(200)
+      .json({
+        status: ' success',
+        favorited: favorited,
+        message: 'Received All Favorites From One User!',
+      });
+    })
+    .catch(err => next(err));
+};
+
+module.exports = { createfavorite, deleteFavorite, getAllFavoritesFromUser };
