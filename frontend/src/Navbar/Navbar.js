@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Bar from "./Bar";
+import React, { Component } from 'react';
+import Bar from './Bar';
 
-import "../css/navbar.css";
+import '../css/navbar.css';
 
 class Navbar extends Component {
   render() {
@@ -14,11 +14,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-
-//
-//     BREEDS
-// </NavLink>
-//
-// <NavLink to={'/resources'} className='ddlinks'>
-//     RESOURCES
-// </NavLink>
