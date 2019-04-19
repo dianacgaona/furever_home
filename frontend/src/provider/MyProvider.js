@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { getZips } from "../NYCZipcode.js";
 import Auth from '../utils/Auth';
+const axios = require("axios");
 
-const axios = require('axios');
 
 export const MyContext = React.createContext();
 
@@ -10,9 +11,8 @@ class MyProvider extends Component {
     super();
     this.state = {
       currentUser: {},
-      isLoggedIn: false,
       organizations: [],
-      selectedZip: '',
+      isLoggedIn: false
     };
   }
 
@@ -33,16 +33,20 @@ class MyProvider extends Component {
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser,
+      currentUser: currentUser
     });
   };
 
   getOrganization = () => {
     axios
-      .get('/petfinder/organizations')
+      .get("/petfinder/organizations")
       .then(res => {
+        let zips = getZips();
+        res.data.organizations.forEach(organization => {
+          organization["borough"] = zips[organization.address.postcode];
+        });
         this.setState({
-          organizations: res.data.organizations,
+          organizations: res.data.organizations
         });
       })
       .catch(err => {
@@ -84,10 +88,8 @@ class MyProvider extends Component {
         value={{
           state: this.state,
           functions: {
-            loginUser: this.loginUser,
-            handleSelect: this.handleSelect,
-            handleSubmit: this.handleSubmit,
-          },
+            loginUser: this.loginUser
+          }
         }}
       >
         {this.props.children}
