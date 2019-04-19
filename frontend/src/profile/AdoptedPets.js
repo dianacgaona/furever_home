@@ -7,7 +7,7 @@ class AdoptedPets extends Component {
     super();
 
     this.state = {
-      adoptedPets: {}
+      adoptedPets: []
     };
   }
 
@@ -17,8 +17,11 @@ class AdoptedPets extends Component {
 
   getAdopted = () => {
     axios
-      .get("/petfinder/animals")
+      .get("/adopted/users/1")
       .then(res => {
+        this.setState({
+          adoptedPets: res.data.adopted
+        });
         console.log(res);
       })
       .catch(err => {
@@ -26,13 +29,30 @@ class AdoptedPets extends Component {
       });
   };
 
+  displayAdopted = () => {
+    let adoptedByUser = this.state.adoptedPets.map((adopted, i) => {
+      return (
+        <img
+          src={`https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/${
+            adopted.pet_id
+          }/1/?bust=1555622095&width=300`}
+          alt=""
+        />
+      );
+    });
+    return <>{adoptedByUser}</>;
+  };
+
+
   render() {
+    console.log(this.state);
     return (
       <MyContext.Consumer>
         {context => {
           return (
             <div>
               <h1>Adopted Pets go here</h1>
+              {this.displayAdopted()}
             </div>
           );
         }}
@@ -42,3 +62,6 @@ class AdoptedPets extends Component {
 }
 
 export default AdoptedPets;
+
+
+// };
