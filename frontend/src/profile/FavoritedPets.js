@@ -10,12 +10,14 @@ class FavoritedPets extends Component {
       userFavs: []
     };
   }
+
   componentDidMount() {
     this.getFavorited();
   }
+
   getFavorited = () => {
     axios
-      .get("/favorited/users/1")
+      .get("/favorited/users/4")
       .then(res => {
         this.setState({
           userFavs: res.data.favorited
@@ -26,18 +28,21 @@ class FavoritedPets extends Component {
         console.log(err);
       });
   };
+
   displayFavorites = () => {
     let favorites = this.state.userFavs.map((favorited, i) => {
-      return(
-      <img src={`https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/${favorited.pet_id}/1/?bust=1555622095&width=300`} alt='notworking'/>
-    )
-    })
-    return (
-      <>
-        {favorites}
-      </>
-    )
-  }
+      return (
+        <img
+          src={`https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/${
+            favorited.pet_id
+          }/1/?bust=1555622095&width=300`}
+          alt=""
+        />
+      );
+    });
+    return <>{favorites}</>;
+  };
+
   render() {
     console.log(this.state);
     return (
