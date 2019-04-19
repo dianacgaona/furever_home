@@ -11,13 +11,13 @@ class SinglePost extends Component {
     };
   }
   componentDidMount() {
-    this.getPost();
+    this.getPost(this.props.match.params.id);
     this.getCommentsForSinglePost();
   }
 
-  getPost = () => {
+  getPost = id => {
     axios
-      .get("/posts/1")
+      .get(`/posts/${id}`)
       .then(res => {
         this.setState({
           singlePost: res.data.post
