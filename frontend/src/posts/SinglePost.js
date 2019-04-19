@@ -44,26 +44,24 @@ class SinglePost extends Component {
   };
 
   displaySinglePost = () => {
-    // console.log("did something happen");
-    let { singlePost, singlePostComments } = this.state;
-
+    let { singlePost } = this.state;
     return (
       <div>
         <Link to="/profile">{singlePost.username}</Link>
         <h1>{singlePost.title}</h1>
-        <h1>Pet Type: {singlePost.pet_type}</h1>
-        <h1>{singlePostComments.comment_body}</h1>
+        <h3>Tip for: {singlePost.pet_type}s</h3>
+        <img src={singlePost.post_url} alt="" />
+        <p>{singlePost.post_body}</p>
         <div>Comments:{this.displayComments()}</div>
       </div>
     );
   };
+
   displayComments = () => {
-    console.log("hooray it posted");
     let comments = this.state.singlePostComments.map((comment, i) => {
       return (
         <li key={i + 1}>
           <Link to="/profile">{comment.username}</Link>
-
           <br />
           {comment.comment_body}
         </li>
@@ -79,12 +77,7 @@ class SinglePost extends Component {
   render() {
     console.log(this.state);
 
-    return (
-      <div>
-        <h3>hi</h3>
-        {this.displaySinglePost()}
-      </div>
-    );
+    return <div>{this.displaySinglePost()}</div>;
   }
 }
 export default SinglePost;

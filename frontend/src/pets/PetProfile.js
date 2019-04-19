@@ -6,7 +6,9 @@ class PetProfile extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      profile: {},
+    };
   }
 
   componentDidMount() {
@@ -17,10 +19,26 @@ class PetProfile extends Component {
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
       debugger;
+      this.setState({
+        profile: res.data.animal,
+      });
     });
   };
 
+  displayPetProfile = () => {
+    let { profile } = this.state;
+    return (
+      <div>
+        <h1>{profile.name}</h1>
+        <div>
+          <img src={profile.photos} alt="" />
+        </div>
+      </div>
+    );
+  };
+
   render() {
+    console.log('Profile', this.state.profile);
     return (
       
 
@@ -29,7 +47,7 @@ class PetProfile extends Component {
         {context => {
           return (
             <div>
-              <h1> Pet Profile </h1>
+              <div>{this.displayPetProfile()}</div>
             </div>
           );
         }}
