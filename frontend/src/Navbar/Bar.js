@@ -44,7 +44,7 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-
+      
 
 
 <MyContext.Consumer>
@@ -77,42 +77,79 @@ class Bar extends React.Component {
                   />
 
                   {context.state.currentUser.username ? (
-
-                    <div className='username'>
-                      <NavLink to={'/profile'} className='username'>
+                    <div className="username">
+                      <NavLink to={'/profile'} className="username">
                         {context.state.currentUser.username}
                       </NavLink>
+                      <button
+                        type="button"
+                        onClick={context.functions.logoutUser}
+                      >
+                        logout
+                      </button>
                     </div>
-
                   ) : (
-
-                    <div className='loginCont'>
-                      <NavLink to={'/login'} className='username' style={{ fontSize: '15px' }}>LOGIN / REGISTER</NavLink>
+                    <div className="loginCont">
+                      <NavLink
+                        to={'/login'}
+                        className="username"
+                        style={{ fontSize: '15px' }}
+                      >
+                        LOGIN / REGISTER
+                      </NavLink>
                     </div>
                   )}
                 </Tabs>
               </AppBar>
 
               <div className="navlinks">
-                <div className='dogs'>
-                  {value === 2 && <TabContainer>
-                  <Link component={RouterLink} to="/dogs">DOGS</Link></TabContainer>}
+                <div className="dogs">
+                  {value === 2 && (
+                    <TabContainer>
+                      <Link component={RouterLink} to="/dogs">
+                        DOGS
+                      </Link>
+                    </TabContainer>
+                  )}
                 </div>
 
-                <div className='cats'>
-                  {value === 2 && <TabContainer><Link component={RouterLink} to="/cats">CATS</Link></TabContainer>}
+                <div className="cats">
+                  {value === 2 && (
+                    <TabContainer>
+                      <Link component={RouterLink} to="/cats">
+                        CATS
+                      </Link>
+                    </TabContainer>
+                  )}
                 </div>
               </div>
 
               <div className="navlinks">
-                <div className='subBar'>
-                  {value === 3 && <TabContainer><Link component={RouterLink} to="/dog-care">DOG CARE</Link></TabContainer>}
-                  {value === 3 && <TabContainer><Link component={RouterLink} to="/cat-care">CAT CARE</Link></TabContainer>}
-                  {value === 3 && <TabContainer><Link component={RouterLink} to="/shelters-rescues">SHELTERS & RESCUES</Link></TabContainer>}
+                <div className="subBar">
+                  {value === 3 && (
+                    <TabContainer>
+                      <Link component={RouterLink} to="/dog-care">
+                        DOG CARE
+                      </Link>
+                    </TabContainer>
+                  )}
+                  {value === 3 && (
+                    <TabContainer>
+                      <Link component={RouterLink} to="/cat-care">
+                        CAT CARE
+                      </Link>
+                    </TabContainer>
+                  )}
+                  {value === 3 && (
+                    <TabContainer>
+                      <Link component={RouterLink} to="/shelters-rescues">
+                        SHELTERS & RESCUES
+                      </Link>
+                    </TabContainer>
+                  )}
                 </div>
               </div>
             </div>
-
           );
         }}
       </MyContext.Consumer>
