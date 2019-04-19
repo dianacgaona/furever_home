@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Auth from '../utils/Auth';
+
 const axios = require('axios');
 
 export const MyContext = React.createContext();
@@ -8,14 +10,26 @@ class MyProvider extends Component {
     super();
     this.state = {
       currentUser: {},
+      isLoggedIn: false,
       organizations: [],
-      selectedZip: ""
+      selectedZip: '',
     };
   }
 
   componentDidMount() {
     this.getOrganization();
+    this.checkAuthenticateStatus();
   }
+
+  handleSelect = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+  };
 
   loginUser = currentUser => {
     this.setState({
@@ -36,14 +50,32 @@ class MyProvider extends Component {
       });
   };
 
-  handleSelect = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  checkAuthenticateStatus = () => {
+    axios.get('/users/isloggedin').then(currentUser => {
+      if (currentUser.data.email === Auth.getToken()) {
+        this.setState({
+          isLoggedIn: Auth.isUserAuthenticated(),
+          email: Auth.getToken(),
+        });
+      } else {
+        if (currentUser.data.email) {
+          this.logoutUser();
+        } else {
+          Auth.deauthenticateUser();
+        }
+      }
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  logoutUser = () => {
+    axios
+      .post('/users/logout')
+      .then(() => {
+        Auth.deauthenticateUser();
+      })
+      .then(() => {
+        this.checkAuthenticateStatus();
+      });
   };
 
   render() {
@@ -54,8 +86,8 @@ class MyProvider extends Component {
           functions: {
             loginUser: this.loginUser,
             handleSelect: this.handleSelect,
-            handleSubmit: this.handleSubmit
-          }
+            handleSubmit: this.handleSubmit,
+          },
         }}
       >
         {this.props.children}
