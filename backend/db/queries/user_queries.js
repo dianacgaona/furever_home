@@ -76,6 +76,7 @@ const deleteUser = (req, res, next) => {
 
 const isLoggedIn = (req, res) => {
   if (req.user) {
+    console.log("hi");
     res.json({
       id: req.user.id,
       email: req.user.email,
@@ -85,6 +86,7 @@ const isLoggedIn = (req, res) => {
       profile_picture: req.user.profile_picture
     });
   } else {
+    console.log("oops");
     res.json({ email: null });
   }
 };

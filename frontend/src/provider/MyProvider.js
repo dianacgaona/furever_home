@@ -22,20 +22,20 @@ class MyProvider extends Component {
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser,
+      currentUser: currentUser
     });
   };
 
   getOrganization = () => {
     axios
-      .get('/petfinder/organizations')
+      .get("/petfinder/organizations")
       .then(res => {
         let zips = getZips();
         res.data.organizations.forEach(organization => {
           organization['borough'] = zips[organization.address.postcode];
         });
         this.setState({
-          organizations: res.data.organizations,
+          organizations: res.data.organizations
         });
       })
       .catch(err => {
@@ -62,7 +62,7 @@ class MyProvider extends Component {
 
   logoutUser = () => {
     axios
-      .post('/users/logout')
+      .post("/users/logout")
       .then(() => {
         Auth.deauthenticateUser();
       })
@@ -78,6 +78,7 @@ class MyProvider extends Component {
           state: this.state,
           functions: {
             loginUser: this.loginUser,
+            logoutUser: this.logoutUser
           },
         }}
       >

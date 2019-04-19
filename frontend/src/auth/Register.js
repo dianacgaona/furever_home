@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 import { Link } from "react-router-dom";
+import Auth from "../utils/Auth.js";
 
 class Register extends Component {
   constructor() {
@@ -29,7 +30,7 @@ class Register extends Component {
         username: this.state.usernameInput
       })
       .then(res => {
-        debugger;
+        Auth.authenticateUser(res.data.email);
         contextConfirm(res.data);
         this.setState({
           emailInput: "",
