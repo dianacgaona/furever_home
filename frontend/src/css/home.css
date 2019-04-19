@@ -10,11 +10,15 @@
   height: 100%;
   width: 100%;
   padding: 15px;
+  opacity: 0.8;
+  margin-left: -15px;
+  padding-top: 45px;
 }
 
 .greeting {
-  font-family: 'Clicker Script', cursive;
-  font-size: 63px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 98px;
   color: white;
-  padding-left: 30%;
+  display: flex;
+  justify-content: center;
 }

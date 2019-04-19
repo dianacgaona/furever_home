@@ -19,6 +19,24 @@
   justify-content: space-evenly;
 }
 
+.postTitle {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 900;
+}
+
+.petType {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.postBody {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600
+}
+
 img {
   width: 500px;
+}
+
+a:visited {
+  text-decoration: none
 }
