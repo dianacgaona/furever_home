@@ -8,6 +8,8 @@ import { MyContext } from '../provider/MyProvider';
 
 import '../css/navbar.css';
 let logo = require('../assets/logo.png');
+let cat = require('../assets/caticon.png');
+let dog = require('../assets/dogicon.png');
 
 function TabContainer(props) {
   return (
@@ -75,8 +77,9 @@ class Bar extends React.Component {
                   />
 
                   {context.state.currentUser.username ? (
-                    <div>
-                      <NavLink to={'/profile'}>
+
+                    <div className='username'>
+                      <NavLink to={'/profile'} className='username'>
                         {context.state.currentUser.username}
                       </NavLink>
                     </div>
@@ -84,7 +87,7 @@ class Bar extends React.Component {
                   ) : (
 
                     <div className='loginCont'>
-                      <NavLink to={'/login'}>LOG IN / REGISTER</NavLink>
+                      <NavLink to={'/login'} className='username'>LOG IN / REGISTER</NavLink>
                     </div>
                   )}
                 </Tabs>
