@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getZips } from "../NYCZipcode.js";
-import Auth from '../utils/Auth';
+import Auth from "../utils/Auth";
 const axios = require("axios");
 
 
@@ -20,16 +20,6 @@ class MyProvider extends Component {
     this.getOrganization();
     this.checkAuthenticateStatus();
   }
-
-  handleSelect = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-  };
 
   loginUser = currentUser => {
     this.setState({
