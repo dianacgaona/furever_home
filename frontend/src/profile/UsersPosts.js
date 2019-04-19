@@ -39,7 +39,7 @@ class UsersPosts extends Component {
     console.log(this.state);
     return (
       <div>
-        
+
         {this.displaySinglePost()}
       </div>
     );
