@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 let apiToken = "";
+let location = "state=NY&limit=100&location=11378&distance=10";
 
 getToken = () => {
   axios({
@@ -25,8 +26,7 @@ apiAllAnimals = async (req, res, next) => {
   let animals;
   try {
     let data = await axios({
-      url:
-        "https://api.petfinder.com/v2/animals??state=NY&limit=100&location=11378&distance=20",
+      url: "https://api.petfinder.com/v2/animals?" + location,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
@@ -107,8 +107,7 @@ apiAllOrganizations = async (req, res, next) => {
   let organizations;
   try {
     let data = await axios({
-      url:
-        "https://api.petfinder.com/v2/organizations?state=NY&limit=100&location=11378&distance=20",
+      url: "https://api.petfinder.com/v2/organizations?" + location,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
