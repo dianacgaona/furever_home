@@ -66,13 +66,13 @@ class Bar extends React.Component {
                   <div className="fureverHome">furever home</div>
                   <Tab
                     label="BREEDS"
-                    style={{ color: '#001049' }}
+                    style={{ color: '#001049', fontSize: '18px' }}
                     className="iLinks"
                   />
 
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: '#001049' }}
+                    style={{ color: '#001049', fontSize: '18px' }}
                     className="iLinks"
                   />
 
@@ -87,7 +87,7 @@ class Bar extends React.Component {
                   ) : (
 
                     <div className='loginCont'>
-                      <NavLink to={'/login'} className='username'>LOG IN / REGISTER</NavLink>
+                      <NavLink to={'/login'} className='username' style={{ fontSize: '15px' }}>LOGIN / REGISTER</NavLink>
                     </div>
                   )}
                 </Tabs>

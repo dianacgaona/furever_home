@@ -3,6 +3,8 @@ import { Link }from 'react-router-dom';
 import axios from 'axios';
 import { Paper, Grid } from '@material-ui/core';
 
+import '../css/care.css';
+
 class DogCare extends Component {
   constructor() {
     super();
@@ -20,7 +22,6 @@ class DogCare extends Component {
     axios
       .get('/posts/dogs')
       .then(res => {
-        debugger;
         console.log(res);
         this.setState({
           dogPost: res.data.post,
@@ -37,9 +38,9 @@ class DogCare extends Component {
       return (
         <div>
           <img src={post.post_url} alt=""/>
-          <p>{post.title}</p>
+          <h2 className='postTitle'>{post.title}</h2>
           <p>Tip for: {post.pet_type}s</p>
-          <p>{post.post_body.slice(0, 50) + '...'}<Link to={`/posts/${post.id}`}>more</Link></p>
+          <p className='postBody'>{post.post_body.slice(0, 50) + '...'}<Link to={`/posts/${post.id}`}>(click for more)</Link></p>
         </div>
       );
     });
