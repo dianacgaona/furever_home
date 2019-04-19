@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getZips } from "../NYCZipcode.js";
+import Auth from "../utils/Auth";
 const axios = require("axios");
 
 export const MyContext = React.createContext();
@@ -9,13 +10,25 @@ class MyProvider extends Component {
     super();
     this.state = {
       currentUser: {},
-      organizations: []
+      organizations: [],
+      isLoggedIn: false
     };
   }
 
   componentDidMount() {
     this.getOrganization();
+    this.checkAuthenticateStatus();
   }
+
+  handleSelect = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+  };
 
   loginUser = currentUser => {
     this.setState({
@@ -37,6 +50,34 @@ class MyProvider extends Component {
       })
       .catch(err => {
         console.log(err);
+      });
+  };
+
+  checkAuthenticateStatus = () => {
+    axios.get("/users/isloggedin").then(currentUser => {
+      if (currentUser.data.email === Auth.getToken()) {
+        this.setState({
+          isLoggedIn: Auth.isUserAuthenticated(),
+          email: Auth.getToken()
+        });
+      } else {
+        if (currentUser.data.email) {
+          this.logoutUser();
+        } else {
+          Auth.deauthenticateUser();
+        }
+      }
+    });
+  };
+
+  logoutUser = () => {
+    axios
+      .post("/users/logout")
+      .then(() => {
+        Auth.deauthenticateUser();
+      })
+      .then(() => {
+        this.checkAuthenticateStatus();
       });
   };
 
