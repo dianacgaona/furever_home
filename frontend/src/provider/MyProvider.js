@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { getZips } from "../NYCZipcode.js";
-import Auth from "../utils/Auth";
-const axios = require("axios");
-
+import React, { Component } from 'react';
+import { getZips } from '../NYCZipcode.js';
+import Auth from '../utils/Auth';
+const axios = require('axios');
 
 export const MyContext = React.createContext();
 
@@ -12,7 +11,7 @@ class MyProvider extends Component {
     this.state = {
       currentUser: {},
       organizations: [],
-      isLoggedIn: false
+      isLoggedIn: false,
     };
   }
 
@@ -23,20 +22,20 @@ class MyProvider extends Component {
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser
+      currentUser: currentUser,
     });
   };
 
   getOrganization = () => {
     axios
-      .get("/petfinder/organizations")
+      .get('/petfinder/organizations')
       .then(res => {
         let zips = getZips();
         res.data.organizations.forEach(organization => {
-          organization["borough"] = zips[organization.address.postcode];
+          organization['borough'] = zips[organization.address.postcode];
         });
         this.setState({
-          organizations: res.data.organizations
+          organizations: res.data.organizations,
         });
       })
       .catch(err => {
@@ -45,11 +44,11 @@ class MyProvider extends Component {
   };
 
   checkAuthenticateStatus = () => {
-    axios.get('/users/isloggedin').then(currentUser => {
+    axios.post('/users/isloggedin').then(currentUser => {
       if (currentUser.data.email === Auth.getToken()) {
         this.setState({
           isLoggedIn: Auth.isUserAuthenticated(),
-          email: Auth.getToken(),
+          currentUser: currentUser.data,
         });
       } else {
         if (currentUser.data.email) {
@@ -78,8 +77,8 @@ class MyProvider extends Component {
         value={{
           state: this.state,
           functions: {
-            loginUser: this.loginUser
-          }
+            loginUser: this.loginUser,
+          },
         }}
       >
         {this.props.children}
