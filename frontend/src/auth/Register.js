@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
   constructor() {
     super();
 
     this.state = {
-      passwordInput: "",
-      emailInput: "",
-      usernameInput: ""
+      passwordInput: '',
+      emailInput: '',
+      usernameInput: '',
     };
   }
 
@@ -21,17 +21,17 @@ class Register extends Component {
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post("/users/new", {
+      .post('/users/new', {
         email: this.state.emailInput,
         password: this.state.passwordInput,
-        username: this.state.usernameInput
+        username: this.state.usernameInput,
       })
       .then(res => {
         contextConfirm(res.data.users);
         this.setState({
-          emailInput: "",
-          passwordInput: "",
-          usernameInput: ""
+          emailInput: '',
+          passwordInput: '',
+          usernameInput: '',
         });
       })
       .catch(err => {
@@ -41,7 +41,10 @@ class Register extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
@@ -75,7 +78,7 @@ class Register extends Component {
                 <button>Register</button>
               </form>
               <div>
-                <Link to={"/Login"}>Already a member? Log in</Link>
+                <Link to={'/Login'}>Already a member? Log in</Link>
               </div>
             </div>
           );
