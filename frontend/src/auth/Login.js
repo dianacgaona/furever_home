@@ -3,6 +3,7 @@ import axios from "axios";
 import { Paper } from "@material-ui/core";
 import { MyContext } from "../provider/MyProvider";
 import { Link } from "react-router-dom";
+import Auth from "../utils/Auth.js";
 
 class Login extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class Login extends Component {
       })
       .then(res => {
         console.log(res);
+        Auth.authenticateUser(res.data.email);
         contextConfirm(res.data);
         this.setState({
           emailInput: "",
