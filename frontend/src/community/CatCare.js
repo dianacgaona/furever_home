@@ -37,10 +37,10 @@ class CatCare extends Component {
       return (
         <div >
           <img src={post.post_url} alt=""/>
-          <p>{post.title}</p>
-          <p>(Tip for: {post.pet_type}s)</p>
-          <p>{post.post_body.slice(0, 50) + '...'}
-          <Link to={`/posts/${post.id}`}>more</Link></p>
+          <h2 className='postTitle'>{post.title}</h2>
+          <p className='petType'>Tip for: {post.pet_type}s</p>
+          <p className='postBody'>{post.post_body.slice(0, 50) + '...'}
+          <Link to={`/posts/${post.id}`}>(click for more)</Link></p>
         </div>
       );
     });

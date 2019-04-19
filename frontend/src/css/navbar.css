@@ -15,6 +15,14 @@
   color: #001049;
 }
 
+.username {
+  margin-left: 30%;
+  margin-top: 2%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 900;
+  font-size: '15px'
+}
+
 .logo {
   width: 70px;
   padding: 6%;
@@ -46,8 +54,10 @@ a {
   text-decoration: none;
 }
 
-a: visited {
+a:visited {
   color: #001049;
+  decoration: none;
+  text-decoration: none;
 }
 
 .loginCont {
@@ -59,4 +69,12 @@ a: visited {
 
 .dogs {
   margin-left: 45%;
+}
+
+.dog {
+  width: 30px;
+}
+
+.cat {
+  width: 30px;
 }
