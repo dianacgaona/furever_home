@@ -39,7 +39,7 @@ class DogCare extends Component {
         <div>
           <img src={post.post_url} alt=""/>
           <h2 className='postTitle'>{post.title}</h2>
-          <p>Tip for: {post.pet_type}s</p>
+          <p className='petType'>Tip for: {post.pet_type}s</p>
           <p className='postBody'>{post.post_body.slice(0, 50) + '...'}<Link to={`/posts/${post.id}`}>(click for more)</Link></p>
         </div>
       );
