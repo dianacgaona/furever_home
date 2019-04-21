@@ -3,13 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Tabs, Tab, Typography, Paper, Grid } from '@material-ui/core';
+import { AppBar, Tabs, Tab, Typography, Paper, Grid, Avatar } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
 
 import '../css/navbar.css';
 let logo = require('../assets/logo.png');
-let cat = require('../assets/caticon.png');
-let dog = require('../assets/dogicon.png');
 
 function TabContainer(props) {
   return (
@@ -44,7 +42,7 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      
+
 
 
 <MyContext.Consumer>
@@ -78,12 +76,15 @@ class Bar extends React.Component {
 
                   {context.state.currentUser.username ? (
                     <div className="username">
+                    <Avatar alt="Remy Sharp" src={context.state.currentUser.profile_picture} style={{ marginRight: '-11%', marginTop: '-5%', width: '50px', height: '50px' }}
+                    />
                       <NavLink to={'/profile'} className="username">
                         {context.state.currentUser.username}
                       </NavLink>
                       <button
                         type="button"
                         onClick={context.functions.logoutUser}
+                        className='logout'
                       >
                         logout
                       </button>
