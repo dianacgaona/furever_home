@@ -53,10 +53,11 @@ class SinglePost extends Component {
         <div><img src={singlePost.post_url} alt="" /></div>
         <Link to="/profile" className='userName'>By: {singlePost.username}</Link>
         <p className='body'>{singlePost.post_body}</p>
-        <form>
-          <input type='text' placeholder='Share your thoughts'/>
-          <input type='submit' value='Post Comment'/>
+        <form className='form'>
+          <input type='text' placeholder='Share your thoughts' className='input'/>
         </form>
+        <button type='submit' className='postComment'>Post Comment
+        </button>
         <div>Comments:{this.displayComments()}</div>
       </div>
     );
@@ -79,7 +80,7 @@ class SinglePost extends Component {
       return (
         <li key={i + 1}>
           <Link to="/profile" className='commentUser'>{comment.username}</Link>
-          <br />
+          <br/>
           <p className='commentBody'>{comment.comment_body}</p>
         </li>
       );

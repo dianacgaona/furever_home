@@ -25,6 +25,22 @@ img {
   text-indent: 50px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 200px;
+  height: 24px;
+}
+
+.postComment {
+  color: white;
+  background-color: #001049;
+  width: 123px;
+}
+
 .commentUser {
   font-family: 'Open Sans Condensed', sans-serif;
 }
