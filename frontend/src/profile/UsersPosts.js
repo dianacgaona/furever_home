@@ -42,7 +42,7 @@ class UsersPosts extends Component {
       </div>
     );
   };
-// needs  to be changed since there will be multiple posts now. Which is why we wont see anything. 
+// needs  to be changed since there will be multiple posts now. Which is why we wont see anything.
   render() {
     // console.log(this.state);
     return (
