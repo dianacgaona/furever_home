@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FavoritedPets from './FavoritedPets';
 import AdoptedPets from './AdoptedPets';
 import UsersPosts from './UsersPosts';
+import AddPost from './AddPost.js'
 import { MyContext } from '../provider/MyProvider';
 
 class Profile extends Component {
@@ -36,6 +37,7 @@ class Profile extends Component {
               ) : (
                 <div>no user</div>
               )}
+              <AddPost />
               <FavoritedPets />
               <UsersPosts />
               <AdoptedPets />
