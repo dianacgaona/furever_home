@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Carousel } from 'react-responsive-carousel';
+import Slider from 'react-slick';
 
 let dog1 = require('./assets/puppies.jpg');
 let cat2 = require('./assets/cat2.jpg');
@@ -10,24 +9,33 @@ let dog5 = require('./assets/puppy5.jpeg');
 
 class Wallpaper extends Component {
   render() {
+    var settings = {
+      arrows: true,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      dots: false,
+      draggable: false,
+      fade: true,
+      infinite: true,
+      lazyLoad: 'progressive',
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      speed: 900,
+      waitForAnimate: true,
+    };
     return (
-      <Carousel autoPlay>
       <div>
-          <img src={dog1} alt=''/>
+      <div className='carousel'>
+        <Slider {...settings}>
+            <img src={dog1} alt=''/>
+            <img src={cat2} alt=''/>
+            <img src={dog3} alt=''/>
+            <img src={cat4} alt=''/>
+        </Slider>
       </div>
-      <div>
-          <img src={cat2} alt=''/>
       </div>
-      <div>
-          <img src={dog3} alt=''/>
-      </div>
-      <div>
-          <img src={cat4} alt=''/>
-      </div>
-      </Carousel>
-  );}
+  );
+  }
 }
 
 export default Wallpaper;
-
-ReactDOM.render(<Wallpaper/>, document.querySelector('.demo-carousel'));

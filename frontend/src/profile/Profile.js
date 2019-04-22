@@ -15,7 +15,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+<MyContext.Consumer>
         {context => {
           return (
             <div>
