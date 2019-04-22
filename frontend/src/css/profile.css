@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+.usernameProf {
+  margin-bottom: 7%;
+  margin-top: -6%;
+  margin-left: 8%;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.favoritedTitle {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.favImg {
+  width: 300px;
+  display: flex;
+}

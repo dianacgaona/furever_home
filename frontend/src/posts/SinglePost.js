@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Paper } from '@material-ui/core';
+
+import '../css/singlePost.css'
 
 class SinglePost extends Component {
   constructor() {
@@ -22,7 +25,6 @@ class SinglePost extends Component {
         this.setState({
           singlePost: res.data.post
         });
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -36,7 +38,6 @@ class SinglePost extends Component {
         this.setState({
           singlePostComments: res.data.comment
         });
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -47,39 +48,60 @@ class SinglePost extends Component {
     let { singlePost } = this.state;
     return (
       <div>
-        <Link to="/profile">{singlePost.username}</Link>
-        <h1>{singlePost.title}</h1>
-        <h3>Tip for: {singlePost.pet_type}s</h3>
-        <img src={singlePost.post_url} alt="" />
-        <p>{singlePost.post_body}</p>
+        <p className='postTitleCom'>{singlePost.title}</p>
+        <p className='petTypeCom'>Tip for:   {singlePost.pet_type}s</p>
+        <div><img src={singlePost.post_url} alt="" /></div>
+        <Link to="/profile" className='userName'>By: {singlePost.username}</Link>
+        <p className='body'>{singlePost.post_body}</p>
+        <form className='form'>
+          <input type='text' placeholder='Share your thoughts' className='input'/>
+        </form>
+        <button type='submit' className='postComment'>Post Comment
+        </button>
         <div>Comments:{this.displayComments()}</div>
       </div>
     );
   };
 
+  addComment = (e) => {
+  e.preventDefault()
+  const commentInfos = {
+    user_id: e.target[0].value,
+    comment_body: e.target[1].value
+  }
+  axios.post('/comments', commentInfos)
+  .then(() => {
+    this.getCommentsForSinglePost()
+  })
+}
+
   displayComments = () => {
     let comments = this.state.singlePostComments.map((comment, i) => {
       return (
         <li key={i + 1}>
-          <Link to="/profile">{comment.username}</Link>
-          <br />
-          {comment.comment_body}
+          <Link to="/profile" className='commentUser'>{comment.username}</Link>
+          <br/>
+          <p className='commentBody'>{comment.comment_body}</p>
         </li>
       );
     });
     return (
       <>
+
         <ul>{comments}</ul>
       </>
     );
   };
 
-  render() {
-    console.log(this.state);
 
-    return <div>{this.displaySinglePost()}</div>;
+  render() {
+    return (
+      <Paper style={{ padding: '2%' }}>
+        <div>{this.displaySinglePost()}</div>
+      </Paper>
+
+
+    )
   }
 }
 export default SinglePost;
-
-// <li><Link to="/react">React</Link></li>
