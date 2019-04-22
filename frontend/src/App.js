@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import MyProvider from './provider/MyProvider';
-import Navbar from './Navbar/Navbar';
-import Home from './Home';
-import Login from './auth/Login';
-import Register from './auth/Register';
-import Profile from './profile/Profile';
-import AdoptedPets from './profile/AdoptedPets';
-import OrganizationsList from './organizations/OrganizationsList';
-import OrganizationProfile from './organizations/OrganizationProfile';
-import CatCare from './community/CatCare';
-import DogCare from './community/DogCare';
-import SinglePost from './posts/SinglePost';
-import PetsList from './pets/PetsList';
-import PetProfile from './pets/PetProfile';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import MyProvider from "./provider/MyProvider";
+import Navbar from "./Navbar/Navbar";
+import Home from "./Home";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import Profile from "./profile/Profile";
+import AdoptedPets from "./profile/AdoptedPets";
+import OrganizationsList from "./organizations/OrganizationsList";
+import OrganizationProfile from "./organizations/OrganizationProfile";
+import CatCare from "./community/CatCare";
+import DogCare from "./community/DogCare";
+import SinglePost from "./posts/SinglePost";
+import PetsList from "./pets/PetsList";
+import PetProfile from "./pets/PetProfile";
 
 class App extends Component {
   render() {
@@ -29,9 +29,16 @@ class App extends Component {
             <Route path="/adopted" component={AdoptedPets} />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
-            <Route path="/shelters-rescues" component={OrganizationsList} />
+            <Route
+              exact
+              path="/shelters-rescues"
+              component={OrganizationsList}
+            />
             <Route path="/posts/:id" component={SinglePost} />
-            <Route path="/organizations/:id" component={OrganizationProfile} />
+            <Route
+              path="/shelters-rescues/:id"
+              component={OrganizationProfile}
+            />
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
           </Switch>
