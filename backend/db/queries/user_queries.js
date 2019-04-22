@@ -37,6 +37,7 @@ const getSingleUser = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
+  debugger;
   const hash = authHelpers.createHash(req.body.password_digest);
   db.none(
     "INSERT INTO users( email, password_digest, username) VALUES (${email}, ${password_digest}, ${username})",

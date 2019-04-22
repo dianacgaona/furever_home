@@ -1,41 +1,43 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
-import { Link } from "react-router-dom";
-import Auth from "../utils/Auth.js";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import { Link } from 'react-router-dom';
+import Auth from '../utils/Auth.js';
 
 class Register extends Component {
   constructor() {
     super();
 
     this.state = {
-      passwordInput: "",
-      emailInput: "",
-      usernameInput: ""
+      passwordInput: '',
+      emailInput: '',
+      usernameInput: '',
     };
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   handleSubmit = (e, contextConfirm) => {
+    debugger;
     e.preventDefault();
     axios
-      .post("/users/new", {
+      .post('/users/new', {
         email: this.state.emailInput,
-        password: this.state.passwordInput,
-        username: this.state.usernameInput
+        password_digest: this.state.passwordInput,
+        username: this.state.usernameInput,
       })
       .then(res => {
+        debugger;
         Auth.authenticateUser(res.data.email);
         contextConfirm(res.data);
         this.setState({
-          emailInput: "",
-          passwordInput: "",
-          usernameInput: ""
+          emailInput: '',
+          passwordInput: '',
+          usernameInput: '',
         });
       })
       .catch(err => {
@@ -44,8 +46,12 @@ class Register extends Component {
   };
 
   render() {
+    debugger;
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
@@ -79,7 +85,7 @@ class Register extends Component {
                 <button>Register</button>
               </form>
               <div>
-                <Link to={"/Login"}>Already a member? Log in</Link>
+                <Link to={'/Login'}>Already a member? Log in</Link>
               </div>
             </div>
           );
