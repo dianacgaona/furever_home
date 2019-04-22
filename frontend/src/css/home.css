@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .Home {
   background-image: url('../assets/puppies.jpg');
   background-size: cover;
@@ -16,12 +18,12 @@
 }
 
 .greeting {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 98px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 65px;
   color: white;
   display: flex;
   justify-content: center;
-  letter-spacing: 4px;
+  text-align: center;
   background-color: rgba(208, 199, 198, 0.3);
   margin-right: 10%;
   margin-left: 10%;
