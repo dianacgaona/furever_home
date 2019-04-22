@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
+import { Paper } from '@material-ui/core';
+import '../css/profile.css';
 
 class AdoptedPets extends Component {
   constructor() {
@@ -37,7 +39,7 @@ class AdoptedPets extends Component {
             adopted.pet_id
           }/1/?bust=1555622095&width=300`}
           alt=""
-        />
+          className='favImg'/>
       );
     });
     return <>{adoptedByUser}</>;
@@ -51,8 +53,10 @@ class AdoptedPets extends Component {
         {context => {
           return (
             <div>
-              <h1>Adopted Pets go here</h1>
-              {this.displayAdopted()}
+              <Paper style={{ padding: '2%', marginTop: '1%' }}>
+                <p className='favoritedTitle'>Adopted Pets go here</p>
+                {this.displayAdopted()}
+              </Paper>
             </div>
           );
         }}

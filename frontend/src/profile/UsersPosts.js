@@ -1,22 +1,26 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Paper } from '@material-ui/core';
+import '../css/profile.css';
 
 class UsersPosts extends Component {
   constructor() {
     super();
     this.state = {
-      singlePost: []
+      singlePost: [],
     };
   }
+
   componentDidMount() {
     this.getPosts();
   }
+
   getPosts = () => {
     axios
-      .get("/posts/1")
+      .get('/posts/1')
       .then(res => {
         this.setState({
-          singlePost: res.data.post
+          singlePost: res.data.post,
         });
         console.log(res);
       })
@@ -24,13 +28,16 @@ class UsersPosts extends Component {
         console.log(err);
       });
   };
+
   displaySinglePost = () => {
     let { singlePost } = this.state;
 
     return (
       <div>
-        <h1>{singlePost.title}</h1>
-        <img src={singlePost.post_url}alt='imageNotWorking'></img>
+        <Paper style={{ padding: '2%', marginTop: '1%' }}>
+        <p className='favoritedTitle'>{singlePost.title}</p>
+        <img src={singlePost.post_url}alt='imageNotWorking' className='favImg'></img>
+        </Paper>
       </div>
     );
   };
