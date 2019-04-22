@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
 import { Link } from "react-router-dom";
 import { Paper } from '@material-ui/core';
 
@@ -33,8 +34,9 @@ class SinglePost extends Component {
 
   getCommentsForSinglePost = () => {
     axios
-      .get("/comments/post/1")
+      .get("/comments/post/5")
       .then(res => {
+
         this.setState({
           singlePostComments: res.data.comment
         });
@@ -43,6 +45,25 @@ class SinglePost extends Component {
         console.log(err);
       });
   };
+
+  addComment = (e) => {
+  e.preventDefault()
+  const commentValue = document.getElementById('myComment').value;
+  console.log('MY COMMENT', commentValue)
+  const commentInfos = {
+    user_id: this.props.currentUser.id,
+    post_id: this.props.match.params.id,
+    comment_body: commentValue
+  }
+  axios.post('/comments', commentInfos)
+  .then(() => {
+    console.log('SINGLE POST WORKS')
+    this.getCommentsForSinglePost()
+  })
+  .catch(err => {
+    console.log('SINGLE COMMENT ERR', err)
+  })
+}
 
   displaySinglePost = () => {
     let { singlePost } = this.state;
@@ -53,27 +74,15 @@ class SinglePost extends Component {
         <div><img src={singlePost.post_url} alt="" /></div>
         <Link to="/profile" className='userName'>By: {singlePost.username}</Link>
         <p className='body'>{singlePost.post_body}</p>
-        <form className='form'>
-          <input type='text' placeholder='Share your thoughts' className='input'/>
+        <form className='form' onSubmit={this.addComment}>
+          <input id='myComment' type='text' placeholder='Share your thoughts' className='input'/>
+          <button type='submit' className='postComment'>Post Comment
+          </button>
         </form>
-        <button type='submit' className='postComment'>Post Comment
-        </button>
         <div>Comments:{this.displayComments()}</div>
       </div>
     );
   };
-
-  addComment = (e) => {
-  e.preventDefault()
-  const commentInfos = {
-    user_id: e.target[0].value,
-    comment_body: e.target[1].value
-  }
-  axios.post('/comments', commentInfos)
-  .then(() => {
-    this.getCommentsForSinglePost()
-  })
-}
 
   displayComments = () => {
     let comments = this.state.singlePostComments.map((comment, i) => {
@@ -87,7 +96,6 @@ class SinglePost extends Component {
     });
     return (
       <>
-
         <ul>{comments}</ul>
       </>
     );
@@ -95,10 +103,11 @@ class SinglePost extends Component {
 
 
   render() {
+    console.log('LIKE COREY',this.state)
     return (
-      <Paper style={{ padding: '2%' }}>
-        <div>{this.displaySinglePost()}</div>
-      </Paper>
+            <Paper style={{ padding: '2%' }}>
+              <div>{this.displaySinglePost()}</div>
+            </Paper>
 
 
     )
