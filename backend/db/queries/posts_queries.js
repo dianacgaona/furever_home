@@ -57,7 +57,7 @@ const getSinglePost = (req, res, next) => {
 
 const createPost = (req, res, next) => {
   db.none(
-    'INSERT INTO posts (user_id, title, pet_type, post_body) VALUES (${user_id}, ${title}, ${pet_id}, ${post_body})',
+    'INSERT INTO posts (user_id, title, pet_type, post_body,post_url) VALUES (${user_id}, ${title}, ${pet_type}, ${post_body},${post_url})',
     req.body
   )
     .then(() => {

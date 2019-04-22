@@ -13,6 +13,7 @@ class UsersPosts extends Component {
 
   componentDidMount() {
     this.getPosts();
+    this.displaySinglePost()
   }
 
   getPosts = () => {
@@ -22,10 +23,10 @@ class UsersPosts extends Component {
         this.setState({
           singlePost: res.data.post,
         });
-        console.log(res);
+        // console.log(res);
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -41,9 +42,9 @@ class UsersPosts extends Component {
       </div>
     );
   };
-
+// needs  to be changed since there will be multiple posts now. Which is why we wont see anything. 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
 
