@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FavoritedPets from './FavoritedPets';
 import AdoptedPets from './AdoptedPets';
 import UsersPosts from './UsersPosts';
+import AddPost from './AddPost.js'
 import { MyContext } from '../provider/MyProvider';
 import { Paper, Avatar } from '@material-ui/core';
 import '../css/profile.css';
@@ -41,10 +42,18 @@ class Profile extends Component {
                     </div>
                     <div>{context.state.currentUser.about}</div>
                   </div>
+
+                  <div>{context.state.currentUser.about}</div>
+                </div>
+              ) : (
+                <div>no user</div>
+              )}
+              <AddPost />
                 ) : (
                   <div>no user</div>
                 )}
               </Paper>
+
               <FavoritedPets />
               <UsersPosts />
               <AdoptedPets />
