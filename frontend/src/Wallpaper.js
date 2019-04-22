@@ -24,6 +24,7 @@ class Wallpaper extends Component {
       waitForAnimate: true,
     };
     return (
+      <div>
       <div className='carousel'>
         <Slider {...settings}>
             <img src={dog1} alt=''/>
@@ -31,6 +32,7 @@ class Wallpaper extends Component {
             <img src={dog3} alt=''/>
             <img src={cat4} alt=''/>
         </Slider>
+      </div>
       </div>
   );
   }
