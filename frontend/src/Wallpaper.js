@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 
 let dog1 = require('./assets/puppies.jpg');
-let cat2 = require('./assets/cat2.jpg');
-let dog3 = require('./assets/puppy3.jpeg');
+let cat2 = require('./assets/forestcat.jpg');
+let dog3 = require('./assets/puppycut.jpg');
 let cat4 = require('./assets/cat4.jpeg');
 let dog5 = require('./assets/puppy5.jpeg');
 
@@ -12,7 +12,7 @@ class Wallpaper extends Component {
     var settings = {
       arrows: true,
       autoplay: true,
-      autoplaySpeed: 1000,
+      autoplaySpeed: 5000,
       dots: false,
       draggable: false,
       fade: true,
@@ -20,17 +20,17 @@ class Wallpaper extends Component {
       lazyLoad: 'progressive',
       slidesToShow: 1,
       slidesToScroll: 1,
-      speed: 900,
+      speed: 5000,
       waitForAnimate: true,
     };
     return (
       <div>
       <div className='carousel'>
         <Slider {...settings}>
-            <img src={dog1} alt=''/>
-            <img src={cat2} alt=''/>
-            <img src={dog3} alt=''/>
-            <img src={cat4} alt=''/>
+            <img src={dog1} alt='' className='one'/>
+            <img src={cat2} alt=''className='two'/>
+            <img src={dog3} alt=''className='three'/>
+            <img src={cat4} alt=''className='four'/>
         </Slider>
       </div>
       </div>
