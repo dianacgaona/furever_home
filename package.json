@@ -19,7 +19,10 @@
   "homepage": "https://github.com/dianacgaona/furever_home#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-responsive-carousel": "^3.1.49"
+    "react-responsive-carousel": "^3.1.49",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1"
   }
 }
