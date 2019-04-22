@@ -1,37 +1,50 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
+import React, { Component } from "react";
+import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
 
 class OrganizationProfile extends Component {
   constructor() {
     super();
 
     this.state = {
-      adoptedPets: {},
+      organization: {},
+      animals: []
     };
   }
 
   componentDidMount() {
-    this.getOrganization();
+    this.getOrganization(this.props.match.params.id);
+    this.getAnimals(this.props.match.params.id);
   }
 
-  getOrganization = () => {
+  getOrganization = id => {
     axios
-      .get('/petfinder/organizations')
+      .get(`/petfinder/organizations/${id}`)
       .then(res => {
-        console.log(res);
+        console.log(res.data.organization);
+        this.setState({
+          organization: res.data.organization
+        });
       })
       .catch(err => {
         console.log(err);
       });
   };
+  getAnimals = id => {
+    axios({
+      url: "/petfinder/animalquery",
+      method: "post",
+      headers: {},
+      data: `organization=${id}`
+    }).then(res => {
+      console.log(res.data);
+    });
+  };
 
   render() {
+    console.log(this.props, "props");
     return (
-      
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>

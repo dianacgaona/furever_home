@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
 import Paper from "@material-ui/core/Paper";
@@ -18,11 +19,13 @@ class OrganizationProfile extends Component {
               <>
                 <Paper>
                   <div className="shelterInfo">
-                    <p>
-                      {shelter.name}
-                      {", "}
-                      {shelter.address.city},{shelter.address.state}
-                    </p>
+                    <Link to={`/shelters-rescues/${shelter.id}`}>
+                      <p>
+                        {shelter.name}
+                        {", "}
+                        {shelter.address.city},{shelter.address.state}
+                      </p>
+                    </Link>
                   </div>
                 </Paper>
               </>
@@ -34,11 +37,13 @@ class OrganizationProfile extends Component {
                 <>
                   <Paper>
                     <div className="shelterInfo">
-                      <p>
-                        {shelter.name}
-                        {", "}
-                        {shelter.address.city},{shelter.address.state}
-                      </p>
+                      <Link to={`/shelters-rescues/${shelter.id}`}>
+                        <p>
+                          {shelter.name}
+                          {", "}
+                          {shelter.address.city},{shelter.address.state}
+                        </p>
+                      </Link>
                     </div>
                   </Paper>
                 </>
