@@ -15,7 +15,6 @@ class Profile extends Component {
 
   render() {
     return (
-
 <MyContext.Consumer>
         {context => {
           return (
@@ -40,13 +39,10 @@ class Profile extends Component {
                     </div>
                     <div>{context.state.currentUser.about}</div>
                   </div>
-
-              ) : (
-                <div>no user</div>
-              )}
-              <AddPost />
                 ) : (
                   <div>no user</div>
+                )}
+                <AddPost />) : (<div>no user</div>
                 )}
                 <AddPost />) : (<div>no user</div>
                 )}

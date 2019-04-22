@@ -5,26 +5,26 @@ import { MyContext } from "../provider/MyProvider";
 class OrganizationProfile extends Component {
   constructor() {
     super();
-    this.state = {
-      selectedBorough: ""
-    };
+    this.state = {};
   }
-
-  handleSelect = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   render() {
     return (
       <MyContext.Consumer>
         {context => {
+          let shelterSearch = context.state.shelter.map(shelter => {
+            return (
+              <>
+                <h3>{shelter.name}</h3>
+                <p>
+                  {shelter.address.city},{shelter.address.state}
+                </p>
+              </>
+            );
+          });
           let display = context.state.organizations.map(shelter => {
-            if (shelter.borough === this.state.selectedBorough) {
+            if (shelter.borough === context.state.selectedBorough) {
               return (
                 <>
-                  <p>{shelter.id}</p>
                   <h3>{shelter.name}</h3>
                   <p>
                     {shelter.address.city},{shelter.address.state}
@@ -38,8 +38,10 @@ class OrganizationProfile extends Component {
           return (
             <div>
               <form type="submit" onSubmit={this.handleSubmit}>
-                <select name="selectedBorough" onChange={this.handleSelect}>
-                  <option value=""> </option>
+                <select
+                  name="selectedBorough"
+                  onChange={context.functions.handleSelect}
+                >
                   <option value="Manhattan">Manhattan</option>
                   <option value="Brooklyn">Brookyln</option>
                   <option value="Queens">Queens</option>
@@ -47,7 +49,18 @@ class OrganizationProfile extends Component {
                   <option value="Staten Island">Staten Island</option>
                 </select>
               </form>
-              <div>{display}</div>
+              <form
+                type="submit"
+                onSubmit={context.functions.handleShelterSubmit}
+              >
+                <input
+                  type="text"
+                  value={context.state.searchInput}
+                  onChange={context.functions.handleInputChange}
+                  placeholder="Search By Shelter Name"
+                />
+              </form>
+              <div>{context.state.active ? shelterSearch : display}</div>
             </div>
           );
         }}
