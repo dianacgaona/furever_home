@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
+import Paper from "@material-ui/core/Paper";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -15,10 +16,15 @@ class OrganizationProfile extends Component {
           let shelterSearch = context.state.shelter.map(shelter => {
             return (
               <>
-                <h3>{shelter.name}</h3>
-                <p>
-                  {shelter.address.city},{shelter.address.state}
-                </p>
+                <Paper>
+                  <div className="shelterInfo">
+                    <p>
+                      {shelter.name}
+                      {", "}
+                      {shelter.address.city},{shelter.address.state}
+                    </p>
+                  </div>
+                </Paper>
               </>
             );
           });
@@ -26,10 +32,15 @@ class OrganizationProfile extends Component {
             if (shelter.borough === context.state.selectedBorough) {
               return (
                 <>
-                  <h3>{shelter.name}</h3>
-                  <p>
-                    {shelter.address.city},{shelter.address.state}
-                  </p>
+                  <Paper>
+                    <div className="shelterInfo">
+                      <p>
+                        {shelter.name}
+                        {", "}
+                        {shelter.address.city},{shelter.address.state}
+                      </p>
+                    </div>
+                  </Paper>
                 </>
               );
             } else {
@@ -40,7 +51,7 @@ class OrganizationProfile extends Component {
             <div>
               <div className="search">
                 <form type="submit" onSubmit={this.handleSubmit}>
-                  {"Select a Borough"}
+                  {"Select a Borough"}{" "}
                   <select
                     name="selectedBorough"
                     onChange={context.functions.handleSelect}
@@ -49,14 +60,14 @@ class OrganizationProfile extends Component {
                     <option value="Brooklyn">Brookyln</option>
                     <option value="Queens">Queens</option>
                     <option value="Bronx">Bronx</option>
-                    <option value="Staten Island">Staten Island</option>
                   </select>
                 </form>
                 <form
                   type="submit"
                   onSubmit={context.functions.handleShelterSubmit}
                 >
-                  {"Or"}
+                  {" "}
+                  {"Or"}{" "}
                   <input
                     type="text"
                     value={context.state.searchInput}

@@ -1,4 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+
 .search {
   display: flex;
   flex-direction: row;
+}
+
+.shelterInfo {
+  font-family: "Open Sans Condensed", sans-serif;
+  padding-left: 15px;
+  font-weight: bolder;
+  font-size: 30px;
 }
