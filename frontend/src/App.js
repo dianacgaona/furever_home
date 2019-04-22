@@ -42,6 +42,7 @@ class App extends Component {
             }} />
 
             <Route path="/organizations/:id" component={OrganizationProfile} />
+
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
           </Switch>
