@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import FavoritedPets from './FavoritedPets';
-import AdoptedPets from './AdoptedPets';
-import UsersPosts from './UsersPosts';
-import AddPost from './AddPost.js'
-import { MyContext } from '../provider/MyProvider';
-import { Paper, Avatar } from '@material-ui/core';
-import '../css/profile.css';
+import React, { Component } from "react";
+import FavoritedPets from "./FavoritedPets";
+import AdoptedPets from "./AdoptedPets";
+import UsersPosts from "./UsersPosts";
+import AddPost from "./AddPost.js";
+import { MyContext } from "../provider/MyProvider";
+import { Paper, Avatar } from "@material-ui/core";
+import "../css/profile.css";
 
 class Profile extends Component {
   constructor() {
@@ -15,14 +15,18 @@ class Profile extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
+      <MyContext.Consumer>
+=======
 
 
 
 <MyContext.Consumer>
+>>>>>>> f75116b6431d005f3db15fc575b2f310d3e8dc49
         {context => {
           return (
             <div>
-              <Paper style={{ padding: '8%' }}>
+              <Paper style={{ padding: "8%" }}>
                 {context.state.currentUser ? (
                   <div>
                     <div className="usernameProf">
@@ -33,23 +37,24 @@ class Profile extends Component {
                         alt="Remy Sharp"
                         src={context.state.currentUser.profile_picture}
                         style={{
-                          marginRight: '-11%',
-                          marginTop: '-5%',
-                          width: '250px',
-                          height: '250px',
+                          marginRight: "-11%",
+                          marginTop: "-5%",
+                          width: "250px",
+                          height: "250px"
                         }}
                       />
                     </div>
                     <div>{context.state.currentUser.about}</div>
                   </div>
 
-                
               ) : (
                 <div>no user</div>
               )}
               <AddPost />
                 ) : (
                   <div>no user</div>
+                )}
+                <AddPost />) : (<div>no user</div>
                 )}
               </Paper>
 
