@@ -2,23 +2,30 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .Home {
-  background-image: url('../assets/background.jpeg');
+  background-image: url('../assets/puppies.jpg');
   background-size: cover;
   position: fixed;
   z-index: -1;
   height: 100%;
   width: 100%;
   padding: 15px;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-left: -15px;
   padding-top: 45px;
 }
 
 .greeting {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 98px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 65px;
   color: white;
   display: flex;
   justify-content: center;
+  text-align: center;
+  background-color: rgba(208, 199, 198, 0.3);
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 0%;
 }

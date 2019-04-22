@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { getZips } from '../NYCZipcode.js';
+import Auth from '../utils/Auth';
 const axios = require('axios');
 
 export const MyContext = React.createContext();
@@ -9,26 +11,31 @@ class MyProvider extends Component {
     this.state = {
       currentUser: {},
       organizations: [],
-      selectedZip: ""
+      isLoggedIn: false,
     };
   }
 
   componentDidMount() {
     this.getOrganization();
+    this.checkAuthenticateStatus();
   }
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser,
+      currentUser: currentUser
     });
   };
 
   getOrganization = () => {
     axios
-      .get('/petfinder/organizations')
+      .get("/petfinder/organizations")
       .then(res => {
+        let zips = getZips();
+        res.data.organizations.forEach(organization => {
+          organization['borough'] = zips[organization.address.postcode];
+        });
         this.setState({
-          organizations: res.data.organizations,
+          organizations: res.data.organizations
         });
       })
       .catch(err => {
@@ -36,14 +43,32 @@ class MyProvider extends Component {
       });
   };
 
-  handleSelect = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  checkAuthenticateStatus = () => {
+    axios.post('/users/isloggedin').then(currentUser => {
+      if (currentUser.data.email === Auth.getToken()) {
+        this.setState({
+          isLoggedIn: Auth.isUserAuthenticated(),
+          currentUser: currentUser.data,
+        });
+      } else {
+        if (currentUser.data.email) {
+          this.logoutUser();
+        } else {
+          Auth.deauthenticateUser();
+        }
+      }
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  logoutUser = () => {
+    axios
+      .post("/users/logout")
+      .then(() => {
+        Auth.deauthenticateUser();
+      })
+      .then(() => {
+        this.checkAuthenticateStatus();
+      });
   };
 
   render() {
@@ -53,9 +78,8 @@ class MyProvider extends Component {
           state: this.state,
           functions: {
             loginUser: this.loginUser,
-            handleSelect: this.handleSelect,
-            handleSubmit: this.handleSubmit
-          }
+            logoutUser: this.logoutUser
+          },
         }}
       >
         {this.props.children}

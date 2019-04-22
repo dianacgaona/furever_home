@@ -1,38 +1,40 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Paper } from "@material-ui/core";
-import { MyContext } from "../provider/MyProvider";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Paper } from '@material-ui/core';
+import { MyContext } from '../provider/MyProvider';
+import { Link } from 'react-router-dom';
+import Auth from '../utils/Auth.js';
 
 class Login extends Component {
   constructor() {
     super();
 
     this.state = {
-      emailInput: "",
-      passwordInput: ""
+      emailInput: '',
+      passwordInput: '',
     };
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post("/users/login", {
+      .post('/users/login', {
         email: this.state.emailInput,
-        password: this.state.passwordInput
+        password: this.state.passwordInput,
       })
       .then(res => {
         console.log(res);
+        Auth.authenticateUser(res.data.email);
         contextConfirm(res.data);
         this.setState({
-          emailInput: "",
-          passwordInput: ""
+          emailInput: '',
+          passwordInput: '',
         });
       })
       .catch(err => {
@@ -42,15 +44,15 @@ class Login extends Component {
 
   demoLogin = contextConfirm => {
     axios
-      .post("/users/login", {
-        email: "user1@fh.com",
-        password: "123"
+      .post('/users/login', {
+        email: 'user1@fh.com',
+        password: '123',
       })
       .then(res => {
         contextConfirm(res.data);
         this.setState({
-          emailInput: "",
-          passwordInput: ""
+          emailInput: '',
+          passwordInput: '',
         });
       })
       .catch(err => {
@@ -60,27 +62,30 @@ class Login extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
-          console.log(context, "CONTEXT");
+          console.log(context, 'CONTEXT');
           return (
             <div>
               <Paper
                 style={{
-                  width: "15%",
-                  padding: "5%",
-                  fontFamily: "Open Sans Condensed",
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  marginLeft: "2%"
+                  width: '15%',
+                  padding: '5%',
+                  fontFamily: 'Open Sans Condensed',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  marginLeft: '2%',
                 }}
               >
                 <p
                   style={{
-                    fontWeight: "900",
-                    marginLeft: "37%",
-                    fontSize: "25px"
+                    fontWeight: '900',
+                    marginLeft: '37%',
+                    fontSize: '25px',
                   }}
                 >
                   LOGIN
@@ -96,7 +101,7 @@ class Login extends Component {
                     value={this.state.emailInput}
                     onChange={this.handleChange}
                     placeholder="Email"
-                    style={{ marginLeft: "18%" }}
+                    style={{ marginLeft: '18%' }}
                   />
                   <input
                     type="password"
@@ -104,15 +109,15 @@ class Login extends Component {
                     value={this.state.passwordInput}
                     onChange={this.handleChange}
                     placeholder="Password"
-                    style={{ marginLeft: "18%" }}
+                    style={{ marginLeft: '18%' }}
                   />
                   <div className="loginContainer">
                     <button
                       style={{
-                        borderRadius: "1px",
-                        marginLeft: "20%",
-                        color: "white",
-                        backgroundColor: "#001049"
+                        borderRadius: '1px',
+                        marginLeft: '37%',
+                        color: 'white',
+                        backgroundColor: '#001049',
                       }}
                     >
                       Login
@@ -121,8 +126,8 @@ class Login extends Component {
                   </div>
                 </form>
                 <div>
-                  <Link to={"/register"}>
-                    <p style={{ marginLeft: "7%" }}>
+                  <Link to={'/register'}>
+                    <p style={{ marginLeft: '7%' }}>
                       Need to create an account? Register
                     </p>
                   </Link>

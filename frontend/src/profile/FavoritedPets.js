@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
+import { Paper, Avatar } from '@material-ui/core';
+import '../css/profile.css';
 
 class FavoritedPets extends Component {
   constructor() {
@@ -37,7 +39,7 @@ class FavoritedPets extends Component {
             favorited.pet_id
           }/1/?bust=1555622095&width=300`}
           alt=""
-        />
+        style={{padding: '1%'}}/>
       );
     });
     return <>{favorites}</>;
@@ -50,8 +52,10 @@ class FavoritedPets extends Component {
         {context => {
           return (
             <div>
-              <h1>Favorited Pets go here</h1>
-              {this.displayFavorites()}
+              <Paper style={{ padding: '2%', marginTop: '1%' }}>
+              <p className="favoritedTitle">Favorited Pets Go Here</p>
+              <div className='favImg'>{this.displayFavorites()}</div>
+              </Paper>
             </div>
           );
         }}

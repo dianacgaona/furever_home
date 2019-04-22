@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+.postTitleCom {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.petTypeCom {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+img {
+  width: 500px;
+}
+
+.userName {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  }
+
+.body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-indent: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 200px;
+  height: 24px;
+}
+
+.postComment {
+  color: white;
+  background-color: #001049;
+  width: 123px;
+}
+
+.commentUser {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.commentBody {
+  font-family: 'Open Sans Condensed', sans-serif;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { MyContext } from '../provider/MyProvider';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/Auth.js';
 
 class Register extends Component {
   constructor() {
@@ -15,19 +16,24 @@ class Register extends Component {
   }
 
   handleChange = e => {
-    [e.target.name] = e.target.value;
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   handleSubmit = (e, contextConfirm) => {
+    debugger;
     e.preventDefault();
     axios
       .post('/users/new', {
         email: this.state.emailInput,
-        password: this.state.passwordInput,
+        password_digest: this.state.passwordInput,
         username: this.state.usernameInput,
       })
       .then(res => {
-        contextConfirm(res.data.users);
+        debugger;
+        Auth.authenticateUser(res.data.email);
+        contextConfirm(res.data);
         this.setState({
           emailInput: '',
           passwordInput: '',
@@ -40,6 +46,7 @@ class Register extends Component {
   };
 
   render() {
+    debugger;
     return (
       
 
@@ -55,24 +62,24 @@ class Register extends Component {
                 }}
               >
                 <input
-                  onChange={this.handleChange}
                   type="text"
                   name="emailInput"
                   value={this.state.emailInput}
+                  onChange={this.handleChange}
                   placeholder="email"
                 />
                 <input
-                  onChange={this.handleChange}
                   type="password"
                   name="passwordInput"
                   value={this.state.passwordInput}
+                  onChange={this.handleChange}
                   placeholder="password"
                 />
                 <input
-                  onChange={this.handleChange}
                   type="text"
                   name="usernameInput"
                   value={this.state.usernameInput}
+                  onChange={this.handleChange}
                   placeholder="username"
                 />
                 <button>Register</button>

@@ -37,6 +37,7 @@ const getSingleUser = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
+  debugger;
   const hash = authHelpers.createHash(req.body.password_digest);
   db.none(
     "INSERT INTO users( email, password_digest, username) VALUES (${email}, ${password_digest}, ${username})",
@@ -76,6 +77,7 @@ const deleteUser = (req, res, next) => {
 
 const isLoggedIn = (req, res) => {
   if (req.user) {
+    console.log("hi");
     res.json({
       id: req.user.id,
       email: req.user.email,
@@ -85,6 +87,7 @@ const isLoggedIn = (req, res) => {
       profile_picture: req.user.profile_picture
     });
   } else {
+    console.log("oops");
     res.json({ email: null });
   }
 };
