@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
-
+// import Auth from "../utils/Auth.js";
 class AddPost extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +10,7 @@ class AddPost extends Component {
       inputBodyText: "",
       inputPost_Url: "",
       pet_type: "",
-
-      user_Posts:[]
+      user_Posts: []
     };
   }
   handleChange = e => {
@@ -21,28 +20,10 @@ class AddPost extends Component {
     });
   };
 
-componentDidMount(){
-  this.getPosts()
-}
-getPosts = async() => {
-
-  await
-  axios
-    .get(`/posts/byUser/2`)
-    .then(res => {
-      this.setState({
-        user_Posts: res.data.post
-      });
-      // console.log(res);
-    })
-    .catch(err => {
-      // console.log(err);
-    });
-};
 
   handleSubmit = (e, user) => {
     e.preventDefault();
-    console.log(user)
+    // console.log(user)
     axios
       .post(`/posts/`, {
         user_id: user,
@@ -54,15 +35,17 @@ getPosts = async() => {
       .then(res => {
         console.log(res);
         console.log(res.data);
-       this.setState({
-         inputTitleText: "",
-         inputBodyText: "",
-         inputPost_Url: "",
-         pet_type: ""
-       })
-     })
+        this.setState({
+          inputTitleText: "",
+          inputBodyText: "",
+          inputPost_Url: "",
+          pet_type: ""
+        });
+      }).then(res=>{
+        this.props.getPosts()
 
-  };
+      })
+  }
   handleChange = event => {
     let { name, value, type, checked } = event.target;
     type === "checkbox"
@@ -73,16 +56,19 @@ getPosts = async() => {
 
   render() {
     // console.log(this.state.inputPost_Url);
-    return (
+    console.log(this.props, 'props');
 
+    return (
       <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <form onSubmit={(e) => {
-
-                this.handleSubmit(e, context.state.currentUser.id)
-              }} id='post_form'>
+              <form
+                onSubmit={e => {
+                  this.handleSubmit(e, context.state.currentUser.id);
+                }}
+                id="post_form"
+              >
                 <input
                   type="text"
                   value={this.state.inputTitleText}
@@ -103,24 +89,23 @@ getPosts = async() => {
                   onChange={this.handleChange}
                   placeholder="Body"
                   name="inputBodyText"
-
                 />
                 Dog
                 <input
-                type="radio"
-                name='pet_type'
-                value='Dog'
-                checked={this.state.pet_type === "Dog"}
-                onChange={this.handleChange}
+                  type="radio"
+                  name="pet_type"
+                  value="Dog"
+                  checked={this.state.pet_type === "Dog"}
+                  onChange={this.handleChange}
                 />
                 Cat
                 <input
-                type="radio"
-                name='pet_type'
-                value='Cat'
-                checked={this.state.pet_type === "Cat"}
-                onChange={this.handleChange}
-                 />
+                  type="radio"
+                  name="pet_type"
+                  value="Cat"
+                  checked={this.state.pet_type === "Cat"}
+                  onChange={this.handleChange}
+                />
                 <input type="submit" value="Add Post" />
               </form>
             </div>

@@ -11,9 +11,9 @@ const getAllPosts = (req, res, next) => {
 };
 
 const getAllPostsbyUser = (req, res, next) => {
-  let userId = parseInt(req.params.id);
+  let userId = req.params.id
   db.any(
-    "SELECT posts.id,posts.user_id,posts.title,posts.post_body,posts.pet_type,post_url FROM posts JOIN users ON users.id = posts.user_id WHERE users.id=$1",
+    "SELECT posts.id,posts.user_id,posts.title,posts.post_body,posts.pet_type,post_url FROM posts JOIN users ON users.id = posts.user_id WHERE users.email=$1",
     [userId]
   )
     .then(post => {

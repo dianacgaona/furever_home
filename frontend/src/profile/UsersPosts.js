@@ -1,44 +1,20 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Paper } from "@material-ui/core";
 import "../css/profile.css";
 import { MyContext } from "../provider/MyProvider";
-
+import { withRouter } from "react-router-dom";
+// import Auth from '../utils/Auth.js'
 
 class UsersPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_Posts: [],
-      currentUser: this.props.currentUser
+      currentUser: ""
     };
   }
 
-  componentDidMount() {
-  this.getPosts();
-    this.displayPosts();
-  }
-  // componentDidUpdate(){
-  // this.displayPosts()
-  // }
-  getPosts = async() => {
-    // const {currentUser} = this.state
-    await
-    axios
-      .get(`/posts/byUser/2`)
-      .then(res => {
-        this.setState({
-          user_Posts: res.data.post
-        });
-        // console.log(res);
-      })
-      .catch(err => {
-        // console.log(err);
-      });
-  };
-
   displayPosts = () => {
-    let posts = this.state.user_Posts.map((post, i) => {
+    let posts = this.props.user_Posts.map((post, i) => {
       return (
         <div key={i}>
           <Paper style={{ padding: "2%", marginTop: "1%" }}>
@@ -53,16 +29,14 @@ class UsersPosts extends Component {
   };
 
   render() {
-    console.log(this.state, 'state');
-    console.log(this.props, 'props');
+    // console.log(this.state, 'state');
     return (
       <MyContext.Consumer>
         {context => {
-          // this.getPosts(context.state.currentUser.id)
           return <div> {this.displayPosts()} </div>;
         }}
       </MyContext.Consumer>
     );
   }
 }
-export default UsersPosts;
+export default withRouter(UsersPosts);

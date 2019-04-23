@@ -6,27 +6,39 @@ import AddPost from "./AddPost.js";
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
+import Auth from '../utils/Auth.js'
 import axios from 'axios'
+
 class Profile extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      user_Posts:[]
+    };
   }
-  getPosts = async() => {
+  componentDidMount() {
+    this.getPosts();
+    // console.log(Auth.getToken());
+  }
 
+  getPosts = async() => {
+    // const {currentUser} = this.state
     await
     axios
-      .get(`/posts/byUser/2`)
+      .get(`/posts/byUser/${Auth.getToken()}`)
       .then(res => {
         this.setState({
           user_Posts: res.data.post
         });
-        // console.log(res);
+        console.log(res);
       })
       .catch(err => {
         // console.log(err);
       });
   };
+
+
+
 
   render() {
     return (
@@ -58,14 +70,14 @@ class Profile extends Component {
                   <div>no user</div>
                 )}
 
-            
-                <AddPost />) : (<div>no user</div>
+
+                <AddPost  getPosts={this.getPosts}/>) : (<div>no user</div>
                 )}
 
               </Paper>
 
               <FavoritedPets />
-              <UsersPosts currentUser={context.state.currentUser.id} />
+              <UsersPosts currentUser={context.state.currentUser.id} user_Posts={this.state.user_Posts} />
               <AdoptedPets />
             </div>
           );
