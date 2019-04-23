@@ -83,7 +83,9 @@ apiAllAnimalsQuery = async (req, res, next) => {
   console.log(queryString);
   try {
     let data = await axios({
-      url: "https://api.petfinder.com/v2/animals?limit=100&" + queryString,
+      url:
+        "https://api.petfinder.com/v2/animals?limit=100&status=adoptable&" +
+        queryString,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken

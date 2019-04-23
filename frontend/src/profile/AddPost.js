@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
+// import Auth from "../utils/Auth.js";
 class AddPost extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class AddPost extends Component {
       inputBodyText: "",
       inputPost_Url: "",
       pet_type: "",
-      user_id: 1
+      user_Posts: []
     };
   }
   handleChange = e => {
@@ -19,39 +20,55 @@ class AddPost extends Component {
     });
   };
 
+
   handleSubmit = (e, user) => {
     e.preventDefault();
-    console.log(user)
+    // console.log(user)
     axios
       .post(`/posts/`, {
         user_id: user,
         title: this.state.inputTitleText,
         post_body: this.state.inputBodyText,
         post_url: this.state.inputPost_Url,
-        pet_type: "cat"
+        pet_type: this.state.pet_type
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
-      });
+        this.setState({
+          inputTitleText: "",
+          inputBodyText: "",
+          inputPost_Url: "",
+          pet_type: ""
+        });
+      }).then(res=>{
+        this.props.getPosts()
+
+      })
+  }
+  handleChange = event => {
+    let { name, value, type, checked } = event.target;
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
+    // console.log("checked");
   };
 
-  // setPet_Type = () => {
-  //   if (this.state.pet_type.checked === true) {
-  //   } else {
-  //   }
-  // };
   render() {
     // console.log(this.state.inputPost_Url);
+    console.log(this.props, 'props');
+
     return (
       <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                this.handleSubmit(e, context.state.currentUser.id)
-              }}>
+              <form
+                onSubmit={e => {
+                  this.handleSubmit(e, context.state.currentUser.id);
+                }}
+                id="post_form"
+              >
                 <input
                   type="text"
                   value={this.state.inputTitleText}
@@ -72,18 +89,23 @@ class AddPost extends Component {
                   onChange={this.handleChange}
                   placeholder="Body"
                   name="inputBodyText"
-
                 />
                 Dog
                 <input
-                type="radio"
-                checked={this.state.pet_type === "dog"}
-                id="dog" />
+                  type="radio"
+                  name="pet_type"
+                  value="Dog"
+                  checked={this.state.pet_type === "Dog"}
+                  onChange={this.handleChange}
+                />
                 Cat
                 <input
-                type="radio"
-                checked={this.state.pet_type === "cat"}
-                 />
+                  type="radio"
+                  name="pet_type"
+                  value="Cat"
+                  checked={this.state.pet_type === "Cat"}
+                  onChange={this.handleChange}
+                />
                 <input type="submit" value="Add Post" />
               </form>
             </div>
@@ -94,28 +116,3 @@ class AddPost extends Component {
   }
 }
 export default AddPost;
-
-// <div className="radios">
-//        <p>Can you hold your breath under water longer than 1 minute?</p>
-//        <div>
-//          <span>
-//            <input
-//              type="radio"
-//              name="breath"
-//              value="yes"
-//              checked={breath === "yes"}
-//              onChange={this.handleChange}
-//            />
-//            Yes
-//          </span>
-//          <span>
-//            <input
-//              type="radio"
-//              name="breath"
-//              value="no"
-//              checked={breath === "no"}
-//              onChange={this.handleChange}
-//            />
-//            No
-//          </span>
-//        </div>
