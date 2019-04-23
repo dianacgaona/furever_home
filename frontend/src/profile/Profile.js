@@ -6,12 +6,27 @@ import AddPost from "./AddPost.js";
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
-
+import axios from 'axios'
 class Profile extends Component {
   constructor() {
     super();
     this.state = {};
   }
+  getPosts = async() => {
+
+    await
+    axios
+      .get(`/posts/byUser/2`)
+      .then(res => {
+        this.setState({
+          user_Posts: res.data.post
+        });
+        // console.log(res);
+      })
+      .catch(err => {
+        // console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -42,14 +57,15 @@ class Profile extends Component {
                 ) : (
                   <div>no user</div>
                 )}
+
+            
                 <AddPost />) : (<div>no user</div>
                 )}
-                <AddPost />) : (<div>no user</div>
-                )}
+
               </Paper>
 
               <FavoritedPets />
-              <UsersPosts />
+              <UsersPosts currentUser={context.state.currentUser.id} />
               <AdoptedPets />
             </div>
           );
