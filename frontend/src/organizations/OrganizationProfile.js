@@ -37,7 +37,6 @@ class OrganizationProfile extends Component {
       headers: {},
       data: `organization=${id}`
     }).then(res => {
-      console.log(res.data.data.animals);
       this.setState({
         animals: res.data.data.animals
       });
@@ -46,19 +45,28 @@ class OrganizationProfile extends Component {
 
   render() {
     let organization = this.state.organization;
+    let shelterPic = organization.photos;
     let address = organization.address;
     let animals = this.state.animals.map(animal => {
-      console.log(animal.photos[0].full);
+      let photo = animal.photos;
       return (
         <>
           <p>{animal.id}</p>
           <p>{animal.name}</p>
-          <img src={animal.photos[0].full} alt="" />
+          {photo.length === 0 ? (
+            "I need a picture"
+          ) : (
+            <img src={animal.photos[0].medium} alt="" />
+          )}
         </>
       );
     });
     return (
       <div>
+        <img
+          src="https://i.pinimg.com/736x/9b/a3/4d/9ba34d2df7de09b8694ab6bddf2c8b61--animal-shelter-logo-inspiration.jpg"
+          alt=""
+        />
         <h1>{organization.name}</h1>
         {address === undefined ? (
           ""
@@ -67,6 +75,7 @@ class OrganizationProfile extends Component {
             {address.city}, {address.state}
           </p>
         )}
+        <p>{organization.email}</p>
         {animals}
       </div>
     );
