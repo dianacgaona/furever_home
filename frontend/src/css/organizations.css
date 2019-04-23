@@ -10,6 +10,10 @@
 
 .border {
   margin-left: 50px;
+  display: grid;
+  grid-template-columns: 40% 20% 20%;
+  grid-template-rows: 93%;
+  width: 238%;
 }
 
 .shelterInfo {
@@ -17,4 +21,16 @@
   padding-left: 15px;
   font-weight: bolder;
   font-size: 30px;
+}
+
+.shelterName {
+  grid-column: 1;
+}
+
+.shelterAddress {
+  grid-column: 2;
+}
+
+.shelterEmail {
+  grid-column: 3;
 }

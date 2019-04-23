@@ -20,7 +20,7 @@ class Wallpaper extends Component {
       lazyLoad: 'on-demand',
       slidesToShow: 1,
       slidesToScroll: 1,
-      speed: 5000,
+      speed: 4000,
       waitForAnimate: true,
     };
     return (

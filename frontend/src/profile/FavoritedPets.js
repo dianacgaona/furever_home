@@ -14,13 +14,14 @@ class FavoritedPets extends Component {
   }
 
   componentDidMount() {
-    this.getFavorited();
+    this.getFavorited(this.props.id);
   }
 
-  getFavorited = () => {
+  getFavorited = id => {
     axios
-      .get("/favorited/users/4")
+      .get(`/favorited/users/${id}`)
       .then(res => {
+        console.log('FAVE DATA', res);
         this.setState({
           userFavs: res.data.favorited
         });
@@ -46,7 +47,7 @@ class FavoritedPets extends Component {
   };
 
   render() {
-    // console.log(this.state);
+    console.log('USER FAVES',this.state);
     return (
       <MyContext.Consumer>
         {context => {

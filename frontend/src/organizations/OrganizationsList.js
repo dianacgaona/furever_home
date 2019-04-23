@@ -38,9 +38,13 @@ class OrganizationProfile extends Component {
                   <Paper style={{width: '96%'}}>
                     <div className="shelterInfo">
                       <Link to={`/shelters-rescues/${shelter.id}`} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '1%'}}>
-                        <p style={{textAlign: 'left', fontSize: '26px'}}>{shelter.name}</p>
+                      <div className='shelterName'>
+                        <p style={{textAlign: 'left', fontSize: '26px'}} >{shelter.name}</p>
+                      </div>
+                      <div className='shelterAddress'>
                         <p style={{textAlign: 'center'}}>{shelter.address.city},{shelter.address.state}</p>
-                        <p style={{textAlign: 'right'}}>Contact Info</p>
+                      </div>
+                        <p style={{textAlign: 'right'}} className='shelterEmail'>{shelter.email}</p>
 
                       </Link>
                     </div>

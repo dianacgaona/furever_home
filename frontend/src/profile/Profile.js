@@ -1,25 +1,34 @@
-import React, { Component } from "react";
-import FavoritedPets from "./FavoritedPets";
-import AdoptedPets from "./AdoptedPets";
-import UsersPosts from "./UsersPosts";
-import AddPost from "./AddPost.js";
-import { MyContext } from "../provider/MyProvider";
-import { Paper, Avatar } from "@material-ui/core";
-import "../css/profile.css";
+import React, { Component } from 'react';
+import FavoritedPets from './FavoritedPets';
+import AdoptedPets from './AdoptedPets';
+import UsersPosts from './UsersPosts';
+import AddPost from './AddPost.js';
+import { MyContext } from '../provider/MyProvider';
+import { Paper, Avatar } from '@material-ui/core';
+import '../css/profile.css';
 
 class Profile extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      profileUser: [],
+    };
   }
+
+  // WHEN THIS COMPONENT MOUNTS, SHOULD TAKE THE PARAM ID AND FETCH A USER WITH THAT ID.
+  // STORE THAT USER IN YOUR state
+  // USE THAT USER'S INFO TO FILL IN PROFILE PICS AND STUFF
 
   render() {
     return (
+
+
+
 <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <Paper style={{ padding: "8%" }}>
+              <Paper style={{ padding: '8%' }}>
                 {context.state.currentUser ? (
                   <div>
                     <div className="usernameProf">
@@ -30,10 +39,10 @@ class Profile extends Component {
                         alt="Remy Sharp"
                         src={context.state.currentUser.profile_picture}
                         style={{
-                          marginRight: "-11%",
-                          marginTop: "-5%",
-                          width: "250px",
-                          height: "250px"
+                          marginRight: '-11%',
+                          marginTop: '-5%',
+                          width: '250px',
+                          height: '250px',
                         }}
                       />
                     </div>
@@ -48,7 +57,7 @@ class Profile extends Component {
                 )}
               </Paper>
 
-              <FavoritedPets />
+              <FavoritedPets id={this.props.match.params.id}/>
               <UsersPosts />
               <AdoptedPets />
             </div>

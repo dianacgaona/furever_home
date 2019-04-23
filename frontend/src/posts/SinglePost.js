@@ -16,7 +16,7 @@ class SinglePost extends Component {
   }
   componentDidMount() {
     this.getPost(this.props.match.params.id);
-    this.getCommentsForSinglePost();
+    this.getCommentsForSinglePost(this.props.match.params.id);
   }
 
   getPost = id => {
@@ -32,9 +32,9 @@ class SinglePost extends Component {
       });
   };
 
-  getCommentsForSinglePost = () => {
+  getCommentsForSinglePost = id => {
     axios
-      .get("/comments/post/5")
+      .get(`/comments/post/${id}`)
       .then(res => {
 
         this.setState({
@@ -58,10 +58,9 @@ class SinglePost extends Component {
   axios.post('/comments', commentInfos)
   .then(() => {
     console.log('SINGLE POST WORKS')
-    this.getCommentsForSinglePost()
+    this.getCommentsForSinglePost(this.props.match.params.id)
   })
   .catch(err => {
-    console.log('SINGLE COMMENT ERR', err)
   })
 }
 
@@ -79,16 +78,16 @@ class SinglePost extends Component {
           <button type='submit' className='postComment'>Post Comment
           </button>
         </form>
-        <div>Comments:{this.displayComments()}</div>
+        <div>Comments:{this.displayComments(this.props.match.params.id)}</div>
       </div>
     );
   };
 
-  displayComments = () => {
+  displayComments = id => {
     let comments = this.state.singlePostComments.map((comment, i) => {
       return (
         <li key={i + 1}>
-          <Link to="/profile" className='commentUser'>{comment.username}</Link>
+          <Link to={`/users/${comment.user_id}`} className='commentUser'>{comment.username}</Link>
           <br/>
           <p className='commentBody'>{comment.comment_body}</p>
         </li>
