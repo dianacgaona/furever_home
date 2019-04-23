@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { getZips } from "../NYCZipcode.js";
-import Auth from "../utils/Auth";
-const axios = require("axios");
+import React, { Component } from 'react';
+import { getZips } from '../NYCZipcode.js';
+import Auth from '../utils/Auth';
+const axios = require('axios');
 
 export const MyContext = React.createContext();
 
@@ -12,10 +12,10 @@ class MyProvider extends Component {
       currentUser: {},
       organizations: [],
       isLoggedIn: false,
-      searchInput: "",
+      searchInput: '',
       shelter: [],
       active: false,
-      selectedBorough: "Manhattan"
+      selectedBorough: 'Manhattan',
     };
   }
 
@@ -26,20 +26,20 @@ class MyProvider extends Component {
 
   loginUser = currentUser => {
     this.setState({
-      currentUser: currentUser
+      currentUser: currentUser,
     });
   };
 
   getOrganization = () => {
     axios
-      .get("/petfinder/organizations")
+      .get('/petfinder/organizations')
       .then(res => {
         let zips = getZips();
         res.data.organizations.forEach(organization => {
-          organization["borough"] = zips[organization.address.postcode];
+          organization['borough'] = zips[organization.address.postcode];
         });
         this.setState({
-          organizations: res.data.organizations
+          organizations: res.data.organizations,
         });
       })
       .catch(err => {
@@ -48,11 +48,11 @@ class MyProvider extends Component {
   };
 
   checkAuthenticateStatus = () => {
-    axios.post("/users/isloggedin").then(currentUser => {
+    axios.post('/users/isloggedin').then(currentUser => {
       if (currentUser.data.email === Auth.getToken()) {
         this.setState({
           isLoggedIn: Auth.isUserAuthenticated(),
-          currentUser: currentUser.data
+          currentUser: currentUser.data,
         });
       } else {
         if (currentUser.data.email) {
@@ -66,7 +66,7 @@ class MyProvider extends Component {
 
   logoutUser = () => {
     axios
-      .post("/users/logout")
+      .post('/users/logout')
       .then(() => {
         Auth.deauthenticateUser();
       })
@@ -78,7 +78,7 @@ class MyProvider extends Component {
   handleSelect = e => {
     this.setState({
       [e.target.name]: e.target.value,
-      active: false
+      active: false,
     });
   };
 
@@ -94,9 +94,9 @@ class MyProvider extends Component {
         .includes(this.state.searchInput.toLowerCase());
     });
     this.setState({
-      searchInput: "",
+      searchInput: '',
       shelter: search,
-      active: true
+      active: true,
     });
   };
 
@@ -110,8 +110,9 @@ class MyProvider extends Component {
             logoutUser: this.logoutUser,
             handleInputChange: this.handleInputChange,
             handleShelterSubmit: this.handleShelterSubmit,
-            handleSelect: this.handleSelect
-          }
+            handleSelect: this.handleSelect,
+            checkAuthenticateStatus: this.checkAuthenticateStatus,
+          },
         }}
       >
         {this.props.children}
