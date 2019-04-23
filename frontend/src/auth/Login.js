@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Paper } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Auth from '../utils/Auth.js';
 
 class Login extends Component {
@@ -12,6 +12,7 @@ class Login extends Component {
     this.state = {
       emailInput: '',
       passwordInput: '',
+      redirect: false,
     };
   }
 
@@ -35,11 +36,18 @@ class Login extends Component {
         this.setState({
           emailInput: '',
           passwordInput: '',
+          redirect: true,
         });
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={'/'} />;
+    }
   };
 
   demoLogin = contextConfirm => {
@@ -63,11 +71,8 @@ class Login extends Component {
   render() {
     return (
       
-
-
 <MyContext.Consumer>
         {context => {
-          console.log(context, 'CONTEXT');
           return (
             <div>
               <Paper
@@ -125,6 +130,7 @@ class Login extends Component {
                     {/*    <button onClick={this.demoLogin} style={{ borderRadius: '1px', color: 'white', backgroundColor: '#001049' }}>Demo Login</button> */}
                   </div>
                 </form>
+                {this.renderRedirect()}
                 <div>
                   <Link to={'/register'}>
                     <p style={{ marginLeft: '7%' }}>

@@ -129,9 +129,9 @@ apiAllOrganizations = async (req, res, next) => {
 
 apiSingleOrganization = async (req, res, next) => {
   let organization;
-  let id = parseInt(req.params.id);
+  let id = req.params.id;
   try {
-    let data = await axios({
+    let { data } = await axios({
       url: `https://api.petfinder.com/v2/organizations/${id}`,
       method: "get",
       headers: {

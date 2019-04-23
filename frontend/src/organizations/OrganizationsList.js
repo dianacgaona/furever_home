@@ -1,35 +1,51 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
+import Paper from "@material-ui/core/Paper";
 
 class OrganizationProfile extends Component {
   constructor() {
     super();
-    this.state = {
-      selectedBorough: ""
-    };
+    this.state = {};
   }
-
-  handleSelect = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   render() {
     return (
       <MyContext.Consumer>
         {context => {
+          let shelterSearch = context.state.shelter.map(shelter => {
+            return (
+              <>
+                <Paper>
+                  <div className="shelterInfo">
+                    <Link to={`/shelters-rescues/${shelter.id}`}>
+                      <p>
+                        {shelter.name}
+                        {", "}
+                        {shelter.address.city},{shelter.address.state}
+                      </p>
+                    </Link>
+                  </div>
+                </Paper>
+              </>
+            );
+          });
           let display = context.state.organizations.map(shelter => {
-            if (shelter.borough === this.state.selectedBorough) {
+            if (shelter.borough === context.state.selectedBorough) {
               return (
-                <>
-                  <p>{shelter.id}</p>
-                  <h3>{shelter.name}</h3>
-                  <p>
-                    {shelter.address.city},{shelter.address.state}
-                  </p>
-                </>
+                <div className='border'>
+                  <Paper style={{width: '96%'}}>
+                    <div className="shelterInfo">
+                      <Link to={`/shelters-rescues/${shelter.id}`} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '1%'}}>
+                        <p style={{textAlign: 'left', fontSize: '26px'}}>{shelter.name}</p>
+                        <p style={{textAlign: 'center'}}>{shelter.address.city},{shelter.address.state}</p>
+                        <p style={{textAlign: 'right'}}>Contact Info</p>
+
+                      </Link>
+                    </div>
+                  </Paper>
+                </div>
               );
             } else {
               return <>{""}</>;
@@ -37,17 +53,34 @@ class OrganizationProfile extends Component {
           });
           return (
             <div>
-              <form type="submit" onSubmit={this.handleSubmit}>
-                <select name="selectedBorough" onChange={this.handleSelect}>
-                  <option value=""> </option>
-                  <option value="Manhattan">Manhattan</option>
-                  <option value="Brooklyn">Brookyln</option>
-                  <option value="Queens">Queens</option>
-                  <option value="Bronx">Bronx</option>
-                  <option value="Staten Island">Staten Island</option>
-                </select>
-              </form>
-              <div>{display}</div>
+              <div className="search">
+                <form type="submit" onSubmit={this.handleSubmit}>
+                  {"Select a Borough"}{" "}
+                  <select
+                    name="selectedBorough"
+                    onChange={context.functions.handleSelect}
+                  >
+                    <option value="Manhattan">Manhattan</option>
+                    <option value="Brooklyn">Brookyln</option>
+                    <option value="Queens">Queens</option>
+                    <option value="Bronx">Bronx</option>
+                  </select>
+                </form>
+                <form
+                  type="submit"
+                  onSubmit={context.functions.handleShelterSubmit}
+                >
+                  {" "}
+                  {"Or"}{" "}
+                  <input
+                    type="text"
+                    value={context.state.searchInput}
+                    onChange={context.functions.handleInputChange}
+                    placeholder="Search By Shelter Name"
+                  />
+                </form>
+              </div>
+              <div>{context.state.active ? shelterSearch : display}</div>
             </div>
           );
         }}
