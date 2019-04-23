@@ -6,14 +6,14 @@ import AddPost from "./AddPost.js";
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
-import Auth from '../utils/Auth.js'
-import axios from 'axios'
+import Auth from "../utils/Auth.js";
+import axios from "axios";
 
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      user_Posts:[]
+      profileUser: []
     };
   }
   componentDidMount() {
@@ -21,10 +21,9 @@ class Profile extends Component {
     // console.log(Auth.getToken());
   }
 
-  getPosts = async() => {
+  getPosts = async () => {
     // const {currentUser} = this.state
-    await
-    axios
+    await axios
       .get(`/posts/byUser/${Auth.getToken()}`)
       .then(res => {
         this.setState({
@@ -37,12 +36,13 @@ class Profile extends Component {
       });
   };
 
-
-
+  // WHEN THIS COMPONENT MOUNTS, SHOULD TAKE THE PARAM ID AND FETCH A USER WITH THAT ID.
+  // STORE THAT USER IN YOUR state
+  // USE THAT USER'S INFO TO FILL IN PROFILE PICS AND STUFF
 
   render() {
     return (
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
@@ -69,15 +69,17 @@ class Profile extends Component {
                 ) : (
                   <div>no user</div>
                 )}
-
-
-                <AddPost  getPosts={this.getPosts}/>) : (<div>no user</div>
+                <AddPost getPosts={this.getPosts} />) : (<div>no user</div>
                 )}
-
               </Paper>
 
-              <FavoritedPets />
-              <UsersPosts currentUser={context.state.currentUser.id} user_Posts={this.state.user_Posts} />
+              <FavoritedPets id={this.props.match.params.id} />
+
+              <UsersPosts
+                currentUser={context.state.currentUser.id}
+                user_Posts={this.state.user_Posts}
+              />
+
               <AdoptedPets />
             </div>
           );

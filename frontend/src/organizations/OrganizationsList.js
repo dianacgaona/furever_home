@@ -34,7 +34,7 @@ class OrganizationProfile extends Component {
                       <p style={{ textAlign: "center" }}>
                         {shelter.address.city},{shelter.address.state}
                       </p>
-                      <p style={{ textAlign: "right" }}>Contact Info</p>
+                      <p style={{ textAlign: "right" }}>{shelter.email}</p>
                     </Link>
                   </div>
                 </Paper>
@@ -56,13 +56,22 @@ class OrganizationProfile extends Component {
                           padding: "1%"
                         }}
                       >
-                        <p style={{ textAlign: "left", fontSize: "26px" }}>
-                          {shelter.name}
+                        <div className="shelterName">
+                          <p style={{ textAlign: "left", fontSize: "26px" }}>
+                            {shelter.name}
+                          </p>
+                        </div>
+                        <div className="shelterAddress">
+                          <p style={{ textAlign: "center" }}>
+                            {shelter.address.city},{shelter.address.state}
+                          </p>
+                        </div>
+                        <p
+                          style={{ textAlign: "right" }}
+                          className="shelterEmail"
+                        >
+                          {shelter.email}
                         </p>
-                        <p style={{ textAlign: "center" }}>
-                          {shelter.address.city},{shelter.address.state}
-                        </p>
-                        <p style={{ textAlign: "right" }}>Contact Info</p>
                       </Link>
                     </div>
                   </Paper>
