@@ -37,22 +37,38 @@ class OrganizationProfile extends Component {
       headers: {},
       data: `organization=${id}`
     }).then(res => {
-      console.log(res.data);
+      console.log(res.data.data.animals);
+      this.setState({
+        animals: res.data.data.animals
+      });
     });
   };
 
   render() {
-    console.log(this.props, "props");
+    let organization = this.state.organization;
+    let address = organization.address;
+    let animals = this.state.animals.map(animal => {
+      console.log(animal.photos[0].full);
+      return (
+        <>
+          <p>{animal.id}</p>
+          <p>{animal.name}</p>
+          <img src={animal.photos[0].full} alt="" />
+        </>
+      );
+    });
     return (
-      <MyContext.Consumer>
-        {context => {
-          return (
-            <div>
-              <h1>Organizations go here</h1>
-            </div>
-          );
-        }}
-      </MyContext.Consumer>
+      <div>
+        <h1>{organization.name}</h1>
+        {address === undefined ? (
+          ""
+        ) : (
+          <p>
+            {address.city}, {address.state}
+          </p>
+        )}
+        {animals}
+      </div>
     );
   }
 }

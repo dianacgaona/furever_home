@@ -16,32 +16,53 @@ class OrganizationProfile extends Component {
         {context => {
           let shelterSearch = context.state.shelter.map(shelter => {
             return (
-              <>
-                <Paper>
+              <div className="border">
+                <Paper style={{ width: "96%" }}>
                   <div className="shelterInfo">
-                    <Link to={`/shelters-rescues/${shelter.id}`}>
-                      <p>
+                    <Link
+                      to={`/shelters-rescues/${shelter.id}`}
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        padding: "1%"
+                      }}
+                    >
+                      <p style={{ textAlign: "left", fontSize: "26px" }}>
                         {shelter.name}
-                        {", "}
+                      </p>
+                      <p style={{ textAlign: "center" }}>
                         {shelter.address.city},{shelter.address.state}
                       </p>
+                      <p style={{ textAlign: "right" }}>Contact Info</p>
                     </Link>
                   </div>
                 </Paper>
-              </>
+              </div>
             );
           });
           let display = context.state.organizations.map(shelter => {
             if (shelter.borough === context.state.selectedBorough) {
               return (
-                <div className='border'>
-                  <Paper style={{width: '96%'}}>
+                <div className="border">
+                  <Paper style={{ width: "96%" }}>
                     <div className="shelterInfo">
-                      <Link to={`/shelters-rescues/${shelter.id}`} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '1%'}}>
-                        <p style={{textAlign: 'left', fontSize: '26px'}}>{shelter.name}</p>
-                        <p style={{textAlign: 'center'}}>{shelter.address.city},{shelter.address.state}</p>
-                        <p style={{textAlign: 'right'}}>Contact Info</p>
-
+                      <Link
+                        to={`/shelters-rescues/${shelter.id}`}
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          padding: "1%"
+                        }}
+                      >
+                        <p style={{ textAlign: "left", fontSize: "26px" }}>
+                          {shelter.name}
+                        </p>
+                        <p style={{ textAlign: "center" }}>
+                          {shelter.address.city},{shelter.address.state}
+                        </p>
+                        <p style={{ textAlign: "right" }}>Contact Info</p>
                       </Link>
                     </div>
                   </Paper>
