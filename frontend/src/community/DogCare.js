@@ -36,28 +36,29 @@ class DogCare extends Component {
     let { dogPost } = this.state;
     return dogPost.map(post => {
       return (
-        <div style={{ padding: '2%' }}>
-          <Paper style={{ padding: '6%', width: '100%' }}>
-            <Link to={`/posts/${post.id}`}><img src={post.post_url} alt="" className='postImage'/></Link>
-            <Link to={`/posts/${post.id}`}>
-              <p className='postTitle'>{post.title}</p></Link>
-              <p className='petType'>Tip for: {post.pet_type}s</p>
-              <p className='postBody'>{post.post_body.slice(0, 50) + '...'}
-            <Link to={`/posts/${post.id}`}>(read more)</Link></p>
-          </Paper>
+        <div>
+            <Paper>
+              <div>
+                <Link to={`/posts/${post.id}`}><img src={post.post_url} alt="" className='postImage'/></Link>
+                <Link to={`/posts/${post.id}`}>
+                  <p className='postTitle'>{post.title}</p></Link>
+                  <p className='petType'>Tip for: {post.pet_type}s</p>
+                  <p className='postBody'>{post.post_body.slice(0, 50) + '...'}
+                  <Link to={`/posts/${post.id}`}>(read more)</Link></p>
+              </div>
+            </Paper>
         </div>
       );
     });
   };
 
   render() {
-    console.log(this.state, 'state');
     return (
       <Paper>
-      <div>
-        <p className='careAdvice'>Dog Care Advice </p>
-        <div className='wholePost'>{this.displayDogPosts()}</div>
-      </div>
+        <div>
+          <p className='careAdvice'>Dog Care Advice </p>
+          <div className='wholePost'>{this.displayDogPosts()}</div>
+        </div>
       </Paper>
     );
   }
