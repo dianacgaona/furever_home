@@ -60,6 +60,26 @@ const createUser = (req, res, next) => {
     });
 };
 
+const updateUserProfile = (req, res, next) => {
+  let queryStringArray = [];
+  let bodyKeys = Object.keys(req.body);
+  bodyKeys.forEach(key => {
+    queryStringArray.push(key + "=${" + key + "}");
+  });
+  let queryString = queryStringArray.join(", ")
+  db
+    .none(
+      "UPDATE users SET " + queryString + " WHERE id=" + req.params.id, req.body
+    )
+    .then(() => {
+      res.status(200).json({
+        status: "success",
+        message: "Updated User Information!"
+      });
+    })
+    .catch(err => next(err));
+};
+
 const deleteUser = (req, res, next) => {
   let userId = parseInt(req.params.id);
   db.result("DELETE FROM users WHERE id=$1", [userId])
@@ -112,6 +132,7 @@ module.exports = {
   getAllUsers,
   getSingleUser,
   createUser,
+  updateUserProfile,
   deleteUser,
   isLoggedIn,
   loginUser,
