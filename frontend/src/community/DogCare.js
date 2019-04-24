@@ -37,16 +37,25 @@ class DogCare extends Component {
     return dogPost.map(post => {
       return (
         <div>
-            <Paper>
-              <div>
-                <Link to={`/posts/${post.id}`}><img src={post.post_url} alt="" className='postImage'/></Link>
-                <Link to={`/posts/${post.id}`}>
-                  <p className='postTitle'>{post.title}</p></Link>
-                  <p className='petType'>Tip for: {post.pet_type}s</p>
-                  <p className='postBody'>{post.post_body.slice(0, 50) + '...'}
+            <div className='fakePaper'>
+              <div className='postDiv'>
+                <div className='linkImg'>
+                <Link  to={`/posts/${post.id}`}><img src={post.post_url} alt="" className='postImage'/></Link>
+                </div>
+                <div className='postInfo'>
+                    <div>
+                      <p className='postTitle'>{post.title}</p>
+                    </div>
+                    <div>
+                      <p className='petType'>Tip for: {post.pet_type}s</p>
+                    </div>
+                    <div>
+                      <p className='postBody'>{post.post_body.slice(0, 50) + '...'}
                   <Link to={`/posts/${post.id}`}>(read more)</Link></p>
+                    </div>
+                </div>
               </div>
-            </Paper>
+            </div>
         </div>
       );
     });
@@ -54,12 +63,12 @@ class DogCare extends Component {
 
   render() {
     return (
-      <Paper>
+      <div className='fakePageBorder'>
         <div>
           <p className='careAdvice'>Dog Care Advice </p>
           <div className='wholePost'>{this.displayDogPosts()}</div>
         </div>
-      </Paper>
+      </div>
     );
   }
 }

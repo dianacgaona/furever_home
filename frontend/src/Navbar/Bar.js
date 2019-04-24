@@ -77,7 +77,7 @@ class Bar extends React.Component {
                     style={{
                       color: '#001049',
                       fontSize: '18px',
-                      marginLeft: '-3%',
+                      marginLeft: '5%',
                     }}
                     className="iLinks"
                   />
@@ -95,8 +95,7 @@ class Bar extends React.Component {
                           alt="Remy Sharp"
                           src={context.state.currentUser.profile_picture}
                           style={{
-                            marginRight: '-11%',
-                            marginTop: '-5%',
+                            marginTop: '-28%',
                             width: '50px',
                             height: '50px',
                           }}
