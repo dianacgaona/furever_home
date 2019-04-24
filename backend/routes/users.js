@@ -8,6 +8,7 @@ const {
   deleteUser,
   createUser,
   updateUserProfile,
+  updateUserLocation,
   logoutUser,
   loginUser,
   isLoggedIn,
@@ -18,6 +19,7 @@ router.get('/:id', getSingleUser);
 router.post('/isloggedin', isLoggedIn);
 router.post('/new', createUser);
 router.patch('/profile/:id',updateUserProfile)
+router.patch('/profile/location/:id',updateUserLocation)
 router.post('/login', passport.authenticate('local'), loginUser);
 router.post('/logout', loginRequired, logoutUser);
 router.delete('/:id', deleteUser);

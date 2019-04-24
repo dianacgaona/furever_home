@@ -52,20 +52,26 @@ class ProfileModal extends React.Component {
   };
   handleSubmit = (e, user) => {
     e.preventDefault();
-    console.log(user)
+    debugger
+    // console.log(user)
     axios
-      .patch(`/users/profile/${user}`, {
+      .patch(
+        `/users/profile/${user}`, {
         username: this.state.inputUsername,
-        city: this.state.inputCity,
-        state: this.state.inputState,
-        about: this.state.inputAboutText
+        about: this.state.inputAboutText,
+        profile_picture: this.state.inputProfile_PictureURL
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
-      .then(res => {
-        this.getPosts();
+      .then(() => {
+      axios.patch(
+        `/users/profile/location/${user}`, {
+        city: this.state.inputCity,
+        state: this.state.inputState
+
+      })
       });
   };
 
@@ -89,7 +95,7 @@ class ProfileModal extends React.Component {
 
                 <form
                   onSubmit={e => {
-                    this.state.handleSubmit(e, context.state.currentUser.id);
+                    this.handleSubmit(e, context.state.currentUser.id);
                   }}
                   id="post_form"
                   className="modalForm"
@@ -140,7 +146,7 @@ class ProfileModal extends React.Component {
                   />
                   <br />
                   <input
-                    onClick={this.closeModal}
+
                     type="submit"
                     value="Make Changes"
                   />
