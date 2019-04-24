@@ -7,6 +7,7 @@ const {
   getSingleUser,
   deleteUser,
   createUser,
+  updateUserProfile,
   logoutUser,
   loginUser,
   isLoggedIn,
@@ -16,6 +17,7 @@ router.get('/', getAllUsers);
 router.get('/:id', getSingleUser);
 router.post('/isloggedin', isLoggedIn);
 router.post('/new', createUser);
+router.patch('/profile/:id',updateUserProfile)
 router.post('/login', passport.authenticate('local'), loginUser);
 router.post('/logout', loginRequired, logoutUser);
 router.delete('/:id', deleteUser);
