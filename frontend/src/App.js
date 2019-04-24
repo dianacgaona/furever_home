@@ -20,8 +20,7 @@ import { MyContext } from './provider/MyProvider';
 class App extends Component {
   render() {
     return (
-
-<div className="App">
+      <div className="App">
         <MyProvider>
           <Navbar />
           <Switch>
@@ -32,17 +31,26 @@ class App extends Component {
             <Route path="/adopted" component={AdoptedPets} />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
-            <Route path="/shelters-rescues" component={OrganizationsList} />
-            <Route path="/posts/:id" render={(props) => {
-              return (
-                <MyContext.Consumer>
-                  {context => <SinglePost {...context.state} {...props}/>}
+            <Route
+              exact
+              path="/shelters-rescues"
+              component={OrganizationsList}
+            />
+            <Route
+              path="/posts/:id"
+              render={props => {
+                return (
+                  <MyContext.Consumer>
+                    {context => <SinglePost {...context.state} {...props} />}
+                  </MyContext.Consumer>
+                );
+              }}
+            />
 
-                </MyContext.Consumer>
-              );
-            }} />
-
-            <Route path="/organizations/:id" component={OrganizationProfile} />
+            <Route
+              path="/shelters-rescues/:id"
+              component={OrganizationProfile}
+            />
 
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
