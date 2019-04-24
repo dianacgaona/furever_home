@@ -3,7 +3,6 @@ import { Paper } from "@material-ui/core";
 import "../css/profile.css";
 import { MyContext } from "../provider/MyProvider";
 import { withRouter } from "react-router-dom";
-// import Auth from '../utils/Auth.js'
 
 class UsersPosts extends Component {
   constructor(props) {
