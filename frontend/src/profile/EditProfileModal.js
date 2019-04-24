@@ -14,8 +14,8 @@ const customStyles = {
 };
 
 class ProfileModal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
@@ -72,7 +72,10 @@ class ProfileModal extends React.Component {
         state: this.state.inputState
 
       })
-      });
+      })
+      .then(()=>{
+        this.props.getSingleUser()
+      })
   };
 
   render() {
