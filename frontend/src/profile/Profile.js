@@ -3,6 +3,7 @@ import FavoritedPets from "./FavoritedPets";
 import AdoptedPets from "./AdoptedPets";
 import UsersPosts from "./UsersPosts";
 import AddPost from "./AddPost.js";
+import ProfileModal from './EditProfileModal.js'
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
@@ -13,7 +14,8 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      profileUser: []
+      profileUser: [],
+      user_Posts:[]
     };
   }
   componentDidMount() {
@@ -69,8 +71,9 @@ class Profile extends Component {
                 ) : (
                   <div>no user</div>
                 )}
-                <AddPost getPosts={this.getPosts} />) : (<div>no user</div>
-                )}
+                <AddPost getPosts={this.getPosts} />
+                <ProfileModal />
+
               </Paper>
 
               <FavoritedPets id={this.props.match.params.id} />
