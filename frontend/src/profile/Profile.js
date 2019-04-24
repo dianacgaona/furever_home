@@ -27,6 +27,13 @@ class Profile extends Component {
     // console.log(Auth.getToken());
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.getPosts();
+      this.getSingleUser(this.props.match.params.id);
+    }
+  }
+
   getPosts = async () => {
     // const {currentUser} = this.state
     await axios
