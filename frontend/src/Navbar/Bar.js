@@ -1,8 +1,8 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Tabs,
@@ -11,11 +11,11 @@ import {
   Paper,
   Grid,
   Avatar
-} from "@material-ui/core";
-import { MyContext } from "../provider/MyProvider";
+} from '@material-ui/core';
+import { MyContext } from '../provider/MyProvider';
 
-import "../css/navbar.css";
-let logo = require("../assets/logo.png");
+import '../css/navbar.css';
+let logo = require('../assets/logo.png');
 
 function TabContainer(props) {
   return (
@@ -26,19 +26,19 @@ function TabContainer(props) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
-  }
+    backgroundColor: theme.palette.background.paper,
+  },
 });
 
 class Bar extends React.Component {
   state = {
-    value: 2
+    value: 2,
   };
 
   handleChange = (event, value) => {
@@ -50,7 +50,10 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      <MyContext.Consumer>
+
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div className={classes.root}>
@@ -61,46 +64,46 @@ class Bar extends React.Component {
                   className="navbar"
                 >
                   <div className="logoContainer">
-                    <NavLink to={"/"} className="logoLink">
+                    <NavLink to={'/'} className="logoLink">
                       <img src={logo} alt="" className="logo" />
                     </NavLink>
                   </div>
 
                   <div className="fureverHome">
-                    <NavLink to={"/"}>furever home</NavLink>
+                    <NavLink to={'/'}>furever home</NavLink>
                   </div>
                   <Tab
                     label="BREEDS"
                     style={{
-                      color: "#001049",
-                      fontSize: "18px",
-                      marginLeft: "-3%"
+                      color: '#001049',
+                      fontSize: '18px',
+                      marginLeft: '-3%',
                     }}
                     className="iLinks"
                   />
 
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: "#001049", fontSize: "18px" }}
+                    style={{ color: '#001049', fontSize: '18px' }}
                     className="iLinks"
                   />
 
                   {context.state.currentUser.username ? (
                     <div className="username">
-                      <NavLink to={`users/${context.state.currentUser.id}`}>
+                      <NavLink to={`/user/${context.state.currentUser.id}`}>
                         <Avatar
                           alt="Remy Sharp"
                           src={context.state.currentUser.profile_picture}
                           style={{
-                            marginRight: "-11%",
-                            marginTop: "-5%",
-                            width: "50px",
-                            height: "50px"
+                            marginRight: '-11%',
+                            marginTop: '-5%',
+                            width: '50px',
+                            height: '50px',
                           }}
                         />
                       </NavLink>
                       <NavLink
-                        to={`/users/${context.state.currentUser.id}`}
+                        to={`/user/${context.state.currentUser.id}`}
                         className="username"
                       >
                         {context.state.currentUser.username}
@@ -116,9 +119,9 @@ class Bar extends React.Component {
                   ) : (
                     <div className="loginCont">
                       <NavLink
-                        to={"/login"}
+                        to={'/login'}
                         className="register"
-                        style={{ fontSize: "15px" }}
+                        style={{ fontSize: '15px' }}
                       >
                         LOGIN / REGISTER
                       </NavLink>
@@ -183,7 +186,7 @@ class Bar extends React.Component {
 }
 
 Bar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Bar);
