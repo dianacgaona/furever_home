@@ -17,6 +17,7 @@ class SinglePost extends Component {
   componentDidMount() {
     this.getPost(this.props.match.params.id);
     this.getCommentsForSinglePost(this.props.match.params.id);
+    this.displaySinglePost(this.props.match.params.id)
   }
 
   getPost = id => {
@@ -62,7 +63,7 @@ class SinglePost extends Component {
       .catch(err => {});
   };
 
-  displaySinglePost = () => {
+  displaySinglePost = id => {
     let { singlePost } = this.state;
     return (
       <div>
@@ -71,7 +72,7 @@ class SinglePost extends Component {
         <div>
           <img src={singlePost.post_url} alt="" />
         </div>
-        <Link to="/profile" className="userName">
+        <Link to={`/user/${singlePost.user_id}`} className="userName">
           By: {singlePost.username}
         </Link>
         <p className="body">{singlePost.post_body}</p>
@@ -95,7 +96,7 @@ class SinglePost extends Component {
     let comments = this.state.singlePostComments.map((comment, i) => {
       return (
         <li key={i + 1}>
-          <Link to={`/users/${comment.user_id}`} className="commentUser">
+          <Link to={`/user/${comment.user_id}`} className="commentUser">
             {comment.username}
           </Link>
           <br />

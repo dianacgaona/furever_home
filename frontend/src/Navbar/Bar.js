@@ -78,7 +78,7 @@ class Bar extends React.Component {
                     <div className="username">
                     <Avatar alt="Remy Sharp" src={context.state.currentUser.profile_picture} style={{ marginRight: '-11%', marginTop: '-5%', width: '50px', height: '50px' }}
                     />
-                      <NavLink to={`/users/${context.state.currentUser.id}`} className="username">
+                      <NavLink to={`/user/${context.state.currentUser.id}`} className="username">
                         {context.state.currentUser.username}
                       </NavLink>
                       <button
