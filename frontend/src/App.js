@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import Profile from './profile/Profile';
+import UsersProfiles from './profile/UsersProfiles';
 import AdoptedPets from './profile/AdoptedPets';
 import OrganizationsList from './organizations/OrganizationsList';
 import OrganizationProfile from './organizations/OrganizationProfile';
@@ -27,7 +28,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/users/:id" component={Profile} />
+            <Route path="/user/:id" component={Profile} />
             <Route path="/adopted" component={AdoptedPets} />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
