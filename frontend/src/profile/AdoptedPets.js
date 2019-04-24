@@ -7,19 +7,18 @@ import '../css/profile.css';
 class AdoptedPets extends Component {
   constructor() {
     super();
-
     this.state = {
       adoptedPets: []
     };
   }
 
   componentDidMount() {
-    this.getAdopted();
+    this.getAdopted(this.props.id);
   }
 
-  getAdopted = () => {
+  getAdopted = id => {
     axios
-      .get("/adopted/users/1")
+      .get(`/adopted/users/${id}`)
       .then(res => {
         this.setState({
           adoptedPets: res.data.adopted
@@ -47,7 +46,7 @@ class AdoptedPets extends Component {
 
 
   render() {
-    // console.log(this.state);
+    console.log('ADOPTED', this.state);
     return (
       <MyContext.Consumer>
         {context => {

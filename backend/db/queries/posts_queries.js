@@ -1,26 +1,26 @@
-const { db } = require("../index.js");
+const { db } = require('../index.js');
 
 const getAllPosts = (req, res, next) => {
-  db.any("SELECT * FROM posts").then(posts => {
+  db.any('SELECT * FROM posts').then(posts => {
     res.status(200).json({
-      status: "Success",
+      status: 'Success',
       posts: posts,
-      message: "YOU GOT POSTS"
+      message: 'YOU GOT POSTS',
     });
   });
 };
 
 const getAllPostsbyUser = (req, res, next) => {
-  let userId = req.params.id
+  let userId = parseInt(req.params.id);
   db.any(
-    "SELECT posts.id,posts.user_id,posts.title,posts.post_body,posts.pet_type,post_url FROM posts JOIN users ON users.id = posts.user_id WHERE users.email=$1",
+    'SELECT * FROM posts WHERE posts.user_id=$1',
     [userId]
   )
     .then(post => {
       res.status(200).json({
-        status: "Success",
+        status: 'Success',
         post: post,
-        message: "All Posts by User"
+        message: 'All Posts by User',
       });
     })
     .catch(err => {
@@ -29,12 +29,12 @@ const getAllPostsbyUser = (req, res, next) => {
 };
 
 const getAllDogPosts = (req, res, next) => {
-  db.any("SELECT * FROM posts WHERE pet_type=$1", ["Dog"])
+  db.any('SELECT * FROM posts WHERE pet_type=$1', ['Dog'])
     .then(post => {
       res.status(200).json({
-        status: "Success",
+        status: 'Success',
         post: post,
-        message: "GOT ALL DOG POSTS"
+        message: 'GOT ALL DOG POSTS',
       });
     })
     .catch(err => {
@@ -43,12 +43,12 @@ const getAllDogPosts = (req, res, next) => {
 };
 
 const getAllCatPosts = (req, res, next) => {
-  db.any("SELECT * FROM posts WHERE pet_type=$1", ["Cat"])
+  db.any('SELECT * FROM posts WHERE pet_type=$1', ['Cat'])
     .then(post => {
       res.status(200).json({
-        status: "Success",
+        status: 'Success',
         post: post,
-        message: "GOT ALL CAT POSTS"
+        message: 'GOT ALL CAT POSTS',
       });
     })
     .catch(err => {
@@ -59,14 +59,14 @@ const getAllCatPosts = (req, res, next) => {
 const getSinglePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
   db.one(
-    "SELECT username,posts.id,user_id,title,post_body,pet_type,post_url FROM posts JOIN users ON users.id = posts.user_id WHERE posts.id=$1",
+    'SELECT username,posts.id,user_id,title,post_body,pet_type,post_url FROM posts JOIN users ON users.id = posts.user_id WHERE posts.id=$1',
     [postId]
   )
     .then(post => {
       res.status(200).json({
-        status: "Success",
+        status: 'Success',
         post: post,
-        message: "THATS ONE POST"
+        message: 'THATS ONE POST',
       });
     })
     .catch(err => {
@@ -76,12 +76,12 @@ const getSinglePost = (req, res, next) => {
 
 const createPost = (req, res, next) => {
   db.none(
-    "INSERT INTO posts (user_id, title, pet_type, post_body,post_url) VALUES (${user_id}, ${title}, ${pet_type}, ${post_body},${post_url})",
+    'INSERT INTO posts (user_id, title, pet_type, post_body,post_url) VALUES (${user_id}, ${title}, ${pet_type}, ${post_body},${post_url})',
     req.body
   )
     .then(() => {
       res.status(200).json({
-        message: "OH THATS A POST"
+        message: 'OH THATS A POST',
       });
     })
     .catch(err => {
@@ -91,12 +91,12 @@ const createPost = (req, res, next) => {
 
 const deletePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
-  db.result("DELETE FROM posts WHERE id=$1", [postId])
+  db.result('DELETE FROM posts WHERE id=$1', [postId])
     .then(result => {
       res.status(200).json({
-        status: "Success",
-        message: "POST ALL GONE",
-        result: result
+        status: 'Success',
+        message: 'POST ALL GONE',
+        result: result,
       });
     })
     .catch(err => {
@@ -111,5 +111,5 @@ module.exports = {
   getAllCatPosts,
   getSinglePost,
   createPost,
-  deletePost
+  deletePost,
 };

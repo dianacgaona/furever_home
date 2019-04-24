@@ -15,8 +15,7 @@ router.get('/', getAllPosts);
 router.get('/dogs', getAllDogPosts);
 router.get('/cats', getAllCatPosts);
 router.post('/', createPost);
-
-router.get('/byUser/:id', getAllPostsbyUser)
+router.get('/byUser/:id', getAllPostsbyUser);
 router.get('/:id', getSinglePost);
 router.delete('/:id', deletePost);
 
