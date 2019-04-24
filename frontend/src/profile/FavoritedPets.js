@@ -7,7 +7,6 @@ import '../css/profile.css';
 class FavoritedPets extends Component {
   constructor() {
     super();
-
     this.state = {
       userFavs: []
     };
@@ -46,7 +45,6 @@ class FavoritedPets extends Component {
   };
 
   render() {
-    console.log('USER FAVES',this.state);
     return (
       <MyContext.Consumer>
         {context => {

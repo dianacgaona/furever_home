@@ -36,7 +36,6 @@ class Profile extends Component {
   getPosts = id => {
     axios.get(`/posts/byUser/${id}`)
       .then(res => {
-        debugger;
         this.setState({
           user_Posts: res.data.post,
         });
@@ -102,7 +101,7 @@ class Profile extends Component {
                 user_Posts={this.state.user_Posts}
               />
 
-              <AdoptedPets />
+              <AdoptedPets id={this.props.match.params.id}/>
             </div>
           );
                 }}
