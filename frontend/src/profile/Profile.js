@@ -14,7 +14,6 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      // profileUser: null,
       profileUser: {},
       user_Posts: [],
 
@@ -22,7 +21,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
+    this.getPosts(this.props.match.params.id);
     this.getSingleUser(this.props.match.params.id);
     // console.log(Auth.getToken());
   }
@@ -34,24 +33,19 @@ class Profile extends Component {
     }
   }
 
-  getPosts = async () => {
-    // const {currentUser} = this.state
-    await axios
-      .get(`/posts/byUser/${Auth.getToken()}`)
+  getPosts = id => {
+    axios.get(`/posts/byUser/${id}`)
       .then(res => {
+        debugger;
         this.setState({
           user_Posts: res.data.post,
         });
         console.log(res);
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
       });
   };
-
-  // WHEN THIS COMPONENT MOUNTS, SHOULD TAKE THE PARAM ID AND FETCH A USER WITH THAT ID.
-  // STORE THAT USER IN YOUR state
-  // USE THAT USER'S INFO TO FILL IN PROFILE PICS AND
 
   getSingleUser = () => {
       axios.get(`/users/${this.props.match.params.id}`)
@@ -62,17 +56,6 @@ class Profile extends Component {
         console.log('SINGLE USER ERRR', err);
       });
     };
-
-  // handleProfileUsername = (currentUser, profileUser) => {
-  //     if (currentUser.id === Number(profileUser.id)) {
-  //       return <p>{currentUser.username}</p>;
-  //     } else {
-  //       return <p>{profileUser.username}</p>;
-  //     }
-  //   } else {
-  //     return <p>Not a User</p>;
-  //   }
-  // };
 
   render() {
     const profileId = this.props.match.params.id;
