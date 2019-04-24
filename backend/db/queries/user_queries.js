@@ -79,6 +79,25 @@ const updateUserProfile = (req, res, next) => {
     })
     .catch(err => next(err));
 };
+const updateUserLocation = (req, res, next) => {
+  let queryStringArray = [];
+  let bodyKeys = Object.keys(req.body);
+  bodyKeys.forEach(key => {
+    queryStringArray.push(key + "=${" + key + "}");
+  });
+  let queryString = queryStringArray.join(", ")
+  db
+    .none(
+      "UPDATE location SET " + queryString + " WHERE id=" + req.params.id, req.body
+    )
+    .then(() => {
+      res.status(200).json({
+        status: "success",
+        message: "Updated User location!"
+      });
+    })
+    .catch(err => next(err));
+};
 
 const deleteUser = (req, res, next) => {
   let userId = parseInt(req.params.id);
@@ -133,6 +152,7 @@ module.exports = {
   getSingleUser,
   createUser,
   updateUserProfile,
+  updateUserLocation,
   deleteUser,
   isLoggedIn,
   loginUser,
