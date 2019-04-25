@@ -18,7 +18,7 @@
 .username {
   margin-left: 25%;
   margin-top: 2%;
-  padding-right: 13%;
+  padding-right: 11%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 900;
   font-size: '15px';
@@ -55,6 +55,7 @@
   font-weight: 900;
   color: #001049;
   margin-right: 18%;
+  padding-top: .5%;
 }
 
 .navbar {
