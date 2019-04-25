@@ -7,7 +7,7 @@ import ProfileModal from "./EditProfileModal.js";
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
-import Auth from "../utils/Auth.js";
+// import Auth from "../utils/Auth.js";
 import axios from "axios";
 
 class Profile extends Component {
@@ -59,7 +59,7 @@ class Profile extends Component {
   };
 
   render() {
-    const profileId = this.props.match.params.id;
+    // const profileId = this.props.match.params.id;
     return (
       <MyContext.Consumer>
         {context => {
