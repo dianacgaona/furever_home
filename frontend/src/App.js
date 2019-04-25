@@ -15,6 +15,8 @@ import DogCare from "./community/DogCare";
 import SinglePost from "./posts/SinglePost";
 import PetsList from "./pets/PetsList";
 import PetProfile from "./pets/PetProfile";
+import DogBreeds from "./breeds/DogBreeds.js";
+import CatBreeds from "./breeds/CatBreeds.js";
 import { MyContext } from "./provider/MyProvider";
 
 class App extends Component {
@@ -54,6 +56,8 @@ class App extends Component {
 
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
+            <Route path="/dogs" component={DogBreeds} />
+            <Route Path="/cats" component={CatBreeds} />
           </Switch>
         </MyProvider>
       </div>
