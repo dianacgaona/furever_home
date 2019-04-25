@@ -21,6 +21,14 @@
  margin-top: -12%;
 }
 
-.addPostCont {
-  
+.buttonCont {
+  margin-top: 1%;
+}
+
+.profileButton {
+  color: white;
+  background-color: #001049;
+  width: 123px;
+  margin-left: 4%;
+  font-size: 19px;
 }
