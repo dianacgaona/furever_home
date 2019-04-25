@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -9,7 +8,7 @@ class OrganizationProfile extends Component {
 
     this.state = {
       organization: {},
-      animals: [],
+      animals: []
     };
   }
 
@@ -22,9 +21,8 @@ class OrganizationProfile extends Component {
     axios
       .get(`/petfinder/organizations/${id}`)
       .then(res => {
-        console.log(res.data.organization);
         this.setState({
-          organization: res.data.organization,
+          organization: res.data.organization
         });
       })
       .catch(err => {
@@ -34,47 +32,60 @@ class OrganizationProfile extends Component {
 
   getAnimals = id => {
     axios({
-      url: '/petfinder/animalquery',
-      method: 'post',
+      url: "/petfinder/animalquery",
+      method: "post",
       headers: {},
-      data: `organization=${id}`,
+      data: `organization=${id}`
     }).then(res => {
       this.setState({
-        animals: res.data.data.animals,
+        animals: res.data.data.animals
       });
     });
   };
 
   displayAnimals = () => {
+    // debugger;
     let animals = this.state.animals;
-    return animals.map(animal => {
-      let photo = animal.photos;
+    if (!animals.length) {
       return (
-        <div key={animal.id}>
-          <Link to={`/animals/${animal.id}`}>
-            <h1>{animal.name}</h1>
-          </Link>
-          {photo.length === 0 ? (
-            <div>
-              <img
-                src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
-                alt=""
-              />
-            </div>
-          ) : (
-            <Link to={`/animals/${animal.id}`}>
-              <img src={animal.photos[0].medium} alt="" />
-            </Link>
-          )}
+        <div>
+          <h1>No pets available at the moment. Come back later!</h1>
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/31%2B1BFEVV9L._SX425_.jpg"
+            alt=""
+          />
         </div>
       );
-    });
+    } else {
+      return animals.map(animal => {
+        let photo = animal.photos;
+        return (
+          <div key={animal.id}>
+            <Link to={`/animals/${animal.id}`}>
+              <h1>{animal.name}</h1>
+            </Link>
+            {photo.length === 0 ? (
+              <div>
+                <img
+                  src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
+                  alt=""
+                />
+              </div>
+            ) : (
+              <Link to={`/animals/${animal.id}`}>
+                <img src={animal.photos[0].medium} alt="" />
+              </Link>
+            )}
+          </div>
+        );
+      });
+    }
   };
 
   render() {
     let organization = this.state.organization;
     let address = organization.address;
-
+    // console.log("animals", this.state.animals);
     return (
       <div>
         <h1>{organization.name}</h1>
@@ -86,7 +97,7 @@ class OrganizationProfile extends Component {
         </div>
 
         {address === undefined ? (
-          ''
+          ""
         ) : (
           <div>
             <p>Location:</p>
@@ -100,7 +111,7 @@ class OrganizationProfile extends Component {
           <p>{organization.email}</p>
         </div>
         <div>
-          <h3>Find a buddy to take home </h3>
+          <h3>Buddies available to take home </h3>
           <div>{this.displayAnimals()}</div>
         </div>
       </div>
