@@ -7,7 +7,6 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Profile from "./profile/Profile";
 import UsersProfiles from "./profile/UsersProfiles";
-import AdoptedPets from "./profile/AdoptedPets";
 import OrganizationsList from "./organizations/OrganizationsList";
 import OrganizationProfile from "./organizations/OrganizationProfile";
 import CatCare from "./community/CatCare";
@@ -29,8 +28,23 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/user/:id" component={Profile} />
-            <Route path="/adopted" component={AdoptedPets} />
+
+            <Route
+              path="/user/:id"
+              render={props => {
+                return (
+                  <MyContext.Consumer>
+                    {context => (
+                      <Profile
+                        currentUser={context.state.currentUser}
+                        {...props}
+                      />
+                    )}
+                  </MyContext.Consumer>
+                );
+              }}
+
+            />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
             <Route
@@ -47,6 +61,7 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
+
             />
 
             <Route

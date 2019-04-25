@@ -15,7 +15,6 @@ class AddPost extends Component {
   }
 
   handleChange = e => {
-    // console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -23,7 +22,6 @@ class AddPost extends Component {
 
   handleSubmit = (e, user) => {
     e.preventDefault();
-    // console.log(user)
     axios
       .post(`/posts/`, {
         user_id: user,
@@ -33,8 +31,6 @@ class AddPost extends Component {
         pet_type: this.state.pet_type
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
         this.setState({
           inputTitleText: "",
           inputBodyText: "",
@@ -48,9 +44,6 @@ class AddPost extends Component {
   };
 
   render() {
-    // console.log(this.state.inputPost_Url);
-    console.log(this.props, "props");
-
     return (
       <MyContext.Consumer>
         {context => {
