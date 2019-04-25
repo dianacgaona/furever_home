@@ -6,7 +6,6 @@ import Home from "./home/Home";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Profile from "./profile/Profile";
-import UsersProfiles from "./profile/UsersProfiles";
 import OrganizationsList from "./organizations/OrganizationsList";
 import OrganizationProfile from "./organizations/OrganizationProfile";
 import CatCare from "./community/CatCare";
@@ -43,7 +42,6 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
-
             />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
@@ -61,7 +59,6 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
-
             />
 
             <Route
