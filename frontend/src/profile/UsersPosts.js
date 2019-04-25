@@ -13,26 +13,33 @@ class UsersPosts extends Component {
   }
 
   displayPosts = () => {
-    let posts = this.props.user_Posts.map((post, i) => {
+    let posts = this.props.user_Posts;
+    return posts.map(post => {
       return (
-        <div key={i}>
-          <Paper style={{ padding: "2%", marginTop: "1%" }}>
-            <p className="favoritedTitle">{post.title}</p>
-            <img src={post.post_url} alt="imageNotWorking" className="favImg" />
-          </Paper>
+        <div key={post.id}>
+          <Link to={`/posts/${post.id}`}>
+            <h3 className="favoritedTitle">{post.title}</h3>
+          </Link>
+          <Link to={`/posts/${post.id}`}>
+            <img src={post.post_url} alt="" className="favImg" />
+          </Link>
         </div>
       );
     });
-
-    return <>{posts}</>;
   };
 
   render() {
-    console.log("Props: ", this.props);
     return (
       <MyContext.Consumer>
         {context => {
-          return <div> {this.displayPosts()} </div>;
+          return (
+            <React.Fragment>
+              <Paper style={{ padding: "2%", marginTop: "1%" }}>
+                <h3>Posts by User</h3>
+                <div>{this.displayPosts()}</div>
+              </Paper>
+            </React.Fragment>
+          );
         }}
       </MyContext.Consumer>
     );

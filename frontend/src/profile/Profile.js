@@ -7,7 +7,6 @@ import ProfileModal from "./EditProfileModal.js";
 import { MyContext } from "../provider/MyProvider";
 import { Paper, Avatar } from "@material-ui/core";
 import "../css/profile.css";
-// import Auth from "../utils/Auth.js";
 import axios from "axios";
 
 class Profile extends Component {
@@ -22,7 +21,6 @@ class Profile extends Component {
   componentDidMount() {
     this.getPosts(this.props.match.params.id);
     this.getSingleUser(this.props.match.params.id);
-    // console.log(Auth.getToken());
   }
 
   componentDidUpdate(prevProps) {
@@ -39,7 +37,6 @@ class Profile extends Component {
         this.setState({
           user_Posts: res.data.post
         });
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -53,13 +50,11 @@ class Profile extends Component {
         this.setState({ profileUser: res.data.user });
       })
       .catch(err => {
-        console.log(this.props.match.params.id);
-        console.log("SINGLE USER ERRR", err);
+        console.log("SINGLE USER ERROR", err);
       });
   };
 
   render() {
-    // const profileId = this.props.match.params.id;
     return (
       <MyContext.Consumer>
         {context => {
@@ -89,14 +84,12 @@ class Profile extends Component {
                   <div>no user</div>
                 )}
 
-              {this.state.profileUser.id === this.props.currentUser.id ? (
-                <div>
-                  <AddPost getPosts={this.getPosts} />
-                  <ProfileModal />
-                </div>
-                ) :
-                null}
-
+                {this.state.profileUser.id === this.props.currentUser.id ? (
+                  <div>
+                    <AddPost getPosts={this.getPosts} />
+                    <ProfileModal />
+                  </div>
+                ) : null}
               </Paper>
 
               <FavoritedPets id={this.props.match.params.id} />
