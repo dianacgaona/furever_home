@@ -28,6 +28,7 @@ class UsersPosts extends Component {
   };
 
   render() {
+    console.log("Props: ", this.props);
     return (
       <MyContext.Consumer>
         {context => {
