@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import FavoritedPets from './FavoritedPets';
-import AdoptedPets from './AdoptedPets';
-import UsersPosts from './UsersPosts';
-import AddPost from './AddPost.js';
-import ProfileModal from './EditProfileModal.js';
-import { MyContext } from '../provider/MyProvider';
-import { Paper, Avatar } from '@material-ui/core';
-import '../css/profile.css';
-import Auth from '../utils/Auth.js';
-import axios from 'axios';
+import React, { Component } from "react";
+import FavoritedPets from "./FavoritedPets";
+import AdoptedPets from "./AdoptedPets";
+import UsersPosts from "./UsersPosts";
+import AddPost from "./AddPost.js";
+import ProfileModal from "./EditProfileModal.js";
+import { MyContext } from "../provider/MyProvider";
+import { Paper, Avatar } from "@material-ui/core";
+import "../css/profile.css";
+import Auth from "../utils/Auth.js";
+import axios from "axios";
 
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
       profileUser: {},
-      user_Posts: [],
-
+      user_Posts: []
     };
   }
 
@@ -34,10 +33,11 @@ class Profile extends Component {
   }
 
   getPosts = id => {
-    axios.get(`/posts/byUser/${id}`)
+    axios
+      .get(`/posts/byUser/${id}`)
       .then(res => {
         this.setState({
-          user_Posts: res.data.post,
+          user_Posts: res.data.post
         });
         console.log(res);
       })
@@ -47,46 +47,45 @@ class Profile extends Component {
   };
 
   getSingleUser = () => {
-      axios.get(`/users/${this.props.match.params.id}`)
+    axios
+      .get(`/users/${this.props.match.params.id}`)
       .then(res => {
-              this.setState({ profileUser: res.data.user });
-            }).catch(err => {
+        this.setState({ profileUser: res.data.user });
+      })
+      .catch(err => {
         console.log(this.props.match.params.id);
-        console.log('SINGLE USER ERRR', err);
+        console.log("SINGLE USER ERRR", err);
       });
-    };
+  };
 
   render() {
     const profileId = this.props.match.params.id;
     return (
-
-
-
-<MyContext.Consumer>
-                {context => {
-                  return (
+      <MyContext.Consumer>
+        {context => {
+          return (
+            <div>
+              <Paper style={{ padding: "8%" }}>
+                {context.state.currentUser ? (
+                  <div>
+                    <div className="usernameProf">
+                      {this.state.profileUser.username}
+                    </div>
                     <div>
-                      <Paper style={{ padding: '8%' }}>
-                        {context.state.currentUser ? (
-                          <div>
-                            <div className="usernameProf">
-                              {this.state.profileUser.username}
-                            </div>
-                            <div>
-                              <Avatar
-                                alt="Remy Sharp"
-                                src={this.state.profileUser.profile_picture}
-                                style={{
-                                  marginRight: '-11%',
-                                  marginTop: '-5%',
-                                  width: '250px',
-                                  height: '250px',
-                                }}
-                              />
-                            </div>
-                          <div>{this.state.profileUser.about}</div>
-                        </div>
-                  ) : (
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={this.state.profileUser.profile_picture}
+                        style={{
+                          marginRight: "-11%",
+                          marginTop: "-5%",
+                          width: "250px",
+                          height: "250px"
+                        }}
+                      />
+                    </div>
+                    <div>{this.state.profileUser.about}</div>
+                  </div>
+                ) : (
                   <div>no user</div>
                 )}
 
@@ -107,10 +106,10 @@ class Profile extends Component {
                 user_Posts={this.state.user_Posts}
               />
 
-              <AdoptedPets id={this.props.match.params.id}/>
+              <AdoptedPets id={this.props.match.params.id} />
             </div>
           );
-                }}
+        }}
       </MyContext.Consumer>
     );
   }

@@ -14,15 +14,18 @@ const customStyles = {
 };
 
 class ProfileModal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
+      inputProfile_PictureURL:'',
       inputUsername: "",
       inputAge: "",
       inputLocation: "",
-      inputBioText: ""
+      inputCity: "",
+      inputState: "",
+      inputAboutText: ""
     };
 
     this.openModal = this.openModal.bind(this);
@@ -49,21 +52,30 @@ class ProfileModal extends React.Component {
   };
   handleSubmit = (e, user) => {
     e.preventDefault();
+    debugger
     // console.log(user)
     axios
-      .post(`/users/`, {
+      .patch(
+        `/users/profile/${user}`, {
         username: this.state.inputUsername,
-        age: this.state.inputAge,
-        location: this.state.inputLocation,
-        bio: this.state.inputBioText
+        about: this.state.inputAboutText,
+        profile_picture: this.state.inputProfile_PictureURL
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
-      .then(res => {
-        this.getPosts();
-      });
+      .then(() => {
+      axios.patch(
+        `/users/profile/location/${user}`, {
+        city: this.state.inputCity,
+        state: this.state.inputState
+
+      })
+      })
+      .then(()=>{
+        this.props.getSingleUser()
+      })
   };
 
   render() {
@@ -86,11 +98,21 @@ class ProfileModal extends React.Component {
 
                 <form
                   onSubmit={e => {
-                    this.state.handleSubmit(e, context.state.currentUser.id);
+                    this.handleSubmit(e, context.state.currentUser.id);
                   }}
                   id="post_form"
                   className="modalForm"
                 >
+                  Change or Add Profile Picture
+
+                  <input
+                    type="text"
+                    value={this.state.inputProfile_PictureURL}
+                    onChange={this.handleChange}
+                    placeholder="Photo Url"
+                    name="inputProfile_PictureURL"
+                  />
+                  Username
                   <input
                     type="text"
                     value={this.state.inputUsername}
@@ -98,29 +120,39 @@ class ProfileModal extends React.Component {
                     placeholder="Username"
                     name="inputUsername"
                   />
+                  Where are you from
+                  <br />
+                  City
                   <input
                     type="text"
-                    value={this.state.inputAge}
+                    value={this.state.inputCity}
                     onChange={this.handleChange}
-                    placeholder="Age"
-                    name="inputAge"
+                    placeholder="City"
+                    name="inputCity"
                   />
+                  State
                   <input
                     type="text"
-                    value={this.state.inputLocation}
+                    value={this.state.inputState}
                     onChange={this.handleChange}
-                    placeholder="Location"
-                    name="inputLocation"
+                    placeholder="State"
+                    name="inputState"
                   />
+                  <br />
+                  Tell us about yourself
                   <input
                     type="text"
                     value={this.state.inputBioText}
                     onChange={this.handleChange}
-                    placeholder="Bio"
-                    name="inputBioText"
+                    placeholder="About"
+                    name="inputAboutText"
                   />
+                  <br />
+                  <input
 
-                  <input  onClick={this.closeModal}type="submit" value="Edit Profile" />
+                    type="submit"
+                    value="Make Changes"
+                  />
                 </form>
                 <button onClick={this.closeModal}>close</button>
               </Modal>
