@@ -88,8 +88,15 @@ class Profile extends Component {
                 ) : (
                   <div>no user</div>
                 )}
-                <AddPost getPosts={this.getPosts} />
-                <ProfileModal getSingleUser={this.getSingleUser} />
+
+              {this.state.profileUser.id === this.props.currentUser.id ? (
+                <div>
+                  <AddPost getPosts={this.getPosts} />
+                  <ProfileModal />
+                </div>
+                ) :
+                null}
+
               </Paper>
 
               <FavoritedPets id={this.props.match.params.id} />

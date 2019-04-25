@@ -117,6 +117,6 @@ class OrganizationProfile extends Component {
       </MyContext.Consumer>
     );
   }
-}
+} 
 
 export default OrganizationProfile;
