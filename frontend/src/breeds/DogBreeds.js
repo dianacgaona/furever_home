@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 const axios = require("axios");
 
 class DogBreeds extends Component {
@@ -30,14 +31,41 @@ class DogBreeds extends Component {
     });
   };
 
-  render() {
-    let dogs = this.state.animals.map(dog => {
+  displayAnimals = () => {
+    // debugger;
+    let animals = this.state.animals;
+    return animals.map(animal => {
+      let photo = animal.photos;
       return (
-        <>
-          <p>{dog.name}</p>
-        </>
+        <div key={animal.id}>
+          <Link to={`/animals/${animal.id}`}>
+            <h1>{animal.name}</h1>
+            <p>{animal.breed}</p>
+            {animal.colors.primary === null ? (
+              ""
+            ) : (
+              <p>{animal.colors.primary}</p>
+            )}
+            <p>{animal.age}</p>
+          </Link>
+          {photo.length === 0 ? (
+            <div>
+              <img
+                src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
+                alt=""
+              />
+            </div>
+          ) : (
+            <Link to={`/animals/${animal.id}`}>
+              <img src={animal.photos[0].medium} alt="" />
+            </Link>
+          )}
+        </div>
       );
     });
+  };
+
+  render() {
     return (
       <>
         <form>
@@ -56,7 +84,7 @@ class DogBreeds extends Component {
           </select>
         </form>
         <button onClick={this.getanimals}>Search</button>
-        {dogs}
+        <div>{this.displayAnimals()}</div>
       </>
     );
   }

@@ -42,7 +42,6 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
-
             />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
@@ -60,7 +59,6 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
-
             />
 
             <Route
