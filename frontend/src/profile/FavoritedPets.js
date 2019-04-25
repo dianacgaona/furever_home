@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
-import { Paper, Avatar } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import "../css/profile.css";
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,7 @@ class FavoritedPets extends Component {
           return (
             <div>
               <Paper style={{ padding: "2%", marginTop: "1%" }}>
-                <p className="favoritedTitle">Favorited Pets Go Here</p>
+                <p className="favoritedTitle">Favorite Pets</p>
                 <div className="favImg">{this.displayFavorites()}</div>
               </Paper>
             </div>
