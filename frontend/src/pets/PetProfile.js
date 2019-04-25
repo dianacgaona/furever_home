@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
+import React, { Component } from "react";
+import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
 
 class PetProfile extends Component {
   constructor() {
@@ -8,6 +8,7 @@ class PetProfile extends Component {
 
     this.state = {
       profile: {},
+
     };
   }
 
@@ -18,32 +19,44 @@ class PetProfile extends Component {
 
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
-      debugger;
+      // debugger;
       this.setState({
-        profile: res.data.animal,
+        profile: res.data.animal
       });
     });
   };
 
   displayPetProfile = () => {
-    let { profile } = this.state;
-    return (
-      <div>
-        <h1>{profile.name}</h1>
+    if (this.state.profile.photos) {
+      console.log(this.state.profile.photos[0].small);
+      let { profile } = this.state;
+      return (
         <div>
-          <img src={profile.photos} alt="" />
+          <h1>{profile.name}</h1>
+          <h1>{profile.age}</h1>
+          <h1>{profile.color}</h1>
+          <h1>{profile.organization_id}</h1>
+          <h1>{profile.description}</h1>
+          <h1>{profile.contact.address.city}</h1>
+
+          <h1>{profile.status}</h1>
+
+          <div>
+            <img src={profile.photos[0].medium} alt="" />
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <h2> oH NO </h2>
+    }
   };
 
   render() {
-    console.log('Profile', this.state.profile);
+    // console.log("Profile", this.state.profile);
+    console.log(this.state)
+
     return (
-      
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
