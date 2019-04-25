@@ -27,7 +27,20 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/user/:id" component={Profile} />
+
+            <Route
+              path="/user/:id"
+              render={props => {
+                return (
+                  <MyContext.Consumer>
+                    {context =>
+                      <Profile currentUser={context.state.currentUser} {...props}
+                      />}
+                 </MyContext.Consumer>
+               );
+              }}
+
+          />
             <Route path="/adopted" component={AdoptedPets} />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
@@ -45,6 +58,7 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
+
             />
 
             <Route
