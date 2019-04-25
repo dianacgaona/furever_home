@@ -21,7 +21,6 @@ class Profile extends Component {
   componentDidMount() {
     this.getPosts(this.props.match.params.id);
     this.getSingleUser(this.props.match.params.id);
-    // console.log(Auth.getToken());
   }
 
   componentDidUpdate(prevProps) {
@@ -38,7 +37,6 @@ class Profile extends Component {
         this.setState({
           user_Posts: res.data.post,
         });
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -52,13 +50,12 @@ class Profile extends Component {
         this.setState({ profileUser: res.data.user });
       })
       .catch(err => {
-        console.log(this.props.match.params.id);
-        console.log('SINGLE USER ERRR', err);
+        console.log("SINGLE USER ERROR", err);
+
       });
   };
 
   render() {
-    const profileId = this.props.match.params.id;
     return (
 
 
@@ -104,6 +101,7 @@ class Profile extends Component {
                 </Paper>
 
                 <FavoritedPets id={this.props.match.params.id} />
+
 
                 <UsersPosts
                   currentUser={context.state.currentUser.id}

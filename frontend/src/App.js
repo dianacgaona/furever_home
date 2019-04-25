@@ -7,7 +7,6 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Profile from "./profile/Profile";
 import UsersProfiles from "./profile/UsersProfiles";
-import AdoptedPets from "./profile/AdoptedPets";
 import OrganizationsList from "./organizations/OrganizationsList";
 import OrganizationProfile from "./organizations/OrganizationProfile";
 import CatCare from "./community/CatCare";
@@ -15,6 +14,8 @@ import DogCare from "./community/DogCare";
 import SinglePost from "./posts/SinglePost";
 import PetsList from "./pets/PetsList";
 import PetProfile from "./pets/PetProfile";
+import DogBreeds from "./breeds/DogBreeds.js";
+import CatBreeds from "./breeds/CatBreeds.js";
 import { MyContext } from "./provider/MyProvider";
 
 class App extends Component {
@@ -33,15 +34,17 @@ class App extends Component {
               render={props => {
                 return (
                   <MyContext.Consumer>
-                    {context =>
-                      <Profile currentUser={context.state.currentUser} {...props}
-                      />}
-                 </MyContext.Consumer>
-               );
+                    {context => (
+                      <Profile
+                        currentUser={context.state.currentUser}
+                        {...props}
+                      />
+                    )}
+                  </MyContext.Consumer>
+                );
               }}
 
-          />
-            <Route path="/adopted" component={AdoptedPets} />
+            />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
             <Route
@@ -68,6 +71,8 @@ class App extends Component {
 
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
+            <Route path="/dogs" component={DogBreeds} />
+            <Route Path="/cats" component={CatBreeds} />
           </Switch>
         </MyProvider>
       </div>
