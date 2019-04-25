@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Paper } from "@material-ui/core";
 import "../css/profile.css";
 import { MyContext } from "../provider/MyProvider";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class UsersPosts extends Component {
   constructor(props) {
@@ -28,7 +28,6 @@ class UsersPosts extends Component {
   };
 
   render() {
-    // console.log(this.state, 'state');
     return (
       <MyContext.Consumer>
         {context => {
