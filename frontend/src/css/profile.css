@@ -1,42 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
-/* .container {
-  display: grid;
-  grid-template-columns: 50px 50px 50px 50px;
-  grid-template-rows: auto;
-  grid-template-areas: 'header header header header'
-                       'main main sidebar sidebar'
-} */
 
 .usernameProf {
-  font-size: 32px;
+  font-size: 45px;
   text-transform: uppercase;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-bottom: 7%;
   margin-top: -6%;
-  padding-left: 4%;
+  padding-left: 3%;
 }
 
 .profilePicCont {
   padding-bottom: 2%;
-  /* grid-area: main; */
 }
 
 .aboutMe {
- /* grid-area: sidebar; */
  font-family: 'Open Sans Condensed', sans-serif;
- font-size: 28px;
+ font-size: 32px;
  margin-left: 37%;
  margin-top: -12%;
 }
 
-.favoritedTitle {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-}
-
-.favImg {
-  width: 300px;
-  display: flex;
+.addPostCont {
+  
 }

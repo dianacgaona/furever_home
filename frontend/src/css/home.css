@@ -23,12 +23,11 @@
   justify-content: center;
   text-align: center;
   background-color: rgba(208, 199, 198, 0.3);
-  margin-right: 20%;
-  margin-left: 20%;
-  margin-top: 0%;
+  margin-right: 25%;
+  margin-left: 25%;
   position: relative;
   z-index: 1;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 
 .wallpaper {
