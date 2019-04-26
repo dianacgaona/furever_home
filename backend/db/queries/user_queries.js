@@ -62,6 +62,7 @@ const createUser = (req, res, next) => {
 
 const updateUserProfile = (req, res, next) => {
   let queryStringArray = [];
+  // let userId = parseInt()
   let bodyKeys = Object.keys(req.body);
   bodyKeys.forEach(key => {
     queryStringArray.push(key + "=${" + key + "}");
