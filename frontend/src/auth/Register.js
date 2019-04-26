@@ -1,34 +1,34 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
-import { Link, Redirect, NavLink } from "react-router-dom";
-import Auth from "../utils/Auth.js";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import { Link, Redirect, NavLink } from 'react-router-dom';
+import Auth from '../utils/Auth.js';
 
 class Register extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      passwordInput: "",
-      emailInput: "",
-      usernameInput: "",
-      redirect: false
+      passwordInput: '',
+      emailInput: '',
+      usernameInput: '',
+      redirect: false,
     };
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post("/users/new", {
+      .post('/users/new', {
         email: this.state.emailInput,
         password_digest: this.state.passwordInput,
-        username: this.state.usernameInput
+        username: this.state.usernameInput,
       })
       .then(res => {
         Auth.authenticateUser(res.data.email);
@@ -36,18 +36,18 @@ class Register extends Component {
       })
       .then(() => {
         axios
-          .post("/users/login", {
+          .post('/users/login', {
             email: this.state.emailInput,
-            password: this.state.passwordInput
+            password: this.state.passwordInput,
           })
           .then(res => {
-            console.log("LOGIN SUCCESS?");
+            console.log('LOGIN SUCCESS?');
             contextConfirm(res.data);
             this.setState({
-              emailInput: "",
-              passwordInput: "",
-              usernameInput: "",
-              redirect: true
+              emailInput: '',
+              passwordInput: '',
+              usernameInput: '',
+              redirect: true,
             });
           });
       })
@@ -58,18 +58,19 @@ class Register extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={"/"} />;
+      return <Redirect to={'/'} />;
     }
   };
 
   render() {
-    console.log("props: ", this.props);
-    debugger;
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           if (context.state.currentUser.id) {
-            return <Redirect to={"/"} />;
+            return <Redirect to={'/'} />;
           } else {
             return (
               <div>
@@ -104,7 +105,7 @@ class Register extends Component {
                 </form>
                 {this.renderRedirect()}
                 <div>
-                  <Link to={"/login"}>Already a member? Log in</Link>
+                  <Link to={'/login'}>Already a member? Log in</Link>
                 </div>
               </div>
             );

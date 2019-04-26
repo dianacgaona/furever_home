@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import MyProvider from "./provider/MyProvider";
-import Navbar from "./Navbar/Navbar";
-import Home from "./home/Home";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import Profile from "./profile/Profile";
-import OrganizationsList from "./organizations/OrganizationsList";
-import OrganizationProfile from "./organizations/OrganizationProfile";
-import CatCare from "./community/CatCare";
-import DogCare from "./community/DogCare";
-import SinglePost from "./posts/SinglePost";
-import PetsList from "./pets/PetsList";
-import PetProfile from "./pets/PetProfile";
-import DogBreeds from "./breeds/DogBreeds.js";
-import CatBreeds from "./breeds/CatBreeds.js";
-import { MyContext } from "./provider/MyProvider";
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import MyProvider from './provider/MyProvider';
+import Navbar from './Navbar/Navbar';
+import Home from './home/Home';
+import Login from './auth/Login';
+import Register from './auth/Register';
+import Profile from './profile/Profile';
+import OrganizationsList from './organizations/OrganizationsList';
+import OrganizationProfile from './organizations/OrganizationProfile';
+import CatCare from './community/CatCare';
+import DogCare from './community/DogCare';
+import SinglePost from './posts/SinglePost';
+import PetsList from './pets/PetsList';
+import PetProfile from './pets/PetProfile';
+import DogBreeds from './breeds/DogBreeds.js';
+import CatBreeds from './breeds/CatBreeds.js';
+import { MyContext } from './provider/MyProvider';
 
 class App extends Component {
   render() {

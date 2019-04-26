@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "../css/shelterprofile.css";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -44,7 +45,6 @@ class OrganizationProfile extends Component {
   };
 
   displayAnimals = () => {
-    // debugger;
     let animals = this.state.animals;
     if (!animals.length) {
       return (
@@ -85,34 +85,40 @@ class OrganizationProfile extends Component {
   render() {
     let organization = this.state.organization;
     let address = organization.address;
-    // console.log("animals", this.state.animals);
     return (
-      <div>
-        <h1>{organization.name}</h1>
-        <div>
-          <img
-            src="https://i.pinimg.com/736x/9b/a3/4d/9ba34d2df7de09b8694ab6bddf2c8b61--animal-shelter-logo-inspiration.jpg"
-            alt=""
-          />
-        </div>
-
-        {address === undefined ? (
-          ""
-        ) : (
-          <div>
-            <p>Location:</p>
-            <p>
-              {address.city}, {address.state}
-            </p>
+      <div className="organization_div">
+        <h1 className="organization_name">{organization.name}</h1>
+        <div className="organization_info">
+          <div className="organization_pic">
+            <img
+              src="https://i.pinimg.com/736x/9b/a3/4d/9ba34d2df7de09b8694ab6bddf2c8b61--animal-shelter-logo-inspiration.jpg"
+              alt=""
+            />
           </div>
-        )}
-        <div>
-          <p>Contact us at: </p>
-          <p>{organization.email}</p>
+          <div>
+            {address === undefined ? (
+              <div>
+                <p>Address not available</p>
+              </div>
+            ) : (
+              <div className="organization_details">
+                <p>Location:</p>
+                <p>
+                  {address.city}, {address.state}
+                </p>
+              </div>
+            )}
+            <div className="organization_details">
+              <p>Contact us at: </p>
+              <p>{organization.email}</p>
+            </div>
+          </div>
         </div>
         <div>
-          <h3>Buddies available to take home </h3>
-          <div>{this.displayAnimals()}</div>
+          <h3 className="organization_divider">
+            Buddies available to take home{" "}
+          </h3>
+          <div className="organization_animals">{this.displayAnimals()}</div>
         </div>
       </div>
     );

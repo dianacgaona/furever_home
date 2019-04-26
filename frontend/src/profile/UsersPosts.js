@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { Paper } from "@material-ui/core";
-import "../css/profile.css";
-import { MyContext } from "../provider/MyProvider";
-import { Link, withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { Paper } from '@material-ui/core';
+import '../css/profile.css';
+import '../css/profilePosts.css';
+import { MyContext } from '../provider/MyProvider';
+import { Link, withRouter } from 'react-router-dom';
 
 class UsersPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: ""
+      currentUser: '',
     };
   }
 
@@ -16,13 +17,15 @@ class UsersPosts extends Component {
     let posts = this.props.user_Posts;
     return posts.map(post => {
       return (
-        <div key={post.id}>
-          <Link to={`/posts/${post.id}`}>
-            <h3 className="favoritedTitle">{post.title}</h3>
-          </Link>
-          <Link to={`/posts/${post.id}`}>
-            <img src={post.post_url} alt="" className="favImg" />
-          </Link>
+        <div className='postsProfCont'>
+          <div key={post.id}>
+            <Link to={`/posts/${post.id}`}>
+              <p className='profPostTitle'>{post.title}</p>
+            </Link>
+            <Link to={`/posts/${post.id}`}>
+              <img src={post.post_url} alt="" className="postImg" />
+            </Link>
+          </div>
         </div>
       );
     });
@@ -30,13 +33,17 @@ class UsersPosts extends Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <React.Fragment>
-              <Paper style={{ padding: "2%", marginTop: "1%" }}>
-                <h3>Posts by User</h3>
-                <div>{this.displayPosts()}</div>
+
+              <Paper style={{ padding: '2%', marginTop: '1%' }}>
+                <p className="postsTitle">Posts by User</p>
+                <div className='postsPetImg'>{this.displayPosts()}</div>
               </Paper>
             </React.Fragment>
           );

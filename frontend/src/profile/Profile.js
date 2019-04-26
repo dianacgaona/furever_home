@@ -50,7 +50,7 @@ class Profile extends Component {
         this.setState({ profileUser: res.data.user });
       })
       .catch(err => {
-        console.log("SINGLE USER ERROR", err);
+        console.log('SINGLE USER ERROR', err);
 
       });
   };
@@ -79,19 +79,19 @@ class Profile extends Component {
                           style={{
                             marginRight: '-11%',
                             marginTop: '-5%',
-                            width: '250px',
-                            height: '250px',
+                            width: '260px',
+                            height: '260px',
                           }}
                         />
                       </div>
-                      <div className='aboutMe'>{this.state.profileUser.about}</div>
+                      <div className='aboutMe'>"{this.state.profileUser.about}""</div>
                     </div>
                   ) : (
                     <div>no user</div>
                   )}
 
                 {this.state.profileUser.id === this.props.currentUser.id ? (
-                  <div>
+                  <div className='addPostCont'>
                     <AddPost getPosts={this.getPosts} />
                     <ProfileModal getSingleUser={this.getSingleUser}/>
                   </div>
