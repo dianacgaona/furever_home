@@ -93,7 +93,7 @@ class Profile extends Component {
                 {this.state.profileUser.id === this.props.currentUser.id ? (
                   <div>
                     <AddPost getPosts={this.getPosts} />
-                    <ProfileModal />
+                    <ProfileModal getSingleUser={this.getSingleUser}/>
                   </div>
                   ) :
                   null}
