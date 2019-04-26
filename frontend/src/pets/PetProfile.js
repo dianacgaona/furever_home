@@ -28,14 +28,10 @@ class PetProfile extends Component {
 
   favoriteAnAnimal = () => {
     axios
-      .post(`/favorited`,
-        {
-          pet_id:this.state.pet_id
-        }
-      )
-      .then(res => {
-
+      .post(`/favorited`, {
+        pet_id: this.state.pet_id
       })
+      .then(res => {})
       .catch(err => {
         console.log(err);
       });
