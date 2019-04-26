@@ -68,40 +68,53 @@ class SinglePost extends Component {
     return (
       <div>
         <p className="postTitleCom">{singlePost.title}</p>
-        <p className="petTypeCom">Tip for: {singlePost.pet_type}s</p>
-        <div>
-          <img src={singlePost.post_url} alt="" />
-        </div>
-        <Link to={`/user/${singlePost.user_id}`} className="userName">
-          By: {singlePost.username}
-        </Link>
-        <p className="body">{singlePost.post_body}</p>
-        <form className="form" onSubmit={this.addComment}>
-          <input
-            id="myComment"
-            type="text"
-            placeholder="Share your thoughts"
-            className="input"
-          />
-          <button type="submit" className="postComment">
-            Post Comment
-          </button>
-        </form>
-        <div>Comments:{this.displayComments(this.props.match.params.id)}</div>
-      </div>
+          <div className='usernameContainer'>
+            <Link to={`/user/${singlePost.user_id}`} className="userName">
+              By: {singlePost.username}
+            </Link>
+          </div>
+            <p className="petTypeCom">Tip for: {singlePost.pet_type}s</p>
+              <div>
+                <img src={singlePost.post_url} alt="" />
+              </div>
+              <div className='bodyContainer'>
+                <p className="body">{singlePost.post_body}</p>
+              </div>
+              <div className='formContainer'>
+                <form className="form" onSubmit={this.addComment}>
+                  <input
+                    id="myComment"
+                    type="text"
+                    placeholder="Share your thoughts..."
+                    className="input"
+                  />
+                  <button type="submit" className="postComment">
+                  <p>Post Comment</p>
+                  </button>
+                </form>
+             </div>
+          <div className='borderborderComments'>
+            <div className='borderComments'>
+              <div className='comments'>Comments:</div>
+              <div className='commentName'>{this.displayComments(this.props.match.params.id)}</div>
+              </div>
+           </div>
+         </div>
     );
   };
 
   displayComments = id => {
     let comments = this.state.singlePostComments.map((comment, i) => {
       return (
-        <li key={i + 1}>
-          <Link to={`/user/${comment.user_id}`} className="commentUser">
-            {comment.username}
-          </Link>
-          <br />
-          <p className="commentBody">{comment.comment_body}</p>
-        </li>
+        <div className='commentBorder'>
+          <li key={i + 1}>
+            <Link to={`/user/${comment.user_id}`} className="commentUser">
+              {comment.username}
+            </Link>
+            <br />
+            <p className="commentBody">{comment.comment_body}</p>
+          </li>
+        </div>
       );
     });
     return (
@@ -112,7 +125,6 @@ class SinglePost extends Component {
   };
 
   render() {
-    console.log("LIKE COREY", this.state);
     return (
       <Paper style={{ padding: "2%" }}>
         <div>{this.displaySinglePost()}</div>

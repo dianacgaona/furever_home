@@ -35,7 +35,7 @@ class CatCare extends Component {
     let { catPost } = this.state;
     return catPost.map(post => {
       return (
-        <div>
+        <div className='postGod'>
             <div className='fakePaper'>
               <div className='postDiv'>
                 <div className='linkImg'>
