@@ -28,7 +28,8 @@
 .profileButton {
   color: white;
   background-color: #001049;
-  width: 123px;
+  width: 120px;
   margin-left: 4%;
-  font-size: 19px;
+  font-size: 18px;
+  border-radius: 2px;
 }

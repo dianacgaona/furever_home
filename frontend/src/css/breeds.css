@@ -15,10 +15,18 @@
 .form_borough {
   font-size: 30px;
   font-weight: bold;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-transform: uppercase;
 }
 
 .form_select {
   margin: 10px;
+  color: white;
+  background-color: #001049;
+}
+
+.selectBoro {
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .animal_container {

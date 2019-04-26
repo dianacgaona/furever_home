@@ -41,6 +41,7 @@ class PostModal extends React.Component {
   }
 
   render() {
+    // console.log(this.props);
     return (
 
 
@@ -65,6 +66,7 @@ class PostModal extends React.Component {
 
                 <form
                   onSubmit={e => {
+                    debugger
                     this.props.handleSubmit(e, context.state.currentUser.id);
                   }}
 

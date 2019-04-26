@@ -15,6 +15,7 @@ class Profile extends Component {
     this.state = {
       profileUser: {},
       user_Posts: [],
+
     };
   }
 
@@ -25,12 +26,14 @@ class Profile extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
+      // debugger
       this.getPosts();
       this.getSingleUser(this.props.match.params.id);
     }
   }
 
   getPosts = id => {
+    debugger
     axios
       .get(`/posts/byUser/${id}`)
       .then(res => {
@@ -41,6 +44,7 @@ class Profile extends Component {
       .catch(err => {
         console.log(err);
       });
+      console.log(this.state, "Get Posts");
   };
 
   getSingleUser = () => {
@@ -56,6 +60,7 @@ class Profile extends Component {
   };
 
   render() {
+    // console.log(this.state, "profile state");/
     return (
 
 
@@ -92,7 +97,7 @@ class Profile extends Component {
 
                 {this.state.profileUser.id === this.props.currentUser.id ? (
                   <div className='addPostCont'>
-                    <AddPost getPosts={this.getPosts} />
+                    <AddPost getPosts={this.getPosts} user_Posts={this.state.user_Posts} />
                     <ProfileModal getSingleUser={this.getSingleUser}/>
                   </div>
                   ) :
