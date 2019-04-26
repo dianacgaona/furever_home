@@ -1,16 +1,16 @@
-import React from "react";
-import Modal from "react-modal";
-import { MyContext } from "../provider/MyProvider";
-import axios from "axios";
+import React from 'react';
+import Modal from 'react-modal';
+import { MyContext } from '../provider/MyProvider';
+import axios from 'axios';
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
 };
 
 class ProfileModal extends React.Component {
@@ -19,13 +19,13 @@ class ProfileModal extends React.Component {
 
     this.state = {
       modalIsOpen: false,
-      inputProfile_PictureURL:'',
-      inputUsername: "",
-      inputAge: "",
-      inputLocation: "",
-      inputCity: "",
-      inputState: "",
-      inputAboutText: ""
+      inputProfile_PictureURL: '',
+      inputUsername: '',
+      inputAge: '',
+      inputLocation: '',
+      inputCity: '',
+      inputState: '',
+      inputAboutText: '',
     };
 
     this.openModal = this.openModal.bind(this);
@@ -39,52 +39,58 @@ class ProfileModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = '#2F1847';
   }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
   }
+
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
+
   handleSubmit = (e, user) => {
     e.preventDefault();
-    debugger
+    debugger;
     // console.log(user)
     axios
       .patch(
         `/users/profile/${user}`, {
         username: this.state.inputUsername,
         about: this.state.inputAboutText,
-        profile_picture: this.state.inputProfile_PictureURL
+        profile_picture: this.state.inputProfile_PictureURL,
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
       .then(() => {
-      axios.patch(
-        `/users/profile/location/${user}`, {
-        city: this.state.inputCity,
-        state: this.state.inputState
+        axios.patch(
+          `/users/profile/location/${user}`, {
+          city: this.state.inputCity,
+          state: this.state.inputState,
 
+        });
       })
-      })
-      .then(()=>{
-        this.props.getSingleUser()
-      })
+      .then(()=> {
+        this.props.getSingleUser();
+      });
   };
 
   render() {
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
-              <button onClick={this.openModal}>Edit Profile</button>
+              <button onClick={this.openModal}
+                      className='profileButton'>Edit Profile</button>
               <Modal
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
@@ -93,13 +99,14 @@ class ProfileModal extends React.Component {
                 contentLabel="Example Modal"
               >
                 <h2 ref={subtitle => (this.subtitle = subtitle)}>
-                  Fill out the fields and click Submit{" "}
+                  Fill out the fields and click Submit{' '}
                 </h2>
 
                 <form
                   onSubmit={e => {
                     this.handleSubmit(e, context.state.currentUser.id);
                   }}
+
                   id="post_form"
                   className="modalForm"
                 >

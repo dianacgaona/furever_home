@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
+import '../css/adopted.css';
 
-import Modal from "react-modal";
-import { MyContext } from "../provider/MyProvider";
+import Modal from 'react-modal';
+import { MyContext } from '../provider/MyProvider';
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
 };
 
 class PostModal extends React.Component {
@@ -18,7 +19,7 @@ class PostModal extends React.Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -32,7 +33,7 @@ class PostModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = '#2F1847';
   }
 
   closeModal() {
@@ -41,11 +42,16 @@ class PostModal extends React.Component {
 
   render() {
     return (
-      <MyContext.Consumer>
+
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
-              <button onClick={this.openModal}>Add a Post</button>
+              <div className='buttonCont'>
+                <button onClick={this.openModal} className='profileButton'>Add a Post</button>
+              </div>
               <Modal
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
@@ -54,13 +60,14 @@ class PostModal extends React.Component {
                 contentLabel="Example Modal"
               >
                 <h2 ref={subtitle => (this.subtitle = subtitle)}>
-                  Fill out the fields and click Submit{" "}
+                  Fill out the fields and click Submit{' '}
                 </h2>
 
                 <form
                   onSubmit={e => {
                     this.props.handleSubmit(e, context.state.currentUser.id);
                   }}
+
                   id="post_form"
                   className="modalForm"
 
@@ -91,7 +98,7 @@ class PostModal extends React.Component {
                     type="radio"
                     name="pet_type"
                     value="Dog"
-                    checked={this.props.pet_type === "Dog"}
+                    checked={this.props.pet_type === 'Dog'}
                     onChange={this.props.handleChange}
                   />
                   Cat
@@ -99,7 +106,7 @@ class PostModal extends React.Component {
                     type="radio"
                     name="pet_type"
                     value="Cat"
-                    checked={this.props.pet_type === "Cat"}
+                    checked={this.props.pet_type === 'Cat'}
                     onChange={this.props.handleChange}
                   />
                   <input  type="submit" value="Add Post" />

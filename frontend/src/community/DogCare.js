@@ -36,7 +36,7 @@ class DogCare extends Component {
     let { dogPost } = this.state;
     return dogPost.map(post => {
       return (
-        <div>
+        <div className='postGod'>
             <div className='fakePaper'>
               <div className='postDiv'>
                 <div className='linkImg'>
