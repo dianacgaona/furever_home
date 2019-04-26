@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import '../css/approval.css';
 
 const styles = theme => ({
   container: {
@@ -40,6 +40,7 @@ class PreApproval extends React.Component {
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
+        <div className='namedob'>
         <TextField
           id="name"
           label="Name"
@@ -55,6 +56,7 @@ class PreApproval extends React.Component {
           className={classes.textField}
           margin="normal"
         />
+        </div>
 
           <TextField
           id="address"
@@ -104,7 +106,9 @@ class PreApproval extends React.Component {
           className={classes.textField}
           margin="normal"
         />
-
+        <div>
+          <button>Submit</button>
+        </div>
       </form>
     );
   }

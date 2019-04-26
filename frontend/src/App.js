@@ -47,6 +47,7 @@ class App extends Component {
             />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
+            <Route path="/pre-approval" component={PreApproval} />
             <Route
               exact
               path="/shelters-rescues"
@@ -63,17 +64,13 @@ class App extends Component {
               }}
 
             />
-
             <Route
               path="/shelters-rescues/:id"
-              component={OrganizationProfile}
-            />
-
+              component={OrganizationProfile}/>
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
             <Route path="/dogs" component={DogBreeds} />
             <Route Path="/cats" component={CatBreeds} />
-            <Route path="/pre-approval" component={PreApproval} />
           </Switch>
         </MyProvider>
       </div>
