@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
+import "../css/petprofile.css";
 
 class PetProfile extends Component {
   constructor() {
@@ -28,15 +29,23 @@ class PetProfile extends Component {
       return <h2> Loading... </h2>;
     } else {
       return (
-        <div>
-          <h1>{profile.name}</h1>
-          <div>
-            <img src={profile.photos[0].medium} alt="" />
+        <div className="animal_div">
+          <h1 className="animal_name">{profile.name}</h1>
+          <div className="animal_info">
+            <div>
+              <img
+                className="animal_pic"
+                src={profile.photos[0].medium}
+                alt=""
+              />
+            </div>
+            <div>
+              <h3 className="animal_detail">{profile.age}</h3>
+              <h3 className="animal_detail">{profile.color}</h3>
+              <h3 className="animal_detail">{profile.description}</h3>
+              <h3 className="animal_detail">{profile.contact.address.city}</h3>
+            </div>
           </div>
-          <h1>{profile.age}</h1>
-          <h1>{profile.color}</h1>
-          <h1>{profile.description}</h1>
-          <h1>{profile.contact.address.city}</h1>
         </div>
       );
     }
