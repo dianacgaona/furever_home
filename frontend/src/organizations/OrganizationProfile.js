@@ -44,7 +44,6 @@ class OrganizationProfile extends Component {
   };
 
   displayAnimals = () => {
-    // debugger;
     let animals = this.state.animals;
     if (!animals.length) {
       return (
@@ -85,7 +84,6 @@ class OrganizationProfile extends Component {
   render() {
     let organization = this.state.organization;
     let address = organization.address;
-    // console.log("animals", this.state.animals);
     return (
       <div>
         <h1>{organization.name}</h1>
@@ -95,9 +93,10 @@ class OrganizationProfile extends Component {
             alt=""
           />
         </div>
-
         {address === undefined ? (
-          ""
+          <div>
+            <p>Address not available</p>
+          </div>
         ) : (
           <div>
             <p>Location:</p>

@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-const axios = require("axios");
+import "../css/breeds.css";
+import axios from "axios";
 
-class CatBreeds extends Component {
+class DogBreeds extends Component {
   state = {
     selectedBorough: "",
-    animals: []
+    animals: [],
+    Manhattan:
+      "NY644,NY818,NY1184,NY557,NY744,NY599,NY123,NY1288,NY679,NY955,NY1360,NY693,NY993,NY1192,NY1438,NY704,NY1312,NY262,NY1043,NY1122,NY161,NY251,NY1115,NY714,NY1400,NY1199,NY1392,NY874,NY864,NY1042,NY139,NY1437,NY20,NY440,NY93,NY1041,NY100,NY488,NY245,NY934,NY1286,NY479,NY606",
+    Brookyln:
+      "NY803,NY505,NY1278,NY1367,NY1416,NY1317,NY773,NY1190,NY06,NY1297,NY1424,NY794,NY922,NY1072,NY1073,NY467,NY637,NY729,NY1359,NY1023,NY962,NY1140,NY1408,NY947",
+    Queens:
+      "NY102,NY178,NY992,NY1156,NY879,NY1422,NY600,NY525,NY1211,NY1045,NY666,NY791,NY887,NY151,NY1425,NY1293,NY1113,NY1414,NY1376,NY408,NY1047,NY1145,NY455,NY1419,NY1271,NY790",
+    Bronx: "NY587,NY652,NY434,NY517"
   };
 
-  getanimals = e => {
+  getAnimals = e => {
+    e.preventDefault();
     axios({
       url: "http://localhost:3000/petfinder/animalquery",
       method: "post",
@@ -32,24 +41,16 @@ class CatBreeds extends Component {
   };
 
   displayAnimals = () => {
-    // debugger;
     let animals = this.state.animals;
     return animals.map(animal => {
       let photo = animal.photos;
       return (
-        <div key={animal.id}>
+        <div key={animal.id} className="animal_single">
           <Link to={`/animals/${animal.id}`}>
-            <h1>{animal.name}</h1>
-            <p>{animal.breed}</p>
-            {animal.colors.primary === null ? (
-              ""
-            ) : (
-              <p>{animal.colors.primary}</p>
-            )}
-            <p>{animal.age}</p>
+            <h1 className="animal_name">{animal.name}</h1>
           </Link>
           {photo.length === 0 ? (
-            <div>
+            <div className="animal_pic">
               <img
                 src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
                 alt=""
@@ -57,37 +58,63 @@ class CatBreeds extends Component {
             </div>
           ) : (
             <Link to={`/animals/${animal.id}`}>
-              <img src={animal.photos[0].medium} alt="" />
+              <div className="animal_pic">
+                <img src={animal.photos[0].medium} alt="" />
+              </div>
             </Link>
           )}
+          <p className="animal_details">{animal.breed}</p>
+          {animal.colors.primary === null ? (
+            ""
+          ) : (
+            <p className="animal_details">{animal.colors.primary}</p>
+          )}
+          <p className="animal_details">{animal.age}</p>
         </div>
       );
     });
   };
 
+  displayForm = () => {
+    return (
+      <>
+        <div className="form_borough">Find Cats by Borough</div>
+        <form onSubmit={this.getAnimals}>
+          <select
+            className="form_select"
+            name="selectedBorough"
+            onChange={this.handleSelect}
+          >
+            <option disabled selected>
+              Select a borough
+            </option>
+            <option name="Manhattan" value={this.state.Manhattan}>
+              Manhattan
+            </option>
+            <option name="Brooklyn" value={this.state.Brookyln}>
+              Brookyln
+            </option>
+            <option name="Queens" value={this.state.Queens}>
+              Queens
+            </option>
+            <option name="Bronx" value={this.state.Bronx}>
+              Bronx
+            </option>
+          </select>
+          <button>Search</button>
+        </form>
+      </>
+    );
+  };
+
   render() {
     return (
       <>
-        <form>
-          {"Select a Borough"}{" "}
-          <select name="selectedBorough" onChange={this.handleSelect}>
-            <option value="NY644,NY818,NY1184,NY557,NY744,NY599,NY123,NY1288,NY679,NY955,NY1360,NY693,NY993,NY1192,NY1438,NY704,NY1312,NY262,NY1043,NY1122,NY161,NY251,NY1115,NY714,NY1400,NY1199,NY1392,NY874,NY864,NY1042,NY139,NY1437,NY20,NY440,NY93,NY1041,NY100,NY488,NY245,NY934,NY1286,NY479,NY606">
-              Manhattan
-            </option>
-            <option value="NY803,NY505,NY1278,NY1367,NY1416,NY1317,NY773,NY1190,NY06,NY1297,NY1424,NY794,NY922,NY1072,NY1073,NY467,NY637,NY729,NY1359,NY1023,NY962,NY1140,NY1408,NY947">
-              Brookyln
-            </option>
-            <option value="NY102,NY178,NY992,NY1156,NY879,NY1422,NY600,NY525,NY1211,NY1045,NY666,NY791,NY887,NY151,NY1425,NY1293,NY1113,NY1414,NY1376,NY408,NY1047,NY1145,NY455,NY1419,NY1271,NY790">
-              Queens
-            </option>
-            <option value="NY587,NY652,NY434,NY517">Bronx</option>
-          </select>
-        </form>
-        <button onClick={this.getanimals}>Search</button>
-        <div>{this.displayAnimals()}</div>
+        <div className="breed_form">{this.displayForm()}</div>
+        <div className="animal_container">{this.displayAnimals()}</div>
       </>
     );
   }
 }
 
-export default CatBreeds;
+export default DogBreeds;
