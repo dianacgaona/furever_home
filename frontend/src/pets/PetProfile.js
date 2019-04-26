@@ -2,18 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 import "../css/petprofile.css";
+// import Auth from "../utils/Auth.js";
 
 class PetProfile extends Component {
   constructor() {
     super();
     this.state = {
-
       profile: {},
-      pet_id:"",
-
+      pet_id: ""
     };
   }
-// when I click the button it will grab the pet_id and setState
+  // when I click the button it will grab the pet_id and setState
   componentDidMount() {
     this.getPet(this.props.match.params.id);
   }
@@ -21,13 +20,28 @@ class PetProfile extends Component {
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
       this.setState({
-        profile: res.data.animal
+        profile: res.data.animal,
+        pet_id: id
       });
     });
   };
 
-  displayPetProfile = () => {
+  favoriteAnAnimal = () => {
+    axios
+      .post(`/favorited`,
+        {
+          pet_id:this.state.pet_id
+        }
+      )
+      .then(res => {
 
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  displayPetProfile = () => {
     let { profile } = this.state;
     if (!profile.photos) {
       return <h2> Loading... </h2>;
@@ -44,55 +58,22 @@ class PetProfile extends Component {
               />
             </div>
             <div>
+              <button onClick={this.favoriteAnAnimal}> Favorite Me!</button>
               <h3 className="animal_detail">{profile.age}</h3>
               <h3 className="animal_detail">{profile.color}</h3>
               <h3 className="animal_detail">{profile.description}</h3>
-              <h3 className="animal_detail">{profile.contact.address.city}</h3>
+              <h3 className="animal_detail">
+                {profile.contact.address.city}, {profile.contact.address.state}
+              </h3>
             </div>
           </div>
         </div>
       );
-
     }
   };
-favoriteAnAnimal=()=>{
-  axios
-  .post().then(res=>{})
-}
 
-favoriteASong = (song, e) => {
-    let changeButtonPlaceholder =
-      this.state.toggle === "Favorite" ? "UnFavorite" : "Favorite";
-    this.setState({
-      toggle: changeButtonPlaceholder
-    });
-    e.preventDefault();
-    console.log(song);
-    if (!this.state.liked) {
-      this.setState({
-        liked: true,
-        likedValue: 0
-      });
-      axios
-        .post(`/favorites`, {
-          user_id: this.state.sampleUser,
-          pet_id: song.id
-        })
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-        });
-    } else {
-      this.setState({
-        liked: false
-      });
-      axios.delete(`/favorites/${song.id}`).then(res => {
-        console.log(res.data);
-      });
-    }
-  };
   render() {
-
+    console.log(typeof this.state.pet_id);
     return (
       <MyContext.Consumer>
         {context => {

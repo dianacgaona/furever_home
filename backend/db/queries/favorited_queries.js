@@ -1,9 +1,10 @@
 const { db } = require('../index.js');
 
 const createfavorite = (req, res, next) => {
+  console.log(req.user);
   db.none('INSERT INTO favorited (user_id, pet_id) VALUES (${user_id}, ${pet_id})', {
-    user_id: parseInt(req.body.user_id),
-    pet_id: req.body.pet_id,
+    user_id: parseInt(req.user.id),
+    pet_id: parseInt(req.body.pet_id),
   })
   .then(() => {
     res.status(200).json({
