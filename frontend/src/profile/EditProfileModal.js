@@ -19,20 +19,24 @@ class ProfileModal extends React.Component {
 
     this.state = {
       modalIsOpen: false,
-      inputProfile_PictureURL: '',
-      inputUsername: '',
+      inputProfile_PictureURL: props.oldState.profileUser.profile_picture,
+      inputUsername: props.oldState.profileUser.username,
       inputAge: '',
       inputLocation: '',
-      inputCity: '',
+      inputCity: props.oldState.profileUser.city,
       inputState: '',
-      inputAboutText: '',
+      inputAboutText: props.oldState.profileUser.about,
     };
 
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+componentDidMount(){
+  console.log(this.props);
+  this.props.getSingleUser()
 
+}
   openModal() {
     this.setState({ modalIsOpen: true });
   }
@@ -52,9 +56,29 @@ class ProfileModal extends React.Component {
     });
   };
 
+// Variable 1 is previous State getSingleUser()
+// const oldInfo = {this.state}
+//
+// VARIABLE 2 IS CURRENT STATE onSubmit input fields
+//
+// username: this.state.inputUsername? this.state.inputUsername : oldInfor.inputUsername
+// about:this.state.inputAboutText ? this.state.inputAboutText : oldInfor.inputAboutText
+// profile_picture:this.state.inputProfile_PictureURL ? this.state.inputProfile_PictureURL : oldInfor.inputProfile_PictureURL
+// city:this.state.inputCity ? this.state.inputCity : oldInfor.inputCity
+// state:this.state.inputState ? this.state.inputState : oldInfor.inputState
+// VARIABLE 3 IS FUTURE STATE happens on submit it evaluates
+//
+// username: '',
+// about: '',
+// profile_picture: '',
+// city: this.state.inputCity,
+// state: this.state.inputState,
+
+
   handleSubmit = (e, user) => {
+
     e.preventDefault();
-    debugger;
+    // debugger;
     // console.log(user)
     axios
       .patch(
@@ -81,8 +105,11 @@ class ProfileModal extends React.Component {
   };
 
   render() {
+     // const oldInfo = this.state
+     console.log(this.props.oldState.profileUser);
+     // console.log(oldInfo, "TYSON");
     return (
-      
+
 
 
 <MyContext.Consumer>
@@ -124,7 +151,7 @@ class ProfileModal extends React.Component {
                     type="text"
                     value={this.state.inputUsername}
                     onChange={this.handleChange}
-                    placeholder="Username"
+                    placeholder='Username'
                     name="inputUsername"
                   />
                   Where are you from
@@ -149,7 +176,7 @@ class ProfileModal extends React.Component {
                   Tell us about yourself
                   <input
                     type="text"
-                    value={this.state.inputBioText}
+                    value={this.state.inputAboutText}
                     onChange={this.handleChange}
                     placeholder="About"
                     name="inputAboutText"

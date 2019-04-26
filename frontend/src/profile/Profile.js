@@ -51,7 +51,11 @@ class Profile extends Component {
     axios
       .get(`/users/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({ profileUser: res.data.user });
+        this.setState({
+          profileUser: res.data.user
+
+
+        });
       })
       .catch(err => {
         console.log('SINGLE USER ERROR', err);
@@ -98,7 +102,7 @@ class Profile extends Component {
                 {this.state.profileUser.id === this.props.currentUser.id ? (
                   <div className='addPostCont'>
                     <AddPost getPosts={this.getPosts} user_Posts={this.state.user_Posts} />
-                    <ProfileModal getSingleUser={this.getSingleUser}/>
+                    <ProfileModal oldState={this.state} getSingleUser={this.getSingleUser}/>
                   </div>
                   ) :
                   null}
