@@ -15,6 +15,7 @@ import PetsList from './pets/PetsList';
 import PetProfile from './pets/PetProfile';
 import DogBreeds from './breeds/DogBreeds.js';
 import CatBreeds from './breeds/CatBreeds.js';
+import PreApproval from './PreApproval/PreApproval.js';
 import { MyContext } from './provider/MyProvider';
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
+
             />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
@@ -59,6 +61,7 @@ class App extends Component {
                   </MyContext.Consumer>
                 );
               }}
+
             />
 
             <Route
@@ -70,6 +73,7 @@ class App extends Component {
             <Route path="/animals/:id" component={PetProfile} />
             <Route path="/dogs" component={DogBreeds} />
             <Route Path="/cats" component={CatBreeds} />
+            <Route path="/pre-approval" component={PreApproval} />
           </Switch>
         </MyProvider>
       </div>

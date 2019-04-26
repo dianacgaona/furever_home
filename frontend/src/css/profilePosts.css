@@ -6,6 +6,7 @@
   font-weight: 900;
   margin-left: 1%;
   margin-bottom: 1%;
+  text-transform: uppercase;
 }
 
 .postsProfCont {
@@ -16,6 +17,7 @@
   display: flex;
   justify-content: center;
   justify-content: space-around;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .postsPetImg {
