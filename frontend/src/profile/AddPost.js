@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 import PostModal from "./AddPostModal.js";
+import {withRouter} from 'react-router-dom'
 class AddPost extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,7 @@ class AddPost extends Component {
       inputBodyText: "",
       inputPost_Url: "",
       pet_type: "",
-      user_Posts: []
+      user_Posts: this.props.user_Posts
     };
   }
 
@@ -21,6 +22,7 @@ class AddPost extends Component {
   };
 
   handleSubmit = (e, user) => {
+    debugger
     e.preventDefault();
     axios
       .post(`/posts/`, {
@@ -40,10 +42,15 @@ class AddPost extends Component {
       })
       .then(res => {
         this.props.getPosts();
+        debugger
       });
   };
 
   render() {
+    console.log(this.props,'Props');
+    //
+    // console.log(this.state, "AddPost le State");
+    console.log(this.props.match);
     return (
       <MyContext.Consumer>
         {context => {
@@ -57,6 +64,7 @@ class AddPost extends Component {
                 inputPost_Url={this.state.inputPost_Url}
                 pet_type={this.state.pet_type}
                 user_Posts={this.state.user_Posts}
+
               />
             </div>
           );
@@ -65,4 +73,4 @@ class AddPost extends Component {
     );
   }
 }
-export default AddPost;
+export default withRouter(AddPost);
