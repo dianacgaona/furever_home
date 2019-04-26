@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
@@ -117,6 +116,6 @@ class OrganizationProfile extends Component {
       </MyContext.Consumer>
     );
   }
-} 
+}
 
 export default OrganizationProfile;
