@@ -67,6 +67,7 @@ class PreApproval extends React.Component {
             margin="normal"
           />
           </div>
+          <div className='address2'>
             <TextField
             id="city"
             label="City"
@@ -87,6 +88,7 @@ class PreApproval extends React.Component {
             className={classes.textField}
             margin="normal"
           />
+          </div>
           <div className='phoneEmail'>
             <TextField
             id="phone"
@@ -104,9 +106,9 @@ class PreApproval extends React.Component {
           </div>
 
           <div>
-            <button>Submit</button>
+            <button className='preButton'>Submit</button>
           </div>
-          
+
         </form>
       </div>
     );
