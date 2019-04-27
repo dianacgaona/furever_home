@@ -5,8 +5,12 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <p className='formTitle'>Pre-Approval Adoption Form</p>
-        <PreApproval/>
+        <div>
+          <p className='formTitle'>Pre-Approval Adoption Form</p>
+            <p className='waiting'>(There is a mandatory 3-5 bussiness days waiting period for all adoptions.)
+            </p>
+              <PreApproval/>
+        </div>
       </>
     );
   }
