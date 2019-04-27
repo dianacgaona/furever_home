@@ -15,7 +15,7 @@ import PetsList from './pets/PetsList';
 import PetProfile from './pets/PetProfile';
 import DogBreeds from './breeds/DogBreeds.js';
 import CatBreeds from './breeds/CatBreeds.js';
-import PreApproval from './PreApproval/PreApproval.js';
+import Form from './PreApproval/Form.js';
 import { MyContext } from './provider/MyProvider';
 
 class App extends Component {
@@ -47,7 +47,7 @@ class App extends Component {
             />
             <Route path="/cat-care" component={CatCare} />
             <Route path="/dog-care" component={DogCare} />
-            <Route path="/pre-approval" component={PreApproval} />
+            <Route path="/pre-approval" component={Form} />
             <Route
               exact
               path="/shelters-rescues"
