@@ -5,20 +5,15 @@ import TextField from '@material-ui/core/TextField';
 import '../css/approval.css';
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
   },
-  dense: {
-    marginTop: 19,
-  },
-  menu: {
-    width: 200,
+  textField2: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 300,
   },
 });
 
@@ -27,8 +22,6 @@ class PreApproval extends React.Component {
     name: '',
     phone: '',
     email: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
   };
 
   handleChange = name => event => {
@@ -39,77 +32,80 @@ class PreApproval extends React.Component {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <div className='namedob'>
-        <TextField
-          id="name"
-          label="Name"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('name')}
-          margin="normal"
-        />
+
+      <div className='padding'>
+        <form className='formBorder' noValidate autoComplete="off">
+          <div className='namedob'>
+          <TextField
+            id="name"
+            label="Name"
+            className={classes.textField2}
+            value={this.state.name}
+            onChange={this.handleChange('name')}
+            margin="normal"
+          />
+
+            <TextField
+            id="dob"
+            label="DOB"
+            className={classes.textField}
+            margin="normal"
+          />
+          </div>
+
+            <TextField
+            id="address"
+            label="Address"
+            className={classes.textField}
+            margin="normal"
+          />
+
+            <TextField
+            id="apt"
+            label="Apt"
+            className={classes.textField}
+            margin="normal"
+          />
+
+            <TextField
+            id="city"
+            label="City"
+            className={classes.textField}
+            margin="normal"
+          />
 
           <TextField
-          id="dob"
-          label="DOB"
-          className={classes.textField}
-          margin="normal"
-        />
-        </div>
+            id="state"
+            label="State"
+            className={classes.textField}
+            margin="normal"
+          />
+
+            <TextField
+            id="zip"
+            label="Zip"
+            className={classes.textField}
+            margin="normal"
+          />
+
+            <TextField
+            id="phone"
+            label="Phone"
+            className={classes.textField}
+            margin="normal"
+          />
 
           <TextField
-          id="address"
-          label="Address"
-          className={classes.textField}
-          margin="normal"
-        />
-
-          <TextField
-          id="apt"
-          label="Apt"
-          className={classes.textField}
-          margin="normal"
-        />
-
-          <TextField
-          id="city"
-          label="City"
-          className={classes.textField}
-          margin="normal"
-        />
-
-        <TextField
-          id="state"
-          label="State"
-          className={classes.textField}
-          margin="normal"
-        />
-
-          <TextField
-          id="zip"
-          label="Zip"
-          className={classes.textField}
-          margin="normal"
-        />
-
-          <TextField
-          id="phone"
-          label="Phone"
-          className={classes.textField}
-          margin="normal"
-        />
-
-        <TextField
-          id="email"
-          label="Email"
-          className={classes.textField}
-          margin="normal"
-        />
-        <div>
-          <button>Submit</button>
-        </div>
-      </form>
+            id="email"
+            label="Email"
+            className={classes.textField}
+            margin="normal"
+          />
+          <div>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
