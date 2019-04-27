@@ -13,7 +13,7 @@ const styles = theme => ({
   textField2: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 300,
+    width: 100,
   },
 });
 
@@ -36,23 +36,23 @@ class PreApproval extends React.Component {
       <div className='padding'>
         <form className='formBorder' noValidate autoComplete="off">
           <div className='namedob'>
-          <TextField
-            id="name"
-            label="Name"
-            className={classes.textField2}
-            value={this.state.name}
-            onChange={this.handleChange('name')}
-            margin="normal"
-          />
-
             <TextField
-            id="dob"
-            label="DOB"
-            className={classes.textField}
-            margin="normal"
-          />
-          </div>
+              id="name"
+              label="Name"
+              className={classes.textField}
+              value={this.state.name}
+              onChange={this.handleChange('name')}
+              margin="normal"
+            />
 
+              <TextField
+              id="dob"
+              label="DOB"
+              className={classes.textField2}
+              margin="normal"
+            />
+          </div>
+          <div className='address1'>
             <TextField
             id="address"
             label="Address"
@@ -66,7 +66,7 @@ class PreApproval extends React.Component {
             className={classes.textField}
             margin="normal"
           />
-
+          </div>
             <TextField
             id="city"
             label="City"
@@ -87,7 +87,7 @@ class PreApproval extends React.Component {
             className={classes.textField}
             margin="normal"
           />
-
+          <div className='phoneEmail'>
             <TextField
             id="phone"
             label="Phone"
@@ -101,9 +101,12 @@ class PreApproval extends React.Component {
             className={classes.textField}
             margin="normal"
           />
+          </div>
+
           <div>
             <button>Submit</button>
           </div>
+          
         </form>
       </div>
     );
