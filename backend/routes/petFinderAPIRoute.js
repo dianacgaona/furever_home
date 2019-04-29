@@ -8,7 +8,7 @@ const {
   apiSingleOrganization,
   apiAllAnimalsQuery,
   apiAllOrganizationsQuery
-} = require("../api/petfinderAPI.js");
+} = require("../api/petFinderAPI.js");
 
 router.get("/animals", apiAllAnimals);
 router.get("/animals/:id", apiSingleAnimal);
