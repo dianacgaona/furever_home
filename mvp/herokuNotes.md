@@ -39,3 +39,8 @@ Once you are ready to push master, then:
 
 
  git push heroku [name-of-your-branch]:master
+
+
+package.json front-end   
+
+line 32 -"proxy": "http://localhost:3100"
