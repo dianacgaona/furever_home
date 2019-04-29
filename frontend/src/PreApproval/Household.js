@@ -44,7 +44,7 @@ class Household extends React.Component {
 
     return (
 
-      <div className=''>
+      <div className='padding'>
         <FormGroup row>
           <p>What best describes your home</p>
           <FormControlLabel
