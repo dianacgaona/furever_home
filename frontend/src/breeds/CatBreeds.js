@@ -85,8 +85,8 @@ class DogBreeds extends Component {
             name="selectedBorough"
             onChange={this.handleSelect}
           >
-            <option disabled selected className='selectBoro'>
-              <p>Select a borough</p>
+            <option disabled selected>
+              Select a borough
             </option>
             <option name="Manhattan" value={this.state.Manhattan}>
               Manhattan
@@ -101,8 +101,10 @@ class DogBreeds extends Component {
               Bronx
             </option>
           </select>
+          <button style={{ backgroundColor: "#001049ba", color: "#ffffff" }}>
+            Search
+          </button>
         </form>
-        <button style={{backgroundColor: '#001049ba', color: '#ffffff'}}>Search</button>
       </>
     );
   };
