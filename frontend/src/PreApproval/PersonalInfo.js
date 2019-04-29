@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+
 import '../css/approval.css';
 
 const styles = theme => ({
@@ -15,9 +16,14 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     width: 100,
   },
+  datePicker: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 150,
+  },
 });
 
-class PreApproval extends React.Component {
+class PersonalInfo extends React.Component {
   state = {
     name: '',
     phone: '',
@@ -33,8 +39,8 @@ class PreApproval extends React.Component {
 
     return (
 
-      <div className='padding'>
-        <form className='formBorder' noValidate autoComplete="off">
+      <div>
+
           <div className='namedob'>
             <TextField
               id="name"
@@ -44,13 +50,16 @@ class PreApproval extends React.Component {
               onChange={this.handleChange('name')}
               margin="normal"
             />
-
               <TextField
-              id="dob"
-              label="DOB"
-              className={classes.textField2}
-              margin="normal"
-            />
+                id="date"
+                label="Birthday"
+                type="date"
+                defaultValue="0000-00-00"
+                className={classes.datePicker}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
           </div>
           <div className='address1'>
             <TextField
@@ -105,18 +114,13 @@ class PreApproval extends React.Component {
           />
           </div>
 
-          <div>
-            <button className='preButton'>Submit</button>
-          </div>
-
-        </form>
       </div>
     );
   }
 }
 
-PreApproval.propTypes = {
+PersonalInfo.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PreApproval);
+export default withStyles(styles)(PersonalInfo);
