@@ -101,7 +101,9 @@ class DogBreeds extends Component {
               Bronx
             </option>
           </select>
-          <button>Search</button>
+          <button style={{ backgroundColor: "#001049ba", color: "#ffffff" }}>
+            Search
+          </button>
         </form>
       </>
     );
