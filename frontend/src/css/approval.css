@@ -8,6 +8,16 @@
   font-weight: 900;
   text-shadow: 1px 0px 0px #001049;
   text-transform: uppercase;
+  margin-right: 22%;
+}
+
+.waiting {
+  display: flex;
+  justify-content: center;
+  font-size: 19px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding-top: 1%;
+  margin-right: 22%;
 }
 
 .padding {
@@ -49,7 +59,7 @@
 
 .preButton {
   margin-left: 18%;
-  font-size: 15px;
+  font-size: 18px;
   border-radius: 3px;
   color: white;
   background-color: #001049;
