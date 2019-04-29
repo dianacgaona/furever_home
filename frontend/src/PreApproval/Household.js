@@ -33,6 +33,8 @@ class Household extends React.Component {
     no2: false,
     yes3: false,
     no3: false,
+    yes4: false,
+    no4: false,
   };
 
   handleChecked = name => event => {
@@ -210,6 +212,40 @@ class Household extends React.Component {
           }}
           className={classes.textField}
         />
+
+
+      <FormGroup row>
+        <p>Are all animals neutered/spayed?</p>
+        <FormControlLabel
+        control={
+          <Checkbox
+            checked={this.state.yes4}
+            onChange={this.handleChecked('yes4')}
+            value="yes4"
+            classes={{
+              root: classes.root,
+              checked: classes.checked,
+            }}
+          />
+        }
+        label="Yes"
+      />
+
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={this.state.no4}
+            onChange={this.handleChecked('no4')}
+            value="no4"
+            classes={{
+              root: classes.root,
+              checked: classes.checked,
+            }}
+          />
+        }
+        label="No"
+      />
+      </FormGroup>
       </div>
     );
   }

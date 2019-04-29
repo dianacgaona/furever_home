@@ -16,7 +16,7 @@
   justify-content: center;
   font-size: 19px;
   font-family: 'Open Sans Condensed', sans-serif;
-  padding-top: 1%;  
+  padding-top: 1%;
   padding-bottom: 2%;
   margin-right: 22%;
 }
@@ -34,10 +34,29 @@
   padding: 3%;
 }
 
+.personalInfo {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.householdInfo {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-decoration: underline;
+  padding-bottom: 1%;
+}
+
 .namedob {
   display: flex;
   justify-content: center;
-  margin-right: 31%;
+  margin-right: 26%;
 }
 
 .address1 {
