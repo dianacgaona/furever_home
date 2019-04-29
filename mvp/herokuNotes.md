@@ -43,4 +43,8 @@ Once you are ready to push master, then:
 
 package.json front-end   
 
+SEED.SQL
+-- comment out lines 1-3 for heroku seeding the database.
+-- Since heroku has a database already created. Instead of the local one it connects to heroku.
+
 line 32 -"proxy": "http://localhost:3100"
