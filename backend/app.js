@@ -15,7 +15,7 @@ let postsRouter = require("./routes/posts");
 let adoptedRouter = require("./routes/adopted");
 let favoritedRouter = require("./routes/favorited");
 let commentsRouter = require("./routes/comments");
-let petfinderRouter = require("./routes/petfinderAPIRoute");
+let petfinderRouter = require("./routes/petFinderAPIRoute");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
