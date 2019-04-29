@@ -59,6 +59,7 @@ class PersonalInfo extends React.Component {
                 InputLabelProps={{
                   shrink: true,
                 }}
+                style={{ marginTop: '2%' }}
               />
           </div>
           <div className='address1'>
