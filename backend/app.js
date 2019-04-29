@@ -15,7 +15,7 @@ let postsRouter = require("./routes/posts");
 let adoptedRouter = require("./routes/adopted");
 let favoritedRouter = require("./routes/favorited");
 let commentsRouter = require("./routes/comments");
-let petfinderRouter = require("./routes/petfinderAPIRoute");
+let petfinderRouter = require("./routes/petFinderAPIRoute");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -37,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -45,6 +46,10 @@ app.use("/adopted", adoptedRouter);
 app.use("/favorited", favoritedRouter);
 app.use("/comments", commentsRouter);
 app.use("/petfinder", petfinderRouter);
+
+app.use("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

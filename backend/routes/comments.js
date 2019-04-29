@@ -6,7 +6,7 @@ const {
   getAllCommentsForOnePost,
   createComment,
   editComment,
-  deleteComment
+  deleteComment,
 } = require("../db/queries/comments_queries.js");
 
 router.get("/", getAllComments);
