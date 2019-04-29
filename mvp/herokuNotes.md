@@ -48,3 +48,5 @@ SEED.SQL
 -- Since heroku has a database already created. Instead of the local one it connects to heroku.
 
 line 32 -"proxy": "http://localhost:3100"
+
+heroku logs -a [your_app_name] > logs.txt - that will create a `logs.txt` file in the current directory with the output of your heroku logs

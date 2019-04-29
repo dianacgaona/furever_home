@@ -1,0 +1,100 @@
+2019-04-29T18:51:41.214371+00:00 app[web.1]: [1]   --exec 'node'
+2019-04-29T18:51:41.214373+00:00 app[web.1]: [1]
+2019-04-29T18:51:41.214780+00:00 app[web.1]: [1] Starting child process with 'node ./bin/www'
+2019-04-29T18:51:41.222716+00:00 app[web.1]: [1] Watching directory '/app/backend' for changes.
+2019-04-29T18:51:41.223990+00:00 app[web.1]: [1] Press rs for restarting the process.
+2019-04-29T18:51:41.714028+00:00 app[web.1]: [1] Warning: connect.session() MemoryStore is not
+2019-04-29T18:51:41.714042+00:00 app[web.1]: [1] designed for a production environment, as it will leak
+2019-04-29T18:51:41.714044+00:00 app[web.1]: [1] memory, and will not scale past a single process.
+2019-04-29T18:51:42.306410+00:00 heroku[web.1]: State changed from starting to up
+2019-04-29T18:51:44.131610+00:00 app[web.1]: [0] Something is already running on port 36218.
+2019-04-29T18:51:44.157900+00:00 app[web.1]: [0] cd frontend && npm start exited with code 0
+2019-04-29T18:51:44.158869+00:00 app[web.1]: --> Sending SIGTERM to other processes..
+2019-04-29T18:51:44.196023+00:00 app[web.1]: [1] Received SIGTERM, killing child process...
+2019-04-29T18:51:44.196511+00:00 app[web.1]: [1] Parent process exiting, terminating child...
+2019-04-29T18:51:44.203873+00:00 app[web.1]: [1] cd backend && npm start exited with code SIGTERM
+2019-04-29T18:51:44.219114+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2019-04-29T18:51:44.219584+00:00 app[web.1]: npm ERR! errno 1
+2019-04-29T18:51:44.220823+00:00 app[web.1]: npm ERR! furever_home@1.0.0 start: `concurrently --kill-others "cd frontend && npm start" "cd backend && npm start"`
+2019-04-29T18:51:44.220989+00:00 app[web.1]: npm ERR! Exit status 1
+2019-04-29T18:51:44.221254+00:00 app[web.1]: npm ERR!
+2019-04-29T18:51:44.221442+00:00 app[web.1]: npm ERR! Failed at the furever_home@1.0.0 start script.
+2019-04-29T18:51:44.221611+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-04-29T18:51:44.228359+00:00 app[web.1]: 
+2019-04-29T18:51:44.228564+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-29T18:51:44.228727+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-29T18_51_44_222Z-debug.log
+2019-04-29T18:51:44.311160+00:00 heroku[web.1]: State changed from up to crashed
+2019-04-29T18:51:44.291079+00:00 heroku[web.1]: Process exited with status 1
+2019-04-29T19:00:58.466631+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/login" host=capstone-furever-home.herokuapp.com request_id=61e52b2e-8d0e-4620-a4bc-cd36689d3c94 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:00:59.119417+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=capstone-furever-home.herokuapp.com request_id=47e11e21-016a-4031-9d32-7a4ba0f4e4c6 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:02.965452+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=capstone-furever-home.herokuapp.com request_id=ff066d39-19d7-490c-a52f-ce8ebac4057b fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:03.544100+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=capstone-furever-home.herokuapp.com request_id=7f5aed45-94dd-48c8-8b69-9e7476233fec fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:10.966507+00:00 heroku[web.1]: State changed from crashed to starting
+2019-04-29T19:01:32.134632+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-04-29T19:01:34.739010+00:00 app[web.1]: 
+2019-04-29T19:01:34.739047+00:00 app[web.1]: > furever_home@1.0.0 start /app
+2019-04-29T19:01:34.739057+00:00 app[web.1]: > concurrently --kill-others "cd frontend && npm start" "cd backend && npm start"
+2019-04-29T19:01:34.739059+00:00 app[web.1]: 
+2019-04-29T19:01:36.148428+00:00 app[web.1]: [0]
+2019-04-29T19:01:36.148462+00:00 app[web.1]: [0] > frontend@0.1.0 start /app/frontend
+2019-04-29T19:01:36.148464+00:00 app[web.1]: [0] > react-scripts start
+2019-04-29T19:01:36.148466+00:00 app[web.1]: [0]
+2019-04-29T19:01:36.178895+00:00 app[web.1]: [1]
+2019-04-29T19:01:36.178900+00:00 app[web.1]: [1] > backend@0.0.0 start /app/backend
+2019-04-29T19:01:36.178903+00:00 app[web.1]: [1] > supervisor ./bin/www
+2019-04-29T19:01:36.178904+00:00 app[web.1]: [1]
+2019-04-29T19:01:36.414144+00:00 app[web.1]: [1]
+2019-04-29T19:01:36.416993+00:00 app[web.1]: [1] Running node-supervisor with
+2019-04-29T19:01:36.417607+00:00 app[web.1]: [1]   program './bin/www'
+2019-04-29T19:01:36.418097+00:00 app[web.1]: [1]   --watch '.'
+2019-04-29T19:01:36.418565+00:00 app[web.1]: [1]   --extensions 'node,js,/bin/www'
+2019-04-29T19:01:36.419020+00:00 app[web.1]: [1]   --exec 'node'
+2019-04-29T19:01:36.419506+00:00 app[web.1]: [1]
+2019-04-29T19:01:36.420219+00:00 app[web.1]: [1] Starting child process with 'node ./bin/www'
+2019-04-29T19:01:36.431567+00:00 app[web.1]: [1] Watching directory '/app/backend' for changes.
+2019-04-29T19:01:36.432057+00:00 app[web.1]: [1] Press rs for restarting the process.
+2019-04-29T19:01:37.039015+00:00 heroku[web.1]: State changed from starting to up
+2019-04-29T19:01:36.972518+00:00 app[web.1]: [1] Warning: connect.session() MemoryStore is not
+2019-04-29T19:01:36.972533+00:00 app[web.1]: [1] designed for a production environment, as it will leak
+2019-04-29T19:01:36.972534+00:00 app[web.1]: [1] memory, and will not scale past a single process.
+2019-04-29T19:01:38.961501+00:00 heroku[router]: at=info method=GET path="/" host=capstone-furever-home.herokuapp.com request_id=fc4d58f3-e389-4a9b-b853-bc4e6402227e fwd="69.164.130.248" dyno=web.1 connect=0ms service=28ms status=200 bytes=2714 protocol=https
+2019-04-29T19:01:38.978126+00:00 app[web.1]: [1] [0mGET / [32m200 [0m20.204 ms - 2297[0m
+2019-04-29T19:01:39.413355+00:00 heroku[router]: at=info method=GET path="/static/css/main.2ba78f37.chunk.css" host=capstone-furever-home.herokuapp.com request_id=75e5f4e1-0289-416c-96e4-0f80cb2f6b4d fwd="69.164.130.248" dyno=web.1 connect=0ms service=17ms status=200 bytes=11561 protocol=https
+2019-04-29T19:01:39.442415+00:00 heroku[router]: at=info method=GET path="/static/js/main.e248087a.chunk.js" host=capstone-furever-home.herokuapp.com request_id=37285387-4741-4c0c-a1f5-41f95d0692c5 fwd="69.164.130.248" dyno=web.1 connect=1ms service=8ms status=304 bytes=238 protocol=https
+2019-04-29T19:01:39.422621+00:00 app[web.1]: [1] [0mGET /static/css/main.2ba78f37.chunk.css [32m200 [0m12.316 ms - 11271[0m
+2019-04-29T19:01:39.438031+00:00 app[web.1]: [1] [0mGET /static/js/2.b05237f0.chunk.js [36m304 [0m2.422 ms - -[0m
+2019-04-29T19:01:39.448847+00:00 app[web.1]: [1] [0mGET /static/js/main.e248087a.chunk.js [36m304 [0m1.133 ms - -[0m
+2019-04-29T19:01:39.561361+00:00 app[web.1]: [1] [0mGET /static/js/2.b05237f0.chunk.js.map [32m200 [0m9.715 ms - 1790884[0m
+2019-04-29T19:01:39.435022+00:00 heroku[router]: at=info method=GET path="/static/js/2.b05237f0.chunk.js" host=capstone-furever-home.herokuapp.com request_id=52920a92-fcd3-4841-8171-3823a635b76b fwd="69.164.130.248" dyno=web.1 connect=1ms service=5ms status=304 bytes=239 protocol=https
+2019-04-29T19:01:39.596876+00:00 heroku[router]: at=info method=GET path="/static/js/2.b05237f0.chunk.js.map" host=capstone-furever-home.herokuapp.com request_id=f9970b88-f689-43d7-af81-db947e232bc0 fwd="69.164.130.248" dyno=web.1 connect=1ms service=82ms status=200 bytes=1791186 protocol=https
+2019-04-29T19:01:40.045837+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=GET path="/static/media/logo.ddfc857f.png" host=capstone-furever-home.herokuapp.com request_id=bc4f57a7-d1cc-402f-9e3a-b7e8b2d2b9c3 fwd="69.164.130.248" dyno=web.1 connect=1ms service=15ms status=503 bytes=0 protocol=https
+2019-04-29T19:01:40.044648+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=GET path="/static/media/puppies.06313187.jpg" host=capstone-furever-home.herokuapp.com request_id=4c64533c-4ed7-480d-8473-7be910f1270e fwd="69.164.130.248" dyno=web.1 connect=0ms service=10ms status=503 bytes=0 protocol=https
+2019-04-29T19:01:39.933699+00:00 app[web.1]: [0] Something is already running on port 50579.
+2019-04-29T19:01:39.972864+00:00 app[web.1]: [0] cd frontend && npm start exited with code 0
+2019-04-29T19:01:39.978740+00:00 app[web.1]: --> Sending SIGTERM to other processes..
+2019-04-29T19:01:40.033287+00:00 app[web.1]: [1] oops
+2019-04-29T19:01:40.053323+00:00 app[web.1]: [1] Received SIGTERM, killing child process...
+2019-04-29T19:01:40.057975+00:00 app[web.1]: [1] Parent process exiting, terminating child...
+2019-04-29T19:01:40.070223+00:00 app[web.1]: [1] cd backend && npm start exited with code SIGTERM
+2019-04-29T19:01:40.085806+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2019-04-29T19:01:40.086601+00:00 app[web.1]: npm ERR! errno 1
+2019-04-29T19:01:40.088511+00:00 app[web.1]: npm ERR! furever_home@1.0.0 start: `concurrently --kill-others "cd frontend && npm start" "cd backend && npm start"`
+2019-04-29T19:01:40.088821+00:00 app[web.1]: npm ERR! Exit status 1
+2019-04-29T19:01:40.089266+00:00 app[web.1]: npm ERR!
+2019-04-29T19:01:40.089770+00:00 app[web.1]: npm ERR! Failed at the furever_home@1.0.0 start script.
+2019-04-29T19:01:40.090175+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2019-04-29T19:01:40.106588+00:00 app[web.1]: 
+2019-04-29T19:01:40.107064+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2019-04-29T19:01:40.107316+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2019-04-29T19_01_40_094Z-debug.log
+2019-04-29T19:01:40.044794+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=POST path="/users/isloggedin" host=capstone-furever-home.herokuapp.com request_id=d9b0b7de-ba99-4200-a749-d7d29b9848a0 fwd="69.164.130.248" dyno=web.1 connect=1ms service=24ms status=503 bytes=0 protocol=https
+2019-04-29T19:01:40.046058+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=GET path="/petfinder/animals" host=capstone-furever-home.herokuapp.com request_id=1537c81e-db24-4427-b8a3-14c3d41258fe fwd="69.164.130.248" dyno=web.1 connect=1ms service=114ms status=503 bytes=0 protocol=https
+2019-04-29T19:01:40.247245+00:00 heroku[web.1]: State changed from up to crashed
+2019-04-29T19:01:40.045031+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=GET path="/petfinder/organizations" host=capstone-furever-home.herokuapp.com request_id=55d81473-7203-452d-be20-dee7668452c9 fwd="69.164.130.248" dyno=web.1 connect=0ms service=109ms status=503 bytes=0 protocol=https
+2019-04-29T19:01:40.193037+00:00 heroku[web.1]: Process exited with status 1
+2019-04-29T19:01:40.977102+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=capstone-furever-home.herokuapp.com request_id=53b228ab-e4e0-4de0-a4aa-a2eb68861d85 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:41.012062+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/manifest.json" host=capstone-furever-home.herokuapp.com request_id=ed5ca72e-24c3-4721-b3c1-6a7734833add fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:41.145561+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/static/js/main.e248087a.chunk.js.map" host=capstone-furever-home.herokuapp.com request_id=272bcfd8-9359-41b5-aeee-653c311aab1d fwd="69.164.130.248" dyno=web.1 connect=1ms service= status=503 bytes= protocol=https
+2019-04-29T19:01:41.145470+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/static/css/main.2ba78f37.chunk.css.map" host=capstone-furever-home.herokuapp.com request_id=fad587d5-0fe5-4e9e-a012-1646ec8ac142 fwd="69.164.130.248" dyno=web.1 connect=1ms service= status=503 bytes= protocol=https
+2019-04-29T19:01:43.165719+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/static/media/forestcat.e6add315.jpg" host=capstone-furever-home.herokuapp.com request_id=b37fc934-cc91-4bbf-baac-2a2a70a96548 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:50.283715+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/static/media/puppycut.c036d4ed.jpg" host=capstone-furever-home.herokuapp.com request_id=0e512fb6-8cb9-4640-ae57-edf1506331b1 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
+2019-04-29T19:01:54.673201+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/static/media/cat4.2a1d9a37.jpeg" host=capstone-furever-home.herokuapp.com request_id=109918a9-1c66-46f0-9092-f1a8c9b9d209 fwd="69.164.130.248" dyno= connect= service= status=503 bytes= protocol=https
