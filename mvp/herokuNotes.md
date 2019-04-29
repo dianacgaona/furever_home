@@ -21,4 +21,21 @@ In the app's Package JSON inside the Scripts object
   "start": "concurrently --kill-others \"cd frontend && npm start\" \"cd backend && npm start\"",
   "heroku-postbuild":"cd backend && npm install && cd ../frontend && npm install"
 },
- \
+
+Unfortunately, if it is a non-master branch, Heroku won't build it. Example:
+
+$ git push heroku-dev test
+counting objects ...
+...
+Pushed to non-master branch, skipping build.
+To git@heroku.com:example-dev.git
+* [new branch]      test -> test
+So instead, use the following command to push the non-master branch to Heroku's master branch, so that it will build it:
+
+$ git push heroku [name-of-your-branch]:master
+Once you are ready to push master, then:
+
+
+
+
+ git push heroku [name-of-your-branch]:master
