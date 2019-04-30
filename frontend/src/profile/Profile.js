@@ -26,14 +26,12 @@ class Profile extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      // debugger
       this.getPosts();
       this.getSingleUser(this.props.match.params.id);
     }
   }
 
   getPosts = id => {
-    debugger
     axios
       .get(`/posts/byUser/${id}`)
       .then(res => {
@@ -44,7 +42,7 @@ class Profile extends Component {
       .catch(err => {
         console.log(err);
       });
-      console.log(this.state, "Get Posts");
+    console.log(this.state, 'Get Posts');
   };
 
   getSingleUser = () => {
@@ -52,8 +50,7 @@ class Profile extends Component {
       .get(`/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          profileUser: res.data.user
-
+          profileUser: res.data.user,
 
         });
       })
