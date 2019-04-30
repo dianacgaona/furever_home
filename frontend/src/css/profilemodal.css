@@ -6,17 +6,33 @@
   background-color: orange;
 }
 
+.modal_close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
 .modal_title {
   font-size: 35px;
   font-weight: bold;
   text-align: center;
-  padding: 5px;
   margin: 5px;
 }
 
 .modal_form {
   display: flex;
   justify-content: space-around;
-  padding-left: 20px;
+  padding: 5px;
   background-color: pink;
+}
+
+.modal_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_right {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
 }
