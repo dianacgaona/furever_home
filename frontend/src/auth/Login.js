@@ -25,7 +25,7 @@ class Login extends Component {
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post('/users/login', {
+      .post('/api/users/login', {
         email: this.state.emailInput,
         password: this.state.passwordInput,
       })
@@ -51,7 +51,7 @@ class Login extends Component {
 
   demoLogin = contextConfirm => {
     axios
-      .post('/users/login', {
+      .post('/api/users/login', {
         email: 'corey@fh.com',
         password: '123',
       })
@@ -71,7 +71,7 @@ class Login extends Component {
 
   render() {
     return (
-      
+
 
 <MyContext.Consumer>
         {context => {

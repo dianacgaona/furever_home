@@ -18,7 +18,7 @@ class AdoptedPets extends Component {
 
   getAdopted = id => {
     axios
-      .get(`/adopted/users/${id}`)
+      .get(`/api/adopted/users/${id}`)
       .then(res => {
         this.setState({
           adoptedPets: res.data.adopted,

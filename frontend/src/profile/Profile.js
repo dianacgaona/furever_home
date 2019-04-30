@@ -35,7 +35,7 @@ class Profile extends Component {
   getPosts = id => {
     debugger
     axios
-      .get(`/posts/byUser/${id}`)
+      .get(`/api/posts/byUser/${id}`)
       .then(res => {
         this.setState({
           user_Posts: res.data.post,
@@ -49,7 +49,7 @@ class Profile extends Component {
 
   getSingleUser = () => {
     axios
-      .get(`/users/${this.props.match.params.id}`)
+      .get(`/api/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
           profileUser: res.data.user

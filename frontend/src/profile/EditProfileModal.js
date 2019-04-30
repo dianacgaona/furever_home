@@ -50,7 +50,7 @@ class ProfileModal extends React.Component {
   handleSubmit = (e, user) => {
     e.preventDefault();
     axios
-      .patch(`/users/profile/${user}`, {
+      .patch(`/api/users/profile/${user}`, {
         username: this.state.inputUsername,
         about: this.state.inputAboutText,
         profile_picture: this.state.inputProfile_PictureURL
@@ -59,7 +59,7 @@ class ProfileModal extends React.Component {
         console.log(res.data);
       })
       .then(() => {
-        axios.patch(`/users/profile/location/${user}`, {
+        axios.patch(`/api/users/profile/location/${user}`, {
           city: this.state.inputCity,
           state: this.state.inputState
         });

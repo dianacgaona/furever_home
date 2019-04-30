@@ -40,12 +40,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/posts", postsRouter);
-app.use("/adopted", adoptedRouter);
-app.use("/favorited", favoritedRouter);
-app.use("/comments", commentsRouter);
-app.use("/petfinder", petfinderRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/posts", postsRouter);
+app.use("/api/adopted", adoptedRouter);
+app.use("/api/favorited", favoritedRouter);
+app.use("/api/comments", commentsRouter);
+app.use("/api/petfinder", petfinderRouter);
 
 app.use("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
