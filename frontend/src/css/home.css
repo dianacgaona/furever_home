@@ -11,7 +11,7 @@
   width: 100%;
   padding: 15px;
   opacity: 0.9;
-  margin-left: -15px;
+  margin-left: -177px;
   padding-top: 11px;
 }
 
@@ -28,6 +28,7 @@
   position: relative;
   z-index: 1;
   margin-top: 8%;
+  width: 920px;
 }
 
 .wallpaper {

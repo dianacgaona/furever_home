@@ -50,15 +50,15 @@ CREATE TABLE adopted(
 );
 
 CREATE TABLE forms(
-  id SERIAL PRIMARTY KEY,
+  id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  birthday TEXT INT NOT NULL,
+  birthday TEXT NOT NULL,
   address TEXT NOT NULL,
   apt TEXT NOT NULL,
   city TEXT NOT NULL,
   state TEXT NOT NULL,
   zip INT NOT NULL,
-  phone INT NULL,
+  phone INT NOT NULL,
   email TEXT NOT NULL,
   home_type VARCHAR(9) NOT NULL CHECK (home_type IN('Home', 'Apartment')),
   home_yard BOOLEAN NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE forms(
   references_name TEXT NOT NULL,
   references_relationship TEXT NOT NULL,
   references_phone INT NOT NULL,
-  relationship_length TEXT NOT NULL,
+  relationship_length TEXT NOT NULL
 );
 
 INSERT INTO users(email, password_digest, username, name, about, profile_picture) VALUES ('corey@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'coreysky', 'corey', 'Hi my name is Corey and my wife and I are newlyweds. We just bought a new house and though we not ready for kids, we were looking for a new furr baby to join our home. We heard about Furever Home from a friend and that is how we found our baby Hachiko. We also have another dog Riri who we also rescued from a shelter. We are passionate about animal care and are hardcore animal lovers.', 'https://static1.squarespace.com/static/5b50ebb7e749401857e16f2f/t/5ba3b34d40ec9aa75455d0f8/1537454929714/corey.jpg'),

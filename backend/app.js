@@ -15,7 +15,7 @@ let postsRouter = require('./routes/posts');
 let adoptedRouter = require('./routes/adopted');
 let favoritedRouter = require('./routes/favorited');
 let commentsRouter = require('./routes/comments');
-let formRouter = require('./routes/form');
+let formsRouter = require('./routes/forms');
 let petfinderRouter = require('./routes/petFinderAPIRoute');
 
 // view engine setup
@@ -46,7 +46,7 @@ app.use('/posts', postsRouter);
 app.use('/adopted', adoptedRouter);
 app.use('/favorited', favoritedRouter);
 app.use('/comments', commentsRouter);
-app.use('/form', formRouter);
+app.use('/forms', formsRouter);
 app.use('/petfinder', petfinderRouter);
 
 app.use('*', (req, res, next) => {
