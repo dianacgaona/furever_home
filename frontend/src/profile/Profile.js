@@ -32,10 +32,10 @@ class Profile extends Component {
     }
   }
 
-  getPosts = id => {
+  getPosts = () => {
     debugger
     axios
-      .get(`/api/posts/byUser/${id}`)
+      .get(`/api/posts/byUser/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
           user_Posts: res.data.post,
