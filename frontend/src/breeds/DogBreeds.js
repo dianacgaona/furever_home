@@ -7,6 +7,7 @@ import axios from "axios";
 class DogBreeds extends Component {
   state = {
     selectedBorough: "",
+    active: false,
     animals: [],
     filteredAnimals: [],
     Manhattan:
@@ -16,7 +17,7 @@ class DogBreeds extends Component {
     Queens:
       "NY102,NY178,NY992,NY1156,NY879,NY1422,NY600,NY525,NY1211,NY1045,NY666,NY791,NY887,NY151,NY1425,NY1293,NY1113,NY1414,NY1376,NY408,NY1047,NY1145,NY455,NY1419,NY1271,NY790",
     Bronx: "NY587,NY652,NY434,NY517",
-    age: { baby: false, young: false, adult: false },
+    age: [{ Baby: false, Young: false, Adult: false }],
     color: { black: false, white: false, brown: false, golden: false }
   };
 
@@ -35,7 +36,8 @@ class DogBreeds extends Component {
     }).then(animals => {
       console.log(animals);
       this.setState({
-        animals: animals.data.data.animals
+        animals: animals.data.data.animals,
+        active: false
       });
     });
   };
@@ -59,15 +61,17 @@ class DogBreeds extends Component {
 
   handleAgeChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      age: e.target.value
     });
+
     console.log(e.target.value);
+    this.filterByAge();
   };
 
-  filterByAge = e => {
-    e.preventDefault();
+  filterByAge = () => {
+    debugger;
     let ageFilter = this.state.animals.filter(animals => {
-      if (animals.age === e.target.value) {
+      if (animals.age === this.state.age) {
         return animals;
       }
     });
@@ -196,7 +200,7 @@ class DogBreeds extends Component {
               control={
                 <Checkbox
                   name="age"
-                  value="baby"
+                  value="Baby"
                   onChange={this.handleAgeChange}
                   margin="normal"
                   color="primary"
@@ -208,8 +212,8 @@ class DogBreeds extends Component {
               control={
                 <Checkbox
                   name="age"
-                  value="adult"
-                  onChange={this.filterByAge}
+                  value="Adult"
+                  onChange={this.handleAgeChange}
                   margin="normal"
                   color="primary"
                 />
