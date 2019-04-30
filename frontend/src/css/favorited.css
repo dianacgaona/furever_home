@@ -14,16 +14,10 @@
 }
 
 .favImgCont {
-  /* display: flex; */
   width: 300px;
   height: 220px;
   overflow: hidden;
 }
-
-
-/* .favImg {
-  width: 300px;
-} */
 
 .favoritedPetImg {
   display: flex;

@@ -10,9 +10,13 @@
 }
 
 .loginContainer {
-
+  padding-top: 2%;
 }
 
 .loginButton {
   border-radius: 1px;
+}
+
+.inputCont {
+  margin-bottom: 2%;
 }

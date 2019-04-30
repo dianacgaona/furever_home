@@ -29,7 +29,7 @@ class Form extends React.Component {
       <>
         {this.state.formCompleted ?
           <>
-            <p>Thank you for your interest {this.state.name}. Please allow 3-5 business days for a reply. </p>
+            <p className='formResponse'>Thank you for your interest {this.state.name}. Please allow 3-5 business days for a reply. </p>
           </>
          :
          <div  className='padding'>

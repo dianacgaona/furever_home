@@ -71,7 +71,8 @@ class Login extends Component {
 
   render() {
     return (
-      
+
+
 
 <MyContext.Consumer>
         {context => {
@@ -96,6 +97,8 @@ class Login extends Component {
                       fontWeight: '900',
                       marginLeft: '37%',
                       fontSize: '25px',
+                      marginTop: '-14%',
+                      marginBottom: '4%',
                     }}
                   >
                     LOGIN
@@ -105,27 +108,29 @@ class Login extends Component {
                       this.handleSubmit(e, context.functions.loginUser);
                     }}
                   >
+                  <div className='inputCont'>
                     <input
                       type="text"
                       name="emailInput"
                       value={this.state.emailInput}
                       onChange={this.handleChange}
                       placeholder="Email"
-                      style={{ marginLeft: '18%' }}
+                      style={{ marginLeft: '22%' }}
                     />
+                    </div>
                     <input
                       type="password"
                       name="passwordInput"
                       value={this.state.passwordInput}
                       onChange={this.handleChange}
                       placeholder="Password"
-                      style={{ marginLeft: '18%' }}
+                      style={{ marginLeft: '22%' }}
                     />
                     <div className="loginContainer">
                       <button
                         style={{
                           borderRadius: '1px',
-                          marginLeft: '37%',
+                          marginLeft: '24%',
                           color: 'white',
                           backgroundColor: '#001049',
                         }}
@@ -149,7 +154,7 @@ class Login extends Component {
                   {this.renderRedirect()}
                   <div>
                     <Link to={'/register'}>
-                      <p style={{ marginLeft: '7%' }}>
+                      <p style={{ marginLeft: '14%', paddingTop: '2%' }}>
                         Need to create an account? Register
                       </p>
                     </Link>
