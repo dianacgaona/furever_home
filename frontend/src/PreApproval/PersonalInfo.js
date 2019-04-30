@@ -24,15 +24,9 @@ const styles = theme => ({
 });
 
 class PersonalInfo extends React.Component {
-  state = {
-    name: '',
-    phone: '',
-    email: '',
-  };
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const { classes } = this.props;
@@ -46,9 +40,10 @@ class PersonalInfo extends React.Component {
               id="name"
               label="Name"
               className={classes.textField}
-              value={this.state.name}
-              onChange={this.handleChange('name')}
+              value={this.props.name}
+              onChange={this.props.handleChange}
               margin="normal"
+              name='name'
             />
               <TextField
                 id="date"

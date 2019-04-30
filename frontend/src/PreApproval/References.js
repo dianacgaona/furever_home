@@ -22,7 +22,6 @@ class References extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
 
       <div className='padding'>
@@ -55,7 +54,7 @@ class References extends React.Component {
             margin="normal"
           />
 
-            <p className='nom2'>2.</p><TextField
+            <p className='nom2' style={{ marginTop: '1%', marginBottom: '-3%' }}>2.</p><TextField
             id="name"
             label="Name"
             className={classes.textField}
