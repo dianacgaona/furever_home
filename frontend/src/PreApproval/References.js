@@ -27,68 +27,55 @@ class References extends React.Component {
 
       <div className='padding'>
           <div className='Rname'>
-            <p>1.</p><TextField
+            <p className='nom1' style={{ marginBottom: '-3%' }}>1.</p><TextField
             id="name"
             label="Name"
             className={classes.textField}
             margin="normal"
           />
-          </div>
 
-          <div className='relationship'>
             <TextField
             id="realtionship"
             label="Relationship"
             className={classes.textField}
             margin="normal"
           />
-          </div>
 
-          <div className='phoneNom'>
             <TextField
             id="phone"
             label="Phone"
             className={classes.textField}
             margin="normal"
           />
-          </div>
-          <div>
+
           <TextField
             id="long"
             label="How long have you known this person?"
             className={classes.textField}
             margin="normal"
           />
-          </div>
 
-
-          <div className='Rname'>
-            <p>2.</p><TextField
+            <p className='nom2'>2.</p><TextField
             id="name"
             label="Name"
             className={classes.textField}
             margin="normal"
           />
-          </div>
 
-          <div className='relationship'>
             <TextField
             id="realtionship"
             label="Relationship"
             className={classes.textField}
             margin="normal"
           />
-          </div>
 
-          <div className='phoneNom'>
             <TextField
             id="phone"
             label="Phone"
             className={classes.textField}
             margin="normal"
           />
-          </div>
-          <div>
+
           <TextField
             id="long"
             label="How long have you known this person?"

@@ -51,6 +51,17 @@
   font-weight: 900;
   text-decoration: underline;
   padding-bottom: 1%;
+  margin-top: 2%;
+}
+
+.references {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-decoration: underline;
+  margin-top: 1%;
 }
 
 .namedob {
@@ -78,7 +89,8 @@
 }
 
 .preButton {
-  margin-left: 18%;
+  margin-left: 47%;
+  margin-top: 3%;
   font-size: 18px;
   border-radius: 3px;
   color: white;

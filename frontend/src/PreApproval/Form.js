@@ -17,7 +17,7 @@ class Form extends React.Component {
                   <PersonalInfo/>
                 <div className='householdInfo'>Household Info</div>
                   <Household/>
-                <div>References</div>
+                <div className='references'>References</div>
                     <References/>
                   <button className='preButton'>Submit</button>
               </form>
