@@ -56,13 +56,13 @@
 .namedob {
   display: flex;
   justify-content: center;
-  margin-right: 26%;
+  /* margin-right: 26%; */
 }
 
 .address1 {
   display: flex;
   justify-content: center;
-  margin-right: 21%;
+  /* margin-right: 21%; */
 }
 
 .address2 {
@@ -73,7 +73,7 @@
 .phoneEmail {
   display: flex;
   justify-content: center;
-  margin-right: 22%;
+  /* margin-right: 22%; */
   margin-bottom: 1%;
 }
 

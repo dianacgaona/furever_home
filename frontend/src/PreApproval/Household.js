@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 
 import '../css/approval.css';
+import '../css/household.css';
 
 const styles = theme => ({
   textField: {
@@ -48,22 +49,22 @@ class Household extends React.Component {
 
       <div className='padding'>
         <FormGroup row>
-          <p>What best describes your home</p>
-          <FormControlLabel
-          control={
-            <Checkbox
-              checked={this.state.checkedA}
-              onChange={this.handleChecked('checkedA')}
-              value="checkedA"
-              classes={{
-                root: classes.root,
-                checked: classes.checked,
-              }}
-            />
-          }
-          label="Apartment"
-        />
-
+          <div className='Home'>What best describes your home</div>
+            <div className='desHome'>
+            <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.checkedA}
+                onChange={this.handleChecked('checkedA')}
+                value="checkedA"
+                classes={{
+                  root: classes.root,
+                  checked: classes.checked,
+                }}
+              />
+            }
+            label="Apartment"
+          />
         <FormControlLabel
           control={
             <Checkbox
@@ -78,43 +79,48 @@ class Household extends React.Component {
           }
           label="House"
         />
+        </div>
+        </FormGroup>
+
+
+        <FormGroup row>
+          <div className='yard'>Do you have a yard?</div>
+            <div className='yardChoices'>
+              <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.yes}
+                  onChange={this.handleChecked('yes')}
+                  value="yes"
+                  classes={{
+                    root: classes.root,
+                    checked: classes.checked,
+                  }}
+                />
+              }
+              label="Yes"
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.no}
+                  onChange={this.handleChecked('no')}
+                  value="no"
+                  classes={{
+                    root: classes.root,
+                    checked: classes.checked,
+                  }}
+                />
+              }
+              label="No"
+            />
+          </div>
         </FormGroup>
 
         <FormGroup row>
-          <p>Do you have a yard?</p>
-          <FormControlLabel
-          control={
-            <Checkbox
-              checked={this.state.yes}
-              onChange={this.handleChecked('yes')}
-              value="yes"
-              classes={{
-                root: classes.root,
-                checked: classes.checked,
-              }}
-            />
-          }
-          label="Yes"
-        />
-
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={this.state.no}
-              onChange={this.handleChecked('no')}
-              value="no"
-              classes={{
-                root: classes.root,
-                checked: classes.checked,
-              }}
-            />
-          }
-          label="No"
-        />
-        </FormGroup>
-
-        <FormGroup row>
-          <p>Do you have a screen on your windows?</p>
+          <div className='windows'>Do you have a screen on your windows?</div>
+          <div className='windowsChoices'>
           <FormControlLabel
           control={
             <Checkbox
@@ -144,10 +150,12 @@ class Household extends React.Component {
           }
           label="No"
         />
+        </div>
         </FormGroup>
 
         <FormGroup row>
-          <p>Are you or anyone in your home allergic to animals?</p>
+          <div className='allergic'>Are you or anyone in your home allergic to animals?</div>
+          <div className='allergicChoices'>
           <FormControlLabel
           control={
             <Checkbox
@@ -177,75 +185,80 @@ class Household extends React.Component {
           }
           label="No"
         />
+        </div>
         </FormGroup>
 
-        <p>Please list the animals(and their age) in your household if any</p>
-        <TextField
-          style={{ margin: 5 }}
-          placeholder="(Ex. Cat: age 5years)"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          className={classes.textField}
-        />
-        <TextField
-          style={{ margin: 5 }}
-          placeholder="(Ex. Dog: age 3years)"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          className={classes.textField}
-        />
-        <TextField
-          style={{ margin: 5 }}
-          placeholder="(Ex. Kitten: age 4months)"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          className={classes.textField}
-        />
-        <TextField
-          style={{ margin: 5 }}
-          placeholder="(Ex. Puppy: age 2months)"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          className={classes.textField}
-        />
+        <div className='animalNom'>Please list the animals(and their age) in your household if any</div>
+          <div className='animalFill'>
+            <TextField
+              style={{ margin: 5 }}
+              placeholder="(Ex. Cat: age 5years)"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              className={classes.textField}
+            />
+            <TextField
+              style={{ margin: 5 }}
+              placeholder="(Ex. Dog: age 3years)"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              className={classes.textField}
+            />
+            <TextField
+              style={{ margin: 5 }}
+              placeholder="(Ex. Kitten: age 4months)"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              className={classes.textField}
+            />
+            <TextField
+              style={{ margin: 5 }}
+              placeholder="(Ex. Puppy: age 2months)"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              className={classes.textField}
+            />
+            </div>
 
 
-      <FormGroup row>
-        <p>Are all animals neutered/spayed?</p>
-        <FormControlLabel
-        control={
-          <Checkbox
-            checked={this.state.yes4}
-            onChange={this.handleChecked('yes4')}
-            value="yes4"
-            classes={{
-              root: classes.root,
-              checked: classes.checked,
-            }}
+        <FormGroup row>
+          <div className='spayed'>Are all animals neutered/spayed?</div>
+          <div className='spayedChoices'>
+            <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.yes4}
+                onChange={this.handleChecked('yes4')}
+                value="yes4"
+                classes={{
+                  root: classes.root,
+                  checked: classes.checked,
+                }}
+              />
+            }
+            label="Yes"
           />
-        }
-        label="Yes"
-      />
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={this.state.no4}
-            onChange={this.handleChecked('no4')}
-            value="no4"
-            classes={{
-              root: classes.root,
-              checked: classes.checked,
-            }}
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.no4}
+                onChange={this.handleChecked('no4')}
+                value="no4"
+                classes={{
+                  root: classes.root,
+                  checked: classes.checked,
+                }}
+              />
+            }
+            label="No"
           />
-        }
-        label="No"
-      />
-      </FormGroup>
+        </div>
+        </FormGroup>
       </div>
     );
   }
