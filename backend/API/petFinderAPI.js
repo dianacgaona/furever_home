@@ -10,8 +10,8 @@ getToken = () => {
     headers: {},
     data: {
       grant_type: "client_credentials",
-      client_id: "f7gj1BzWC4bkYvrihrdFgKE1LoGLnCHE3iVLlqu7RXZ3s3C3qk",
-      client_secret: "SUr98EnOpUbQMgdGqOOg0Epkra5f3rwAXhhEMpuO"
+      client_id: "aPyHda3zCinlGy1lJ0fWFDAQQvpgUomPSbOR7igJVYp8e7WVmE",
+      client_secret: "DYhhxZ48yFUWE3XrmbFHcEuyLt8CflBokBnZWrtJ"
     }
   })
     .then(data => {
