@@ -98,7 +98,9 @@ class ProfileModal extends React.Component {
                 className="modal_container"
               >
                 <div className="modal_close">
-                  <button onClick={this.closeModal}>X</button>
+                  <button onClick={this.closeModal} className="modal_button">
+                    X
+                  </button>
                 </div>
                 <h2
                   ref={subtitle => (this.subtitle = subtitle)}
@@ -114,13 +116,14 @@ class ProfileModal extends React.Component {
                   className="modal_form"
                 >
                   <div className="modal_left">
-                    Profile Picture
+                    <label className="modal_label">Profile Picture</label>
                     <input
                       type="text"
                       value={this.state.inputProfile_PictureURL}
                       onChange={this.handleChange}
                       placeholder="Photo Url"
                       name="inputProfile_PictureURL"
+                      className="modal_input"
                     />
                   </div>
                   <div className="modal_right">
@@ -152,23 +155,22 @@ class ProfileModal extends React.Component {
                       className="modal_input"
                     />
                     <label className="modal_label">About Me</label>
-                    <input
-                      type="text"
+                    <textarea
                       value={this.state.inputAboutText}
                       onChange={this.handleChange}
                       placeholder="About"
                       name="inputAboutText"
                       className="modal_about"
                     />
-                    <input
-                    type="submit"
-
-                    value="Make Changes"
-                    />
+                     <div className="modal_close">
+                      <input
+                       type="submit"
+                       value="Make Changes"
+                       className="modal_submit"
+                     />
+                    </div>
                   </div>
                 </form>
-
-
               </Modal>
             </div>
           );
