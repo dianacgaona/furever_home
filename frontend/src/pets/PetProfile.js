@@ -33,6 +33,7 @@ class PetProfile extends Component {
   };
 
   favoriteAnAnimal = () => {
+    debugger;
     axios
       .post(`/favorited`, {
         pet_id: this.state.pet_id,
@@ -43,12 +44,25 @@ class PetProfile extends Component {
       });
   };
 
+
   handleSubmit = e => {
   e.preventDefault()
   this.setState({
     adopt: !this.state.adopt
   })
 }
+
+  unFavoriteAnimal = () => {
+    debugger
+    axios
+      .delete(`/favorited/${this.state.pet_id}`)
+      .then(() => {})
+      .catch(err => {
+        console.log(err);
+      });
+
+  };
+
 
   displayPetProfile = () => {
     let { profile } = this.state;
@@ -74,7 +88,11 @@ class PetProfile extends Component {
             </div>
             <div>
               <button onClick={this.favoriteAnAnimal}> Favorite Me!</button>
-              <button onClick={this.handleSubmit}>Pre-Adoption Form</button>
+
+              <button onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
+
+               <button onClick={this.handleSubmit}>Pre-Adoption Form</button>
+
               <h3 className="animal_detail">{profile.age}</h3>
               <h3 className="animal_detail">{profile.color}</h3>
               <h3 className="animal_detail">{profile.description}</h3>
