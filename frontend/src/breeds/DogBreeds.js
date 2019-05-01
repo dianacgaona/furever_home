@@ -17,8 +17,10 @@ class DogBreeds extends Component {
     Queens:
       "NY102,NY178,NY992,NY1156,NY879,NY1422,NY600,NY525,NY1211,NY1045,NY666,NY791,NY887,NY151,NY1425,NY1293,NY1113,NY1414,NY1376,NY408,NY1047,NY1145,NY455,NY1419,NY1271,NY790",
     Bronx: "NY587,NY652,NY434,NY517",
-    age: [{ Baby: false, Young: false, Adult: false }],
-    color: { black: false, white: false, brown: false, golden: false }
+    selectedAge: "",
+    selectedSize: "",
+    selectedColor: "",
+    selectedGender: ""
   };
 
   getAnimals = e => {
@@ -48,7 +50,7 @@ class DogBreeds extends Component {
     });
   };
 
-  handleChange = e => {
+  handleBoroughChange = e => {
     this.setState(
       {
         [e.target.name]: e.target.value
@@ -59,19 +61,66 @@ class DogBreeds extends Component {
     );
   };
 
-  handleAgeChange = e => {
-    this.setState({
-      age: e.target.value
-    });
+  handleColorChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      prev => {
+        this.filterByColor();
+      }
+    );
+  };
 
-    console.log(e.target.value);
-    this.filterByAge();
+  handleAgeChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      prev => {
+        this.filterByAge();
+      }
+    );
+  };
+
+  handleSizeChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      prev => {
+        this.filterBySize();
+      }
+    );
+  };
+
+  handleGenderChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      prev => {
+        this.filterByGender();
+      }
+    );
+  };
+
+  filterByGender = () => {
+    let genderFilter = this.state.animals.filter(animals => {
+      if (animals.gender === this.state.selectedGender) {
+        return animals;
+      }
+    });
+    this.setState({
+      filteredAnimals: genderFilter,
+      active: true
+    });
+    console.log(genderFilter);
   };
 
   filterByAge = () => {
-    debugger;
     let ageFilter = this.state.animals.filter(animals => {
-      if (animals.age === this.state.age) {
+      if (animals.age === this.state.selectedAge) {
         return animals;
       }
     });
@@ -80,6 +129,35 @@ class DogBreeds extends Component {
       active: true
     });
     console.log(ageFilter);
+  };
+
+  filterBySize = () => {
+    let sizeFilter = this.state.animals.filter(animals => {
+      if (animals.size === this.state.selectedSize) {
+        return animals;
+      }
+    });
+    this.setState({
+      filteredAnimals: sizeFilter,
+      active: true
+    });
+    console.log(sizeFilter);
+  };
+
+  filterByColor = () => {
+    let colorFilter = this.state.animals.filter(animals => {
+      if (animals.colors.primary === this.state.selectedColor) {
+        return animals;
+      }
+      if (animals.colors.primary === null) {
+        return "";
+      }
+    });
+    this.setState({
+      filteredAnimals: colorFilter,
+      active: true
+    });
+    console.log(colorFilter);
   };
 
   displayFiltered = () => {
@@ -160,7 +238,7 @@ class DogBreeds extends Component {
           <select
             className="form_select"
             name="selectedBorough"
-            onChange={this.handleChange}
+            onChange={this.handleBoroughChange}
           >
             <option disabled selected>
               Select a borough
@@ -194,61 +272,96 @@ class DogBreeds extends Component {
               Bronx
             </option>
           </select>
-          <div>
-            {"Age"}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="age"
-                  value="Baby"
-                  onChange={this.handleAgeChange}
-                  margin="normal"
-                  color="primary"
-                />
-              }
-              label="Baby"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="age"
-                  value="Adult"
-                  onChange={this.handleAgeChange}
-                  margin="normal"
-                  color="primary"
-                />
-              }
-              label="Adult"
-            />
-          </div>
-
-          <div>
-            {"Color"}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="color"
-                  value="black"
-                  onChange={this.handleChange}
-                  margin="normal"
-                  color="primary"
-                />
-              }
-              label="Black"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="color"
-                  value="white"
-                  onChange={this.handleChange}
-                  margin="normal"
-                  color="primary"
-                />
-              }
-              label="White"
-            />
-          </div>
+          <select
+            className="form_select"
+            name="selectedColor"
+            onChange={this.handleColorChange}
+          >
+            <option disabled selected>
+              Select a Color
+            </option>
+            <option name="color" value="Apricot / Beige">
+              Apricot / Beige
+            </option>
+            <option name="color" value="Bicolor">
+              Bicolor
+            </option>
+            <option name="color" value="Black">
+              Black
+            </option>
+            <option name="color" value="Brindle">
+              Brindle
+            </option>
+            <option name="color" value="Grey / Blue / Silver">
+              Grey / Blue / Silver
+            </option>
+            <option name="color" value="Red / Chestnut / Orange">
+              Red / Chestnut / Orange
+            </option>
+            <option name="color" value="Tricolor (Brown, Black, White)">
+              Tricolor (Brown, Black, White)
+            </option>
+            <option name="color" value="White / Cream">
+              White / Cream
+            </option>
+            <option name="color" value="Yellow / Tan / Blond / Fawn">
+              Yellow / Tan / Blond / Fawn
+            </option>
+          </select>
+          <select
+            className="form_select"
+            name="selectedAge"
+            onChange={this.handleAgeChange}
+          >
+            <option disabled selected>
+              Select an Age
+            </option>
+            <option name="age" value="Baby">
+              Baby
+            </option>
+            <option name="age" value="Young">
+              Young
+            </option>
+            <option name="age" value="Adult">
+              Adult
+            </option>
+            <option name="age" value="Senior">
+              Senior
+            </option>
+          </select>
+          <select
+            className="form_select"
+            name="selectedSize"
+            onChange={this.handleSizeChange}
+          >
+            <option disabled selected>
+              Select a Size
+            </option>
+            <option name="size" value="Small">
+              Small
+            </option>
+            <option name="size" value="Medium">
+              Medium
+            </option>
+            <option name="size" value="Large">
+              Large
+            </option>
+          </select>
+          <select
+            className="form_select"
+            name="selectedGender"
+            onChange={this.handleGenderChange}
+          >
+            <option disabled selected>
+              Select By Gender
+            </option>
+            <option name="gender" value="Male">
+              Male
+            </option>
+            <option name="gender" value="Female">
+              Female
+            </option>
+          </select>
         </form>
       </>
     );
