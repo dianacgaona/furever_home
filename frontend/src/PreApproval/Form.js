@@ -27,12 +27,17 @@ class Form extends React.Component {
   })
 }
   render() {
-    console.log('PROPS', this.props.profile)
     return (
       <>
         {this.state.formCompleted ?
           <>
-            <p className='formResponse'>Thank you for your interest {this.props.profile.name}, {this.state.name}. Please allow 3-5 business days for a reply. We and {this.props.profile.org_name} will review your application and get back to you at {this.state.email} or {this.state.phone} you have kindly provided us. We hope to connect you with your furever friends as soon as possible!</p>
+            <div className='formResponse'>
+              <div className='response1'>Thank you for your interest in {this.props.profile.name}, {this.state.name}.</div>
+
+              <div className='response2'>Please allow 3-5 business days for a reply. We and {this.props.profile.org_name} will review your application and get back to you at the information you kindly provided us ({this.state.email} or {this.state.phone}).</div>
+
+              <div className='response3'>We hope to connect you with your furever friends as soon as possible!</div>
+            </div>
           </>
          :
          <div  className='padding'>

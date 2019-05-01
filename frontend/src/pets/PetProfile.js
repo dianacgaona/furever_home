@@ -23,7 +23,6 @@ class PetProfile extends Component {
 
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
-      debugger
         this.setState({
         profile: res.data.animal,
         pet_id: id,
@@ -109,7 +108,6 @@ class PetProfile extends Component {
   };
 
   render() {
-    console.log('PET',this.state.profile.org_name)
     return (
 
       <MyContext.Consumer>
