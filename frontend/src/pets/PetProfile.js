@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { MyContext } from '../provider/MyProvider';
+import Form from '../PreApproval/Form'
 import '../css/petprofile.css';
 // import Auth from "../utils/Auth.js";
 
@@ -12,37 +13,23 @@ class PetProfile extends Component {
       profile: {},
       pet_id: '',
       organization_id: '',
-      organization: ''
+      adopt: false
     };
   }
 
   componentDidMount() {
     this.getPet(this.props.match.params.id);
-    this.getOrganization();
   }
 
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
-      console.log('ONE PET', res.data)
+      debugger
         this.setState({
         profile: res.data.animal,
         pet_id: id,
         organization_id: res.data.animal.organization_id,
       });
     });
-  };
-
-  getOrganization = () => {
-    axios.get(`/petfinder/organizations/${this.state.organization_id}`)
-      .then(res => {
-        console.log('ORG ID?', this.props.match.params.id)
-        this.setState({
-          organization: res.data.organization,
-        });
-      })
-      .catch(err => {
-        console.log('ORGANIZATION???',err);
-      });
   };
 
   favoriteAnAnimal = () => {
@@ -57,6 +44,14 @@ class PetProfile extends Component {
       });
   };
 
+
+  handleSubmit = e => {
+  e.preventDefault()
+  this.setState({
+    adopt: !this.state.adopt
+  })
+}
+
   unFavoriteAnimal = () => {
     debugger
     axios
@@ -68,12 +63,19 @@ class PetProfile extends Component {
 
   };
 
+
   displayPetProfile = () => {
     let { profile } = this.state;
     if (!profile.photos) {
       return <h2> Loading... </h2>;
     } else {
       return (
+        <>
+          {this.state.adopt ?
+           <>
+            <Form profile={this.state.profile}/>
+           </>
+        :
         <div className="animal_div">
           <h1 className="animal_name">{profile.name}</h1>
           <div className="animal_info">
@@ -89,7 +91,7 @@ class PetProfile extends Component {
 
               <button onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
 
-              <Link to={'/pre-approval'}><button>Pre-Adoption Form</button></Link>
+               <button onClick={this.handleSubmit}>Pre-Adoption Form</button>
 
               <h3 className="animal_detail">{profile.age}</h3>
               <h3 className="animal_detail">{profile.color}</h3>
@@ -100,25 +102,24 @@ class PetProfile extends Component {
             </div>
           </div>
         </div>
+      }
+      </>
       );
     }
   };
 
   render() {
-    console.log('this is state', this.state);
+    console.log('PET',this.state.profile.org_name)
     return (
 
-
-
-<MyContext.Consumer>
-        {context => {
-          // console.log('hello', context);
-          return (
-            <div>
-              <div>{this.displayPetProfile()}</div>
-            </div>
-          );
-        }}
+      <MyContext.Consumer>
+          {context => {
+            return (
+              <div>
+                <div>{this.displayPetProfile()}</div>
+              </div>
+            );
+          }}
       </MyContext.Consumer>
     );
   }

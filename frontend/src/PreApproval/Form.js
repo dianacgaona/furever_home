@@ -5,11 +5,13 @@ import References from './References'
 import '../css/approval.css';
 
 class Form extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state= {
       formCompleted: false,
       name: '',
+      email: '',
+      phone: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -25,11 +27,12 @@ class Form extends React.Component {
   })
 }
   render() {
+    console.log('PROPS', this.props.profile)
     return (
       <>
         {this.state.formCompleted ?
           <>
-            <p className='formResponse'>Thank you for your interest {this.state.name}. Please allow 3-5 business days for a reply. </p>
+            <p className='formResponse'>Thank you for your interest {this.props.profile.name}, {this.state.name}. Please allow 3-5 business days for a reply. We and {this.props.profile.org_name} will review your application and get back to you at {this.state.email} or {this.state.phone} you have kindly provided us. We hope to connect you with your furever friends as soon as possible!</p>
           </>
          :
          <div  className='padding'>
@@ -38,7 +41,8 @@ class Form extends React.Component {
              </p>
                <form className='formBorder' noValidate autoComplete="off">
                  <div className='personalInfo'>Personal Info</div>
-                   <PersonalInfo name={this.state.name} handleChange={this.handleChange}/>
+                   <PersonalInfo name={this.state.name}
+                                  phone={this.state.phone} email={this.state.email} handleChange={this.handleChange}/>
                  <div className='householdInfo'>Household Info</div>
                    <Household/>
                  <div className='references'>References</div>
