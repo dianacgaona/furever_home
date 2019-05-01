@@ -58,56 +58,62 @@ class PersonalInfo extends React.Component {
               />
           </div>
           <div className='address1'>
-            <TextField
-            id="address"
-            label="Address"
-            className={classes.textField}
-            margin="normal"
-          />
+              <TextField
+                id="address"
+                label="Address"
+                className={classes.textField}
+                margin="normal"
+                />
 
-            <TextField
-            id="apt"
-            label="Apt"
-            className={classes.textField}
-            margin="normal"
-          />
-          </div>
-          <div className='address2'>
-            <TextField
-            id="city"
-            label="City"
-            className={classes.textField}
-            margin="normal"
-          />
+              <TextField
+                id="apt"
+                label="Apt"
+                className={classes.textField}
+                margin="normal"
+                />
+            </div>
+            <div className='address2'>
+              <TextField
+                id="city"
+                label="City"
+                className={classes.textField}
+                margin="normal"
+                />
 
-          <TextField
-            id="state"
-            label="State"
-            className={classes.textField}
-            margin="normal"
-          />
+              <TextField
+                id="state"
+                label="State"
+                className={classes.textField}
+                margin="normal"
+                />
 
-            <TextField
-            id="zip"
-            label="Zip"
-            className={classes.textField}
-            margin="normal"
-          />
-          </div>
-          <div className='phoneEmail'>
-            <TextField
-            id="phone"
-            label="Phone"
-            className={classes.textField}
-            margin="normal"
-          />
+              <TextField
+                id="zip"
+                label="Zip"
+                className={classes.textField}
+                margin="normal"
+                />
+            </div>
+            <div className='phoneEmail'>
+                <TextField
+                  id="phone"
+                  label="Phone"
+                  className={classes.textField}
+                  margin="normal"
+                  name='phone'
+                  value={this.props.phone}
+                  onChange={this.props.handleChange}
+                  />
 
-          <TextField
-            id="email"
-            label="Email"
-            className={classes.textField}
-            margin="normal"
-          />
+                <TextField
+                  id="email"
+                  label="Email"
+                  className={classes.textField}
+                  margin="normal"
+                  name='email'
+                  value={this.props.email}
+                  onChange={this.props.handleChange}
+                  />
           </div>
 
       </div>
