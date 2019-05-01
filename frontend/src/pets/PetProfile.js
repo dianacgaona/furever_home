@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
-import "../css/petprofile.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import '../css/petprofile.css';
 // import Auth from "../utils/Auth.js";
 
 class PetProfile extends Component {
@@ -9,32 +10,62 @@ class PetProfile extends Component {
     super();
     this.state = {
       profile: {},
-      pet_id: ""
+      pet_id: '',
+      organization_id: '',
+      organization: ''
     };
   }
-  // when I click the button it will grab the pet_id and setState
+
   componentDidMount() {
     this.getPet(this.props.match.params.id);
+    this.getOrganization();
   }
 
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
-      this.setState({
+      console.log('ONE PET', res.data)
+        this.setState({
         profile: res.data.animal,
-        pet_id: id
+        pet_id: id,
+        organization_id: res.data.animal.organization_id,
       });
     });
   };
 
+  getOrganization = () => {
+    axios.get(`/petfinder/organizations/${this.state.organization_id}`)
+      .then(res => {
+        console.log('ORG ID?', this.props.match.params.id)
+        this.setState({
+          organization: res.data.organization,
+        });
+      })
+      .catch(err => {
+        console.log('ORGANIZATION???',err);
+      });
+  };
+
   favoriteAnAnimal = () => {
+    debugger;
     axios
       .post(`/favorited`, {
-        pet_id: this.state.pet_id
+        pet_id: this.state.pet_id,
       })
       .then(res => {})
       .catch(err => {
         console.log(err);
       });
+  };
+
+  unFavoriteAnimal = () => {
+    debugger
+    axios
+      .delete(`/favorited/${this.state.pet_id}`)
+      .then(() => {})
+      .catch(err => {
+        console.log(err);
+      });
+
   };
 
   displayPetProfile = () => {
@@ -55,6 +86,11 @@ class PetProfile extends Component {
             </div>
             <div>
               <button onClick={this.favoriteAnAnimal}> Favorite Me!</button>
+
+              <button onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
+
+              <Link to={'/pre-approval'}><button>Pre-Adoption Form</button></Link>
+
               <h3 className="animal_detail">{profile.age}</h3>
               <h3 className="animal_detail">{profile.color}</h3>
               <h3 className="animal_detail">{profile.description}</h3>
@@ -69,10 +105,14 @@ class PetProfile extends Component {
   };
 
   render() {
-    console.log(typeof this.state.pet_id);
+    console.log('this is state', this.state);
     return (
-      <MyContext.Consumer>
+
+
+
+<MyContext.Consumer>
         {context => {
+          // console.log('hello', context);
           return (
             <div>
               <div>{this.displayPetProfile()}</div>
