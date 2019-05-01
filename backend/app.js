@@ -50,6 +50,7 @@ app.use("/api/petfinder", petfinderRouter);
 app.use("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
+// should only use on deployment lines 50-52
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
