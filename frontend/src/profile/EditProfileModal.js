@@ -1,9 +1,11 @@
+
 import React from "react";
 import Modal from "react-modal";
 import { MyContext } from "../provider/MyProvider";
 import axios from "axios";
 import "../css/profilemodal.css";
 import { withRouter } from "react-router-dom";
+
 
 class ProfileModal extends React.Component {
   constructor(props) {
@@ -14,9 +16,11 @@ class ProfileModal extends React.Component {
       modalIsOpen: false,
       inputProfile_PictureURL: props.oldState.profileUser.profile_picture,
       inputUsername: props.oldState.profileUser.username,
+
+
       inputCity: props.oldState.profileUser.city,
-      inputState: "",
-      inputAboutText: props.oldState.profileUser.about
+      inputState: '',
+      inputAboutText: props.oldState.profileUser.about,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -36,7 +40,7 @@ class ProfileModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = '#2F1847';
   }
 
   closeModal() {
@@ -45,7 +49,7 @@ class ProfileModal extends React.Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -56,7 +60,7 @@ class ProfileModal extends React.Component {
       .patch(`/users/profile/${this.state.userId}`, {
         username: this.state.inputUsername,
         about: this.state.inputAboutText,
-        profile_picture: this.state.inputProfile_PictureURL
+        profile_picture: this.state.inputProfile_PictureURL,
       })
       .then(res => {
         console.log(res.data);
@@ -64,7 +68,7 @@ class ProfileModal extends React.Component {
       .then(() => {
         axios.patch(`/users/profile/location/${this.state.userId}`, {
           city: this.state.inputCity,
-          state: this.state.inputState
+          state: this.state.inputState,
         });
       })
       .then(() => {
@@ -75,7 +79,10 @@ class ProfileModal extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
@@ -100,7 +107,9 @@ class ProfileModal extends React.Component {
                   Edit Profile
                 </h2>
                 <form
+
                   onSubmit={this.handleSubmit}
+
                   id="post_form"
                   className="modal_form"
                 >
@@ -115,37 +124,41 @@ class ProfileModal extends React.Component {
                     />
                   </div>
                   <div className="modal_right">
-                    Username
+                    <label className="modal_label">Username</label>
                     <input
                       type="text"
                       value={this.state.inputUsername}
                       onChange={this.handleChange}
                       placeholder="Username"
                       name="inputUsername"
+                      className="modal_input"
                     />
-                    City
+                    <label className="modal_label">City</label>
                     <input
                       type="text"
                       value={this.state.inputCity}
                       onChange={this.handleChange}
                       placeholder="City"
                       name="inputCity"
+                      className="modal_input"
                     />
-                    State
+                    <label className="modal_label">State</label>
                     <input
                       type="text"
                       value={this.state.inputState}
                       onChange={this.handleChange}
                       placeholder="State"
                       name="inputState"
+                      className="modal_input"
                     />
-                    Tell us about yourself
+                    <label className="modal_label">About Me</label>
                     <input
                       type="text"
                       value={this.state.inputAboutText}
                       onChange={this.handleChange}
                       placeholder="About"
                       name="inputAboutText"
+                      className="modal_about"
                     />
                     <input
                     type="submit"
@@ -154,6 +167,8 @@ class ProfileModal extends React.Component {
                     />
                   </div>
                 </form>
+
+
               </Modal>
             </div>
           );
