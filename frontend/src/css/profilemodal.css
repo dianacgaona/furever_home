@@ -1,38 +1,65 @@
 .modal_container {
   width: 50%;
-  height: 400px;
+  height: 500px;
   margin: 150px auto;
-  /* background-color: rgba(255, 255, 255, 0.75); */
-  background-color: orange;
+  background-color: rgba(235, 235, 235, 0.89);
+  border-radius: 5px;
 }
 
 .modal_close {
   display: flex;
   justify-content: flex-end;
   padding: 5px;
+  border: none;
 }
 
 .modal_title {
   font-size: 35px;
   font-weight: bold;
   text-align: center;
-  margin: 5px;
 }
 
 .modal_form {
   display: flex;
   justify-content: space-around;
   padding: 5px;
-  background-color: pink;
+  /* background-color: pink; */
+  margin: 5px 0;
+  height: 70%;
 }
 
 .modal_left {
   display: flex;
   flex-direction: column;
+  width: 45%;
 }
 
 .modal_right {
   display: flex;
   flex-direction: column;
-  background-color: green;
+  /* background-color: green; */
+  width: 45%;
+}
+
+.modal_label {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 3px 0;
+}
+
+.modal_input {
+  margin: 5px 0;
+  height: 20px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: none;
+  background-color: ;
+}
+
+.modal_about {
+  height: 150px;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* overflow: auto; */
+  word-wrap: break-word;
 }
