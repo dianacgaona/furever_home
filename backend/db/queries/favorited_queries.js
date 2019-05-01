@@ -16,7 +16,7 @@ const createfavorite = (req, res, next) => {
 };
 
 const deleteFavorite = (req, res, next) => {
-  db.none('DELETE FROM favorited WHERE id=$1',
+  db.none('DELETE FROM favorited WHERE pet_id=$1',
    [Number(req.params.id)])
    .then(() => {
     res.status(200).json({

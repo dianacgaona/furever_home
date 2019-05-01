@@ -43,17 +43,17 @@ class AddPost extends Component {
       })
       .then(res => {
         this.props.getPosts();
-        debugger;
+      
       });
   };
 
   render() {
-    console.log(this.props, 'Props');
+    // console.log(this.props, 'Props');
     //
     // console.log(this.state, "AddPost le State");
-    console.log(this.props.match);
+    // console.log(this.props.match);
     return (
-      
+
 
 
 <MyContext.Consumer>
