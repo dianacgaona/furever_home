@@ -1,23 +1,18 @@
-
-import React from "react";
-import Modal from "react-modal";
-import { MyContext } from "../provider/MyProvider";
-import axios from "axios";
-import "../css/profilemodal.css";
-import { withRouter } from "react-router-dom";
-
+import React from 'react';
+import Modal from 'react-modal';
+import { MyContext } from '../provider/MyProvider';
+import axios from 'axios';
+import '../css/profilemodal.css';
 
 class ProfileModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userId: this.props.match.params.id,
       modalIsOpen: false,
       inputProfile_PictureURL: props.oldState.profileUser.profile_picture,
       inputUsername: props.oldState.profileUser.username,
-
-
+      inputLocation: '',
       inputCity: props.oldState.profileUser.city,
       inputState: '',
       inputAboutText: props.oldState.profileUser.about,
@@ -28,11 +23,10 @@ class ProfileModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   // console.log(this.props);
-  //   debugger
-  //   this.props.getSingleUser(this.props.match.params.id);
-  // }
+  componentDidMount() {
+    console.log(this.props);
+    this.props.getSingleUser();
+  }
 
   openModal() {
     this.setState({ modalIsOpen: true });
@@ -53,11 +47,10 @@ class ProfileModal extends React.Component {
     });
   };
 
-  handleSubmit = e => {
-    debugger;
+  handleSubmit = (e, user) => {
     e.preventDefault();
     axios
-      .patch(`/users/profile/${this.state.userId}`, {
+      .patch(`/users/profile/${user}`, {
         username: this.state.inputUsername,
         about: this.state.inputAboutText,
         profile_picture: this.state.inputProfile_PictureURL,
@@ -66,7 +59,7 @@ class ProfileModal extends React.Component {
         console.log(res.data);
       })
       .then(() => {
-        axios.patch(`/users/profile/location/${this.state.userId}`, {
+        axios.patch(`/users/profile/location/${user}`, {
           city: this.state.inputCity,
           state: this.state.inputState,
         });
@@ -77,7 +70,6 @@ class ProfileModal extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       
 
@@ -90,7 +82,6 @@ class ProfileModal extends React.Component {
                 Edit Profile
               </button>
               <Modal
-                ariaHideApp={false}
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
                 onRequestClose={this.closeModal}
@@ -109,8 +100,9 @@ class ProfileModal extends React.Component {
                   Edit Profile
                 </h2>
                 <form
-
-                  onSubmit={this.handleSubmit}
+                  onSubmit={e => {
+                    this.handleSubmit(e, context.state.currentUser.id);
+                  }}
 
                   id="post_form"
                   className="modal_form"
@@ -156,18 +148,19 @@ class ProfileModal extends React.Component {
                     />
                     <label className="modal_label">About Me</label>
                     <textarea
+                      type="text"
                       value={this.state.inputAboutText}
                       onChange={this.handleChange}
                       placeholder="About"
                       name="inputAboutText"
                       className="modal_about"
                     />
-                     <div className="modal_close">
+                    <div className="modal_close">
                       <input
-                       type="submit"
-                       value="Make Changes"
-                       className="modal_submit"
-                     />
+                        type="submit"
+                        value="Save"
+                        className="modal_submit"
+                      />
                     </div>
                   </div>
                 </form>
@@ -180,4 +173,4 @@ class ProfileModal extends React.Component {
   }
 }
 
-export default withRouter(ProfileModal);
+export default ProfileModal;
