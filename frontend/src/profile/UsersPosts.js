@@ -23,7 +23,9 @@ class UsersPosts extends Component {
               <p className='profPostTitle'>{post.title}</p>
             </Link>
             <Link to={`/posts/${post.id}`}>
-              <img src={post.post_url} alt="" className="postImg" />
+              <div className='postImageContainer'>
+                <img src={post.post_url} alt="" className="postImg" />
+              </div>
             </Link>
           </div>
         </div>
