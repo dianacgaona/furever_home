@@ -102,15 +102,15 @@ class OrganizationProfile extends Component {
               </div>
             ) : (
               <div className="organization_details">
-                <p>Location:</p>
-                <p>
+                <div className='locationText'>Location:</div>
+                <div className='cityState'>
                   {address.city}, {address.state}
-                </p>
+                </div>
               </div>
             )}
             <div className="organization_details">
-              <p>Contact us at: </p>
-              <p>{organization.email}</p>
+              <div className='contactUs'>Contact us at: </div>
+              <div className='organEmail'>{organization.email}</div>
             </div>
           </div>
         </div>
