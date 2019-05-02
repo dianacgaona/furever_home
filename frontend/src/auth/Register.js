@@ -72,7 +72,7 @@ class Register extends Component {
           } else {
             return (
               <div className="register_container">
-                <h3 className="register_title">Register</h3>
+                <h3 className="register_title">REGISTER</h3>
                 <form
                   onSubmit={e => {
                     this.handleSubmit(e, context.functions.loginUser);
