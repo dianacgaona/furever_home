@@ -1,3 +1,22 @@
+.modal_open {
+  margin: 5px;
+}
+
+.modal_open_button {
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 18px;
+  margin-left: 3.5%;
+  color: white;
+  background-color: #001049;
+}
+
+.modal_open_button:focus {
+  outline: none;
+}
+
 .modal_post_container {
   width: 50%;
   height: 550px;
@@ -97,7 +116,7 @@
 }
 
 .modal_post_check {
-  width: 30px;
+  width: 10px;
 }
 
 .modal_post_submit {
