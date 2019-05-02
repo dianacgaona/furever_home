@@ -105,6 +105,19 @@ class DogBreeds extends Component {
     );
   };
 
+  filterBySpecialNeeds = () => {
+    let specialFilter = this.state.animals.filter(animals => {
+      if (animals.attributes.special_needs === true) {
+        return animals;
+      }
+    });
+    this.setState({
+      filteredAnimals: specialFilter,
+      active: true
+    });
+    console.log(specialFilter);
+  };
+
   filterByGender = () => {
     let genderFilter = this.state.animals.filter(animals => {
       if (animals.gender === this.state.selectedGender) {
@@ -190,6 +203,7 @@ class DogBreeds extends Component {
             <p className="animal_details">{animal.colors.primary}</p>
           )}
           <p className="animal_details">{animal.age}</p>
+          <p className="animal_details">{animal.gender}</p>
         </div>
       );
     });
@@ -225,6 +239,7 @@ class DogBreeds extends Component {
             <p className="animal_details">{animal.colors.primary}</p>
           )}
           <p className="animal_details">{animal.age}</p>
+          <p className="animal_details">{animal.gender}</p>
         </div>
       );
     });
