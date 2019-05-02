@@ -189,6 +189,7 @@ class CatBreeds extends Component {
             <p className="animal_details">{animal.colors.primary}</p>
           )}
           <p className="animal_details">{animal.age}</p>
+          <p className="animal_details">{animal.gender}</p>
         </div>
       );
     });
@@ -224,6 +225,7 @@ class CatBreeds extends Component {
             <p className="animal_details">{animal.colors.primary}</p>
           )}
           <p className="animal_details">{animal.age}</p>
+          <p className="animal_details">{animal.gender}</p>
         </div>
       );
     });
