@@ -119,7 +119,8 @@
 
 .wholeAnimal {
   border-radius: 3px;
-  padding: 1%;
+  padding: 5%;
+  width: 320px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
 
@@ -132,10 +133,10 @@
 }
 
 .animalPicture {
-  width: 300px;
+  width: 298px;
   height: 261px;
   overflow: hidden;
-  padding: 2%;
+  /* padding: 2%; */
 }
 
 .organization_animals {
