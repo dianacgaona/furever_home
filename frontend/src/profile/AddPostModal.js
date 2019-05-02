@@ -1,25 +1,15 @@
-import React from "react";
-import "../css/adopted.css";
+import React from 'react';
+import '../css/postmodal.css';
 
-import Modal from "react-modal";
-import { MyContext } from "../provider/MyProvider";
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
+import Modal from 'react-modal';
+import { MyContext } from '../provider/MyProvider';
 
 class PostModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -33,7 +23,7 @@ class PostModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = '#2F1847';
   }
 
   closeModal() {
@@ -41,9 +31,11 @@ class PostModal extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
     return (
-      <MyContext.Consumer>
+      
+
+
+<MyContext.Consumer>
         {context => {
           return (
             <div>
@@ -57,61 +49,90 @@ class PostModal extends React.Component {
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
                 onRequestClose={this.closeModal}
-                style={customStyles}
                 contentLabel="Example Modal"
+                className="modal_post_container"
               >
-                <h2 ref={subtitle => (this.subtitle = subtitle)}>
-                  Fill out the fields and click Submit{" "}
+                <div className="modal_post_close">
+                  <button
+                    onClick={this.closeModal}
+                    className="modal_post_button"
+                  >
+                    X
+                  </button>
+                </div>
+                <h2
+                  ref={subtitle => (this.subtitle = subtitle)}
+                  className="modal_post_title"
+                >
+                  Create a Post
                 </h2>
-
                 <form
                   onSubmit={e => {
-                    debugger;
                     this.props.handleSubmit(e, context.state.currentUser.id);
                   }}
+
                   id="post_form"
-                  className="modalForm"
+                  className="modal_post_form"
                 >
-                  <input
-                    type="text"
-                    value={this.props.inputTitleText}
-                    onChange={this.props.handleChange}
-                    placeholder="Title"
-                    name="inputTitleText"
-                  />
-                  <input
-                    type="text"
-                    value={this.props.inputPost_Url}
-                    onChange={this.props.handleChange}
-                    placeholder="Image URL"
-                    name="inputPost_Url"
-                  />
-                  <input
-                    type="text"
-                    value={this.props.inputBodyText}
-                    onChange={this.props.handleChange}
-                    placeholder="Body"
-                    name="inputBodyText"
-                  />
-                  Dog
-                  <input
-                    type="radio"
-                    name="pet_type"
-                    value="Dog"
-                    checked={this.props.pet_type === "Dog"}
-                    onChange={this.props.handleChange}
-                  />
-                  Cat
-                  <input
-                    type="radio"
-                    name="pet_type"
-                    value="Cat"
-                    checked={this.props.pet_type === "Cat"}
-                    onChange={this.props.handleChange}
-                  />
-                  <input type="submit" value="Add Post" />
+                  <div className="modal_post_left">
+                    <label className="modal_post_label">Image</label>
+                    <input
+                      type="text"
+                      value={this.props.inputPost_Url}
+                      onChange={this.props.handleChange}
+                      placeholder="Image URL"
+                      name="inputPost_Url"
+                      className="modal_post_input"
+                    />
+                  </div>
+                  <div className="modal_post_right">
+                    <label className="modal_post_label">Post Title</label>
+                    <input
+                      type="text"
+                      value={this.props.inputTitleText}
+                      onChange={this.props.handleChange}
+                      placeholder="Title"
+                      name="inputTitleText"
+                      className="modal_post_input"
+                    />
+                    <label className="modal_post_label">Post</label>
+                    <textarea
+                      type="text"
+                      value={this.props.inputBodyText}
+                      onChange={this.props.handleChange}
+                      placeholder="Body"
+                      name="inputBodyText"
+                      className="modal_post_text"
+                    />
+                    <div className="modal_post_checkdiv">
+                      <label className="modal_post_label">Dog</label>
+                      <input
+                        type="radio"
+                        name="pet_type"
+                        value="Dog"
+                        checked={this.props.pet_type === 'Dog'}
+                        onChange={this.props.handleChange}
+                        className="modal_post_check"
+                      />
+                      <label className="modal_post_label">Cat</label>
+                      <input
+                        type="radio"
+                        name="pet_type"
+                        value="Cat"
+                        checked={this.props.pet_type === 'Cat'}
+                        onChange={this.props.handleChange}
+                        className="modal_post_check"
+                      />
+                    </div>
+                    <div className="modal_post_close">
+                      <input
+                        type="submit"
+                        value="Add Post"
+                        className="modal_post_submit"
+                      />
+                    </div>
+                  </div>
                 </form>
-                <button onClick={this.closeModal}>close</button>
               </Modal>
             </div>
           );
