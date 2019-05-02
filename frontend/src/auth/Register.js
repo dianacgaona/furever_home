@@ -72,11 +72,12 @@ class Register extends Component {
           } else {
             return (
               <div className="register_container">
-                <h3>Register</h3>
+                <h3 className="register_title">Register</h3>
                 <form
                   onSubmit={e => {
                     this.handleSubmit(e, context.functions.loginUser);
                   }}
+                  className="register_form"
                 >
                   <input
                     type="text"
@@ -84,6 +85,7 @@ class Register extends Component {
                     value={this.state.emailInput}
                     onChange={this.handleChange}
                     placeholder="email"
+                    className="register_input"
                   />
                   <input
                     type="password"
@@ -91,6 +93,7 @@ class Register extends Component {
                     value={this.state.passwordInput}
                     onChange={this.handleChange}
                     placeholder="password"
+                    className="register_input"
                   />
                   <input
                     type="text"
@@ -98,12 +101,15 @@ class Register extends Component {
                     value={this.state.usernameInput}
                     onChange={this.handleChange}
                     placeholder="username"
+                    className="register_input"
                   />
-                  <button>Register</button>
+                  <button className="register_button">Register</button>
                 </form>
                 {this.renderRedirect()}
                 <div>
-                  <Link to={"/login"}>Already a member? Log in</Link>
+                  <Link to={"/login"} className="register_link">
+                    Already a member? Log in
+                  </Link>
                 </div>
               </div>
             );
