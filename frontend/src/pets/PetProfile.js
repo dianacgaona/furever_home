@@ -33,7 +33,6 @@ class PetProfile extends Component {
   };
 
   favoriteAnAnimal = () => {
-    debugger;
     axios
       .post(`/favorited`, {
         pet_id: this.state.pet_id,
@@ -53,7 +52,6 @@ class PetProfile extends Component {
 }
 
   unFavoriteAnimal = () => {
-    debugger
     axios
       .delete(`/favorited/${this.state.pet_id}`)
       .then(() => {})
@@ -77,29 +75,30 @@ class PetProfile extends Component {
            </>
         :
         <div className="animal_div">
-          <h1 className="animal_name">{profile.name}</h1>
-          <div className="animal_info">
+          <div className='animalInfo'>
+            <div className="animal_name">{profile.name}</div>
+            <div className='animalAge'>{profile.age}</div>
+            <div className='animalCity'>{profile.contact.address.city}, {profile.contact.address.state}</div>
+            <div className='animalColor'>{profile.colors.primary}</div>
+            <div className='description'>{profile.description}</div>
             <div>
-              <img
-                className="animal_pic"
-                src={profile.photos[0].medium}
-                alt=""
+          </div>
+            <div className='animalButton'>
+              <button className='oneButton'
+                      onClick={this.favoriteAnAnimal}> Favorite Me!</button>
+
+              <button className='oneButton'
+                      onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
+
+               <button className='oneButton'
+                       onClick={this.handleSubmit}>Pre-Adoption Form</button>
+            </div>
+           </div>
+          <div className='animalPic'>
+            <img
+               src={profile.photos[0].medium}
+               alt=""
               />
-            </div>
-            <div>
-              <button onClick={this.favoriteAnAnimal}> Favorite Me!</button>
-
-              <button onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
-
-               <button onClick={this.handleSubmit}>Pre-Adoption Form</button>
-
-              <h3 className="animal_detail">{profile.age}</h3>
-              <h3 className="animal_detail">{profile.color}</h3>
-              <h3 className="animal_detail">{profile.description}</h3>
-              <h3 className="animal_detail">
-                {profile.contact.address.city}, {profile.contact.address.state}
-              </h3>
-            </div>
           </div>
         </div>
       }
