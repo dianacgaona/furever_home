@@ -4,6 +4,7 @@ import { Paper } from '@material-ui/core';
 import { MyContext } from '../provider/MyProvider';
 import { Link, Redirect } from 'react-router-dom';
 import Auth from '../utils/Auth.js';
+import '../css/login.css';
 
 class Login extends Component {
   constructor() {
@@ -71,16 +72,13 @@ class Login extends Component {
 
   render() {
     return (
-
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           if (context.state.currentUser.id) {
             return <Redirect to={'/'} />;
           } else {
             return (
-              <div>
+              <div className="login_container">
                 <Paper
                   style={{
                     width: '15%',
@@ -108,15 +106,15 @@ class Login extends Component {
                       this.handleSubmit(e, context.functions.loginUser);
                     }}
                   >
-                  <div className='inputCont'>
-                    <input
-                      type="text"
-                      name="emailInput"
-                      value={this.state.emailInput}
-                      onChange={this.handleChange}
-                      placeholder="Email"
-                      style={{ marginLeft: '22%' }}
-                    />
+                    <div className="inputCont">
+                      <input
+                        type="text"
+                        name="emailInput"
+                        value={this.state.emailInput}
+                        onChange={this.handleChange}
+                        placeholder="Email"
+                        style={{ marginLeft: '22%' }}
+                      />
                     </div>
                     <input
                       type="password"
@@ -126,7 +124,7 @@ class Login extends Component {
                       placeholder="Password"
                       style={{ marginLeft: '22%' }}
                     />
-                    <div className="loginContainer">
+                    <div>
                       <button
                         style={{
                           borderRadius: '1px',
@@ -153,8 +151,8 @@ class Login extends Component {
                   </form>
                   {this.renderRedirect()}
                   <div>
-                    <Link to={'/register'}>
-                      <p style={{ marginLeft: '14%', paddingTop: '2%' }}>
+                    <Link to={"/register"}>
+                      <p style={{ marginLeft: "14%", paddingTop: "2%" }}>
                         Need to create an account? Register
                       </p>
                     </Link>
