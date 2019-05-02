@@ -49,10 +49,10 @@ class OrganizationProfile extends Component {
     if (!animals.length) {
       return (
         <div>
-          <h1>No pets available at the moment. Come back later!</h1>
+          <h1 className='notAvail'>No pets available at the moment. Come back later!</h1>
           <img
             src="https://images-na.ssl-images-amazon.com/images/I/31%2B1BFEVV9L._SX425_.jpg"
-            alt=""
+            alt="" className='notAvailPic'
           />
         </div>
       );
@@ -73,7 +73,9 @@ class OrganizationProfile extends Component {
               </div>
             ) : (
               <Link to={`/animals/${animal.id}`}>
-                <img src={animal.photos[0].medium} alt="" />
+                <div className='animalPicture'>
+                  <img src={animal.photos[0].medium} alt="" />
+                </div>
               </Link>
             )}
           </div>
@@ -116,7 +118,7 @@ class OrganizationProfile extends Component {
         </div>
         <div>
           <h3 className="organization_divider">
-            Buddies available to take home{" "}
+            Furends Available to Take Home{" "}
           </h3>
           <div className="organization_animals">{this.displayAnimals()}</div>
         </div>
