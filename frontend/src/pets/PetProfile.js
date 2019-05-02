@@ -4,6 +4,7 @@ import axios from 'axios';
 import { MyContext } from '../provider/MyProvider';
 import Form from '../PreApproval/Form'
 import '../css/petprofile.css';
+import '../css/adopted.css'
 // import Auth from "../utils/Auth.js";
 
 class PetProfile extends Component {
