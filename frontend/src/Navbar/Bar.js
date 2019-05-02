@@ -51,7 +51,7 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      
+
 
 
 <MyContext.Consumer>
@@ -74,7 +74,7 @@ class Bar extends React.Component {
                     <NavLink to={'/'}>furever home</NavLink>
                   </div>
                   <Tab
-                    label="BREEDS"
+                    label="ANIMALS"
                     style={{
                       color: '#001049',
                       fontSize: '18px',

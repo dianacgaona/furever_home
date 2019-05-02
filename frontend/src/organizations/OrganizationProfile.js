@@ -60,22 +60,25 @@ class OrganizationProfile extends Component {
       return animals.map(animal => {
         let photo = animal.photos;
         return (
-          <div key={animal.id}>
-            <Link to={`/animals/${animal.id}`}>
-              <h1>{animal.name}</h1>
-            </Link>
+          <div key={animal.id} className='wholeAnimal'>
             {photo.length === 0 ? (
               <div>
                 <img
                   src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
                   alt=""
                 />
+                <Link to={`/animals/${animal.id}`}>
+                  <div className='animalNames'>{animal.name}</div>
+                </Link>
               </div>
             ) : (
               <Link to={`/animals/${animal.id}`}>
                 <div className='animalPicture'>
                   <img src={animal.photos[0].medium} alt="" />
                 </div>
+                <Link to={`/animals/${animal.id}`}>
+                  <div className='animalNames'>{animal.name}</div>
+                </Link>
               </Link>
             )}
           </div>
