@@ -1,0 +1,119 @@
+.modal_post_container {
+  width: 50%;
+  height: 550px;
+  margin: 150px auto;
+  background-color: rgba(99, 103, 142, 0.6);
+  border-radius: 8px;
+}
+
+.modal_post_container:focus {
+  outline: none;
+}
+
+.modal_post_close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 0 0;
+  border: none;
+  height: 30px;
+}
+
+.modal_post_button {
+  border: none;
+  border-radius: 15px;
+  width: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.modal_post_button:focus {
+  outline: none;
+}
+
+.modal_post_title {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal_post_form {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: transparent;
+  margin: 5px 0;
+  height: 80%;
+}
+
+.modal_post_left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0 2%;
+}
+
+.modal_post_right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0 2%;
+}
+
+.modal_post_label {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 3px 0;
+  margin: 5px 0;
+}
+
+.modal_post_input {
+  margin: 5px 0;
+  padding: 0 10px;
+  height: 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal_post_input:focus {
+  outline: none;
+}
+
+.modal_post_text {
+  height: 250px;
+  word-wrap: break-word;
+  font-size: 16px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.modal_post_text:focus {
+  outline: none;
+}
+
+.modal_post_checkdiv {
+  margin: 10px 0;
+}
+
+.modal_post_check {
+  width: 30px;
+}
+
+.modal_post_submit {
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.modal_post_submit:active {
+  background-color: #efefef;
+}
+
+.modal_post_submit:focus {
+  outline: none;
+}
