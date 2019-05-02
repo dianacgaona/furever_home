@@ -1,15 +1,15 @@
-import React from 'react';
-import '../css/postmodal.css';
+import React from "react";
+import "../css/postmodal.css";
 
-import Modal from 'react-modal';
-import { MyContext } from '../provider/MyProvider';
+import Modal from "react-modal";
+import { MyContext } from "../provider/MyProvider";
 
 class PostModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalIsOpen: false,
+      modalIsOpen: false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -23,7 +23,7 @@ class PostModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#2F1847';
+    this.subtitle.style.color = "#2F1847";
   }
 
   closeModal() {
@@ -32,15 +32,12 @@ class PostModal extends React.Component {
 
   render() {
     return (
-      
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <div className="buttonCont">
-                <button onClick={this.openModal} className="profileButton">
+              <div className="modal_open">
+                <button onClick={this.openModal} className="modal_open_button">
                   Add a Post
                 </button>
               </div>
@@ -70,7 +67,6 @@ class PostModal extends React.Component {
                   onSubmit={e => {
                     this.props.handleSubmit(e, context.state.currentUser.id);
                   }}
-
                   id="post_form"
                   className="modal_post_form"
                 >
@@ -110,7 +106,7 @@ class PostModal extends React.Component {
                         type="radio"
                         name="pet_type"
                         value="Dog"
-                        checked={this.props.pet_type === 'Dog'}
+                        checked={this.props.pet_type === "Dog"}
                         onChange={this.props.handleChange}
                         className="modal_post_check"
                       />
@@ -119,7 +115,7 @@ class PostModal extends React.Component {
                         type="radio"
                         name="pet_type"
                         value="Cat"
-                        checked={this.props.pet_type === 'Cat'}
+                        checked={this.props.pet_type === "Cat"}
                         onChange={this.props.handleChange}
                         className="modal_post_check"
                       />

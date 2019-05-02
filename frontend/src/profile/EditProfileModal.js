@@ -1,8 +1,8 @@
-import React from 'react';
-import Modal from 'react-modal';
-import { MyContext } from '../provider/MyProvider';
-import axios from 'axios';
-import '../css/profilemodal.css';
+import React from "react";
+import Modal from "react-modal";
+import { MyContext } from "../provider/MyProvider";
+import axios from "axios";
+import "../css/profilemodal.css";
 
 class ProfileModal extends React.Component {
   constructor(props) {
@@ -12,10 +12,10 @@ class ProfileModal extends React.Component {
       modalIsOpen: false,
       inputProfile_PictureURL: props.oldState.profileUser.profile_picture,
       inputUsername: props.oldState.profileUser.username,
-      inputLocation: '',
+      inputLocation: "",
       inputCity: props.oldState.profileUser.city,
-      inputState: '',
-      inputAboutText: props.oldState.profileUser.about,
+      inputState: "",
+      inputAboutText: props.oldState.profileUser.about
     };
 
     this.openModal = this.openModal.bind(this);
@@ -34,7 +34,7 @@ class ProfileModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#2F1847';
+    this.subtitle.style.color = "#2F1847";
   }
 
   closeModal() {
@@ -43,7 +43,7 @@ class ProfileModal extends React.Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -53,7 +53,7 @@ class ProfileModal extends React.Component {
       .patch(`/users/profile/${user}`, {
         username: this.state.inputUsername,
         about: this.state.inputAboutText,
-        profile_picture: this.state.inputProfile_PictureURL,
+        profile_picture: this.state.inputProfile_PictureURL
       })
       .then(res => {
         console.log(res.data);
@@ -61,7 +61,7 @@ class ProfileModal extends React.Component {
       .then(() => {
         axios.patch(`/users/profile/location/${user}`, {
           city: this.state.inputCity,
-          state: this.state.inputState,
+          state: this.state.inputState
         });
       })
       .then(() => {
@@ -71,16 +71,15 @@ class ProfileModal extends React.Component {
 
   render() {
     return (
-      
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <button onClick={this.openModal} className="profileButton">
-                Edit Profile
-              </button>
+              <div className="modal_open">
+                <button onClick={this.openModal} className="modal_open_button">
+                  Edit Profile
+                </button>
+              </div>
               <Modal
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
@@ -103,7 +102,6 @@ class ProfileModal extends React.Component {
                   onSubmit={e => {
                     this.handleSubmit(e, context.state.currentUser.id);
                   }}
-
                   id="post_form"
                   className="modal_form"
                 >
