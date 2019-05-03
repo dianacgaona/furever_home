@@ -18,6 +18,7 @@
 .leftCorner {
   padding-left: 25%;
   padding-top: 1%;
+  margin-left: -5%;
 }
 
 .username {
@@ -53,15 +54,19 @@ a.username {
   border-radius: 36px;
 }
 
+.logoutCont {
+
+}
+
 .logo {
-  width: 70px;
+  width: 86px;
   padding: 6%;
   opacity: 0.8;
 }
 
 .fureverHome {
   font-family: 'Clicker Script', cursive;
-  font-size: 62px;
+  font-size: 74px;
   font-weight: 900;
   color: #001049;
   margin-right: 18%;

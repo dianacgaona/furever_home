@@ -77,7 +77,7 @@ class Bar extends React.Component {
                     label="ANIMALS"
                     style={{
                       color: '#001049',
-                      fontSize: '18px',
+                      fontSize: '25px',
                       marginLeft: '11%',
                     }}
                     className="iLinks"
@@ -85,7 +85,7 @@ class Bar extends React.Component {
 
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: '#001049', fontSize: '18px' }}
+                    style={{ color: '#001049', fontSize: '25px' }}
                     className="iLinks"
                   />
 
@@ -109,13 +109,15 @@ class Bar extends React.Component {
                         >
                           {context.state.currentUser.username}
                         </NavLink>
-                        <button
-                          type="button"
-                          onClick={context.functions.logoutUser}
-                          className="logout"
-                        >
-                          logout
+
+                          <button
+                            type="button"
+                            onClick={context.functions.logoutUser}
+                            className="logout"
+                          >
+                            logout
                         </button>
+
                       </div>
                     </div>
                   ) : (
