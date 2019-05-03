@@ -76,7 +76,7 @@ class ProfileModal extends React.Component {
           return (
             <div>
               <div className="modal_open">
-                <button onClick={this.openModal} className="modal_open_button">
+                <button onClick={this.openModal} className="modal_open_button_post">
                   Edit Profile
                 </button>
               </div>

@@ -1,5 +1,5 @@
 .breed_form {
-  width: 437px;
+  width: 60%;
   height: 100px;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,7 @@
   border-radius: 3px;
   padding: 10px;
   margin: 10px auto;
+  justify-content: space-around;
 }
 
 .form_borough {
@@ -23,6 +24,13 @@
   margin: 10px;
   color: white;
   background-color: #001049;
+  width: 18%;
+  font-size: 26px;
+  height: 46px;
+}
+
+.selectCont {
+  width: 100%;
 }
 
 .selectBoro {

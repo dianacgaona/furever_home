@@ -249,6 +249,7 @@ class DogBreeds extends Component {
     return (
       <>
         <div className="form_borough">Find Dogs by Borough</div>
+        <div className='selectCont'>
         <form onSubmit={this.getAnimals}>
           <select
             className="form_select"
@@ -256,7 +257,7 @@ class DogBreeds extends Component {
             onChange={this.handleBoroughChange}
           >
             <option disabled selected>
-              Select a borough
+              Borough
             </option>
             <option
               name="Manhattan"
@@ -293,7 +294,7 @@ class DogBreeds extends Component {
             onChange={this.handleColorChange}
           >
             <option disabled selected>
-              Select a Color
+              Color
             </option>
             <option name="color" value="Apricot / Beige">
               Apricot / Beige
@@ -329,7 +330,7 @@ class DogBreeds extends Component {
             onChange={this.handleAgeChange}
           >
             <option disabled selected>
-              Select an Age
+              Age
             </option>
             <option name="age" value="Baby">
               Baby
@@ -350,7 +351,7 @@ class DogBreeds extends Component {
             onChange={this.handleSizeChange}
           >
             <option disabled selected>
-              Select a Size
+              Size
             </option>
             <option name="size" value="Small">
               Small
@@ -368,7 +369,7 @@ class DogBreeds extends Component {
             onChange={this.handleGenderChange}
           >
             <option disabled selected>
-              Select By Gender
+              Gender
             </option>
             <option name="gender" value="Male">
               Male
@@ -378,6 +379,7 @@ class DogBreeds extends Component {
             </option>
           </select>
         </form>
+        </div>
       </>
     );
   };

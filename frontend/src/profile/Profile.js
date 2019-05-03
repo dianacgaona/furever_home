@@ -41,7 +41,6 @@ class Profile extends Component {
       .catch(err => {
         console.log(err);
       });
-    // console.log(this.state, 'Get Posts');
   };
 
   getSingleUser = () => {
@@ -58,9 +57,8 @@ class Profile extends Component {
   };
 
   render() {
-    // console.log(this.state, "profile state");/
     return (
-      
+
 
 
 <MyContext.Consumer>

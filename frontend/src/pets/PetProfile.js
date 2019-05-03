@@ -95,10 +95,12 @@ class PetProfile extends Component {
             </div>
            </div>
           <div className='animalPic'>
+            <figure>
             <img
                src={profile.photos[0].medium}
                alt=""
               />
+              </figure>
           </div>
         </div>
       }
