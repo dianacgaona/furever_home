@@ -8,12 +8,40 @@
   font-size: 20px;
   font-weight: bold;
   border-radius: 18px;
-  margin-left: 3.5%;
+  margin-left: 3%;
+  color: white;
+  background-color: #001049;
+  margin-top: 5%;
+}
+
+.modal_open_button_post {
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 18px;
+  margin-left: 3%;
   color: white;
   background-color: #001049;
 }
 
+.modal_open_button {
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 18px;
+  margin-left: 3%;
+  color: white;
+  background-color: #001049;
+  margin-top: 5%;
+}
+
 .modal_open_button:focus {
+  outline: none;
+}
+
+.modal_open_button_post:focus {
   outline: none;
 }
 

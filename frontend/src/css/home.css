@@ -11,7 +11,7 @@
   width: 100%;
   padding: 15px;
   opacity: 0.9;
-  margin-left: -177px;
+  margin-left: -231px;
   padding-top: 11px;
 }
 
@@ -22,9 +22,8 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: rgba(208, 199, 198, 0.3);
-  margin-right: 25%;
-  margin-left: 33%;
+  background-color: rgba(208, 199, 198, 0.8);
+  margin-left: 56%;
   position: relative;
   z-index: 1;
   margin-top: 8%;
