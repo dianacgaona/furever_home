@@ -28,9 +28,9 @@ class DogBreeds extends Component {
       e.preventDefault();
     }
     axios({
-      url: "http://localhost:3000/petfinder/animalquery",
+      url: "https://cors-anywhere.herokuapp.com/http://localhost:3000/petfinder/animalquery",
       method: "post",
-      headers: { 'Access-Control-Allow-Origin': '*',},
+      headers: { },
       data: {
         type: "dog",
         organization: this.state.selectedBorough
