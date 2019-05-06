@@ -1,6 +1,6 @@
 .breed_form {
-  width: 400px;
-  height: 70px;
+  width: 60%;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +10,11 @@
   border-radius: 3px;
   padding: 10px;
   margin: 10px auto;
+  justify-content: space-around;
 }
 
 .form_borough {
-  font-size: 30px;
+  font-size: 48px;
   font-weight: bold;
   font-family: 'Open Sans Condensed', sans-serif;
   text-transform: uppercase;
@@ -23,6 +24,13 @@
   margin: 10px;
   color: white;
   background-color: #001049;
+  width: 18%;
+  font-size: 26px;
+  height: 46px;
+}
+
+.selectCont {
+  width: 100%;
 }
 
 .selectBoro {
@@ -39,18 +47,6 @@
   border-radius: 3px;
 }
 
-.animal_single {
-  padding: 10px;
-  margin: 5px;
-}
-
-.animal_name {
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-}
-
 .animal_pic {
   width: 300px;
   height: 300px;
@@ -62,4 +58,18 @@
   font-style: italic;
   font-size: 15px;
   color: gray;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.animal_single {
+  padding: 10px;
+  margin: 5px;
+}
+
+.animal_name {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans Condensed', sans-serif;
 }

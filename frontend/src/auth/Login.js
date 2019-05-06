@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Paper } from '@material-ui/core';
-import { MyContext } from '../provider/MyProvider';
-import { Link, Redirect } from 'react-router-dom';
-import Auth from '../utils/Auth.js';
+import React, { Component } from "react";
+import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
+import { Link, Redirect } from "react-router-dom";
+import Auth from "../utils/Auth.js";
+import "../css/login.css";
 
 class Login extends Component {
   constructor() {
     super();
 
     this.state = {
-      emailInput: '',
-      passwordInput: '',
-      redirect: false,
+      emailInput: "",
+      passwordInput: "",
+      redirect: false
     };
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -27,15 +27,15 @@ class Login extends Component {
     axios
       .post('/api/users/login', {
         email: this.state.emailInput,
-        password: this.state.passwordInput,
+        password: this.state.passwordInput
       })
       .then(res => {
         contextConfirm(res.data);
         Auth.authenticateUser(res.data.email);
         this.setState({
-          emailInput: '',
-          passwordInput: '',
-          redirect: true,
+          emailInput: "",
+          passwordInput: "",
+          redirect: true
         });
       })
       .catch(err => {
@@ -45,7 +45,7 @@ class Login extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={'/'} />;
+      return <Redirect to={"/"} />;
     }
   };
 
@@ -59,9 +59,9 @@ class Login extends Component {
         Auth.authenticateUser(res.data.email);
         contextConfirm(res.data);
         this.setState({
-          emailInput: '',
-          passwordInput: '',
-          redirect: true,
+          emailInput: "",
+          passwordInput: "",
+          redirect: true
         });
       })
       .catch(err => {
@@ -71,90 +71,54 @@ class Login extends Component {
 
   render() {
     return (
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           if (context.state.currentUser.id) {
-            return <Redirect to={'/'} />;
+            return <Redirect to={"/"} />;
           } else {
             return (
-              <div>
-                <Paper
-                  style={{
-                    width: '15%',
-                    padding: '5%',
-                    fontFamily: 'Open Sans Condensed',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    flexDirection: 'column',
-                    marginLeft: '2%',
+              <div className="login_container">
+                <h3 className="login_title">LOGIN</h3>
+                <form
+                  onSubmit={e => {
+                    this.handleSubmit(e, context.functions.loginUser);
                   }}
+                  className="login_form"
                 >
-                  <p
-                    style={{
-                      fontWeight: '900',
-                      marginLeft: '37%',
-                      fontSize: '25px',
-                    }}
-                  >
-                    LOGIN
-                  </p>
-                  <form
-                    onSubmit={e => {
-                      this.handleSubmit(e, context.functions.loginUser);
-                    }}
-                  >
-                    <input
-                      type="text"
-                      name="emailInput"
-                      value={this.state.emailInput}
-                      onChange={this.handleChange}
-                      placeholder="Email"
-                      style={{ marginLeft: '18%' }}
-                    />
-                    <input
-                      type="password"
-                      name="passwordInput"
-                      value={this.state.passwordInput}
-                      onChange={this.handleChange}
-                      placeholder="Password"
-                      style={{ marginLeft: '18%' }}
-                    />
-                    <div className="loginContainer">
-                      <button
-                        style={{
-                          borderRadius: '1px',
-                          marginLeft: '37%',
-                          color: 'white',
-                          backgroundColor: '#001049',
-                        }}
-                      >
-                        Login
-                      </button>
-                      <button
-                        onClick={() =>
-                          this.demoLogin(context.functions.loginUser)
-                        }
-                        style={{
-                          borderRadius: '1px',
-                          color: 'white',
-                          backgroundColor: '#001049',
-                        }}
-                      >
-                        Demo Login
-                      </button>
-                    </div>
-                  </form>
-                  {this.renderRedirect()}
-                  <div>
-                    <Link to={'/register'}>
-                      <p style={{ marginLeft: '7%' }}>
-                        Need to create an account? Register
-                      </p>
-                    </Link>
+                  <input
+                    type="text"
+                    name="emailInput"
+                    value={this.state.emailInput}
+                    onChange={this.handleChange}
+                    placeholder="Email"
+                    className="login_input"
+                  />
+                  <input
+                    type="password"
+                    name="passwordInput"
+                    value={this.state.passwordInput}
+                    onChange={this.handleChange}
+                    placeholder="Password"
+                    className="login_input"
+                  />
+                  <div className="login_button_div">
+                    <button className="login_button">Login</button>
+                    <button
+                      onClick={() =>
+                        this.demoLogin(context.functions.loginUser)
+                      }
+                      className="login_button"
+                    >
+                      Demo Login
+                    </button>
                   </div>
-                </Paper>
+                </form>
+                {this.renderRedirect()}
+                <div>
+                  <Link to={"/register"} className="login_link">
+                    Need to create an account? Register
+                  </Link>
+                </div>
               </div>
             );
           }

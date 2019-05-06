@@ -35,7 +35,7 @@ class FavoritedPets extends Component {
     let favorites = this.state.userFavs;
     return favorites.map(favorite => {
       return (
-        <div key={favorite.id}>
+        <div className='favoriteContainer' key={favorite.id}>
           <Link to={`/animals/${favorite.pet_id}`}>
             <div className="favImgCont">
               <img

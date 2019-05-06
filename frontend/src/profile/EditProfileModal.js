@@ -75,9 +75,11 @@ class ProfileModal extends React.Component {
         {context => {
           return (
             <div>
-              <button onClick={this.openModal} className="profileButton">
-                Edit Profile
-              </button>
+              <div className="modal_open">
+                <button onClick={this.openModal} className="modal_open_button_post">
+                  Edit Profile
+                </button>
+              </div>
               <Modal
                 isOpen={this.state.modalIsOpen}
                 onAfterOpen={this.afterOpenModal}
@@ -86,7 +88,9 @@ class ProfileModal extends React.Component {
                 className="modal_container"
               >
                 <div className="modal_close">
-                  <button onClick={this.closeModal}>X</button>
+                  <button onClick={this.closeModal} className="modal_button">
+                    X
+                  </button>
                 </div>
                 <h2
                   ref={subtitle => (this.subtitle = subtitle)}
@@ -102,51 +106,62 @@ class ProfileModal extends React.Component {
                   className="modal_form"
                 >
                   <div className="modal_left">
-                    Profile Picture
+                    <label className="modal_label">Profile Picture</label>
                     <input
                       type="text"
                       value={this.state.inputProfile_PictureURL}
                       onChange={this.handleChange}
                       placeholder="Photo Url"
                       name="inputProfile_PictureURL"
+                      className="modal_input"
                     />
                   </div>
                   <div className="modal_right">
-                    Username
+                    <label className="modal_label">Username</label>
                     <input
                       type="text"
                       value={this.state.inputUsername}
                       onChange={this.handleChange}
                       placeholder="Username"
                       name="inputUsername"
+                      className="modal_input"
                     />
-                    City
+                    <label className="modal_label">City</label>
                     <input
                       type="text"
                       value={this.state.inputCity}
                       onChange={this.handleChange}
                       placeholder="City"
                       name="inputCity"
+                      className="modal_input"
                     />
-                    State
+                    <label className="modal_label">State</label>
                     <input
                       type="text"
                       value={this.state.inputState}
                       onChange={this.handleChange}
                       placeholder="State"
                       name="inputState"
+                      className="modal_input"
                     />
-                    Tell us about yourself
-                    <input
+                    <label className="modal_label">About Me</label>
+                    <textarea
                       type="text"
                       value={this.state.inputAboutText}
                       onChange={this.handleChange}
                       placeholder="About"
                       name="inputAboutText"
+                      className="modal_about"
                     />
+                    <div className="modal_close">
+                      <input
+                        type="submit"
+                        value="Save"
+                        className="modal_submit"
+                      />
+                    </div>
                   </div>
                 </form>
-                <input type="submit" value="Make Changes" />
               </Modal>
             </div>
           );

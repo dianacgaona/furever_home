@@ -33,7 +33,7 @@ class AdoptedPets extends Component {
     let adoptedPets = this.state.adoptedPets;
     return adoptedPets.map(pet => {
       return (
-        <div key={pet.id}>
+        <div key={pet.id} className='adoptedContainer'>
           <div className="adoptImg">
             <img
               src={`https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/${

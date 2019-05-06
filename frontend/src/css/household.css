@@ -58,9 +58,10 @@
   position: absolute;
   font-size: 18px;
   margin-left: 9%;
+  margin-top: .5%;
 }
 
 .spayedChoices {
-  margin-top: 2%;
+  margin-top: 2.5%;
   margin-left: 28%;
 }

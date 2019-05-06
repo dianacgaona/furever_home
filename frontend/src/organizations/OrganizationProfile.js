@@ -49,10 +49,10 @@ class OrganizationProfile extends Component {
     if (!animals.length) {
       return (
         <div>
-          <h1>No pets available at the moment. Come back later!</h1>
+          <h1 className='notAvail'>No pets available at the moment. Come back later!</h1>
           <img
             src="https://images-na.ssl-images-amazon.com/images/I/31%2B1BFEVV9L._SX425_.jpg"
-            alt=""
+            alt="" className='notAvailPic'
           />
         </div>
       );
@@ -60,22 +60,29 @@ class OrganizationProfile extends Component {
       return animals.map(animal => {
         let photo = animal.photos;
         return (
-          <div key={animal.id}>
-            <Link to={`/animals/${animal.id}`}>
-              <h1>{animal.name}</h1>
-            </Link>
-            {photo.length === 0 ? (
-              <div>
-                <img
-                  src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
-                  alt=""
-                />
-              </div>
-            ) : (
-              <Link to={`/animals/${animal.id}`}>
-                <img src={animal.photos[0].medium} alt="" />
-              </Link>
-            )}
+          <div clasName='animalBorder' style={{padding: '1%'}}>
+            <div key={animal.id} className='wholeAnimal'>
+              {photo.length === 0 ? (
+                <div>
+                  <img
+                    src="https://ak-s.ostkcdn.com/img/mxc/Missing-Image_Dog.png"
+                    alt=""
+                  />
+                  <Link to={`/animals/${animal.id}`}>
+                    <div className='animalNames'>{animal.name}</div>
+                  </Link>
+                </div>
+              ) : (
+                <Link to={`/animals/${animal.id}`}>
+                  <div className='animalPicture'>
+                    <img src={animal.photos[0].medium} alt="" />
+                  </div>
+                  <Link to={`/animals/${animal.id}`}>
+                    <div className='animalNames'>{animal.name}</div>
+                  </Link>
+                </Link>
+              )}
+            </div>
           </div>
         );
       });
@@ -102,21 +109,21 @@ class OrganizationProfile extends Component {
               </div>
             ) : (
               <div className="organization_details">
-                <p>Location:</p>
-                <p>
+                <div className='locationText'>Location:</div>
+                <div className='cityState'>
                   {address.city}, {address.state}
-                </p>
+                </div>
               </div>
             )}
             <div className="organization_details">
-              <p>Contact us at: </p>
-              <p>{organization.email}</p>
+              <div className='contactUs'>Contact us at: </div>
+              <div className='organEmail'>{organization.email}</div>
             </div>
           </div>
         </div>
         <div>
           <h3 className="organization_divider">
-            Buddies available to take home{" "}
+            Furends Available to Take Home{" "}
           </h3>
           <div className="organization_animals">{this.displayAnimals()}</div>
         </div>

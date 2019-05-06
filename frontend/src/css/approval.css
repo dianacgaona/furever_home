@@ -3,12 +3,12 @@
 .formTitle {
   display: flex;
   justify-content: center;
-  font-size: 35px;
+  font-size: 42px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 900;
   text-shadow: 1px 0px 0px #001049;
   text-transform: uppercase;
-  margin-right: 22%;
+  margin-right: 32%;
 }
 
 .waiting {
@@ -18,7 +18,7 @@
   font-family: 'Open Sans Condensed', sans-serif;
   padding-top: 1%;
   padding-bottom: 2%;
-  margin-right: 22%;
+  margin-right: 32%;
 }
 
 .padding {
@@ -32,12 +32,13 @@
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
   border-radius: 3px;
   padding: 3%;
+  margin-left: 5%;
 }
 
 .personalInfo {
   display: flex;
   justify-content: center;
-  font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
   font-size: 28px;
   font-weight: 900;
   text-decoration: underline;
@@ -95,4 +96,38 @@
   border-radius: 3px;
   color: white;
   background-color: #001049;
+}
+
+.formResponse {
+  font-family: 'Open Sans Condensed', sans-serif;
+  width: 90%;
+}
+
+.response1 {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  color: #001049;
+  font-size: 38px;
+  margin-left: 16%;
+  margin-top: 4%;
+  margin-bottom: 1%;
+}
+
+.response2 {
+  display: flex;
+  justify-content: center;
+  color: #001049;
+  font-size: 23px;
+  margin-left: 9%;
+}
+
+.response3 {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  color: #001049;
+  font-size: 38px;
+  margin-left: 16%;
+  margin-top: 1%;
 }

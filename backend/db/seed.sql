@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS furever_home;
--- CREATE DATABASE furever_home;
---
--- \c furever_home;
+DROP DATABASE IF EXISTS furever_home;
+CREATE DATABASE furever_home;
+
+\c furever_home;
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
@@ -49,6 +49,28 @@ CREATE TABLE adopted(
   pet_id INT
 );
 
+CREATE TABLE forms(
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  birthday TEXT NOT NULL,
+  address TEXT NOT NULL,
+  apt TEXT NOT NULL,
+  city TEXT NOT NULL,
+  state TEXT NOT NULL,
+  zip INT NOT NULL,
+  phone INT NOT NULL,
+  email TEXT NOT NULL,
+  home_type VARCHAR(9) NOT NULL CHECK (home_type IN('Home', 'Apartment')),
+  home_yard BOOLEAN NOT NULL,
+  home_screen BOOLEAN NOT NULL,
+  home_allergic BOOLEAN NOT NULL,
+  home_fixed BOOLEAN NOT NULL,
+  references_name TEXT NOT NULL,
+  references_relationship TEXT NOT NULL,
+  references_phone INT NOT NULL,
+  relationship_length TEXT NOT NULL
+);
+
 INSERT INTO users(email, password_digest, username, name, about, profile_picture) VALUES ('corey@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'coreysky', 'corey', 'Hi my name is Corey and my wife and I are newlyweds. We just bought a new house and though we not ready for kids, we were looking for a new furr baby to join our home. We heard about Furever Home from a friend and that is how we found our baby Hachiko. We also have another dog Riri who we also rescued from a shelter. We are passionate about animal care and are hardcore animal lovers.', 'https://static1.squarespace.com/static/5b50ebb7e749401857e16f2f/t/5ba3b34d40ec9aa75455d0f8/1537454929714/corey.jpg'),
 ('reed@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'crymall', 'reed', 'Hi my name is Reed and I’m proud to be from from Williamsburg, Brooklyn and I’m happily married to my partner Jasmine.  We have have two fur babies named Jon-E and Andrew. They were both adopted from the ASPCA Adoption Center. We joined Forever Home because We are passionate about animal and animal care. I am a vegetarian and I would love to get to know more people from the NYC area who are interested in doing volunteer work at local animals shelters and rescues.', 'https://static1.squarespace.com/static/5b50ebb7e749401857e16f2f/t/5ba3e881e2c483e249c2fc6f/1537468549988/reed.jpg'),
 ('jasmine@fh.com', '$2a$10$8THnskuIHgA4epxiwUN2GOkwfwOQU8/Jx8lzU8UZIbgB8ZM7Mi/hS', 'jazzy', 'jasmine', 'Hi my name is Jasmine I’m from Williamsburg, Brooklyn and I’m happily married to my partner Reed.  We have have two fur babies named Jon-E and Andrew. They were both adopted from the ASPCA Adoption Center. I joined Forever Home because I’m passionate about animal and animal care. I am a vegetarian and I would love to get to know more people from the NYC area who are interested in doing volunteer work at local animals shelters and rescues.  ', 'https://static1.squarespace.com/static/5b50ebb7e749401857e16f2f/t/5ba3f78b085229fe3856a8db/1537472398928/jasmine.jpg'),
@@ -82,7 +104,7 @@ However that “fatigue” may not be the best description of the condition, sin
 INSERT INTO comments(user_id, post_id, comment_body) VALUES (1, 3, 'I found this very insightful I might add that playing with your cat is also important. Keeps them happy!'), (4, 3, 'I agree with the playing. I have found that the best toys are those that can be made to jump and dance around and look alive.'), (2, 1, 'I love this I would also add to take your time making a decision. With all of the adorable “fur babies” in need of homes, you might be tempted to make a snap decision. However, it will be better for your future furry BFF if you put a lot of thought into it. For example, do you live in an apartment, or a house with a yard? Does your family travel a lot? Who will be there to let your dog out when you’re not home? Do your siblings want a new dog as much as you do?'), (3, 1, 'I want another dog'), (1, 4, 'I remember the first day as well. I was super excited but my buddy was alittle shy'), (3, 4, 'This here is a great post!'), (2, 5, 'I wish I read this before I brought my cat home. little fella went crazy with the change. now the house is all his lol'), (3, 5, 'I create a hiding spot for my cat. Even I forget where it is.'), (4, 2, 'My cat doesnt like sharing his space. Hes super territorial'), (1, 6, 'Alot of people this that hitting their dogs will teach them obedience. In fact it doesnt'), (4, 6, 'I keep my dog tired with plenty of exercise so she doesnt tear up the house'), (2, 7, 'Am I horrible that I love fat cats LOL'), (4, 7, 'My cats are picky with their food'), (1, 7, 'I too love fat cats!'), (1, 8, 'I do a mixer of dry and wet food to make sure their stool is not too hard or too soft'), (3, 8, 'I always give my dogs Blue'), (2, 8, 'I have heard people actually meal prep for their dogs');
 
 INSERT INTO favorited(user_id, pet_id)
-VALUES (1, 44439537), (2, 44439791), (2, 44439926), (2, 44439939), (2, 44440935), (2, 44440950), (2, 44440936), (1, 44440926), (1, 44441053), (1, 44440829), (4, 44441011), (4, 44440934) ;
+VALUES (1, 44439537), (2, 44439791), (2, 44439926), (2, 44439939), (2, 44440935), (2, 44440950), (2, 44440936), (1, 44441053), (1, 44440829), (4, 44441011), (4, 44440934) ;
 
 INSERT INTO adopted(user_id, pet_id)
 VALUES(1, 44441235), (1, 44441017), (2, 44440157), (3, 44440129), (3, 44439718), (4, 44440157);

@@ -1,38 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
 .animal_div {
   margin: 0 auto;
-  width: 95%;
+  width: 45%;
   border: 1px solid white;
+  padding: 5%;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.animalInfo {
+  width: 500px;
+  margin-left: 45%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  width: 500px;
+  margin-left: 45%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .animal_name {
-  padding: 10px;
+  font-size: 54px;
+  font-weight: bold;
+  font-variant-caps: all-petite-caps;
+  text-shadow: 1px 0px 0px #001049;
+}
+
+.animalAge {
+  font-size: 24px;
+}
+
+.animalCity {
+  font-size: 24px;
+}
+
+.description {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 2%;
+}
+
+.animalPic {
   width: 300px;
-  display: flex;
-  margin: 20px auto;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: bold;
-  border: 1px solid white;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  height: 300px;
+  overflow: hidden;
+  position: absolute;
+  padding-top: -5%;
+  margin-top: -15%;
+  border-radius: 2px;
+  opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
 
-.animal_info {
-  display: flex;
-  justify-content: space-around;
-  margin: 10px 0;
+.animalPic figure:hover img {
+	opacity: .5;
 }
 
-.animal_pic {
-  border: 1px solid white;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
+.animalButton {
+
 }
 
-.animal_detail {
-  font-weight: bold;
-  font-size: 20px;
+.oneButton {
+  color: white;
+  background-color: #001049;
+  width: 160px;
+  font-size: 25px;
+  margin-top: 1%;
+  border-radius: 18px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 900;
+  font-variant-caps: all-petite-caps;
 }

@@ -1,34 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
 .organization_div {
   margin: 0 auto;
   width: 95%;
   border: 1px solid white;
+  padding: 1%;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    text-align: center;
 }
 
 .organization_name {
-  padding: 10px;
-  width: 500px;
+  padding: 1%;
+  width: 520px;
   display: flex;
   margin: 20px auto;
   justify-content: center;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 900;
   border: 1px solid white;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  position: relative;
+  z-index: 1;
 }
 
 .organization_info {
   display: flex;
-  justify-content: space-around;
+  justify-content: normal;
   margin: 10px 0;
   align-items: center;
+  margin-top: -2%;
 }
 
 .organization_pic {
-  width: 450px;
+  width: 420px;
+  height: 440px;
   overflow: hidden;
+  padding: 1%;
+  margin-top: -4%;
+  margin-left: 22%;
+  padding-right: 4%;
+  filter: grayscale(36%);
+}
+
+.locationText {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-weight: 900;
+  font-size: 47px;
+  font-variant-caps: all-petite-caps;
+}
+
+.cityState {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-size: 34px;
+  font-variant-caps: all-petite-caps;
+  font-weight: 100;
 }
 
 .organization_details {
@@ -36,17 +67,76 @@
   font-size: 20px;
 }
 
+.contactUs {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-weight: 900;
+  font-size: 47px;
+  font-variant-caps: all-petite-caps;
+}
+
+.organEmail {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-size: 34px;
+  font-variant-caps: all-petite-caps;
+  font-weight: 100;
+}
+
 .organization_divider {
-  padding: 10px;
-  width: 800px;
+  padding: 1%;
+  width: 480px;
   display: flex;
   margin: 20px auto;
   justify-content: center;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 900;
   border: 1px solid white;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  position: relative;
+  z-index: 1;
+}
+
+.notAvail {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-size: 64px;
+  font-variant-caps: all-petite-caps;
+  font-weight: 900;
+  margin-top: 6%;
+}
+
+.notAvailPic {
+  margin-bottom: 10%;
+}
+
+.animalBorder {
+
+}
+
+.wholeAnimal {
+  border-radius: 3px;
+  padding: 5%;
+  width: 320px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.animalNames {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #001049;
+  font-size: 31px;
+  font-variant-caps: all-petite-caps;
+  font-weight: 900;
+}
+
+.animalPicture {
+  width: 298px;
+  height: 261px;
+  overflow: hidden;
+  /* padding: 2%; */
 }
 
 .organization_animals {
@@ -54,7 +144,4 @@
   flex-wrap: wrap;
   justify-content: space-around;
   border: 1px solid white;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
 }

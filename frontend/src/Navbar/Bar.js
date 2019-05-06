@@ -51,7 +51,7 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-      
+
 
 
 <MyContext.Consumer>
@@ -74,47 +74,51 @@ class Bar extends React.Component {
                     <NavLink to={'/'}>furever home</NavLink>
                   </div>
                   <Tab
-                    label="BREEDS"
+                    label="ANIMALS"
                     style={{
                       color: '#001049',
-                      fontSize: '18px',
-                      marginLeft: '7%',
+                      fontSize: '25px',
+                      marginLeft: '11%',
                     }}
                     className="iLinks"
                   />
 
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: '#001049', fontSize: '18px' }}
+                    style={{ color: '#001049', fontSize: '25px' }}
                     className="iLinks"
                   />
 
                   {context.state.currentUser.username ? (
-                    <div className="username">
-                      <NavLink to={`/user/${context.state.currentUser.id}`}>
-                        <Avatar
-                          alt="Remy Sharp"
-                          src={context.state.currentUser.profile_picture}
-                          style={{
-                            marginTop: '-28%',
-                            width: '50px',
-                            height: '50px',
-                          }}
-                        />
-                      </NavLink>
-                      <NavLink
-                        to={`/user/${context.state.currentUser.id}`}
-                        className="username"
-                      >
-                        {context.state.currentUser.username}
-                      </NavLink>
-                      <button
-                        type="button"
-                        onClick={context.functions.logoutUser}
-                        className="logout"
-                      >
-                        logout
-                      </button>
+                    <div className='leftCorner'>
+                      <div className="username">
+                        <NavLink to={`/user/${context.state.currentUser.id}`}>
+                          <Avatar
+                            alt="Remy Sharp"
+                            src={context.state.currentUser.profile_picture}
+                            style={{
+                              marginTop: '-28%',
+                              width: '50px',
+                              height: '50px',
+                            }}
+                          />
+                        </NavLink>
+                        <NavLink
+                          to={`/user/${context.state.currentUser.id}`}
+                          className="username"
+                        >
+                          {context.state.currentUser.username}
+                        </NavLink>
+
+                          <button
+                            type="button"
+                            onClick={context.functions.logoutUser}
+                            className="logout"
+                          >
+                            logout
+                        </button>
+
+                      </div>
                     </div>
                   ) : (
                     <div className="loginCont">

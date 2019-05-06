@@ -1,7 +1,10 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { MyContext } from "../provider/MyProvider";
-import "../css/petprofile.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import Form from '../PreApproval/Form'
+import '../css/petprofile.css';
+import '../css/adopted.css'
 // import Auth from "../utils/Auth.js";
 
 class PetProfile extends Component {
@@ -9,19 +12,22 @@ class PetProfile extends Component {
     super();
     this.state = {
       profile: {},
-      pet_id: ""
+      pet_id: '',
+      organization_id: '',
+      adopt: false
     };
   }
-  // when I click the button it will grab the pet_id and setState
+
   componentDidMount() {
     this.getPet(this.props.match.params.id);
   }
 
   getPet = id => {
     axios.get(`/petfinder/animals/${id}`).then(res => {
-      this.setState({
+        this.setState({
         profile: res.data.animal,
-        pet_id: id
+        pet_id: id,
+        organization_id: res.data.animal.organization_id,
       });
     });
   };
@@ -29,7 +35,7 @@ class PetProfile extends Component {
   favoriteAnAnimal = () => {
     axios
       .post(`/favorited`, {
-        pet_id: this.state.pet_id
+        pet_id: this.state.pet_id,
       })
       .then(res => {})
       .catch(err => {
@@ -37,48 +43,83 @@ class PetProfile extends Component {
       });
   };
 
+
+  handleSubmit = e => {
+  e.preventDefault()
+  this.setState({
+    adopt: !this.state.adopt
+  })
+}
+
+  unFavoriteAnimal = () => {
+    axios
+      .delete(`/favorited/${this.state.pet_id}`)
+      .then(() => {})
+      .catch(err => {
+        console.log(err);
+      });
+
+  };
+
+
   displayPetProfile = () => {
     let { profile } = this.state;
     if (!profile.photos) {
       return <h2> Loading... </h2>;
     } else {
       return (
+        <>
+          {this.state.adopt ?
+           <>
+            <Form profile={this.state.profile}/>
+           </>
+        :
         <div className="animal_div">
-          <h1 className="animal_name">{profile.name}</h1>
-          <div className="animal_info">
+          <div className='animalInfo'>
+            <div className="animal_name">{profile.name}</div>
+            <div className='animalAge'>{profile.age}</div>
+            <div className='animalCity'>{profile.contact.address.city}, {profile.contact.address.state}</div>
+            <div className='animalColor'>{profile.colors.primary}</div>
+            <div className='description'>{profile.description}</div>
             <div>
-              <img
-                className="animal_pic"
-                src={profile.photos[0].medium}
-                alt=""
+          </div>
+            <div className='animalButton'>
+              <button className='oneButton'
+                      onClick={this.favoriteAnAnimal}> Favorite Me!</button>
+
+              <button className='oneButton'
+                      onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
+
+               <button className='oneButton'
+                       onClick={this.handleSubmit}>Pre-Adoption Form</button>
+            </div>
+           </div>
+          <div className='animalPic'>
+            <figure>
+            <img
+               src={profile.photos[0].medium}
+               alt=""
               />
-            </div>
-            <div>
-              <button onClick={this.favoriteAnAnimal}> Favorite Me!</button>
-              <h3 className="animal_detail">{profile.age}</h3>
-              <h3 className="animal_detail">{profile.color}</h3>
-              <h3 className="animal_detail">{profile.description}</h3>
-              <h3 className="animal_detail">
-                {profile.contact.address.city}, {profile.contact.address.state}
-              </h3>
-            </div>
+              </figure>
           </div>
         </div>
+      }
+      </>
       );
     }
   };
 
   render() {
-    console.log(typeof this.state.pet_id);
     return (
+
       <MyContext.Consumer>
-        {context => {
-          return (
-            <div>
-              <div>{this.displayPetProfile()}</div>
-            </div>
-          );
-        }}
+          {context => {
+            return (
+              <div>
+                <div>{this.displayPetProfile()}</div>
+              </div>
+            );
+          }}
       </MyContext.Consumer>
     );
   }

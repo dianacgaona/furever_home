@@ -16,7 +16,9 @@
 
 
 .adoptImg {
-  width: 300px;
+  width: 440px;
+  height: 280px;
+  overflow: hidden;
 }
 
 .adoptPetImg {
