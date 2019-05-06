@@ -29,7 +29,7 @@ class DogBreeds extends Component {
     }
     axios({
       url:
-        "https://cors-anywhere.herokuapp.com/http://localhost:3000/petfinder/animalquery",
+        "/api/petfinder/animalquery",
       method: "post",
       headers: {},
       data: {
