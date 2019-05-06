@@ -27,7 +27,7 @@ class CatBreeds extends Component {
       e.preventDefault();
     }
     axios({
-      url: "/api/https://cors-anywhere.herokuapp.com/http://localhost:3000/petfinder/animalquery",
+      url: "https://cors-anywhere.herokuapp.com/http://localhost:3000/petfinder/animalquery",
       method: "post",
       headers: {},
       data: {
