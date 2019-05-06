@@ -34,7 +34,7 @@ class MyProvider extends Component {
 
   getOrganization = () => {
     axios
-      .get("/petfinder/organizations")
+      .get("/api/petfinder/organizations")
       .then(res => {
         let zips = getZips();
         res.data.organizations.forEach(organization => {
