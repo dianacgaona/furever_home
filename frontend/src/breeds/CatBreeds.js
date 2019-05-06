@@ -27,7 +27,7 @@ class CatBreeds extends Component {
       e.preventDefault();
     }
     axios({
-      url: "http://localhost:3000/petfinder/animalquery",
+      url: "http://localhost:3000/api/petfinder/animalquery",
       method: "post",
       headers: {},
       data: {

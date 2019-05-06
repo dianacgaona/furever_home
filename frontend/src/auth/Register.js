@@ -26,7 +26,7 @@ class Register extends Component {
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
-      .post("/users/new", {
+      .post("/api/users/new", {
         email: this.state.emailInput,
         password_digest: this.state.passwordInput,
         username: this.state.usernameInput
@@ -37,7 +37,7 @@ class Register extends Component {
       })
       .then(() => {
         axios
-          .post("/users/login", {
+          .post("/api/users/login", {
             email: this.state.emailInput,
             password: this.state.passwordInput
           })

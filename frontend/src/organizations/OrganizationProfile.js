@@ -20,7 +20,7 @@ class OrganizationProfile extends Component {
 
   getOrganization = id => {
     axios
-      .get(`/petfinder/organizations/${id}`)
+      .get(`/api/petfinder/organizations/${id}`)
       .then(res => {
         this.setState({
           organization: res.data.organization
@@ -33,7 +33,7 @@ class OrganizationProfile extends Component {
 
   getAnimals = id => {
     axios({
-      url: "/petfinder/animalquery",
+      url: "/api/petfinder/animalquery",
       method: "post",
       headers: {},
       data: `organization=${id}`

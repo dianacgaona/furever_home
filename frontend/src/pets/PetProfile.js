@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { MyContext } from '../provider/MyProvider';
 import Form from '../PreApproval/Form'
@@ -23,7 +23,7 @@ class PetProfile extends Component {
   }
 
   getPet = id => {
-    axios.get(`/petfinder/animals/${id}`).then(res => {
+    axios.get(`/api/petfinder/animals/${id}`).then(res => {
         this.setState({
         profile: res.data.animal,
         pet_id: id,
@@ -34,7 +34,7 @@ class PetProfile extends Component {
 
   favoriteAnAnimal = () => {
     axios
-      .post(`/favorited`, {
+      .post(`/api/favorited`, {
         pet_id: this.state.pet_id,
       })
       .then(res => {})
@@ -53,7 +53,7 @@ class PetProfile extends Component {
 
   unFavoriteAnimal = () => {
     axios
-      .delete(`/favorited/${this.state.pet_id}`)
+      .delete(`/api/favorited/${this.state.pet_id}`)
       .then(() => {})
       .catch(err => {
         console.log(err);

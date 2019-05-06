@@ -20,7 +20,7 @@ class DogCare extends Component {
 
   getDogPosts = () => {
     axios
-      .get('/posts/dogs')
+      .get('/api/posts/dogs')
       .then(res => {
         console.log(res);
         this.setState({

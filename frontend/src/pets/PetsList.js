@@ -17,7 +17,7 @@ class PetsList extends Component {
   }
 
   getAnimals = () => {
-    axios.get('/petfinder/animals').then(res => {
+    axios.get('/api/petfinder/animals').then(res => {
       this.setState({
         petsList: res.data.data.animals,
       });
@@ -41,7 +41,7 @@ class PetsList extends Component {
   render() {
     console.log('Pets List: ', this.state.petsList);
     return (
-      
+
 
 
 <MyContext.Consumer>
