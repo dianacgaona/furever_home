@@ -55,7 +55,7 @@ class SinglePost extends Component {
       comment_body: commentValue
     };
     axios
-      .post("/comments", commentInfos)
+      .post("/api/comments", commentInfos)
       .then(() => {
         this.getCommentsForSinglePost(this.props.match.params.id);
         document.getElementById("myComment").value = "";
