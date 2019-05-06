@@ -28,9 +28,10 @@ class DogBreeds extends Component {
       e.preventDefault();
     }
     axios({
-      url: "https://cors-anywhere.herokuapp.com/http://localhost:3000/petfinder/animalquery",
+      url:
+        "https://cors-anywhere.herokuapp.com/http://localhost:3000/api/petfinder/animalquery",
       method: "post",
-      headers: { },
+      headers: {},
       data: {
         type: "dog",
         organization: this.state.selectedBorough
@@ -249,136 +250,136 @@ class DogBreeds extends Component {
     return (
       <>
         <div className="form_borough">Find Dogs by Borough</div>
-        <div className='selectCont'>
-        <form onSubmit={this.getAnimals}>
-          <select
-            className="form_select"
-            name="selectedBorough"
-            onChange={this.handleBoroughChange}
-          >
-            <option disabled selected>
-              Borough
-            </option>
-            <option
-              name="Manhattan"
-              onSubmit={this.getAnimals}
-              value={this.state.Manhattan}
+        <div className="selectCont">
+          <form onSubmit={this.getAnimals}>
+            <select
+              className="form_select"
+              name="selectedBorough"
+              onChange={this.handleBoroughChange}
             >
-              Manhattan
-            </option>
-            <option
-              name="Brooklyn"
-              onSubmit={this.getAnimals}
-              value={this.state.Brookyln}
+              <option disabled selected>
+                Borough
+              </option>
+              <option
+                name="Manhattan"
+                onSubmit={this.getAnimals}
+                value={this.state.Manhattan}
+              >
+                Manhattan
+              </option>
+              <option
+                name="Brooklyn"
+                onSubmit={this.getAnimals}
+                value={this.state.Brookyln}
+              >
+                Brookyln
+              </option>
+              <option
+                name="Queens"
+                onSubmit={this.getAnimals}
+                value={this.state.Queens}
+              >
+                Queens
+              </option>
+              <option
+                name="Bronx"
+                onSubmit={this.getAnimals}
+                value={this.state.Bronx}
+              >
+                Bronx
+              </option>
+            </select>
+            <select
+              className="form_select"
+              name="selectedColor"
+              onChange={this.handleColorChange}
             >
-              Brookyln
-            </option>
-            <option
-              name="Queens"
-              onSubmit={this.getAnimals}
-              value={this.state.Queens}
+              <option disabled selected>
+                Color
+              </option>
+              <option name="color" value="Apricot / Beige">
+                Apricot / Beige
+              </option>
+              <option name="color" value="Bicolor">
+                Bicolor
+              </option>
+              <option name="color" value="Black">
+                Black
+              </option>
+              <option name="color" value="Brindle">
+                Brindle
+              </option>
+              <option name="color" value="Grey / Blue / Silver">
+                Grey / Blue / Silver
+              </option>
+              <option name="color" value="Red / Chestnut / Orange">
+                Red / Chestnut / Orange
+              </option>
+              <option name="color" value="Tricolor (Brown, Black, White)">
+                Tricolor (Brown, Black, White)
+              </option>
+              <option name="color" value="White / Cream">
+                White / Cream
+              </option>
+              <option name="color" value="Yellow / Tan / Blond / Fawn">
+                Yellow / Tan / Blond / Fawn
+              </option>
+            </select>
+            <select
+              className="form_select"
+              name="selectedAge"
+              onChange={this.handleAgeChange}
             >
-              Queens
-            </option>
-            <option
-              name="Bronx"
-              onSubmit={this.getAnimals}
-              value={this.state.Bronx}
+              <option disabled selected>
+                Age
+              </option>
+              <option name="age" value="Baby">
+                Baby
+              </option>
+              <option name="age" value="Young">
+                Young
+              </option>
+              <option name="age" value="Adult">
+                Adult
+              </option>
+              <option name="age" value="Senior">
+                Senior
+              </option>
+            </select>
+            <select
+              className="form_select"
+              name="selectedSize"
+              onChange={this.handleSizeChange}
             >
-              Bronx
-            </option>
-          </select>
-          <select
-            className="form_select"
-            name="selectedColor"
-            onChange={this.handleColorChange}
-          >
-            <option disabled selected>
-              Color
-            </option>
-            <option name="color" value="Apricot / Beige">
-              Apricot / Beige
-            </option>
-            <option name="color" value="Bicolor">
-              Bicolor
-            </option>
-            <option name="color" value="Black">
-              Black
-            </option>
-            <option name="color" value="Brindle">
-              Brindle
-            </option>
-            <option name="color" value="Grey / Blue / Silver">
-              Grey / Blue / Silver
-            </option>
-            <option name="color" value="Red / Chestnut / Orange">
-              Red / Chestnut / Orange
-            </option>
-            <option name="color" value="Tricolor (Brown, Black, White)">
-              Tricolor (Brown, Black, White)
-            </option>
-            <option name="color" value="White / Cream">
-              White / Cream
-            </option>
-            <option name="color" value="Yellow / Tan / Blond / Fawn">
-              Yellow / Tan / Blond / Fawn
-            </option>
-          </select>
-          <select
-            className="form_select"
-            name="selectedAge"
-            onChange={this.handleAgeChange}
-          >
-            <option disabled selected>
-              Age
-            </option>
-            <option name="age" value="Baby">
-              Baby
-            </option>
-            <option name="age" value="Young">
-              Young
-            </option>
-            <option name="age" value="Adult">
-              Adult
-            </option>
-            <option name="age" value="Senior">
-              Senior
-            </option>
-          </select>
-          <select
-            className="form_select"
-            name="selectedSize"
-            onChange={this.handleSizeChange}
-          >
-            <option disabled selected>
-              Size
-            </option>
-            <option name="size" value="Small">
-              Small
-            </option>
-            <option name="size" value="Medium">
-              Medium
-            </option>
-            <option name="size" value="Large">
-              Large
-            </option>
-          </select>
-          <select
-            className="form_select"
-            name="selectedGender"
-            onChange={this.handleGenderChange}
-          >
-            <option disabled selected>
-              Gender
-            </option>
-            <option name="gender" value="Male">
-              Male
-            </option>
-            <option name="gender" value="Female">
-              Female
-            </option>
-          </select>
-        </form>
+              <option disabled selected>
+                Size
+              </option>
+              <option name="size" value="Small">
+                Small
+              </option>
+              <option name="size" value="Medium">
+                Medium
+              </option>
+              <option name="size" value="Large">
+                Large
+              </option>
+            </select>
+            <select
+              className="form_select"
+              name="selectedGender"
+              onChange={this.handleGenderChange}
+            >
+              <option disabled selected>
+                Gender
+              </option>
+              <option name="gender" value="Male">
+                Male
+              </option>
+              <option name="gender" value="Female">
+                Female
+              </option>
+            </select>
+          </form>
         </div>
       </>
     );
