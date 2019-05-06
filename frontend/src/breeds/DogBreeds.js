@@ -30,7 +30,7 @@ class DogBreeds extends Component {
     axios({
       url: "http://localhost:3000/petfinder/animalquery",
       method: "post",
-      headers: {},
+      headers: { 'Access-Control-Allow-Origin': '*',},
       data: {
         type: "dog",
         organization: this.state.selectedBorough
