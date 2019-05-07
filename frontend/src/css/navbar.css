@@ -16,7 +16,7 @@
 }
 
 .leftCorner {
-  padding-left: 25%;
+  padding-left: 16%;
   padding-top: 1%;
   margin-left: -5%;
 }
@@ -33,7 +33,7 @@
 }
 
 a.username {
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .register {
@@ -50,7 +50,7 @@ a.username {
   border-radius: 2px;
   height: 44%;
   margin-left: 14%;
-  font-size: 25px;
+  font-size: 20px;
   border-radius: 36px;
 }
 
@@ -59,17 +59,17 @@ a.username {
 }
 
 .logo {
-  width: 86px;
+  width: 60px;
   padding: 6%;
   opacity: 0.8;
 }
 
 .fureverHome {
   font-family: 'Clicker Script', cursive;
-  font-size: 74px;
+  font-size: 50px;
   font-weight: 900;
   color: #001049;
-  margin-right: 18%;
+  margin-right: 11%;
   padding-top: .5%;
   padding-bottom: 1%;
 }
