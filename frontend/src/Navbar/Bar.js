@@ -77,7 +77,7 @@ class Bar extends React.Component {
                     label="ANIMALS"
                     style={{
                       color: '#001049',
-                      fontSize: '25px',
+                      fontSize: '20px',
                       marginLeft: '11%',
                     }}
                     className="iLinks"
@@ -85,7 +85,7 @@ class Bar extends React.Component {
 
                   <Tab
                     label="COMMUNITY"
-                    style={{ color: '#001049', fontSize: '25px' }}
+                    style={{ color: '#001049', fontSize: '20px' }}
                     className="iLinks"
                   />
 
@@ -138,7 +138,7 @@ class Bar extends React.Component {
                 <div className="dogs">
                   {value === 2 && (
                     <TabContainer>
-                      <Link to="/dogs">DOGS</Link>
+                      <Link to="/dogs" style={{fontSize: '15px'}}>DOGS</Link>
                     </TabContainer>
                   )}
                 </div>
@@ -146,7 +146,7 @@ class Bar extends React.Component {
                 <div className="cats">
                   {value === 2 && (
                     <TabContainer>
-                      <Link to="/cats">CATS</Link>
+                      <Link to="/cats" style={{fontSize: '15px', paddingLeft: '0%'}}>CATS</Link>
                     </TabContainer>
                   )}
                 </div>
