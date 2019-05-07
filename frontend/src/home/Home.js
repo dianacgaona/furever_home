@@ -8,6 +8,7 @@ class Home extends Component {
       <div className="Home">
 
         <div className="wallpaper">
+
           <Wallpaper />
         </div>
       </div>
