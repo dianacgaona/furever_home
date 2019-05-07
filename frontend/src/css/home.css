@@ -9,7 +9,7 @@
   position: fixed;
   width: 100%;
   opacity: 0.9;
-  padding-top: 11px;
+  margin-top: 13%;
 }
 
 .greeting {
@@ -20,10 +20,10 @@
   justify-content: center;
   text-align: center;
   background-color: rgba(208, 199, 198, 0.8);
-  margin-left: 17%;
-  position: relative;
+  margin-left: 22%;
+  position: absolute;
   z-index: 1;
-  margin-top: 8%;
+  margin-top: 9%;
   width: 920px;
 }
 
