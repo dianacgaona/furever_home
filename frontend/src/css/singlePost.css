@@ -78,11 +78,16 @@
 }
 
 .postComment {
-  color: white;
-  background-color: #001049;
-  width: 160px;
+  width: 170px;
   font-size: 19px;
   margin-top: 1%;
+  color: white;
+  background-color: rgb(0, 16, 73);
+  border-radius: 15px;
+  height: 90%;
+  font-size: 20px;
+  padding: 5px 11px;
+  border-radius: 15px;
 }
 
 .commentBorder {
