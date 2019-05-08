@@ -69,9 +69,6 @@ class Profile extends Component {
                 <div className="container">
                   {context.state.currentUser ? (
                     <div>
-                      <div className="usernameProf">
-                        {this.state.profileUser.username}
-                      </div>
                       <div className="profilePicCont">
                         <Avatar
                           className="profilePic"
@@ -85,8 +82,13 @@ class Profile extends Component {
                           }}
                         />
                       </div>
-                      <div className="aboutMe">
-                        "{this.state.profileUser.about}"
+                      <div className='textContainer'>
+                        <div className="usernameProf">
+                          {this.state.profileUser.username}
+                        </div>
+                        <div className="aboutMe">
+                          "{this.state.profileUser.about}"
+                        </div>
                       </div>
                     </div>
                   ) : (
