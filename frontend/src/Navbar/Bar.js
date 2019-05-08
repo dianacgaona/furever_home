@@ -57,128 +57,133 @@ class Bar extends React.Component {
 <MyContext.Consumer>
         {context => {
           return (
-            <div className={classes.root}>
-              <AppBar position="static">
-                <Tabs
-                  value={value}
-                  onChange={this.handleChange}
-                  className="navbar"
-                >
-                  <div className="logoContainer">
-                    <NavLink to={'/'} className="logoLink">
-                      <img src={logo} alt="" className="logo" />
-                    </NavLink>
-                  </div>
+            <div className='navbarContainer'>
+              <div className={classes.root}>
+                <AppBar position="static">
+                  <Tabs
+                    value={value}
+                    onChange={this.handleChange}
+                    className="navbar"
+                  >
 
-                  <div className="fureverHome">
-                    <NavLink to={'/'}>furever home</NavLink>
-                  </div>
-                  <Tab
-                    label="ANIMALS"
-                    style={{
-                      color: '#001049',
-                      fontSize: '20px',
-                      marginLeft: '8%',
-                    }}
-                    className="iLinks"
-                  />
-
-                  <Tab
-                    label="COMMUNITY"
-                    style={{ color: '#001049', fontSize: '20px' }}
-                    className="iLinks"
-                  />
-
-                  {context.state.currentUser.username ? (
-                    <div className='leftCorner'>
-                      <div className="username">
-                        <NavLink to={`/user/${context.state.currentUser.id}`}>
-                          <Avatar
-                            alt="Remy Sharp"
-                            src={context.state.currentUser.profile_picture}
-                            style={{
-                              marginTop: '-28%',
-                              width: '50px',
-                              height: '50px',
-                            }}
-                          />
-                        </NavLink>
-                        <NavLink
-                          to={`/user/${context.state.currentUser.id}`}
-                          className="username"
-                        >
-                          {context.state.currentUser.username}
-                        </NavLink>
-
-                          <button
-                            type="button"
-                            onClick={context.functions.logoutUser}
-                            className="logout"
-                          >
-                            logout
-                        </button>
-
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="loginCont">
-                      <NavLink
-                        to={'/login'}
-                        className="register"
-                        style={{ fontSize: '15px' }}
-                      >
-                        LOGIN / REGISTER
+                    <div className="logoContainer">
+                      <NavLink to={'/'} className="logoLink">
+                        <img src={logo} alt="" className="logo" />
                       </NavLink>
                     </div>
-                  )}
-                </Tabs>
-              </AppBar>
 
-              <div className="navlinks">
-                <div className="dogs">
-                  {value === 2 && (
-                    <TabContainer>
-                      <Link to="/dogs" style={{fontSize: '15px'}}>DOGS</Link>
-                    </TabContainer>
-                  )}
+                    <div className="fureverHome">
+                      <NavLink to={'/'}>furever home</NavLink>
+                    </div>
+                    <Tab
+                      label="ANIMALS"
+                      style={{
+                        color: '#001049',
+                        fontSize: '20px',
+                        marginLeft: '8%',
+                      }}
+                      className="iLinks"
+                    />
+
+                    <Tab
+                      label="COMMUNITY"
+                      style={{ color: '#001049', fontSize: '20px' }}
+                      className="iLinks"
+                    />
+
+                    {context.state.currentUser.username ? (
+                      <div className='leftCorner'>
+                        <div className="username">
+                          <NavLink to={`/user/${context.state.currentUser.id}`}>
+                            <div className='usernameCont'>
+                              <Avatar
+                                alt="Remy Sharp"
+                                src={context.state.currentUser.profile_picture}
+                                style={{
+                                  marginTop: '-28%',
+                                  width: '50px',
+                                  height: '50px',
+                                }}
+                              />
+                            </div>
+                          </NavLink>
+                          <NavLink
+                            to={`/user/${context.state.currentUser.id}`}
+                            className="username"
+                          >
+                            {context.state.currentUser.username}
+                          </NavLink>
+
+                            <button
+                              type="button"
+                              onClick={context.functions.logoutUser}
+                              className="logout"
+                            >
+                              logout
+                          </button>
+
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="loginCont">
+                        <NavLink
+                          to={'/login'}
+                          className="register"
+                          style={{ fontSize: '15px' }}
+                        >
+                          LOGIN / REGISTER
+                        </NavLink>
+                      </div>
+                    )}
+                  </Tabs>
+                </AppBar>
+
+                <div className="navlinks">
+                  <div className="dogs">
+                    {value === 2 && (
+                      <TabContainer>
+                        <Link to="/dogs" style={{fontSize: '15px'}}>DOGS</Link>
+                      </TabContainer>
+                    )}
+                  </div>
+
+                  <div className="cats">
+                    {value === 2 && (
+                      <TabContainer>
+                        <Link to="/cats" style={{fontSize: '15px', paddingLeft: '0%'}}>CATS</Link>
+                      </TabContainer>
+                    )}
+                  </div>
                 </div>
 
-                <div className="cats">
-                  {value === 2 && (
-                    <TabContainer>
-                      <Link to="/cats" style={{fontSize: '15px', paddingLeft: '0%'}}>CATS</Link>
-                    </TabContainer>
-                  )}
-                </div>
-              </div>
-
-              <div className="navlinks">
-                <div className="subBar">
-                  {value === 3 && (
-                    <TabContainer>
-                      <Link component={RouterLink} to="/dog-care">
-                        DOG CARE
-                      </Link>
-                    </TabContainer>
-                  )}
-                  {value === 3 && (
-                    <TabContainer>
-                      <Link component={RouterLink} to="/cat-care">
-                        CAT CARE
-                      </Link>
-                    </TabContainer>
-                  )}
-                  {value === 3 && (
-                    <TabContainer>
-                      <Link component={RouterLink} to="/shelters-rescues">
-                        SHELTERS & RESCUES
-                      </Link>
-                    </TabContainer>
-                  )}
+                <div className="navlinks">
+                  <div className="subBar">
+                    {value === 3 && (
+                      <TabContainer>
+                        <Link component={RouterLink} to="/dog-care">
+                          DOG CARE
+                        </Link>
+                      </TabContainer>
+                    )}
+                    {value === 3 && (
+                      <TabContainer>
+                        <Link component={RouterLink} to="/cat-care">
+                          CAT CARE
+                        </Link>
+                      </TabContainer>
+                    )}
+                    {value === 3 && (
+                      <TabContainer>
+                        <Link component={RouterLink} to="/shelters-rescues">
+                          SHELTERS & RESCUES
+                        </Link>
+                      </TabContainer>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          );
+          )
         }}
       </MyContext.Consumer>
     );
