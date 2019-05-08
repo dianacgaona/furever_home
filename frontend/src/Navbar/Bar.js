@@ -78,7 +78,7 @@ class Bar extends React.Component {
                     style={{
                       color: '#001049',
                       fontSize: '20px',
-                      marginLeft: '11%',
+                      marginLeft: '8%',
                     }}
                     className="iLinks"
                   />
