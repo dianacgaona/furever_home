@@ -6,7 +6,8 @@ import axios from "axios";
 
 class CatBreeds extends Component {
   state = {
-    selectedBorough: "",
+    selectedBorough:
+      "NY644,NY818,NY1184,NY557,NY744,NY599,NY123,NY1288,NY679,NY955,NY1360,NY693,NY993,NY1192,NY1438,NY704,NY1312,NY262,NY1043,NY1122,NY161,NY251,NY1115,NY714,NY1400,NY1199,NY1392,NY874,NY864,NY1042,NY139,NY1437,NY20,NY440,NY93,NY1041,NY100,NY488,NY245,NY934,NY1286,NY479,NY606",
     boroughSelected: false,
     active: false,
     animals: [],
@@ -23,6 +24,10 @@ class CatBreeds extends Component {
     selectedColor: "",
     selectedGender: ""
   };
+
+  componentDidMount() {
+    this.getAnimals();
+  }
 
   getAnimals = e => {
     if (e) {
@@ -245,9 +250,6 @@ class CatBreeds extends Component {
               name="selectedBorough"
               onChange={this.handleBoroughChange}
             >
-              <option disabled selected>
-                Borough
-              </option>
               <option
                 name="Manhattan"
                 onSubmit={this.getAnimals}
