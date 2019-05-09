@@ -3,8 +3,6 @@
 .search {
   font-family: "Open Sans Condensed", sans-serif;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   padding: 2%;
 }
 

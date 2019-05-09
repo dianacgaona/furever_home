@@ -258,7 +258,7 @@ class DogBreeds extends Component {
       <>
         <div className="form_borough">Find Dogs by Borough</div>
         <div className="selectCont">
-          <form onSubmit={this.getAnimals}>
+          <form className="select_container" onSubmit={this.getAnimals}>
             <select
               className="form_select"
               name="selectedBorough"

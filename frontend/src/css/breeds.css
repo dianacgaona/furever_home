@@ -1,13 +1,12 @@
 .breed_form {
-  width: 60%;
-  height: 100px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid white;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 10px;
   margin: 10px auto;
   justify-content: space-around;
@@ -16,17 +15,22 @@
 .form_borough {
   font-size: 48px;
   font-weight: bold;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   text-transform: uppercase;
+}
+
+.select_container {
+  display: flex;
+  justify-content: center;
 }
 
 .form_select {
   margin: 10px;
   color: white;
   background-color: #001049;
-  width: 18%;
-  font-size: 26px;
-  height: 46px;
+  width: 15%;
+  font-size: 25px;
+  height: 45px;
 }
 
 .selectCont {
@@ -34,7 +38,7 @@
 }
 
 .selectBoro {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .animal_container {
@@ -58,7 +62,7 @@
   font-style: italic;
   font-size: 15px;
   color: gray;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .animal_single {
@@ -71,5 +75,5 @@
   font-weight: bold;
   display: flex;
   justify-content: center;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }

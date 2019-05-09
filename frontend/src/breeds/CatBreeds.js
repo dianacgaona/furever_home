@@ -244,7 +244,7 @@ class CatBreeds extends Component {
       <>
         <div className="form_borough">Find Cats by Borough</div>
         <div className="selectCont">
-          <form onSubmit={this.getAnimals}>
+          <form className="select_container" onSubmit={this.getAnimals}>
             <select
               className="form_select"
               name="selectedBorough"
