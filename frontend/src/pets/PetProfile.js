@@ -47,10 +47,6 @@ class PetProfile extends Component {
         pet_id: this.state.pet_id
       })
       .then(res => {
-        // this.getFavoritedByUser(Auth.getToken())
-        // this.setState({
-        //   favoritedAnimalsByUser: new Set([...this.state.favoritedAnimalsByUser, this.state.pet_id])
-        // })
         this.setState({
           favoritedAnimalsByUser: this.state.favoritedAnimalsByUser.add(
             this.state.pet_id
@@ -62,18 +58,10 @@ class PetProfile extends Component {
       });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({
-      adopt: !this.state.adopt
-    });
-  };
-
   unFavoriteAnimal = () => {
     axios
       .delete(`/favorited/${this.state.pet_id}`)
       .then(() => {
-        
         this.state.favoritedAnimalsByUser.delete(this.state.pet_id);
         this.setState({
           favoritedAnimalsByUser: this.state.favoritedAnimalsByUser
@@ -82,6 +70,13 @@ class PetProfile extends Component {
       .catch(err => {
         console.log(err);
       });
+  };
+  
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      adopt: !this.state.adopt
+    });
   };
 
   displayPetProfile = () => {
