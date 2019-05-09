@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
-import Paper from "@material-ui/core/Paper";
+import "../css/organizations.css";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -20,11 +19,11 @@ class OrganizationProfile extends Component {
                   to={`/shelters-rescues/${shelter.id}`}
                   className="shelter_link"
                 >
-                  <p>{shelter.name}</p>
-                  <p>
-                    {shelter.address.city},{shelter.address.state}
+                  <p className="shelter_name">{shelter.name}</p>
+                  <p className="shelter_location">
+                    {shelter.address.city}, {shelter.address.state}
                   </p>
-                  <p>{shelter.email}</p>
+                  <p className="shelter_email">{shelter.email}</p>
                 </Link>
               </div>
             );
@@ -37,11 +36,11 @@ class OrganizationProfile extends Component {
                     to={`/shelters-rescues/${shelter.id}`}
                     className="shelter_link"
                   >
-                    <p>{shelter.name}</p>
-                    <p>
-                      {shelter.address.city},{shelter.address.state}
+                    <p className="shelter_name">{shelter.name}</p>
+                    <p className="shelter_location">
+                      {shelter.address.city}, {shelter.address.state}
                     </p>
-                    <p>{shelter.email}</p>
+                    <p className="shelter_email">{shelter.email}</p>
                   </Link>
                 </div>
               );
@@ -78,6 +77,11 @@ class OrganizationProfile extends Component {
                     className="shelter_input"
                   />
                 </form>
+              </div>
+              <div className="shelter_info">
+                <label className="info_name">Name</label>
+                <label className="info_location">Location</label>
+                <label>E-mail</label>
               </div>
               {context.state.active ? textSearch : selectSearch}
             </div>
