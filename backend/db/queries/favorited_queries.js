@@ -41,4 +41,18 @@ const getAllFavoritesFromUser = (req, res, next) => {
     .catch(err => next(err));
 };
 
-module.exports = { createfavorite, deleteFavorite, getAllFavoritesFromUser };
+const getAllFavoritesFromUserByEmail = (req, res, next) => {
+  let userEmail = req.params.id
+  db.any("SELECT ARRAY_AGG(pet_id) AS ARRAY FROM favorited JOIN users ON users.id = favorited.user_id WHERE users.email=$1",userEmail)
+    .then(favorited => {
+      res.status(200)
+      .json({
+        status: ' success',
+        favorited: favorited[0]['array'],
+        message: 'Received All Favorites From One User by Email!',
+      })
+    })
+    .catch(err => next(err));
+};
+
+module.exports = { createfavorite, deleteFavorite, getAllFavoritesFromUser,getAllFavoritesFromUserByEmail };
