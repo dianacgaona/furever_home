@@ -10,8 +10,8 @@ getToken = () => {
     headers: {},
     data: {
       grant_type: "client_credentials",
-      client_id: "aPyHda3zCinlGy1lJ0fWFDAQQvpgUomPSbOR7igJVYp8e7WVmE",
-      client_secret: "DYhhxZ48yFUWE3XrmbFHcEuyLt8CflBokBnZWrtJ"
+      client_id: "f7gj1BzWC4bkYvrihrdFgKE1LoGLnCHE3iVLlqu7RXZ3s3C3qk",
+      client_secret: "SUr98EnOpUbQMgdGqOOg0Epkra5f3rwAXhhEMpuO"
     }
   })
     .then(data => {
@@ -59,14 +59,19 @@ apiSingleAnimal = async (req, res, next) => {
     });
     animal = data.animal;
     let singleOrg = await axios({
-      url: `https://api.petfinder.com/v2/organizations/${animal.organization_id}`,
+      url: `https://api.petfinder.com/v2/organizations/${
+        animal.organization_id
+      }`,
       method: "get",
       headers: {
         Authorization: "Bearer " + apiToken
       }
-    })
+    });
 
-    let animalAndOrg = {...animal, org_name: singleOrg.data.organization.name}
+    let animalAndOrg = {
+      ...animal,
+      org_name: singleOrg.data.organization.name
+    };
 
     res.status(200).json({
       status: "Success",
