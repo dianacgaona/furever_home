@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from 'react-router-dom';
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
 import Form from "../PreApproval/Form";
@@ -12,11 +11,10 @@ class PetProfile extends Component {
     super();
     this.state = {
       profile: {},
-      pet_id: "",
+      pet_id: null,
       organization_id: "",
       adopt: false,
-      favoritedAnimalsByUser: [],
-      Andres: []
+      favoritedAnimalsByUser: []
     };
   }
 
@@ -29,58 +27,36 @@ class PetProfile extends Component {
     axios.get(`/petfinder/animals/${id}`).then(res => {
       this.setState({
         profile: res.data.animal,
-        pet_id: id,
+        pet_id: parseInt(id),
         organization_id: res.data.animal.organization_id
       });
     });
   };
 
   getFavoritedByUser = id => {
-    console.log(id,"HERE");
     axios.get(`/favorited/users/ByEmail/${id}`).then(res => {
       this.setState({
-        favoritedAnimalsByUser: res.data.favorited
+        favoritedAnimalsByUser: new Set(res.data.favorited)
       });
-
     });
   };
-  // im getting the animals liked by the current user signed in.
-  // now I want to map through the array so its just pet_id numbers
-  // then set that in the state.
-  //  then have and if and else statement for the button.
-  // If that pet_id is included in the array of favorited pets do Unfavorite Me!
-  //Else Favorite Me!
 
-// .find would look into the object within array
-// setting up the backend to only return the pet_id !!. Still an array of objects
-
-  displayAnimals = () => {
-    // debugger;
-    let favoritedAnimals = this.state.favoritedAnimalsByUser.map(pet => {
-      console.log(pet);
-      return (
-        <>
-          <p>{pet.pet_id}</p>
-        </>
-      );
-    })
-  };
-
-  //
-  // filterByPet_Id = () => {
-  //   let favoritedAnimals = this.state.favoritedAnimalsByUser.filter(pet => {
-  //     if (pet.includes(this.state.pet_id)) {
-  //       return pet;
-  //     }
-  //   });
-  //   console.log(favoritedAnimals, "Something here ");
-  // };
   favoriteAnAnimal = () => {
     axios
       .post(`/favorited`, {
         pet_id: this.state.pet_id
       })
-      .then(res => {})
+      .then(res => {
+        // this.getFavoritedByUser(Auth.getToken())
+        // this.setState({
+        //   favoritedAnimalsByUser: new Set([...this.state.favoritedAnimalsByUser, this.state.pet_id])
+        // })
+        this.setState({
+          favoritedAnimalsByUser: this.state.favoritedAnimalsByUser.add(
+            this.state.pet_id
+          )
+        });
+      })
       .catch(err => {
         console.log(err);
       });
@@ -96,14 +72,20 @@ class PetProfile extends Component {
   unFavoriteAnimal = () => {
     axios
       .delete(`/favorited/${this.state.pet_id}`)
-      .then(() => {})
+      .then(() => {
+        
+        this.state.favoritedAnimalsByUser.delete(this.state.pet_id);
+        this.setState({
+          favoritedAnimalsByUser: this.state.favoritedAnimalsByUser
+        });
+      })
       .catch(err => {
         console.log(err);
       });
   };
 
   displayPetProfile = () => {
-    let { profile } = this.state;
+    let { profile, pet_id, favoritedAnimalsByUser } = this.state;
     if (!profile.photos) {
       return <h2> Loading... </h2>;
     } else {
@@ -126,14 +108,17 @@ class PetProfile extends Component {
                 <div className="description">{profile.description}</div>
                 <div />
                 <div className="animalButton">
-                  <button className="oneButton" onClick={this.favoriteAnAnimal}>
-                    {" "}
-                    Favorite Me!
-                  </button>
-
-                  <button className="oneButton" onClick={this.unFavoriteAnimal}>
-                    {" "}
-                    Unfavorite ME!
+                  <button
+                    className="oneButton"
+                    onClick={
+                      !favoritedAnimalsByUser.has(pet_id)
+                        ? this.favoriteAnAnimal
+                        : this.unFavoriteAnimal
+                    }
+                  >
+                    {!favoritedAnimalsByUser.has(pet_id)
+                      ? "Favorite Me"
+                      : "UnFavorite Me!"}
                   </button>
 
                   <button className="oneButton" onClick={this.handleSubmit}>
@@ -161,10 +146,7 @@ class PetProfile extends Component {
         {context => {
           return (
             <div>
-              <div>
-                {this.displayPetProfile()}
-
-              </div>
+              <div>{this.displayPetProfile()}</div>
             </div>
           );
         }}

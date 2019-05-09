@@ -45,7 +45,6 @@ const getAllFavoritesFromUserByEmail = (req, res, next) => {
   let userEmail = req.params.id
   db.any("SELECT ARRAY_AGG(pet_id) AS ARRAY FROM favorited JOIN users ON users.id = favorited.user_id WHERE users.email=$1",userEmail)
     .then(favorited => {
-      // console.log(favorited[0]['array']);
       res.status(200)
       .json({
         status: ' success',
