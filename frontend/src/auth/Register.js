@@ -26,7 +26,11 @@ class Register extends Component {
   handleSubmit = (e, contextConfirm) => {
     e.preventDefault();
     axios
+<<<<<<< HEAD
       .post('/users/new', {
+=======
+      .post("/api/users/new", {
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
         email: this.state.emailInput,
         password_digest: this.state.passwordInput,
         username: this.state.usernameInput,
@@ -37,7 +41,11 @@ class Register extends Component {
       })
       .then(() => {
         axios
+<<<<<<< HEAD
           .post('/users/login', {
+=======
+          .post("/api/users/login", {
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
             email: this.state.emailInput,
             password: this.state.passwordInput,
           })

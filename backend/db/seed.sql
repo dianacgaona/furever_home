@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS furever_home;
-CREATE DATABASE furever_home;
-
-\c furever_home;
+-- DROP DATABASE IF EXISTS furever_home;
+-- CREATE DATABASE furever_home;
+--
+-- \c furever_home;
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,

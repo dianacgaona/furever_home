@@ -22,7 +22,7 @@ class SinglePost extends Component {
 
   getPost = id => {
     axios
-      .get(`/posts/${id}`)
+      .get(`/api/posts/${id}`)
       .then(res => {
         this.setState({
           singlePost: res.data.post
@@ -35,7 +35,7 @@ class SinglePost extends Component {
 
   getCommentsForSinglePost = id => {
     axios
-      .get(`/comments/post/${id}`)
+      .get(`/api/comments/post/${id}`)
       .then(res => {
         this.setState({
           singlePostComments: res.data.comment
@@ -55,7 +55,7 @@ class SinglePost extends Component {
       comment_body: commentValue
     };
     axios
-      .post("/comments", commentInfos)
+      .post("/api/comments", commentInfos)
       .then(() => {
         this.getCommentsForSinglePost(this.props.match.params.id);
         document.getElementById("myComment").value = "";

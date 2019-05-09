@@ -26,7 +26,7 @@ class AddPost extends Component {
     // debugger;
     e.preventDefault();
     axios
-      .post(`/posts/`, {
+      .post(`/api/posts/`, {
         user_id: user,
         title: this.state.inputTitleText,
         post_body: this.state.inputBodyText,

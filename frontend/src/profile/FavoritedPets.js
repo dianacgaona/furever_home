@@ -20,7 +20,7 @@ class FavoritedPets extends Component {
 
   getFavorited = id => {
     axios
-      .get(`/favorited/users/${id}`)
+      .get(`/api/favorited/users/${id}`)
       .then(res => {
         this.setState({
           userFavs: res.data.favorited,

@@ -34,7 +34,7 @@ class MyProvider extends Component {
 
   getOrganization = () => {
     axios
-      .get("/petfinder/organizations")
+      .get("/api/petfinder/organizations")
       .then(res => {
         let zips = getZips();
         res.data.organizations.forEach(organization => {
@@ -51,7 +51,7 @@ class MyProvider extends Component {
 
   getanimals = () => {
     axios
-      .get("/petfinder/animals")
+      .get("/api/petfinder/animals")
       .then(res => {
         let zips = getZips();
         res.data.data.animals.forEach(animal => {
@@ -67,7 +67,7 @@ class MyProvider extends Component {
   };
 
   checkAuthenticateStatus = () => {
-    axios.post("/users/isloggedin").then(currentUser => {
+    axios.post("/api/users/isloggedin").then(currentUser => {
       if (currentUser.data.email === Auth.getToken()) {
         this.setState({
           isLoggedIn: Auth.isUserAuthenticated(),
@@ -85,7 +85,7 @@ class MyProvider extends Component {
 
   logoutUser = () => {
     axios
-      .post("/users/logout")
+      .post("/api/users/logout")
       .then(() => {
         Auth.deauthenticateUser();
       })

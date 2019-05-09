@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
@@ -5,6 +6,16 @@ import Form from "../PreApproval/Form";
 import "../css/petprofile.css";
 import "../css/adopted.css";
 import Auth from "../utils/Auth.js";
+=======
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { MyContext } from '../provider/MyProvider';
+import Form from '../PreApproval/Form'
+import '../css/petprofile.css';
+import '../css/adopted.css'
+// import Auth from "../utils/Auth.js";
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
 
 class PetProfile extends Component {
   constructor() {
@@ -24,8 +35,13 @@ class PetProfile extends Component {
   }
 
   getPet = id => {
+<<<<<<< HEAD
     axios.get(`/petfinder/animals/${id}`).then(res => {
       this.setState({
+=======
+    axios.get(`/api/petfinder/animals/${id}`).then(res => {
+        this.setState({
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
         profile: res.data.animal,
         pet_id: parseInt(id),
         organization_id: res.data.animal.organization_id
@@ -43,6 +59,7 @@ class PetProfile extends Component {
 
   favoriteAnAnimal = () => {
     axios
+<<<<<<< HEAD
       .post(`/favorited`, {
         pet_id: this.state.pet_id
       })
@@ -52,6 +69,10 @@ class PetProfile extends Component {
             this.state.pet_id
           )
         });
+=======
+      .post(`/api/favorited`, {
+        pet_id: this.state.pet_id,
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
       })
       .catch(err => {
         console.log(err);
@@ -60,6 +81,7 @@ class PetProfile extends Component {
 
   unFavoriteAnimal = () => {
     axios
+<<<<<<< HEAD
       .delete(`/favorited/${this.state.pet_id}`)
       .then(() => {
         this.state.favoritedAnimalsByUser.delete(this.state.pet_id);
@@ -67,6 +89,10 @@ class PetProfile extends Component {
           favoritedAnimalsByUser: this.state.favoritedAnimalsByUser
         });
       })
+=======
+      .delete(`/api/favorited/${this.state.pet_id}`)
+      .then(() => {})
+>>>>>>> 2ac2dffaaf38c2257ebeb79636dd515272b9dbfa
       .catch(err => {
         console.log(err);
       });
