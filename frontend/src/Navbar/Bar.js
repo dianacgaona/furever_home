@@ -1,22 +1,13 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { Link as RouterLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  AppBar,
-  Tabs,
-  Tab,
-  Typography,
-  Paper,
-  Grid,
-  Avatar
-} from '@material-ui/core';
-import { MyContext } from '../provider/MyProvider';
-import DogBreeds from '../breeds/DogBreeds.js';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import { AppBar, Tabs, Tab, Typography, Avatar } from "@material-ui/core";
+import { MyContext } from "../provider/MyProvider";
 
-import '../css/navbar.css';
-let logo = require('../assets/logo.png');
+import "../css/navbar.css";
+let logo = require("../assets/logo.png");
 
 function TabContainer(props) {
   return (
@@ -27,19 +18,19 @@ function TabContainer(props) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
+    backgroundColor: theme.palette.background.paper
+  }
 });
 
 class Bar extends React.Component {
   state = {
-    value: 2,
+    value: 2
   };
 
   handleChange = (event, value) => {
@@ -51,13 +42,10 @@ class Bar extends React.Component {
     const { value } = this.state;
 
     return (
-
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
-            <div className='navbarContainer'>
+            <div className="navbarContainer">
               <div className={classes.root}>
                 <AppBar position="static">
                   <Tabs
@@ -65,44 +53,45 @@ class Bar extends React.Component {
                     onChange={this.handleChange}
                     className="navbar"
                   >
-
                     <div className="logoContainer">
-                      <NavLink to={'/'} className="logoLink">
+                      <NavLink to={"/"} className="logoLink">
                         <img src={logo} alt="" className="logo" />
                       </NavLink>
                     </div>
 
                     <div className="fureverHome">
-                      <NavLink to={'/'}>furever home</NavLink>
+                      <NavLink to={"/"} className="brand_name">
+                        furever home
+                      </NavLink>
                     </div>
                     <Tab
                       label="ANIMALS"
                       style={{
-                        color: '#001049',
-                        fontSize: '20px',
-                        marginLeft: '8%',
+                        color: "#001049",
+                        fontSize: "20px",
+                        marginLeft: "8%"
                       }}
                       className="iLinks"
                     />
 
                     <Tab
                       label="COMMUNITY"
-                      style={{ color: '#001049', fontSize: '20px' }}
+                      style={{ color: "#001049", fontSize: "20px" }}
                       className="iLinks"
                     />
 
                     {context.state.currentUser.username ? (
-                      <div className='leftCorner'>
+                      <div className="leftCorner">
                         <div className="username">
                           <NavLink to={`/user/${context.state.currentUser.id}`}>
-                            <div className='usernameCont'>
+                            <div className="usernameCont">
                               <Avatar
                                 alt="Remy Sharp"
                                 src={context.state.currentUser.profile_picture}
                                 style={{
-                                  marginTop: '-28%',
-                                  width: '50px',
-                                  height: '50px',
+                                  marginTop: "-28%",
+                                  width: "50px",
+                                  height: "50px"
                                 }}
                               />
                             </div>
@@ -114,22 +103,21 @@ class Bar extends React.Component {
                             {context.state.currentUser.username}
                           </NavLink>
 
-                            <button
-                              type="button"
-                              onClick={context.functions.logoutUser}
-                              className="logout"
-                            >
-                              logout
+                          <button
+                            type="button"
+                            onClick={context.functions.logoutUser}
+                            className="logout"
+                          >
+                            logout
                           </button>
-
                         </div>
                       </div>
                     ) : (
                       <div className="loginCont">
                         <NavLink
-                          to={'/login'}
+                          to={"/login"}
                           className="register"
-                          style={{ fontSize: '15px' }}
+                          style={{ fontSize: "15px" }}
                         >
                           LOGIN / REGISTER
                         </NavLink>
@@ -142,7 +130,9 @@ class Bar extends React.Component {
                   <div className="dogs">
                     {value === 2 && (
                       <TabContainer>
-                        <Link to="/dogs" style={{fontSize: '15px'}}>DOGS</Link>
+                        <Link to="/dogs" style={{ fontSize: "15px" }}>
+                          DOGS
+                        </Link>
                       </TabContainer>
                     )}
                   </div>
@@ -150,7 +140,12 @@ class Bar extends React.Component {
                   <div className="cats">
                     {value === 2 && (
                       <TabContainer>
-                        <Link to="/cats" style={{fontSize: '15px', paddingLeft: '0%'}}>CATS</Link>
+                        <Link
+                          to="/cats"
+                          style={{ fontSize: "15px", paddingLeft: "0%" }}
+                        >
+                          CATS
+                        </Link>
                       </TabContainer>
                     )}
                   </div>
@@ -183,7 +178,7 @@ class Bar extends React.Component {
                 </div>
               </div>
             </div>
-          )
+          );
         }}
       </MyContext.Consumer>
     );
@@ -191,7 +186,7 @@ class Bar extends React.Component {
 }
 
 Bar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Bar);

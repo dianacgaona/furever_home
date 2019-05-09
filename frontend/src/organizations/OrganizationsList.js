@@ -20,20 +20,21 @@ class OrganizationProfile extends Component {
                   <div className="shelterInfo">
                     <Link
                       to={`/shelters-rescues/${shelter.id}`}
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        padding: "1%"
-                      }}
+                      style={{ display: "flex", padding: "1%" }}
                     >
-                      <p style={{ textAlign: "left", fontSize: "26px" }}>
+                      <p
+                        style={{
+                          textAlign: "left",
+                          fontSize: "26px",
+                          width: "675px"
+                        }}
+                      >
                         {shelter.name}
                       </p>
-                      <p style={{ textAlign: "center" }}>
+                      <p style={{ textAlign: "left", width: "225px" }}>
                         {shelter.address.city},{shelter.address.state}
                       </p>
-                      <p style={{ textAlign: "right" }}>{shelter.email}</p>
+                      <p style={{ textAlign: "left" }}>{shelter.email}</p>
                     </Link>
                   </div>
                 </Paper>
@@ -48,25 +49,26 @@ class OrganizationProfile extends Component {
                     <div className="shelterInfo">
                       <Link
                         to={`/shelters-rescues/${shelter.id}`}
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                          padding: "1%"
-                        }}
+                        style={{ display: "flex", padding: "1%" }}
                       >
                         <div className="shelterName">
-                          <p style={{ textAlign: "left", fontSize: "26px" }}>
+                          <p
+                            style={{
+                              textAlign: "left",
+                              fontSize: "26px",
+                              width: "675px"
+                            }}
+                          >
                             {shelter.name}
                           </p>
                         </div>
                         <div className="shelterAddress">
-                          <p style={{ textAlign: "center" }}>
+                          <p style={{ textAlign: "left", width: "225px" }}>
                             {shelter.address.city},{shelter.address.state}
                           </p>
                         </div>
                         <p
-                          style={{ textAlign: "right" }}
+                          style={{ textAlign: "left" }}
                           className="shelterEmail"
                         >
                           {shelter.email}
