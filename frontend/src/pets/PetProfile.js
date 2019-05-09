@@ -34,7 +34,7 @@ class PetProfile extends Component {
   };
 
   getFavoritedByUser = id => {
-    axios.get(`/favorited/users/ByEmail/${id}`).then(res => {
+    axios.get(`/api/favorited/users/ByEmail/${id}`).then(res => {
       this.setState({
         favoritedAnimalsByUser: new Set(res.data.favorited)
       });
