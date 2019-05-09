@@ -1,12 +1,68 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 
-.search {
-  font-family: "Open Sans Condensed", sans-serif;
-  display: flex;
-  padding: 2%;
+.shelter_container {
+  /* background-color: orange; */
 }
 
-.border {
+.shelter_search {
+  font-family: "Open Sans Condensed", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 11vh;
+  width: 75%;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+}
+
+.shelter_label {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0 5px 0 40px;
+  color: rgb(0, 16, 73);
+}
+
+.shelter_select {
+  color: white;
+  background-color: #001049;
+  font-size: 20px;
+  height: 40px;
+  border-radius: 15px;
+  padding: 0 5px;
+}
+
+.shelter_input {
+  font-size: 25px;
+  height: 40px;
+  padding: 0 5px;
+  border: solid #efefde 3px;
+  border-radius: 10px;
+}
+
+.shelter_results_container {
+  margin: 0 auto;
+  padding: 5px;
+  width: 95%;
+  background-color: transparent;
+  border: 1px solid white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+}
+
+.shelter_link {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  width: 100%;
+}
+/* .border {
   margin-left: 50px;
   display: grid;
   grid-template-columns: 40% 20% 20%;
@@ -19,9 +75,9 @@
   padding-left: 15px;
   font-weight: bolder;
   font-size: 30px;
-}
+} */
 
-.shelterName {
+/* .shelterName {
   grid-column: 1;
 }
 
@@ -31,4 +87,4 @@
 
 .shelterEmail {
   grid-column: 3;
-}
+} */
