@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import FavoritedPets from './FavoritedPets';
-import AdoptedPets from './AdoptedPets';
-import UsersPosts from './UsersPosts';
-import AddPost from './AddPost.js';
-import ProfileModal from './EditProfileModal.js';
-import { MyContext } from '../provider/MyProvider';
-import { Paper, Avatar } from '@material-ui/core';
-import '../css/profile.css';
-import axios from 'axios';
+import React, { Component } from "react";
+import FavoritedPets from "./FavoritedPets";
+import AdoptedPets from "./AdoptedPets";
+import UsersPosts from "./UsersPosts";
+import AddPost from "./AddPost.js";
+import ProfileModal from "./EditProfileModal.js";
+import { MyContext } from "../provider/MyProvider";
+import { Paper, Avatar } from "@material-ui/core";
+import "../css/profile.css";
+import axios from "axios";
 
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
       profileUser: {},
-      user_Posts: [],
+      user_Posts: []
     };
   }
 
   componentDidMount() {
+    // debugger
     this.getPosts(this.props.match.params.id);
     this.getSingleUser(this.props.match.params.id);
   }
 
   componentDidUpdate(prevProps) {
+    // debugger
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getPosts();
       this.getSingleUser(this.props.match.params.id);
@@ -35,7 +37,7 @@ class Profile extends Component {
       .get(`/posts/byUser/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          user_Posts: res.data.post,
+          user_Posts: res.data.post
         });
       })
       .catch(err => {
@@ -44,28 +46,30 @@ class Profile extends Component {
   };
 
   getSingleUser = () => {
+    // debugger;
     axios
       .get(`/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          profileUser: res.data.user,
+          profileUser: res.data.user
         });
       })
       .catch(err => {
-        console.log('SINGLE USER ERROR', err);
+        console.log("SINGLE USER ERROR", err);
       });
   };
 
   render() {
+    // console.log(this.props.match.params.id);
+console.log(this.props.currentUser.id, 'CurrentUser Id');
+console.log(this.state.profileUser.id ,"Profile User");
+console.log(this.state,"State");
     return (
-
-
-
-<MyContext.Consumer>
+      <MyContext.Consumer>
         {context => {
           return (
             <div>
-              <Paper style={{ padding: '8%' }}>
+              <Paper style={{ padding: "8%" }}>
                 <div className="container">
                   {context.state.currentUser ? (
                     <div>
@@ -75,14 +79,14 @@ class Profile extends Component {
                           alt="Remy Sharp"
                           src={this.state.profileUser.profile_picture}
                           style={{
-                            marginRight: '-11%',
-                            marginTop: '-5%',
-                            width: '260px',
-                            height: '260px',
+                            marginRight: "-11%",
+                            marginTop: "-5%",
+                            width: "260px",
+                            height: "260px"
                           }}
                         />
                       </div>
-                      <div className='textContainer'>
+                      <div className="textContainer">
                         <div className="usernameProf">
                           {this.state.profileUser.username}
                         </div>
