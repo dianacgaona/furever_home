@@ -5,7 +5,6 @@ import UsersPosts from './UsersPosts';
 import AddPost from './AddPost.js';
 import ProfileModal from './EditProfileModal.js';
 import { MyContext } from '../provider/MyProvider';
-import { Paper, Avatar } from '@material-ui/core';
 import '../css/profile.css';
 import axios from 'axios';
 
@@ -58,65 +57,55 @@ class Profile extends Component {
 
   render() {
     return (
-
+      
 
 
 <MyContext.Consumer>
         {context => {
           return (
-            <div>
-              <Paper style={{ padding: '8%' }}>
-                <div className="container">
-                  {context.state.currentUser ? (
-                    <div>
-                      <div className="profilePicCont">
-                        <Avatar
-                          className="profilePic"
-                          alt="Remy Sharp"
-                          src={this.state.profileUser.profile_picture}
-                          style={{
-                            marginRight: '-11%',
-                            marginTop: '-5%',
-                            width: '260px',
-                            height: '260px',
-                          }}
+            <div className="profile_container">
+              {context.state.currentUser ? (
+                <div className="profile_info">
+                  <div className="info_left">
+                    <div className="pic_div">
+                      <img
+                        src={this.state.profileUser.profile_picture}
+                        alt=""
+                        className="profile_pic"
+                      />
+                    </div>
+                    {this.state.profileUser.id === this.props.currentUser.id ? (
+                      <div className="profile_buttons">
+                        <AddPost
+                          getPosts={this.getPosts}
+                          user_Posts={this.state.user_Posts}
+                        />
+                        <ProfileModal
+                          oldState={this.state}
+                          getSingleUser={this.getSingleUser}
                         />
                       </div>
-                      <div className='textContainer'>
-                        <div className="usernameProf">
-                          {this.state.profileUser.username}
-                        </div>
-                        <div className="aboutMe">
-                          "{this.state.profileUser.about}"
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div>no user</div>
-                  )}
+                    ) : null}
+                  </div>
 
-                  {this.state.profileUser.id === this.props.currentUser.id ? (
-                    <div className="addPostCont">
-                      <AddPost
-                        getPosts={this.getPosts}
-                        user_Posts={this.state.user_Posts}
-                      />
-                      <ProfileModal
-                        oldState={this.state}
-                        getSingleUser={this.getSingleUser}
-                      />
+                  <div className="info_right">
+                    <div className="profile_name">
+                      {this.state.profileUser.username}
                     </div>
-                  ) : null}
+                    <div className="profile_about">
+                      "{this.state.profileUser.about}"
+                    </div>
+                  </div>
                 </div>
-              </Paper>
+              ) : (
+                <div>no user</div>
+              )}
 
               <FavoritedPets id={this.props.match.params.id} />
-
               <UsersPosts
                 currentUser={context.state.currentUser.id}
                 user_Posts={this.state.user_Posts}
               />
-
               <AdoptedPets id={this.props.match.params.id} />
             </div>
           );
