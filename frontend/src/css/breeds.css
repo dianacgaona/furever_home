@@ -59,8 +59,7 @@
 }
 
 .animal_details {
-  font-style: italic;
-  font-size: 15px;
+  font-size: 20px;
   color: gray;
   font-family: "Open Sans Condensed", sans-serif;
 }
@@ -71,7 +70,7 @@
 }
 
 .animal_name {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
   display: flex;
   justify-content: center;
