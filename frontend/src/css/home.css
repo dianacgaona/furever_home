@@ -15,20 +15,19 @@
 .greeting {
   font-family: 'Montserrat', sans-serif;
   font-size: 64px;
-  color: white;
+  color: #4169e1;
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
   text-align: center;
-  background-color: rgba(208, 199, 198, 0.2);
   margin-left: 10%;
   position: absolute;
   z-index: 1;
   margin-top: 9%;
   width: 1310px;
   text-shadow: turquoise;
-  text-shadow: 1px 1px 1px #001049;
+  text-shadow: 3px 3px 3px #fffafa;
   font-weight: bolder;
 }
 
