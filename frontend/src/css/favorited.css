@@ -6,6 +6,7 @@
   font-weight: 900;
   margin-left: 1%;
   text-transform: uppercase;
+  color: #4169C1;
 }
 
 .favoriteContainer {
@@ -15,7 +16,7 @@
 
 .favImgCont {
   width: 300px;
-  height: 220px;
+  height: 210px;
   overflow: hidden;
 }
 
