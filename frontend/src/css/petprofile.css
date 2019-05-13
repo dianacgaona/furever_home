@@ -25,7 +25,8 @@
   font-size: 54px;
   font-weight: bold;
   font-variant-caps: all-petite-caps;
-  text-shadow: 1px 0px 0px #001049;
+  color: #4169C1;
+  text-shadow: 1px 1px 1px #494b50;
 }
 
 .animalAge {
@@ -65,7 +66,7 @@
 
 .oneButton {
   color: white;
-  background-color: #001049;
+  background-color: #4169C1;
   width: 160px;
   font-size: 25px;
   margin-top: 1%;
