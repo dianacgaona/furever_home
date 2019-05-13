@@ -61,10 +61,12 @@
 
 .info_name {
   width: 50%;
+  color: #4169C1;
 }
 
 .info_location {
   width: 25%;
+  color: #4169C1;
 }
 
 .shelter_results_container {
@@ -94,6 +96,10 @@
   width: 20%;
 }
 
+.info_email {
+  color: #4169C1;
+}
+
 /* .border {
   margin-left: 50px;
   display: grid;
@@ -107,16 +113,12 @@
   padding-left: 15px;
   font-weight: bolder;
   font-size: 30px;
-} */
+}
 
-/* .shelterName {
+.shelterName {
   grid-column: 1;
 }
 
 .shelterAddress {
   grid-column: 2;
-}
-
-.shelterEmail {
-  grid-column: 3;
 } */

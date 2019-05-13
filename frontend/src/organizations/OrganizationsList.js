@@ -81,7 +81,7 @@ class OrganizationProfile extends Component {
               <div className="shelter_info">
                 <label className="info_name">Name</label>
                 <label className="info_location">Location</label>
-                <label>E-mail</label>
+                <label className='info_email'>E-mail</label>
               </div>
               {context.state.active ? textSearch : selectSearch}
             </div>

@@ -5,12 +5,15 @@
   font-size: 44px;
   font-weight: 900;
   padding-bottom: .5%;
-  text-shadow: 1px 0px 0px #001049;
+  text-shadow: 1px 0px 0px #4169C1;
+  color: #4169C1;
 }
 
 .petTypeCom {
   font-family: 'Open Sans Condensed', sans-serif;
   text-transform: uppercase;
+  color: #4169C1;
+  text-shadow: 1px 1px #101111;
 }
 
 .usernameContainer{
