@@ -71,7 +71,7 @@ class CatFilters extends Component {
             Age
           </option>
           <option name="age" value="Baby">
-            Baby
+            Kitten
           </option>
           <option name="age" value="Young">
             Young
