@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
 
+.adoptedContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 1%;
+}
 .adoptedTitle {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 32px;
@@ -8,6 +13,7 @@
   margin-left: 1%;
   margin-bottom: 1%;
   text-transform: uppercase;
+  color: #4169C1;
 }
 
 .adoptedImgCont {
@@ -16,8 +22,8 @@
 
 
 .adoptImg {
-  width: 440px;
-  height: 280px;
+  width: 300px;
+  height: 226px;
   overflow: hidden;
 }
 
