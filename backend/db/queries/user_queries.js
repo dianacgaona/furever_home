@@ -22,7 +22,7 @@ const getSingleUser = (req, res, next) => {
   console.log("DO SOMETHING ALREADY");
   let userId = parseInt(req.params.id);
   db.one(
-    "SELECT users.id, email, username, name, about, profile_picture, city, state, zip_code FROM users JOIN location ON users.id = location.user_id WHERE users.id=$1 GROUP BY users.id, email, username, name, about, profile_picture, city, state, zip_code",
+    "SELECT users.id, email, username, name, about, profile_picture FROM users  WHERE users.id=$1 GROUP BY users.id, email, username, name, about, profile_picture",
     [userId]
   )
     .then(user => {
