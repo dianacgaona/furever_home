@@ -26,6 +26,7 @@ class Wallpaper extends Component {
     return (
       <div>
         <div className="carousel">
+          <p className="greeting">WHERE PEOPLE FIND THEIR FURIENDS</p>
           <Slider {...settings}>
             <img src={dog1} alt="" className="one" />
             <img src={cat2} alt="" className="two" />

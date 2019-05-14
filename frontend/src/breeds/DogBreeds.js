@@ -2,17 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import "../css/breeds.css";
+import DogFilters from "./DogFilters.js";
 import axios from "axios";
 
 class DogBreeds extends Component {
   state = {
-    selectedBorough: "",
+    selectedBorough:
+      "NY1424,NY587,NY102,NY06,NY1073,NY1297,NY139,NY1145,NY178,NY525,NY874,NY1419,NY1359,NY993,NY1271,NY704,NY887,NY773,NY1043,NY1414,NY434,NY818,NY20,NY1367,NY1400,NY479,NY1422,NY637,NY1192,NY517,NY151,NY652,NY992,NY962,NY1408,NY1113,NY505,NY1199,NY1156,NY1392,NY1211,NY455,NY1293,NY1288,NY606,NY1286,NY644,NY879,NY600,NY729,NY1184,NY803,NY440,NY1317,NY599,NY1047,NY1041,NY1437,NY1278,NY791,NY245,NY1072,NY1122,NY947,NY251,NY790,NY1045,NY744,NY1425,NY864,NY1312,NY1140,NY1023,NY1376,NY100,NY1438,NY955,NY262,NY93,NY794,NY408,NY1416,NY1190,NY488,NY666,NY557,NY161,NY714,NY467,NY1042,NY922,NY693,NY679,NY1115,NY1360,NY123,NY934",
+    boroughSelected: false,
     active: false,
     animals: [],
     filteredAnimals: [],
     Manhattan:
       "NY644,NY818,NY1184,NY557,NY744,NY599,NY123,NY1288,NY679,NY955,NY1360,NY693,NY993,NY1192,NY1438,NY704,NY1312,NY262,NY1043,NY1122,NY161,NY251,NY1115,NY714,NY1400,NY1199,NY1392,NY874,NY864,NY1042,NY139,NY1437,NY20,NY440,NY93,NY1041,NY100,NY488,NY245,NY934,NY1286,NY479,NY606",
-    Brookyln:
+    Brooklyn:
       "NY803,NY505,NY1278,NY1367,NY1416,NY1317,NY773,NY1190,NY06,NY1297,NY1424,NY794,NY922,NY1072,NY1073,NY467,NY637,NY729,NY1359,NY1023,NY962,NY1140,NY1408,NY947",
     Queens:
       "NY102,NY178,NY992,NY1156,NY879,NY1422,NY600,NY525,NY1211,NY1045,NY666,NY791,NY887,NY151,NY1425,NY1293,NY1113,NY1414,NY1376,NY408,NY1047,NY1145,NY455,NY1419,NY1271,NY790",
@@ -22,6 +25,10 @@ class DogBreeds extends Component {
     selectedColor: "",
     selectedGender: ""
   };
+
+  componentDidMount() {
+    this.getAnimals();
+  }
 
   getAnimals = e => {
     if (e) {
@@ -40,7 +47,8 @@ class DogBreeds extends Component {
       console.log(animals);
       this.setState({
         animals: animals.data.data.animals,
-        active: false
+        active: false,
+        selectedBorough: true
       });
     });
   };
@@ -106,72 +114,114 @@ class DogBreeds extends Component {
     );
   };
 
-  filterBySpecialNeeds = () => {
-    let specialFilter = this.state.animals.filter(animals => {
-      if (animals.attributes.special_needs === true) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: specialFilter,
-      active: true
-    });
-    console.log(specialFilter);
-  };
-
   filterByGender = () => {
-    let genderFilter = this.state.animals.filter(animals => {
-      if (animals.gender === this.state.selectedGender) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: genderFilter,
-      active: true
-    });
-    console.log(genderFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let genderFilter = this.state.animals.filter(animals => {
+        if (animals.gender === this.state.selectedGender) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: genderFilter,
+        active: true
+      });
+      console.log(genderFilter);
+    } else {
+      let genderFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.gender === this.state.selectedGender) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: genderFilter,
+        active: true
+      });
+      console.log(genderFilter);
+    }
   };
 
   filterByAge = () => {
-    let ageFilter = this.state.animals.filter(animals => {
-      if (animals.age === this.state.selectedAge) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: ageFilter,
-      active: true
-    });
-    console.log(ageFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let ageFilter = this.state.animals.filter(animals => {
+        if (animals.age === this.state.selectedAge) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: ageFilter,
+        active: true
+      });
+      console.log(ageFilter);
+    } else {
+      let ageFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.age === this.state.selectedAge) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: ageFilter,
+        active: true
+      });
+      console.log(ageFilter);
+    }
   };
 
   filterBySize = () => {
-    let sizeFilter = this.state.animals.filter(animals => {
-      if (animals.size === this.state.selectedSize) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: sizeFilter,
-      active: true
-    });
-    console.log(sizeFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let sizeFilter = this.state.animals.filter(animals => {
+        if (animals.size === this.state.selectedSize) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: sizeFilter,
+        active: true
+      });
+      console.log(sizeFilter);
+    } else {
+      let sizeFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.size === this.state.selectedSize) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: sizeFilter,
+        active: true
+      });
+      console.log(sizeFilter);
+    }
   };
 
   filterByColor = () => {
-    let colorFilter = this.state.animals.filter(animals => {
-      if (animals.colors.primary === this.state.selectedColor) {
-        return animals;
-      }
-      if (animals.colors.primary === null) {
-        return "";
-      }
-    });
-    this.setState({
-      filteredAnimals: colorFilter,
-      active: true
-    });
-    console.log(colorFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let colorFilter = this.state.animals.filter(animals => {
+        if (animals.colors.primary === this.state.selectedColor) {
+          return animals;
+        }
+        if (animals.colors.primary === null) {
+          return "";
+        }
+      });
+      this.setState({
+        filteredAnimals: colorFilter,
+        active: true
+      });
+      console.log(colorFilter);
+    } else {
+      let colorFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.colors.primary === this.state.selectedColor) {
+          return animals;
+        }
+        if (animals.colors.primary === null) {
+          return "";
+        }
+      });
+      this.setState({
+        filteredAnimals: colorFilter,
+        active: true
+      });
+      console.log(colorFilter);
+    }
   };
 
   displayFiltered = () => {
@@ -251,7 +301,7 @@ class DogBreeds extends Component {
       <>
         <div className="form_borough">Find Dogs by Borough</div>
         <div className="selectCont">
-          <form onSubmit={this.getAnimals}>
+          <form className="select_container" onSubmit={this.getAnimals}>
             <select
               className="form_select"
               name="selectedBorough"
@@ -270,9 +320,9 @@ class DogBreeds extends Component {
               <option
                 name="Brooklyn"
                 onSubmit={this.getAnimals}
-                value={this.state.Brookyln}
+                value={this.state.Brooklyn}
               >
-                Brookyln
+                Brooklyn
               </option>
               <option
                 name="Queens"
@@ -289,96 +339,16 @@ class DogBreeds extends Component {
                 Bronx
               </option>
             </select>
-            <select
-              className="form_select"
-              name="selectedColor"
-              onChange={this.handleColorChange}
-            >
-              <option disabled selected>
-                Color
-              </option>
-              <option name="color" value="Apricot / Beige">
-                Apricot / Beige
-              </option>
-              <option name="color" value="Bicolor">
-                Bicolor
-              </option>
-              <option name="color" value="Black">
-                Black
-              </option>
-              <option name="color" value="Brindle">
-                Brindle
-              </option>
-              <option name="color" value="Grey / Blue / Silver">
-                Grey / Blue / Silver
-              </option>
-              <option name="color" value="Red / Chestnut / Orange">
-                Red / Chestnut / Orange
-              </option>
-              <option name="color" value="Tricolor (Brown, Black, White)">
-                Tricolor (Brown, Black, White)
-              </option>
-              <option name="color" value="White / Cream">
-                White / Cream
-              </option>
-              <option name="color" value="Yellow / Tan / Blond / Fawn">
-                Yellow / Tan / Blond / Fawn
-              </option>
-            </select>
-            <select
-              className="form_select"
-              name="selectedAge"
-              onChange={this.handleAgeChange}
-            >
-              <option disabled selected>
-                Age
-              </option>
-              <option name="age" value="Baby">
-                Baby
-              </option>
-              <option name="age" value="Young">
-                Young
-              </option>
-              <option name="age" value="Adult">
-                Adult
-              </option>
-              <option name="age" value="Senior">
-                Senior
-              </option>
-            </select>
-            <select
-              className="form_select"
-              name="selectedSize"
-              onChange={this.handleSizeChange}
-            >
-              <option disabled selected>
-                Size
-              </option>
-              <option name="size" value="Small">
-                Small
-              </option>
-              <option name="size" value="Medium">
-                Medium
-              </option>
-              <option name="size" value="Large">
-                Large
-              </option>
-            </select>
-            <select
-              className="form_select"
-              name="selectedGender"
-              onChange={this.handleGenderChange}
-            >
-              <option disabled selected>
-                Gender
-              </option>
-              <option name="gender" value="Male">
-                Male
-              </option>
-              <option name="gender" value="Female">
-                Female
-              </option>
-            </select>
+            {this.state.selectedBorough ? (
+              <DogFilters
+                handleColor={this.handleColorChange}
+                handleAge={this.handleAgeChange}
+                handleSize={this.handleSizeChange}
+                handleGender={this.handleGenderChange}
+              />
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </>

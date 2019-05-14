@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../css/organizations.css";
 import { MyContext } from "../provider/MyProvider";
-import Paper from "@material-ui/core/Paper";
+import "../css/organizations.css";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -13,67 +12,36 @@ class OrganizationProfile extends Component {
     return (
       <MyContext.Consumer>
         {context => {
-          let shelterSearch = context.state.shelter.map(shelter => {
+          let textSearch = context.state.shelter.map(shelter => {
             return (
-              <div className="border">
-                <Paper style={{ width: "96%" }}>
-                  <div className="shelterInfo">
-                    <Link
-                      to={`/shelters-rescues/${shelter.id}`}
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        padding: "1%"
-                      }}
-                    >
-                      <p style={{ textAlign: "left", fontSize: "26px" }}>
-                        {shelter.name}
-                      </p>
-                      <p style={{ textAlign: "center" }}>
-                        {shelter.address.city},{shelter.address.state}
-                      </p>
-                      <p style={{ textAlign: "right" }}>{shelter.email}</p>
-                    </Link>
-                  </div>
-                </Paper>
+              <div className="shelter_results_container">
+                <Link
+                  to={`/shelters-rescues/${shelter.id}`}
+                  className="shelter_link"
+                >
+                  <p className="shelter_name">{shelter.name}</p>
+                  <p className="shelter_location">
+                    {shelter.address.city}, {shelter.address.state}
+                  </p>
+                  <p className="shelter_email">{shelter.email}</p>
+                </Link>
               </div>
             );
           });
-          let display = context.state.organizations.map(shelter => {
+          let selectSearch = context.state.organizations.map(shelter => {
             if (shelter.borough === context.state.selectedBorough) {
               return (
-                <div className="border">
-                  <Paper style={{ width: "96%" }}>
-                    <div className="shelterInfo">
-                      <Link
-                        to={`/shelters-rescues/${shelter.id}`}
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                          padding: "1%"
-                        }}
-                      >
-                        <div className="shelterName">
-                          <p style={{ textAlign: "left", fontSize: "26px" }}>
-                            {shelter.name}
-                          </p>
-                        </div>
-                        <div className="shelterAddress">
-                          <p style={{ textAlign: "center" }}>
-                            {shelter.address.city},{shelter.address.state}
-                          </p>
-                        </div>
-                        <p
-                          style={{ textAlign: "right" }}
-                          className="shelterEmail"
-                        >
-                          {shelter.email}
-                        </p>
-                      </Link>
-                    </div>
-                  </Paper>
+                <div className="shelter_results_container">
+                  <Link
+                    to={`/shelters-rescues/${shelter.id}`}
+                    className="shelter_link"
+                  >
+                    <p className="shelter_name">{shelter.name}</p>
+                    <p className="shelter_location">
+                      {shelter.address.city}, {shelter.address.state}
+                    </p>
+                    <p className="shelter_email">{shelter.email}</p>
+                  </Link>
                 </div>
               );
             } else {
@@ -81,13 +49,14 @@ class OrganizationProfile extends Component {
             }
           });
           return (
-            <div>
-              <div className="search">
+            <div className="shelter_container">
+              <div className="shelter_search">
+                <label className="shelter_label">Select a Borough</label>
                 <form type="submit" onSubmit={this.handleSubmit}>
-                  {"Select a Borough"}{" "}
                   <select
                     name="selectedBorough"
                     onChange={context.functions.handleSelect}
+                    className="shelter_select"
                   >
                     <option value="Manhattan">Manhattan</option>
                     <option value="Brooklyn">Brookyln</option>
@@ -95,21 +64,26 @@ class OrganizationProfile extends Component {
                     <option value="Bronx">Bronx</option>
                   </select>
                 </form>
+                <label className="shelter_label"> Search by Name</label>
                 <form
                   type="submit"
                   onSubmit={context.functions.handleShelterSubmit}
                 >
-                  {" "}
-                  {"Or"}{" "}
                   <input
                     type="text"
                     value={context.state.searchInput}
                     onChange={context.functions.handleInputChange}
-                    placeholder="Search By Shelter Name"
+                    placeholder="Shelter Name"
+                    className="shelter_input"
                   />
                 </form>
               </div>
-              <div>{context.state.active ? shelterSearch : display}</div>
+              <div className="shelter_info">
+                <label className="info_name">Name</label>
+                <label className="info_location">Location</label>
+                <label className='info_email'>E-mail</label>
+              </div>
+              {context.state.active ? textSearch : selectSearch}
             </div>
           );
         }}

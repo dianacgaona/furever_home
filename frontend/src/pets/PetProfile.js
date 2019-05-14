@@ -1,33 +1,42 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { MyContext } from '../provider/MyProvider';
-import Form from '../PreApproval/Form'
-import '../css/petprofile.css';
-import '../css/adopted.css'
-// import Auth from "../utils/Auth.js";
+import React, { Component } from "react";
+import axios from "axios";
+import { MyContext } from "../provider/MyProvider";
+import Form from "../PreApproval/Form";
+import "../css/petprofile.css";
+import "../css/adopted.css";
+import Auth from "../utils/Auth.js";
 
 class PetProfile extends Component {
   constructor() {
     super();
     this.state = {
       profile: {},
-      pet_id: '',
-      organization_id: '',
-      adopt: false
+      pet_id: null,
+      organization_id: "",
+      adopt: false,
+      favoritedAnimalsByUser: []
     };
   }
 
   componentDidMount() {
     this.getPet(this.props.match.params.id);
+    this.getFavoritedByUser(Auth.getToken());
   }
 
   getPet = id => {
     axios.get(`/api/petfinder/animals/${id}`).then(res => {
         this.setState({
         profile: res.data.animal,
-        pet_id: id,
-        organization_id: res.data.animal.organization_id,
+        pet_id: parseInt(id),
+        organization_id: res.data.animal.organization_id
+      });
+    });
+  };
+
+  getFavoritedByUser = id => {
+    axios.get(`/favorited/users/ByEmail/${id}`).then(res => {
+      this.setState({
+        favoritedAnimalsByUser: new Set(res.data.favorited)
       });
     });
   };
@@ -37,19 +46,10 @@ class PetProfile extends Component {
       .post(`/api/favorited`, {
         pet_id: this.state.pet_id,
       })
-      .then(res => {})
       .catch(err => {
         console.log(err);
       });
   };
-
-
-  handleSubmit = e => {
-  e.preventDefault()
-  this.setState({
-    adopt: !this.state.adopt
-  })
-}
 
   unFavoriteAnimal = () => {
     axios
@@ -58,68 +58,86 @@ class PetProfile extends Component {
       .catch(err => {
         console.log(err);
       });
-
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      adopt: !this.state.adopt
+    });
+  };
 
   displayPetProfile = () => {
-    let { profile } = this.state;
+    let { profile, pet_id, favoritedAnimalsByUser } = this.state;
     if (!profile.photos) {
       return <h2> Loading... </h2>;
     } else {
       return (
         <>
-          {this.state.adopt ?
-           <>
-            <Form profile={this.state.profile}/>
-           </>
-        :
-        <div className="animal_div">
-          <div className='animalInfo'>
-            <div className="animal_name">{profile.name}</div>
-            <div className='animalAge'>{profile.age}</div>
-            <div className='animalCity'>{profile.contact.address.city}, {profile.contact.address.state}</div>
-            <div className='animalColor'>{profile.colors.primary}</div>
-            <div className='description'>{profile.description}</div>
-            <div>
-          </div>
-            <div className='animalButton'>
-              <button className='oneButton'
-                      onClick={this.favoriteAnAnimal}> Favorite Me!</button>
+          {this.state.adopt ? (
+            <>
+              <Form profile={this.state.profile} />
+            </>
+          ) : (
+            <div className="animal_div">
+              <div className="animal_pic_div">
+                <div className="animal_pic">
+                  <img src={profile.photos[0].medium} alt="" />
+                </div>
+              </div>
+              <div className="animal_info_div">
+                <div className="animal_name_div">
+                  <h1 className="animal_profile_name">{profile.name}</h1>
+                </div>
+                <div className="animal_age_location">
+                  <div className="animal_age">{profile.age}</div>
+                  <div className="animal_divider"> {" • "} </div>
+                  <div className="animal_location">
+                    {profile.contact.address.city},{" "}
+                    {profile.contact.address.state}
+                  </div>
+                  <div className="animal_divider"> {" • "} </div>
+                  <div className="animal_color">{profile.colors.primary}</div>
+                </div>
+                <div className="buttons_div">
+                  <button
+                    className="animal_button"
+                    onClick={
+                      !favoritedAnimalsByUser.has(pet_id)
+                        ? this.favoriteAnAnimal
+                        : this.unFavoriteAnimal
+                    }
+                  >
+                    {!favoritedAnimalsByUser.has(pet_id)
+                      ? "Favorite Me"
+                      : "UnFavorite Me!"}
+                  </button>
 
-              <button className='oneButton'
-                      onClick={this.unFavoriteAnimal}> Unfavorite ME!</button>
-
-               <button className='oneButton'
-                       onClick={this.handleSubmit}>Pre-Adoption Form</button>
+                  <button className="animal_button" onClick={this.handleSubmit}>
+                    Pre-Adoption Form
+                  </button>
+                </div>
+                <div className="animal_description">{profile.description}</div>
+              </div>
             </div>
-           </div>
-          <div className='animalPic'>
-            <figure>
-            <img
-               src={profile.photos[0].medium}
-               alt=""
-              />
-              </figure>
-          </div>
-        </div>
-      }
-      </>
+          )}
+        </>
       );
     }
   };
 
   render() {
-    return (
+    console.log(this.state, "Andres Here");
 
+    return (
       <MyContext.Consumer>
-          {context => {
-            return (
-              <div>
-                <div>{this.displayPetProfile()}</div>
-              </div>
-            );
-          }}
+        {context => {
+          return (
+            <div className="animal_profile_container">
+              {this.displayPetProfile()}
+            </div>
+          );
+        }}
       </MyContext.Consumer>
     );
   }
