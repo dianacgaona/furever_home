@@ -50,7 +50,7 @@ class DogFilters extends Component {
             Age
           </option>
           <option name="age" value="Baby">
-            Baby
+            Puppy
           </option>
           <option name="age" value="Young">
             Young

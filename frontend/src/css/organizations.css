@@ -45,6 +45,30 @@
   border-radius: 10px;
 }
 
+.shelter_info {
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  color: #001049;
+  width: 93%;
+  margin: 10px auto;
+  padding: 5px 25px;
+  border: 1px solid white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+}
+
+.info_name {
+  width: 50%;
+  color: #4169C1;
+}
+
+.info_location {
+  width: 25%;
+  color: #4169C1;
+}
+
 .shelter_results_container {
   margin: 0 auto;
   padding: 5px;
@@ -58,10 +82,24 @@
 
 .shelter_link {
   display: flex;
-  justify-content: space-between;
   background-color: transparent;
   width: 100%;
+  margin: 5px;
+  font-size: 20px;
 }
+
+.shelter_name {
+  width: 50%;
+}
+
+.shelter_location {
+  width: 20%;
+}
+
+.info_email {
+  color: #4169C1;
+}
+
 /* .border {
   margin-left: 50px;
   display: grid;
@@ -75,16 +113,12 @@
   padding-left: 15px;
   font-weight: bolder;
   font-size: 30px;
-} */
+}
 
-/* .shelterName {
+.shelterName {
   grid-column: 1;
 }
 
 .shelterAddress {
   grid-column: 2;
-}
-
-.shelterEmail {
-  grid-column: 3;
 } */

@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import axios from "axios";
 import { MyContext } from "../provider/MyProvider";
@@ -5,6 +6,7 @@ import Form from "../PreApproval/Form";
 import "../css/petprofile.css";
 import "../css/adopted.css";
 import Auth from "../utils/Auth.js";
+
 
 class PetProfile extends Component {
   constructor() {
@@ -44,12 +46,13 @@ class PetProfile extends Component {
   favoriteAnAnimal = () => {
     axios
       .post(`/api/favorited`, {
-        pet_id: this.state.pet_id
+      pet_id: this.state.pet_id
       })
       .then(()=>{
         this.setState({
           favoritedAnimalsByUser: this.state.favoritedAnimalsByUser.add(this.state.pet_id)
         })
+
       })
       .catch(err => {
         console.log(err);
@@ -90,19 +93,28 @@ class PetProfile extends Component {
             </>
           ) : (
             <div className="animal_div">
-              <div className="animalInfo">
-                <div className="animal_name">{profile.name}</div>
-                <div className="animalAge">{profile.age}</div>
-                <div className="animalCity">
-                  {profile.contact.address.city},{" "}
-                  {profile.contact.address.state}
+              <div className="animal_pic_div">
+                <div className="animal_pic">
+                  <img src={profile.photos[0].medium} alt="" />
                 </div>
-                <div className="animalColor">{profile.colors.primary}</div>
-                <div className="description">{profile.description}</div>
-                <div />
-                <div className="animalButton">
+              </div>
+              <div className="animal_info_div">
+                <div className="animal_name_div">
+                  <h1 className="animal_profile_name">{profile.name}</h1>
+                </div>
+                <div className="animal_age_location">
+                  <div className="animal_age">{profile.age}</div>
+                  <div className="animal_divider"> {" • "} </div>
+                  <div className="animal_location">
+                    {profile.contact.address.city},{" "}
+                    {profile.contact.address.state}
+                  </div>
+                  <div className="animal_divider"> {" • "} </div>
+                  <div className="animal_color">{profile.colors.primary}</div>
+                </div>
+                <div className="buttons_div">
                   <button
-                    className="oneButton"
+                    className="animal_button"
                     onClick={
                       !favoritedAnimalsByUser.has(pet_id)
                         ? this.favoriteAnAnimal
@@ -114,15 +126,11 @@ class PetProfile extends Component {
                       : "UnFavorite Me!"}
                   </button>
 
-                  <button className="oneButton" onClick={this.handleSubmit}>
+                  <button className="animal_button" onClick={this.handleSubmit}>
                     Pre-Adoption Form
                   </button>
                 </div>
-              </div>
-              <div className="animalPic">
-                <figure>
-                  <img src={profile.photos[0].medium} alt="" />
-                </figure>
+                <div className="animal_description">{profile.description}</div>
               </div>
             </div>
           )}
@@ -138,8 +146,8 @@ class PetProfile extends Component {
       <MyContext.Consumer>
         {context => {
           return (
-            <div>
-              <div>{this.displayPetProfile()}</div>
+            <div className="animal_profile_container">
+              {this.displayPetProfile()}
             </div>
           );
         }}

@@ -20,12 +20,12 @@ class UsersPosts extends Component {
         <div className='postsProfCont'>
           <div key={post.id}>
             <Link to={`/posts/${post.id}`}>
-              <p className='profPostTitle'>{post.title}</p>
             </Link>
             <Link to={`/posts/${post.id}`}>
               <div className='postImageContainer'>
                 <img src={post.post_url} alt="" className="postImg" />
               </div>
+              <p className='profPostTitle'>{post.title}</p>
             </Link>
           </div>
         </div>

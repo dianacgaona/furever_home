@@ -8,7 +8,7 @@ import axios from "axios";
 class DogBreeds extends Component {
   state = {
     selectedBorough:
-      "NY644,NY818,NY1184,NY557,NY744,NY599,NY123,NY1288,NY679,NY955,NY1360,NY693,NY993,NY1192,NY1438,NY704,NY1312,NY262,NY1043,NY1122,NY161,NY251,NY1115,NY714,NY1400,NY1199,NY1392,NY874,NY864,NY1042,NY139,NY1437,NY20,NY440,NY93,NY1041,NY100,NY488,NY245,NY934,NY1286,NY479,NY606",
+      "NY1424,NY587,NY102,NY06,NY1073,NY1297,NY139,NY1145,NY178,NY525,NY874,NY1419,NY1359,NY993,NY1271,NY704,NY887,NY773,NY1043,NY1414,NY434,NY818,NY20,NY1367,NY1400,NY479,NY1422,NY637,NY1192,NY517,NY151,NY652,NY992,NY962,NY1408,NY1113,NY505,NY1199,NY1156,NY1392,NY1211,NY455,NY1293,NY1288,NY606,NY1286,NY644,NY879,NY600,NY729,NY1184,NY803,NY440,NY1317,NY599,NY1047,NY1041,NY1437,NY1278,NY791,NY245,NY1072,NY1122,NY947,NY251,NY790,NY1045,NY744,NY1425,NY864,NY1312,NY1140,NY1023,NY1376,NY100,NY1438,NY955,NY262,NY93,NY794,NY408,NY1416,NY1190,NY488,NY666,NY557,NY161,NY714,NY467,NY1042,NY922,NY693,NY679,NY1115,NY1360,NY123,NY934",
     boroughSelected: false,
     active: false,
     animals: [],
@@ -114,72 +114,114 @@ class DogBreeds extends Component {
     );
   };
 
-  filterBySpecialNeeds = () => {
-    let specialFilter = this.state.animals.filter(animals => {
-      if (animals.attributes.special_needs === true) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: specialFilter,
-      active: true
-    });
-    console.log(specialFilter);
-  };
-
   filterByGender = () => {
-    let genderFilter = this.state.animals.filter(animals => {
-      if (animals.gender === this.state.selectedGender) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: genderFilter,
-      active: true
-    });
-    console.log(genderFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let genderFilter = this.state.animals.filter(animals => {
+        if (animals.gender === this.state.selectedGender) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: genderFilter,
+        active: true
+      });
+      console.log(genderFilter);
+    } else {
+      let genderFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.gender === this.state.selectedGender) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: genderFilter,
+        active: true
+      });
+      console.log(genderFilter);
+    }
   };
 
   filterByAge = () => {
-    let ageFilter = this.state.animals.filter(animals => {
-      if (animals.age === this.state.selectedAge) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: ageFilter,
-      active: true
-    });
-    console.log(ageFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let ageFilter = this.state.animals.filter(animals => {
+        if (animals.age === this.state.selectedAge) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: ageFilter,
+        active: true
+      });
+      console.log(ageFilter);
+    } else {
+      let ageFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.age === this.state.selectedAge) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: ageFilter,
+        active: true
+      });
+      console.log(ageFilter);
+    }
   };
 
   filterBySize = () => {
-    let sizeFilter = this.state.animals.filter(animals => {
-      if (animals.size === this.state.selectedSize) {
-        return animals;
-      }
-    });
-    this.setState({
-      filteredAnimals: sizeFilter,
-      active: true
-    });
-    console.log(sizeFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let sizeFilter = this.state.animals.filter(animals => {
+        if (animals.size === this.state.selectedSize) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: sizeFilter,
+        active: true
+      });
+      console.log(sizeFilter);
+    } else {
+      let sizeFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.size === this.state.selectedSize) {
+          return animals;
+        }
+      });
+      this.setState({
+        filteredAnimals: sizeFilter,
+        active: true
+      });
+      console.log(sizeFilter);
+    }
   };
 
   filterByColor = () => {
-    let colorFilter = this.state.animals.filter(animals => {
-      if (animals.colors.primary === this.state.selectedColor) {
-        return animals;
-      }
-      if (animals.colors.primary === null) {
-        return "";
-      }
-    });
-    this.setState({
-      filteredAnimals: colorFilter,
-      active: true
-    });
-    console.log(colorFilter);
+    if (this.state.filteredAnimals.length === 0) {
+      let colorFilter = this.state.animals.filter(animals => {
+        if (animals.colors.primary === this.state.selectedColor) {
+          return animals;
+        }
+        if (animals.colors.primary === null) {
+          return "";
+        }
+      });
+      this.setState({
+        filteredAnimals: colorFilter,
+        active: true
+      });
+      console.log(colorFilter);
+    } else {
+      let colorFilter = this.state.filteredAnimals.filter(animals => {
+        if (animals.colors.primary === this.state.selectedColor) {
+          return animals;
+        }
+        if (animals.colors.primary === null) {
+          return "";
+        }
+      });
+      this.setState({
+        filteredAnimals: colorFilter,
+        active: true
+      });
+      console.log(colorFilter);
+    }
   };
 
   displayFiltered = () => {
@@ -265,6 +307,9 @@ class DogBreeds extends Component {
               name="selectedBorough"
               onChange={this.handleBoroughChange}
             >
+              <option disabled selected>
+                Borough
+              </option>
               <option
                 name="Manhattan"
                 onSubmit={this.getAnimals}
