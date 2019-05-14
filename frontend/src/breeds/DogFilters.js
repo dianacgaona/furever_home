@@ -25,13 +25,13 @@ class DogFilters extends Component {
           <option name="color" value="Brindle">
             Brindle
           </option>
-          <option name="color" value="Grey / Blue / Silver">
-            Grey / Blue / Silver
+          <option name="color" value="Gray / Blue / Silver">
+            Gray / Blue / Silver
           </option>
           <option name="color" value="Red / Chestnut / Orange">
             Red / Chestnut / Orange
           </option>
-          <option name="color" value="Tricolor (Brown, Black, White)">
+          <option name="color" value="Tricolor (Brown, Black, & White)">
             Tricolor (Brown, Black, White)
           </option>
           <option name="color" value="White / Cream">
