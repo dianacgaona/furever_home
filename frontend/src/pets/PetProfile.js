@@ -25,7 +25,7 @@ class PetProfile extends Component {
 
   getPet = id => {
     axios.get(`/api/petfinder/animals/${id}`).then(res => {
-        this.setState({
+      this.setState({
         profile: res.data.animal,
         pet_id: parseInt(id),
         organization_id: res.data.animal.organization_id
@@ -44,7 +44,12 @@ class PetProfile extends Component {
   favoriteAnAnimal = () => {
     axios
       .post(`/api/favorited`, {
-        pet_id: this.state.pet_id,
+        pet_id: this.state.pet_id
+      })
+      .then(()=>{
+        this.setState({
+          favoritedAnimalsByUser: this.state.favoritedAnimalsByUser.add(this.state.pet_id)
+        })
       })
       .catch(err => {
         console.log(err);
@@ -54,7 +59,12 @@ class PetProfile extends Component {
   unFavoriteAnimal = () => {
     axios
       .delete(`/api/favorited/${this.state.pet_id}`)
-      .then(() => {})
+      .then(() => {
+        this.state.favoritedAnimalsByUser.delete(this.state.pet_id)
+        this.setState({
+          favoritedAnimalsByUser: this.state.favoritedAnimalsByUser
+        })
+      })
       .catch(err => {
         console.log(err);
       });
