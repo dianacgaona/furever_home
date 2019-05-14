@@ -1,77 +1,82 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+
+.animal_profile_container {
+  background-color: transparent;
+}
 
 .animal_div {
+  display: flex;
+  justify-content: space-around;
   margin: 0 auto;
-  width: 45%;
+  width: 60%;
+  background-color: transparent;
   border: 1px solid white;
-  padding: 5%;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
 
-.animalInfo {
-  width: 500px;
-  margin-left: 45%;
-  font-family: 'Open Sans Condensed', sans-serif;
-  width: 500px;
-  margin-left: 45%;
-  font-family: 'Open Sans Condensed', sans-serif;
+.animal_pic_div {
+  background-color: transparent;
+  width: 48%;
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: center;
 }
 
-.animal_name {
-  font-size: 54px;
-  font-weight: bold;
-  font-variant-caps: all-petite-caps;
-  color: #4169C1;
+.animal_pic {
+  width: 300px;
+  height: auto;
+}
+
+.animal_pic:hover img {
+  opacity: 0.8;
+}
+
+.animal_info_div {
+  width: 48%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans Condensed", sans-serif;
+  margin: auto 0;
+  padding: 5px;
+}
+
+.animal_profile_name {
+  font-size: 50px;
+  font-weight: 900;
+  font-variant-caps: all-small-caps;
+  color: #4169c1;
   text-shadow: 1px 1px 1px #494b50;
 }
 
-.animalAge {
-  font-size: 24px;
-}
-
-.animalCity {
-  font-size: 24px;
-}
-
-.description {
-  font-size: 30px;
-  font-weight: 900;
-  margin-bottom: 2%;
-}
-
-.animalPic {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
-  position: absolute;
-  padding-top: -5%;
-  margin-top: -15%;
-  border-radius: 2px;
-  opacity: 1;
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-}
-
-.animalPic figure:hover img {
-	opacity: .5;
-}
-
-.animalButton {
-
-}
-
-.oneButton {
-  color: white;
-  background-color: #4169C1;
-  width: 160px;
+.animal_age_location {
+  display: flex;
   font-size: 25px;
-  margin-top: 1%;
-  border-radius: 18px;
-  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 5px 0;
+}
+
+.animal_divider {
+  padding: 0 15px;
+}
+
+.buttons_div {
+  display: flex;
+  padding: 5px 0;
+}
+
+.animal_button {
+  color: white;
+  background-color: #4169c1;
+  width: 125px;
+  margin-right: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 900;
   font-variant-caps: all-petite-caps;
+}
+
+.animal_description {
+  font-size: 25px;
+  padding: 10px 0;
 }
