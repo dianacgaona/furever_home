@@ -23,7 +23,7 @@ class AddPost extends Component {
   };
 
   handleSubmit = (e, user) => {
-    debugger;
+    // debugger;
     e.preventDefault();
     axios
       .post(`/api/posts/`, {

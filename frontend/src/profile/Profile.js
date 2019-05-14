@@ -8,21 +8,24 @@ import { MyContext } from '../provider/MyProvider';
 import '../css/profile.css';
 import axios from 'axios';
 
+
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
       profileUser: {},
-      user_Posts: [],
+      user_Posts: []
     };
   }
 
   componentDidMount() {
+    // debugger
     this.getPosts(this.props.match.params.id);
     this.getSingleUser(this.props.match.params.id);
   }
 
   componentDidUpdate(prevProps) {
+    // debugger
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getPosts();
       this.getSingleUser(this.props.match.params.id);
@@ -35,7 +38,7 @@ class Profile extends Component {
       .get(`/api/posts/byUser/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          user_Posts: res.data.post,
+          user_Posts: res.data.post
         });
       })
       .catch(err => {
@@ -44,20 +47,26 @@ class Profile extends Component {
   };
 
   getSingleUser = () => {
+    // debugger;
     axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          profileUser: res.data.user,
+          profileUser: res.data.user
         });
       })
       .catch(err => {
-        console.log('SINGLE USER ERROR', err);
+        console.log("SINGLE USER ERROR", err);
       });
   };
 
   render() {
+    // console.log(this.props.match.params.id);
+console.log(this.props.currentUser.id, 'CurrentUser Id');
+console.log(this.state.profileUser.id ,"Profile User");
+console.log(this.state,"State");
     return (
+
       
 
 
@@ -88,6 +97,7 @@ class Profile extends Component {
                       </div>
                     ) : null}
                   </div>
+
 
                   <div className="info_right">
                     <div className="profile_name">
