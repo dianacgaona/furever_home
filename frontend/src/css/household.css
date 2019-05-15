@@ -7,59 +7,48 @@
 
 .desHome {
   margin-top: 2%;
-  margin-left: 25%;
 }
 
 .yard {
   position: absolute;
   font-size: 18px;
-  margin-left: 11%;
 }
 
 .yardChoices {
   margin-top: 2%;
-  margin-left: 28%;
 }
 
 .windows {
   position: absolute;
   font-size: 18px;
-  margin-left: 7%;
 }
 
 .windowsChoices {
   margin-top: 2%;
-  margin-left: 28%;
 }
 
 .allergic {
   position: absolute;
   font-size: 18px;
-  margin-left: 5%;
 }
 
 .allergicChoices {
   margin-top: 2%;
-  margin-left: 28%;
 }
 
 .animalNom {
   font-size: 18px;
-  margin-left: 5%;
 }
 
 .animalFill {
-  margin-left: 10%;
 }
 
 .spayed {
   position: absolute;
   font-size: 18px;
-  margin-left: 9%;
   margin-top: .5%;
 }
 
 .spayedChoices {
   margin-top: 2.5%;
-  margin-left: 28%;
 }
