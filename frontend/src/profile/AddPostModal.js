@@ -23,7 +23,7 @@ class PostModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = "#4169c1";
   }
 
   closeModal() {
