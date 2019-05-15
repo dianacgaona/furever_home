@@ -17,7 +17,7 @@ const getAllComments = (req, res, next) => {
 const getAllCommentsForOnePost = (req, res, next) => {
   let postId = parseInt(req.params.id);
   db.any(
-    'SELECT username,user_id, post_id, comment_body FROM comments JOIN users ON users.id = comments.user_id WHERE post_id=$1',
+    'SELECT username,user_id, post_id, comment_body,time_added FROM comments JOIN users ON users.id = comments.user_id WHERE post_id=$1 ORDER BY  time_added DESC',
     [postId]
   )
     .then(comment => {
@@ -31,7 +31,7 @@ const getAllCommentsForOnePost = (req, res, next) => {
       return next(err);
     });
 };
-
+// line 20 SELECT username,user_id, post_id, comment_body FROM comments JOIN users ON users.id = comments.user_id WHERE post_id=$1
 const createComment = (req, res, next) => {
   db.none(
     'INSERT INTO comments (user_id, post_id, comment_body) VALUES (${user_id}, ${post_id}, ${comment_body})',
