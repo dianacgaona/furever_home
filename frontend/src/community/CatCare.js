@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import '../css/care.css';
-import { Paper } from '@material-ui/core';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "../css/care.css";
 
 class CatCare extends Component {
   constructor() {
     super();
 
     this.state = {
-      catPost: [],
+      catPost: []
     };
   }
 
@@ -19,11 +18,11 @@ class CatCare extends Component {
 
   getCatPosts = () => {
     axios
-      .get('/posts/cats')
+      .get("/posts/cats")
       .then(res => {
         console.log(res);
         this.setState({
-          catPost: res.data.post,
+          catPost: res.data.post
         });
       })
       .catch(err => {
@@ -54,7 +53,7 @@ class CatCare extends Component {
                 </div>
                 <div>
                   <p className="postBody">
-                    {post.post_body.slice(0, 50) + '...'}
+                    {post.post_body.slice(0, 50) + "..."}
                     <Link to={`/posts/${post.id}`} className="post_link">
                       (read more)
                     </Link>

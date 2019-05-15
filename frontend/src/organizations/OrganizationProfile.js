@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../css/shelterprofile.css";
+import shelterimg from "../assets/animal_shelter.jpg";
 
 class OrganizationProfile extends Component {
   constructor() {
@@ -49,10 +50,13 @@ class OrganizationProfile extends Component {
     if (!animals.length) {
       return (
         <div>
-          <h1 className='notAvail'>No pets available at the moment. Come back later!</h1>
+          <h1 className="notAvail">
+            No pets available at the moment. Come back later!
+          </h1>
           <img
             src="https://images-na.ssl-images-amazon.com/images/I/31%2B1BFEVV9L._SX425_.jpg"
-            alt="" className='notAvailPic'
+            alt=""
+            className="notAvailPic"
           />
         </div>
       );
@@ -60,8 +64,8 @@ class OrganizationProfile extends Component {
       return animals.map(animal => {
         let photo = animal.photos;
         return (
-          <div clasName='animalBorder' style={{padding: '1%'}}>
-            <div key={animal.id} className='wholeAnimal'>
+          <div clasName="animalBorder" style={{ padding: "1%" }}>
+            <div key={animal.id} className="wholeAnimal">
               {photo.length === 0 ? (
                 <div>
                   <img
@@ -69,16 +73,20 @@ class OrganizationProfile extends Component {
                     alt=""
                   />
                   <Link to={`/animals/${animal.id}`}>
-                    <div className='animalNames'>{animal.name}</div>
+                    <div className="animalNames">{animal.name}</div>
                   </Link>
                 </div>
               ) : (
                 <Link to={`/animals/${animal.id}`}>
-                  <div className='animalPicture'>
+                  <div className="animalPicture">
                     <img src={animal.photos[0].medium} alt="" />
                   </div>
                   <Link to={`/animals/${animal.id}`}>
-                    <div className='animalNames'>{animal.name}</div>
+                    <div className="animalNames">
+                      {animal.name.length > 20
+                        ? animal.name.slice(0, 20) + "..."
+                        : animal.name}
+                    </div>
                   </Link>
                 </Link>
               )}
@@ -94,38 +102,39 @@ class OrganizationProfile extends Component {
     let address = organization.address;
     return (
       <div className="organization_div">
-        <h1 className="organization_name">{organization.name}</h1>
         <div className="organization_info">
-          <div className="organization_pic">
-            <img
-              src="https://i.pinimg.com/736x/9b/a3/4d/9ba34d2df7de09b8694ab6bddf2c8b61--animal-shelter-logo-inspiration.jpg"
-              alt=""
-            />
+          <div className="organization_pic_div">
+            <img src={shelterimg} alt="" />
           </div>
-          <div>
+          <div className="organization_details">
+            <h1 className="organization_name">{organization.name}</h1>
             {address === undefined ? (
               <div>
                 <p>Address not available</p>
               </div>
             ) : (
-              <div className="organization_details">
-                <div className='locationText'>Location:</div>
-                <div className='cityState'>
+              <div>
+                <div className="locationText">Location</div>
+                <div className="cityState">
                   {address.city}, {address.state}
                 </div>
               </div>
             )}
-            <div className="organization_details">
-              <div className='contactUs'>Contact us at: </div>
-              <div className='organEmail'>{organization.email}</div>
-            </div>
+            <div className="contactUs">Contact Us </div>
+            <div className="organEmail">{organization.email}</div>
           </div>
         </div>
         <div>
-          <h3 className="organization_divider">
-            Furends Available to Take Home{" "}
-          </h3>
-          <div className="organization_animals">{this.displayAnimals()}</div>
+          <div className="organization_animals">
+            <div>
+              <h3 className="organization_divider">
+                Furiends Ready to Go Home{" "}
+              </h3>
+            </div>
+            <div className="organization_animal_list">
+              {this.displayAnimals()}
+            </div>
+          </div>
         </div>
       </div>
     );
