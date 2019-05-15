@@ -70,7 +70,7 @@
 .post_body {
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 3.2vh;
-  text-indent: 25px;
+  /* text-indent: 25px; */
 }
 
 .post_form_div {
