@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import { MyContext } from "../provider/MyProvider";
 import { Link } from "react-router-dom";
-import { Paper } from "@material-ui/core";
 
 import "../css/singlePost.css";
 
@@ -14,10 +12,11 @@ class SinglePost extends Component {
       singlePostComments: []
     };
   }
+
   componentDidMount() {
     this.getPost(this.props.match.params.id);
     this.getCommentsForSinglePost(this.props.match.params.id);
-    this.displaySinglePost(this.props.match.params.id)
+    this.displaySinglePost(this.props.match.params.id);
   }
 
   getPost = id => {
@@ -66,69 +65,72 @@ class SinglePost extends Component {
   displaySinglePost = id => {
     let { singlePost } = this.state;
     return (
-      <div>
-        <p className="postTitleCom">{singlePost.title}</p>
-          <div className='usernameContainer'>
-            <Link to={`/user/${singlePost.user_id}`} className="userName">
-              By: {singlePost.username}
-            </Link>
-          </div>
-            <p className="petTypeCom">Tip for: {singlePost.pet_type}s</p>
-              <div>
-                <img src={singlePost.post_url} alt="" />
-              </div>
-              <div className='bodyContainer'>
-                <p className="body">{singlePost.post_body}</p>
-              </div>
-              <div className='formContainer'>
-                <form className="form" onSubmit={this.addComment}>
-                  <input
-                    id="myComment"
-                    type="text"
-                    placeholder="Share your thoughts..."
-                    className="input"
-                  />
-                  <button type="submit" className="postComment">
-                  <p>Post Comment</p>
-                  </button>
-                </form>
-             </div>
-          <div className='borderborderComments'>
-            <div className='borderComments'>
-              <div className='comments'>Comments:</div>
-              <div className='commentName'>{this.displayComments(this.props.match.params.id)}</div>
-              </div>
-           </div>
-         </div>
-    );
-  };
-
-  displayComments = id => {
-    let comments = this.state.singlePostComments.map((comment, i) => {
-      return (
-        <div className='commentBorder'>
-          <li key={i + 1}>
-            <Link to={`/user/${comment.user_id}`} className="commentUser">
-              {comment.username}
-            </Link>
-            <br />
-            <p className="commentBody">{comment.comment_body}</p>
-          </li>
-        </div>
-      );
-    });
-    return (
       <>
-        <ul>{comments}</ul>
+        <div className="post_img_div">
+          <img src={singlePost.post_url} alt="" className="post_img" />
+        </div>
+        <div className="post_title_div">
+          <h1 className="post_title">{singlePost.title}</h1>
+        </div>
+        <div className="post_username_div">
+          <Link to={`/user/${singlePost.user_id}`} className="post_username">
+            By: {singlePost.username}
+          </Link>
+        </div>
+        <div className="post_type_div">
+          <p className="post_type">Tip for: {singlePost.pet_type}s</p>
+        </div>
+        <div className="post_body_div">
+          <p className="post_body">{singlePost.post_body}</p>
+        </div>
       </>
     );
   };
 
+  displayCommentForm = () => {
+    return (
+      <form className="post_form" onSubmit={this.addComment}>
+        <textarea
+          id="myComment"
+          type="text"
+          placeholder="Share your thoughts..."
+          className="post_form_text"
+        />
+        <button type="submit" className="post_form_button">
+          Post Comment
+        </button>
+      </form>
+    );
+  };
+
+  displayComments = () => {
+    let comments = this.state.singlePostComments;
+    return comments.map((comment, i) => {
+      return (
+        <div key={i + 1} className="post_single_comment">
+          <Link
+            to={`/user/${comment.user_id}`}
+            className="post_comment_username"
+          >
+            {comment.username}
+          </Link>
+          <br />
+          <p className="post_comment_body">{comment.comment_body}</p>
+        </div>
+      );
+    });
+  };
+
   render() {
     return (
-      <Paper style={{ padding: "2%" }}>
-        <div>{this.displaySinglePost()}</div>
-      </Paper>
+      <div className="post_container">
+        <div className="post_info">{this.displaySinglePost()}</div>
+        <div className="post_form_div">{this.displayCommentForm()}</div>
+        <div className="post_comments_container">
+          <div className="post_comments_section">Comments:</div>
+          {this.displayComments(this.props.match.params.id)}
+        </div>
+      </div>
     );
   }
 }
