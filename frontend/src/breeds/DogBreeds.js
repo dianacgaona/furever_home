@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Checkbox, FormControlLabel } from "@material-ui/core";
 import "../css/breeds.css";
 import DogFilters from "./DogFilters.js";
 import axios from "axios";
@@ -230,7 +229,11 @@ class DogBreeds extends Component {
       return (
         <div key={animal.id} className="animal_single">
           <Link to={`/animals/${animal.id}`}>
-            <h1 className="animal_name">{animal.name}</h1>
+            <h1 className="animal_name">
+              {animal.name.length > 20
+                ? animal.name.slice(0, 20) + "..."
+                : animal.name}
+            </h1>
           </Link>
           {photo.length === 0 ? (
             <div className="animal_pic">
@@ -266,7 +269,11 @@ class DogBreeds extends Component {
       return (
         <div key={animal.id} className="animal_single">
           <Link to={`/animals/${animal.id}`}>
-            <h1 className="animal_name">{animal.name}</h1>
+            <h1 className="animal_name">
+              {animal.name.length > 20
+                ? animal.name.slice(0, 20) + "..."
+                : animal.name}
+            </h1>
           </Link>
           {photo.length === 0 ? (
             <div className="animal_pic">

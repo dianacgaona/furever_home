@@ -116,6 +116,11 @@
 
 .post_single_comment {
   padding: 5px;
+  }
+.post_timestamp{
+  display: inline-block;
+  padding-left: 10px;
+font-size: 1.7vh;
 }
 .post_comment_username {
   font-size: 2vh;

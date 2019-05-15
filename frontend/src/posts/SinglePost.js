@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Moment from "react-moment";
 import "../css/singlePost.css";
 
 class SinglePost extends Component {
@@ -114,7 +114,8 @@ class SinglePost extends Component {
           >
             {comment.username}
           </Link>
-          <br />
+            <Moment className="post_timestamp" fromNow>{comment.time_added}</Moment>
+
           <p className="post_comment_body">{comment.comment_body}</p>
         </div>
       );

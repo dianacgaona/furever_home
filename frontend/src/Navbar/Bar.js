@@ -33,6 +33,7 @@ class Bar extends React.Component {
     value: 2
   };
 
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
