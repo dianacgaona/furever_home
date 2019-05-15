@@ -90,7 +90,7 @@
 .post_form_button {
   width: 15vw;
   height: 4vh;
-  background-color: #4169e1;
+  background-color: #4169c1;
   font-size: 2vh;
   font-weight: 600;
   color: white;
@@ -127,7 +127,7 @@
   text-transform: uppercase;
 }
 .post_comment_body {
-  background-color: #4169e1;
+  background-color: #4169c1;
   padding: 5px 10px;
   margin: 5px 0;
   border-radius: 10px;
