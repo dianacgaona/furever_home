@@ -2,13 +2,14 @@
 -- CREATE DATABASE furever_home;
 --
 -- \c furever_home;
-DROP TABLE users;
+
 DROP TABLE location;
 DROP TABLE posts;
 DROP TABLE comments;
 DROP TABLE favorited;
 DROP TABLE adopted;
 DROP TABLE forms;
+DROP TABLE users;
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
