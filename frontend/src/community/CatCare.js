@@ -18,11 +18,7 @@ class CatCare extends Component {
 
   getCatPosts = () => {
     axios
-<<<<<<< HEAD
       .get('/api/posts/cats')
-=======
-      .get("/posts/cats")
->>>>>>> 492790f7a3b08d3ef434746e49bdfb9d6c406ab8
       .then(res => {
         console.log(res);
         this.setState({

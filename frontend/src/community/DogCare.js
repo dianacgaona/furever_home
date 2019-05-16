@@ -19,11 +19,7 @@ class DogCare extends Component {
 
   getDogPosts = () => {
     axios
-<<<<<<< HEAD
       .get('/api/posts/dogs')
-=======
-      .get("/posts/dogs")
->>>>>>> 492790f7a3b08d3ef434746e49bdfb9d6c406ab8
       .then(res => {
         console.log(res);
         this.setState({
