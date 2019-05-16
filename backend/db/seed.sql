@@ -4,11 +4,11 @@
 -- \c furever_home;
 
 DROP TABLE location;
-DROP TABLE posts;
 DROP TABLE comments;
 DROP TABLE favorited;
 DROP TABLE adopted;
 DROP TABLE forms;
+DROP TABLE posts;
 DROP TABLE users;
 
 CREATE TABLE users(
