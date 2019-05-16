@@ -2,7 +2,7 @@
   width: 50%;
   height: 550px;
   margin: 150px auto;
-  background-color: rgba(99, 103, 142, 0.6);
+  background-color: #cecece;
   border-radius: 8px;
 }
 
@@ -24,6 +24,8 @@
   width: 30px;
   font-size: 15px;
   font-weight: bold;
+  background-color: #4169c1;
+  color: white;
 }
 
 .modal_button:focus {
@@ -99,6 +101,8 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  background-color: #4169c1;
+  color: white;
 }
 
 .modal_submit:active {

@@ -229,7 +229,11 @@ class CatBreeds extends Component {
       return (
         <div key={animal.id} className="animal_single">
           <Link to={`/animals/${animal.id}`}>
-            <h1 className="animal_name">{animal.name}</h1>
+            <h1 className="animal_name">
+              {animal.name.length > 20
+                ? animal.name.slice(0, 20) + "..."
+                : animal.name}
+            </h1>
           </Link>
           {photo.length === 0 ? (
             <div className="animal_pic">
@@ -265,7 +269,11 @@ class CatBreeds extends Component {
       return (
         <div key={animal.id} className="animal_single">
           <Link to={`/animals/${animal.id}`}>
-            <h1 className="animal_name">{animal.name}</h1>
+            <h1 className="animal_name">
+              {animal.name.length > 20
+                ? animal.name.slice(0, 20) + "..."
+                : animal.name}
+            </h1>
           </Link>
           {photo.length === 0 ? (
             <div className="animal_pic">

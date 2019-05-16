@@ -25,6 +25,7 @@
 .animal_pic {
   width: 300px;
   height: auto;
+  display: flex;
 }
 
 .animal_pic:hover img {

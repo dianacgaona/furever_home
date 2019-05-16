@@ -1,110 +1,142 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 
-.postTitleCom {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 44px;
-  font-weight: 900;
-  padding-bottom: .5%;
-  text-shadow: 1px 0px 0px #4169C1;
-  color: #4169C1;
-}
-
-.petTypeCom {
-  font-family: 'Open Sans Condensed', sans-serif;
-  text-transform: uppercase;
-  color: #4169C1;
-  text-shadow: 1px 1px #101111;
-}
-
-.usernameContainer{
-  padding-bottom: .5%;
-}
-
-.userName {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 23px;
-  text-transform: uppercase;
-  }
-
-.bodyContainer {
-  width: 950px;
-  padding-left: 38%;
-  padding-top: -4%;
-  margin-top: -17%;
-  font-size: 33px;
-}
-
-.body {
-  font-family: 'Open Sans Condensed', sans-serif;
-  text-indent: 50px;
-}
-
-.formContainer {
-  padding-top: 8%;
-}
-
-.form {
+.post_container {
+  border: 1px solid white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  padding: 2%;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
 }
 
-.input {
-  width: 274px;
-  height: 31px;
-  font-size: 19px;
+.post_info {
+  background-color: transparent;
+  padding-bottom: 10px;
 }
 
-.borderborderComments {
-  margin-top: 1%;
-
+.post_img_div {
+  background-color: transparent;
+  height: 35vh;
+  float: left;
+  padding: 5px 15px 3px 0;
 }
 
-.borderComments {
-  border: 1px solid white;
-  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
-  border-radius: 3px;
-  padding-left: 1%;
-  padding-bottom: 1%;
+.post_img {
+  height: 35vh;
+  float: left;
 }
 
-.comments {
+.post_title_div {
+  background-color: transparent;
+  padding: 10px 5px;
+}
+
+.post_title {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 7vh;
+  font-weight: 900;
+  text-shadow: 1px 0px 0px #4169c1;
+  color: #4169c1;
+}
+
+.post_username_div {
+  padding: 10px 5px;
+}
+
+.post_username {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 900;
+  font-size: 4vh;
   text-transform: uppercase;
-  padding-top: 1%;
-  font-size: 25px;
+}
+
+.post_type_div {
+  padding: 10px 5px;
+}
+.post_type {
+  font-family: "Open Sans Condensed", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 3.5vh;
+  text-transform: uppercase;
+}
+.post_body_div {
+  padding: 10px 5px;
+  background-color: transparent;
+}
+.post_body {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 3.2vh;
+}
+
+.post_form_div {
+  padding: 10px;
+  background-color: transparent;
+}
+.post_form {
+  display: flex;
+  flex-direction: column;
+}
+.post_form_text {
+  width: 30vw;
+  height: 8vh;
+  font-size: 2.5vh;
+  margin: 5px 0;
+  border: 5px solid #efefef;
+  border-radius: 5px;
+}
+.post_form_button {
+  width: 15vw;
+  height: 4vh;
+  background-color: #4169c1;
+  font-size: 2vh;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.post_comments_container {
+  background-color: transparent;
+  border: 1px solid white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.post_comments_section {
+  text-transform: uppercase;
+  font-size: 2.5vh;
   text-shadow: 1px 0px 0px #001049;
 }
 
-.commentName {
-  font-size: 19px;
-  padding-top: 1%;
+.post_single_comment {
+  padding: 5px;
+  }
+.post_timestamp{
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 1.7vh;
 }
-
-.postComment {
-  width: 170px;
-  font-size: 19px;
-  margin-top: 1%;
-  color: white;
-  background-color: rgb(0, 16, 73);
-  border-radius: 15px;
-  height: 90%;
-  font-size: 20px;
-  padding: 5px 11px;
-  border-radius: 15px;
-}
-
-.commentBorder {
-  padding-bottom: 1%;
-}
-
-.commentUser {
-  font-family: 'Open Sans Condensed', sans-serif;
+.post_comment_username {
+  font-size: 2vh;
+  color: red;
+  padding: 5px 0;
+  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 900;
+  font-size: 3vh;
   text-transform: uppercase;
-  font-size: 25px;
 }
-
-.commentBody {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 27px;
+.post_comment_body {
+  background-color: #4169c1;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  color: white;
+  font-size: 3vh;
+  font-family: "Open Sans Condensed", sans-serif;
 }

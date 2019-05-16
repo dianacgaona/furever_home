@@ -17,6 +17,7 @@ import DogBreeds from './breeds/DogBreeds.js';
 import CatBreeds from './breeds/CatBreeds.js';
 import Form from './PreApproval/Form.js';
 import { MyContext } from './provider/MyProvider';
+import './css/App.css';
 
 class App extends Component {
   render() {
@@ -66,7 +67,8 @@ class App extends Component {
             />
             <Route
               path="/shelters-rescues/:id"
-              component={OrganizationProfile}/>
+              component={OrganizationProfile}
+            />
             <Route exact path="/animals" component={PetsList} />
             <Route path="/animals/:id" component={PetProfile} />
             <Route path="/dogs" component={DogBreeds} />

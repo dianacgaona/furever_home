@@ -34,7 +34,8 @@ CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   post_id INT REFERENCES posts(id) ON DELETE CASCADE,
-  comment_body TEXT NOT NULL
+  comment_body TEXT NOT NULL,
+  time_added TIMESTAMP DEFAUlT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE favorited(

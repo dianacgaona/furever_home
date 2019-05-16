@@ -10,7 +10,7 @@
   border-radius: 18px;
   margin-left: 3%;
   color: white;
-  background-color: #001049;
+  background-color: #4169c1;
   margin-top: 5%;
 }
 
@@ -22,19 +22,7 @@
   border-radius: 18px;
   margin-left: 3%;
   color: white;
-  background-color: #001049;
-}
-
-.modal_open_button {
-  width: 140px;
-  height: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 18px;
-  margin-left: 3%;
-  color: white;
-  background-color: #001049;
-  margin-top: 5%;
+  background-color: #4169c1;
 }
 
 .modal_open_button:focus {
@@ -49,7 +37,7 @@
   width: 50%;
   height: 550px;
   margin: 150px auto;
-  background-color: rgba(99, 103, 142, 0.6);
+  background-color: #cecece;
   border-radius: 8px;
 }
 
@@ -71,6 +59,8 @@
   width: 30px;
   font-size: 15px;
   font-weight: bold;
+  background-color: #4169c1;
+  color: white;
 }
 
 .modal_post_button:focus {
@@ -81,6 +71,7 @@
   font-size: 35px;
   font-weight: bold;
   text-align: center;
+  color: #4169c1;
 }
 
 .modal_post_form {
@@ -155,6 +146,8 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  background-color: #4169c1;
+  color: white;
 }
 
 .modal_post_submit:active {

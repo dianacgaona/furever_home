@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Clicker+Script');
+@import url("https://fonts.googleapis.com/css?family=Clicker+Script");
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 .carousel {
   object-fit: cover;
@@ -13,7 +13,7 @@
 }
 
 .greeting {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 64px;
   color: #4169e1;
   display: -webkit-flex;
@@ -21,11 +21,10 @@
   -webkit-justify-content: center;
   justify-content: center;
   text-align: center;
-  margin-left: 5%;
+  width: 100%;
   position: absolute;
   z-index: 1;
-  margin-top: 9%;
-  width: 1310px;
+  margin-top: 6%;
   text-shadow: turquoise;
   text-shadow: 3px 3px 3px #fffafab3;
   font-weight: bolder;

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import Slider from 'react-slick';
+import React, { Component } from "react";
+import Slider from "react-slick";
 
-let dog1 = require('../assets/puppies.jpg');
-let cat2 = require('../assets/forestcat.jpg');
-let dog3 = require('../assets/puppycut.jpg');
-let cat4 = require('../assets/cat4.jpeg');
-let dog5 = require('../assets/puppy5.jpeg');
+let dog1 = require("../assets/puppies.jpg");
+let cat2 = require("../assets/forestcat.jpg");
+let dog3 = require("../assets/puppycut.jpg");
+let cat4 = require("../assets/cat4.jpeg");
 
 class Wallpaper extends Component {
   render() {
@@ -17,11 +16,11 @@ class Wallpaper extends Component {
       draggable: false,
       fade: true,
       infinite: true,
-      lazyLoad: 'on-demand',
+      lazyLoad: "on-demand",
       slidesToShow: 1,
       slidesToScroll: 1,
       speed: 4000,
-      waitForAnimate: true,
+      waitForAnimate: true
     };
     return (
       <div>

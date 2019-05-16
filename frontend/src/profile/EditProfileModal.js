@@ -34,7 +34,7 @@ class ProfileModal extends React.Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = "#2F1847";
+    this.subtitle.style.color = "#4169c1";
   }
 
   closeModal() {
@@ -76,7 +76,10 @@ class ProfileModal extends React.Component {
           return (
             <div>
               <div className="modal_open">
-                <button onClick={this.openModal} className="modal_open_button_post">
+                <button
+                  onClick={this.openModal}
+                  className="modal_open_button_post"
+                >
                   Edit Profile
                 </button>
               </div>

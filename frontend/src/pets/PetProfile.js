@@ -95,7 +95,7 @@ class PetProfile extends Component {
             <div className="animal_div">
               <div className="animal_pic_div">
                 <div className="animal_pic">
-                  <img src={profile.photos[0].medium} alt="" />
+                  <img src={profile.photos[0].medium} alt="" style={{objectFit: 'contain'}}/>
                 </div>
               </div>
               <div className="animal_info_div">
