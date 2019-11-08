@@ -108,7 +108,7 @@ apiAllAnimalsQuery = async (req, res, next) => {
     res.status(200).json({
       status: "Success",
       data: animals,
-      message: "ANIMALS"
+      message: "Animals by shelter"
     });
   } catch (err) {
     if (err) {
